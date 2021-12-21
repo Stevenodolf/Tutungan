@@ -36,10 +36,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    protected $table = 'user';
-
-    public function getRoleRelation(){
-        return $this->hasOne('App\Role', 'id', 'role_id');
-    }
 }
