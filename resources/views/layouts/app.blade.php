@@ -14,6 +14,7 @@
     <script src="{{ asset('js/script/jquery/jquery.js') }}"></script>
     <script src="{{ asset('js/script/swiper/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('js/script/proBar/proBar.js') }}"></script>
+    <script src="{{ asset('js/src/main.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -50,7 +51,7 @@
             </div>
             @guest
                 <div class="buttonLoginRegister">
-                    <button class="buttonLogin">Masuk</button>
+                    <button class="buttonLogin" id="buttonLogin">Masuk</button>
                     <button class="buttonRegister">Daftar</button>
                 </div>
             @else
@@ -118,3 +119,38 @@
 </div>
 </body>
 </html>
+
+<div class="blackContainer" id="blackContainer">
+    <div class="loginPopUp">
+        <div class="title">
+            <h1>Masuk</h1>
+            <button id="closeLogin">
+                <img src="{{asset('images/close.png')}}"/>
+            </button>
+        </div>
+        <form class="login">
+            <div class="field">
+                <p class="">Email</p>
+                <input type="text" id="email" placeholder="ex:youremail@tutungan.com" required>
+            </div>
+            <div class="field">
+                <p class="">Password</p>
+                <input type="password" id="password" required>
+                <div class="lupaPass">
+                    <button>
+                        <p class="">Lupa password?</p>
+                    </button>
+                </div>
+            </div>
+            <button class="buttonMasuk">
+                <p class="">Masuk</p>
+            </button>
+        </form>
+        <div class="daftarSection">
+            <p class="">Baru di Tutungan?</p>
+            <button>
+                <p class="">Daftar</p>
+            </button>
+        </div>
+    </div>
+</div>

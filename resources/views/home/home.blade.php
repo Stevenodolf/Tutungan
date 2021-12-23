@@ -670,5 +670,4 @@
 
     </div>
 
-
 @endsection
