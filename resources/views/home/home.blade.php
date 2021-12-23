@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
     <div class="homeCarousel">
         <div class="swiper-container">
             <!-- swiper slides -->
@@ -41,7 +42,12 @@
                                 <div class="content">
                                     <p>Laci lapis 3 warna biru merk lion star</p>
                                     <h3>Rp 15.000/pcs</h3>
-                                    <div class="progressBar"></div>
+                                    <div class="barWithText">
+                                        <div class="textProgress">
+                                            <p>7500/15000</p>
+                                        </div>
+                                        <div class="progressBar"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +60,12 @@
                                 <div class="content">
                                     <p>Laci lapis 3 warna biru merk lion star</p>
                                     <h3>Rp 15.000/pcs</h3>
-                                    <div class="progressBar"></div>
+                                    <div class="barWithText">
+                                        <div class="textProgress">
+                                            <p>7500/15000</p>
+                                        </div>
+                                        <div class="progressBar"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +78,12 @@
                                 <div class="content">
                                     <p>Laci lapis 3 warna biru merk lion star</p>
                                     <h3>Rp 15.000/pcs</h3>
-                                    <div class="progressBar"></div>
+                                    <div class="barWithText">
+                                        <div class="textProgress">
+                                            <p>7500/15000</p>
+                                        </div>
+                                        <div class="progressBar"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +96,12 @@
                                 <div class="content">
                                     <p>Laci lapis 3 warna biru merk lion star</p>
                                     <h3>Rp 15.000/pcs</h3>
-                                    <div class="progressBar"></div>
+                                    <div class="barWithText">
+                                        <div class="textProgress">
+                                            <p>7500/15000</p>
+                                        </div>
+                                        <div class="progressBar"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +114,12 @@
                                 <div class="content">
                                     <p>Laci lapis 3 warna biru merk lion star</p>
                                     <h3>Rp 15.000/pcs</h3>
-                                    <div class="progressBar"></div>
+                                    <div class="barWithText">
+                                        <div class="textProgress">
+                                            <p>7500/15000</p>
+                                        </div>
+                                        <div class="progressBar"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +132,12 @@
                                 <div class="content">
                                     <p>Laci lapis 3 warna biru merk lion star</p>
                                     <h3>Rp 15.000/pcs</h3>
-                                    <div class="progressBar"></div>
+                                    <div class="barWithText">
+                                        <div class="textProgress">
+                                            <p>7500/15000</p>
+                                        </div>
+                                        <div class="progressBar"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +150,12 @@
                                 <div class="content">
                                     <p>Laci lapis 3 warna biru merk lion star</p>
                                     <h3>Rp 15.000/pcs</h3>
-                                    <div class="progressBar"></div>
+                                    <div class="barWithText">
+                                        <div class="textProgress">
+                                            <p>7500/15000</p>
+                                        </div>
+                                        <div class="progressBar"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +168,12 @@
                                 <div class="content">
                                     <p>Laci lapis 3 warna biru merk lion star</p>
                                     <h3>Rp 15.000/pcs</h3>
-                                    <div class="progressBar"></div>
+                                    <div class="barWithText">
+                                        <div class="textProgress">
+                                            <p>7500/15000</p>
+                                        </div>
+                                        <div class="progressBar"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +186,12 @@
                                 <div class="content">
                                     <p>Laci lapis 3 warna biru merk lion star</p>
                                     <h3>Rp 15.000/pcs</h3>
-                                    <div class="progressBar"></div>
+                                    <div class="barWithText">
+                                        <div class="textProgress">
+                                            <p>7500/15000</p>
+                                        </div>
+                                        <div class="progressBar"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -260,7 +306,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -273,7 +324,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -286,7 +342,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -299,7 +360,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -312,74 +378,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="column">
-                <div class="wish">
-                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                    <div class="timeLeft">
-                        <p>Tersisa 5 Hari Lagi</p>
-                    </div>
-                    <div class="content">
-                        <p>Laci lapis 3 warna biru merk lion star</p>
-                        <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="wish">
-                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                    <div class="timeLeft">
-                        <p>Tersisa 5 Hari Lagi</p>
-                    </div>
-                    <div class="content">
-                        <p>Laci lapis 3 warna biru merk lion star</p>
-                        <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="wish">
-                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                    <div class="timeLeft">
-                        <p>Tersisa 5 Hari Lagi</p>
-                    </div>
-                    <div class="content">
-                        <p>Laci lapis 3 warna biru merk lion star</p>
-                        <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="wish">
-                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                    <div class="timeLeft">
-                        <p>Tersisa 5 Hari Lagi</p>
-                    </div>
-                    <div class="content">
-                        <p>Laci lapis 3 warna biru merk lion star</p>
-                        <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="wish">
-                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                    <div class="timeLeft">
-                        <p>Tersisa 5 Hari Lagi</p>
-                    </div>
-                    <div class="content">
-                        <p>Laci lapis 3 warna biru merk lion star</p>
-                        <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -394,7 +398,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -407,7 +416,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -420,7 +434,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -433,7 +452,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -446,7 +470,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -461,7 +490,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -474,7 +508,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -487,7 +526,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -500,7 +544,12 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -513,7 +562,104 @@
                     <div class="content">
                         <p>Laci lapis 3 warna biru merk lion star</p>
                         <h3>Rp 15.000/pcs</h3>
-                        <div class="progressBar"></div>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
                     </div>
                 </div>
             </div>

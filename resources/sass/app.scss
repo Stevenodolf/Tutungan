@@ -8,9 +8,19 @@ body{
     margin: 25px 120px;
     font-family: 'lato','latoregular','latoblack','latoblackitalic','latobold','latobolditalic','latoitalic','latolightitalic','latolight';
 }
+//GLOBAL
+p, h1,h2,h3,h4,h5 {
+    margin: 0;
+}
+.barWithText{
+    .textProgress{
+        display: flex;
+        justify-content: flex-end;
+    }
+}
 
 
-
+//Navigation Bar
 .navbar{
     width: 100%;
     height: 10vh;
@@ -102,6 +112,7 @@ body{
     }
 }
 
+//Home
 .homeCarousel{
     position: relative;
     .swiper-container {
@@ -141,6 +152,7 @@ body{
     }
 }
 
+//Wish
 .wish {
     height: 334px;
     width: 200px;
@@ -148,9 +160,6 @@ body{
     border-radius: 5px;
     cursor: pointer;
     filter: drop-shadow(1px 6px 4px rgba(49, 53, 59, 0.12));
-    p, h3 {
-        margin: 0;
-    }
 
     img {
         width: 200px;
@@ -171,9 +180,9 @@ body{
         justify-content: center;
         align-items: center;
     }
-
 }
 
+//Last Minute
 .lastMinuteSection{
     margin-top: 35px;
     .banner{
@@ -184,7 +193,10 @@ body{
         justify-content: flex-end;
 
         .listWish {
-            width: 60vw;
+            width: 54vw;
+            height: 50vh;
+            display: flex;
+            align-items: center;
             .swiper-wrapper{
                 height: 43vh;
             }
@@ -205,8 +217,9 @@ body{
     }
 }
 
+//Category
 .category{
-    margin-top: 30px;
+    margin-top: 10vh;
 
     .categorySwipe{
         padding: 0 85px;
@@ -234,6 +247,7 @@ body{
     }
 }
 
+//For You/Looks like for you Section
 .forYou{
     .column {
         float: left;
@@ -251,6 +265,218 @@ body{
         display: table;
         clear: both;
     }
+}
+
+//Wish Detail
+.wishDetail {
+    .column {
+        float: left;
+        width: 33.33%;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .product{
+        .price{
+            margin:10px 0;
+            border-top: 2px solid rgb(49,53,59,0.2);
+            border-bottom: 2px solid rgb(49,53,59,0.2);
+            h2{
+                margin: 10px 0;
+            }
+        }
+
+        .information{
+            .columnA {
+                float: left;
+                width: 40%;
+                color: rgb(49,53,59,0.5);
+            }
+            .columnB{
+                float: left;
+                width: 60%;
+                .imgShip{
+                    width: 50px;
+                }
+                .imgInfo {
+                    width: 20px;
+                }
+            }
+            .row{
+                margin-bottom: 27px;
+            }
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+
+            }
+        }
+    }
+
+    .checkout{
+        width: 275px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #FFFFFF;
+        border: 1px solid rgba(49, 53, 59, 0.2);
+        box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+        border-radius: 5px;
+        .variant{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            border-bottom: 1px solid rgba(49, 53, 59, 0.2);
+            padding: 20px 20px;
+            select{
+                width: 235px;
+                height: 36px;
+                margin-top: 20px;
+                outline: none;
+                border: 1px solid rgba(49, 53, 59, 0.2);
+                box-sizing: border-box;
+                border-radius: 5px;
+            }
+            select:hover{
+                color: #F5D108;
+                border-color: #F5D108;
+            }
+        }
+        .total{
+            padding: 20px 20px;
+            .inputTotal{
+                display: flex;
+                margin-top: 20px;
+                margin-bottom: 8px;
+            }
+            p{
+                margin-left: 5px;
+            }
+        }
+        .buttonCheckout{
+            .addKeranjang{
+                width: 235px;
+                height: 36px;
+                background: #FFD901;
+                border-radius: 5px;
+                border: 1px solid #FFD901;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 25px;
+                .plus{
+                    width: 10px;
+                    height: 10px;
+                    margin-right: 5px;
+                }
+            }
+            .buyNow{
+                width: 235px;
+                height: 36px;
+                background: #FFFFFF;
+                border: 1px solid #FFD901;
+                box-sizing: border-box;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    .productDetail{
+        width: 875px;
+        border: 1px solid rgb(49,53,59,0.2);
+        filter: drop-shadow(1px 6px 6px rgba(49, 53, 59, 0.15));
+        border-radius: 5px;
+        .title{
+            padding: 25px 20px;
+            border-bottom: 1px solid rgba(49, 53, 59, 0.2);
+        }
+        .content{
+            padding: 25px 20px;
+        }
+    }
+
+    //Swiper
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .swiper {
+        width: 100%;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .swiper-slide {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bigPicture {
+        //height: 80%;
+        width: 80%;
+    }
+
+    .listPicture {
+        height: 20%;
+        box-sizing: border-box;
+        width: 80%;
+        padding: 10px 0;
+    }
+
+    .listPicture .swiper-slide {
+        width: 25%;
+        height: 100%;
+        opacity: 0.4;
+    }
+
+    .listPicture .swiper-slide-thumb-active {
+        opacity: 1;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    // End of Swiper
 }
 
 
