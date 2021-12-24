@@ -204,7 +204,15 @@
     <div class="category">
         <div class="swiper categorySwipe">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                @foreach($categories as $category)
+                    <div class="swiper-slide">
+                        <div class="filter">
+                            <img class="imgFilter" src="{{asset($category->image)}}" alt="">
+                            <p>{{$category->name}}</p>
+                        </div>
+                    </div>
+                @endforeach
+                {{-- <div class="swiper-slide">
                     <div class="filter">
                         <img class="imgFilter" src="{{asset('images/fashion.png')}}"/>
                         <p>Fashion</p>
@@ -287,7 +295,7 @@
                         <img class="imgFilter" src="{{asset('images/book.png')}}"/>
                         <p>Books</p>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="swiper-button-next nextCategory"></div>
             <div class="swiper-button-prev prevCategory"></div>
@@ -296,7 +304,40 @@
 
     <div class="forYou">
         <h1>For You</h1>
-        <div class="row">
+        @if($for_you == NULL)
+            <div class="column">
+                No Wish.
+            </div>
+        @else
+            <div class="row">
+                @foreach($for_you as $wish)
+                    @php
+                        $deadline = strtotime($wish->deadline);
+                        $diff = $deadline - time();
+                        $time_left = Round($diff / 86400);
+                    @endphp 
+                    <div class="column">
+                        <div class="wish">
+                            <img src="{{asset($wish->image)}}"/>
+                            <div class="timeLeft">
+                                <p>Tersisa {{$time_left}} Hari Lagi</p>
+                            </div>
+                            <div class="content">
+                                <p>{{$wish->name}}</p>
+                                <h3>Rp {{$wish->price}}/pcs</h3>
+                                <div class="barWithText">
+                                    <div class="textProgress">
+                                        <p>{{$wish->curr_qty}}/{{$wish->target_qty}}</p>
+                                    </div>
+                                    <div class="progressBar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+        <!-- <div class="row">
             <div class="column">
                 <div class="wish">
                     <img src="{{asset('images/dummyProduct.jpeg')}}"/>
@@ -663,7 +704,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
 
