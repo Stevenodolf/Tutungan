@@ -21,3 +21,5 @@ Route::get('/', 'HomeController@home');
 
 Route::get('/login', 'Auth\LoginController@getLogin');
 Route::post('/login', 'Auth\LoginController@postLogin');
+
+Route::get('/wish/{id}', 'WishController@wishDetail');

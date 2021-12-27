@@ -16,8 +16,8 @@ class Wish extends Model
         return $this->hasOne('App\User', 'id', 'created_by');
     }
 
-    public function getWishStatusRelation(){
-        return $this->hasOne('App\Wish_Status', 'id', 'status_id');
+    public function getStatusWishRelation(){
+        return $this->hasOne('App\Status_Wish', 'id', 'status_id');
     }
     
     public function getApprovedByRelation(){
