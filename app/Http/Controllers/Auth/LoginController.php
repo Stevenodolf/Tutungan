@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -38,49 +36,5 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-    }
-
-    public function getLogin(){
-        $auth = false;
-        Auth::logout();
-
-        return redirect('home');
-    }
-
-    public function postLogin(Request $request){
-        $data = $request->only('email', 'password');
-        $auth = Auth::attempt($data);
-
-        $rules = [
-            'email' => 'exists:user,email'
-        ];
-
-        $errors = [
-            'email.exists' => 'This Email is not Registered'
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $errors);
-
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator->errors());
-        }
-
-        if($auth){
-            $user = Auth::user();
-            if($user->disable == 0){
-                return redirect('/home');
-            }
-            else{
-                $auth = false;
-                Auth::logout();
-                return back()->with('notActive', 'Your account has been disabled.');
-            }
-        }
-        else{
-            $auth = false;
-            Auth::logout();
-            return back()->with('error', 'Invalid Email or Password');
-        }
-
     }
 }

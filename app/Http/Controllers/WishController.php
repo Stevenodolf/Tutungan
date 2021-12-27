@@ -76,7 +76,7 @@ class WishController extends Controller
             $wish->created_at = Carbon::now();
             $wish->updated_at = Carbon::now();
     
-            $wish->save();
+            $wish->save()
     
             return redirect('create-wish');
         }
