@@ -43,16 +43,16 @@
             </div>
             <div class="column">
                 <div class="product">
-                    <h3>Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</h3>
-                    <h5>Requested By Steven Odolf Yuwono</h5>
+                    <h3>{{$wish_name}}</h3>
+                    <h5>Requested By {{$wish_created_by}}</h5>
                     <div class="barWithText">
                         <div class="textProgress">
-                            <p>7500/15000</p>
+                            <p>{{$wish_curr_qty}}/{{$wish_target_qty}}</p>
                         </div>
                         <div class="progressBar"></div>
                     </div>
                     <div class="price">
-                        <h2>Rp50.000/box</h2>
+                        <h2>Rp{{$wish_price}}/box</h2>
                     </div>
                     <div class="information">
                         <div class="row" style="display: flex;align-items: center;">
@@ -117,7 +117,7 @@
                         <h2>Atur Jumlah</h2>
                         <div class="inputTotal">
                             <input type="number">
-                            <p>Stok 7.500</p>
+                            <p>Stok {{$wish_stock}}</p>
                         </div>
                         <p>Min. pembelian 5</p>
                     </div>

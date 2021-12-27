@@ -17,10 +17,41 @@ class WishController extends Controller
         if($auth) {
             //header user info
             $user = User::where('id', Auth::user()->id)->first();
-        }
+
+            //wish info
+            $wish = Wish::where('id', $id)->first();
+            $wish_name = $wish->name;
+            $wish_price = $wish->price;
+            $wish_category = $wish->getCategoryRelation->name;
+            $wish_created_by = $wish->getCreatedByRelation->username;
+            $wish_created_at = $wish->created_at;
+            $wish_detail = $wish->detail;
+            $wish_image = $wish->image;
+            $wish_status_id = $wish->getStatusWishRelation->name;
+            if ($wish->approved_by == NULL){
+                $wish_approved_by = NULL;
+            }
+            else{
+                $wish_approved_by = $wish->getApprovedByRelation->username;
+            }
+            // $wish_reason = $wish->getReasonRelation->name;
+            $wish_deadline = $wish->deadline;
+            $wish_curr_qty = $wish->curr_qty;
+            $wish_target_qty = $wish->target_qty;
+            $wish_stock = $wish_target_qty - $wish_curr_qty;
+            $wish_updated_at = $wish->updated_at;
     
+    
+            // return view('wishDetail', compact('wish'));
+            return view('wish.wishDetail', ['auth' => $auth, 'user' => $user, 'wish' => $wish, 'wish_name' => $wish_name, 'wish_price' => $wish_price,
+                                        'wish_category' => $wish_category, 'wish_created_by' => $wish_created_by, 'wish_created_at' => $wish_created_at,
+                                        'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status_id' => $wish_status_id, 'wish_approved_by' => $wish_approved_by,
+                                        'wish_deadline' => $wish_deadline, 'wish_curr_qty' => $wish_curr_qty, 'wish_target_qty' => $wish_target_qty, 'wish_stock' => $wish_stock,
+                                        'wish_updated_at' => $wish_updated_at]);
+        }
+
         //wish info
-        $wish = Wish::where('id', $id)->first;
+        $wish = Wish::where('id', $id)->first();
         $wish_name = $wish->name;
         $wish_price = $wish->price;
         $wish_category = $wish->getCategoryRelation->name;
@@ -28,19 +59,28 @@ class WishController extends Controller
         $wish_created_at = $wish->created_at;
         $wish_detail = $wish->detail;
         $wish_image = $wish->image;
-        $wish_status = $wish->getStatusRelation->name;
-        $wish_approved_by = $wish->getApprovedByRelation->username;
+        $wish_status_id = $wish->getStatusWishRelation->name;
+        if ($wish->approved_by == NULL){
+            $wish_approved_by = NULL;
+        }
+        else{
+            $wish_approved_by = $wish->getApprovedByRelation->username;
+        }
         // $wish_reason = $wish->getReasonRelation->name;
         $wish_deadline = $wish->deadline;
         $wish_curr_qty = $wish->curr_qty;
         $wish_target_qty = $wish->target_qty;
+        $wish_stock = $wish_target_qty - $wish_curr_qty;
         $wish_updated_at = $wish->updated_at;
 
-        return view('wish-detail', ['auth' => $auth, 'user' => $user, 'wish' => $wish, 'wish_name' => $wish_name, 'wish_price' => $wish_price,
+
+        // return view('wishDetail', compact('wish'));
+        return view('wish.wishDetail', ['auth' => $auth, 'wish' => $wish, 'wish_name' => $wish_name, 'wish_price' => $wish_price,
                                     'wish_category' => $wish_category, 'wish_created_by' => $wish_created_by, 'wish_created_at' => $wish_created_at,
-                                    'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status' => $wish_status, 'wish_approved_by' => $wish_approved_by,
-                                    'wish_deadline' => $wish_deadline, 'wish_curr_qty' => $wish_curr_qty, 'wish_target_qty' => $wish_target_qty,
+                                    'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status_id' => $wish_status_id, 'wish_approved_by' => $wish_approved_by,
+                                    'wish_deadline' => $wish_deadline, 'wish_curr_qty' => $wish_curr_qty, 'wish_target_qty' => $wish_target_qty,  'wish_stock' => $wish_stock,
                                     'wish_updated_at' => $wish_updated_at]);
+    
     }
 
     public function getCreateWish(){
@@ -76,7 +116,7 @@ class WishController extends Controller
             $wish->created_at = Carbon::now();
             $wish->updated_at = Carbon::now();
     
-            $wish->save()
+            $wish->save();
     
             return redirect('create-wish');
         }

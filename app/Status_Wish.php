@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Wish_Status extends Model
+class Status_Wish extends Model
 {
-    protected $table = 'wish_status';
+    protected $table = 'status_wish';
 
     public function getWishRelation(){
         return $this->hasMany('App\Wish', 'status_id', 'id');
