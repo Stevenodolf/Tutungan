@@ -131,18 +131,18 @@
         <form class="login">
             <div class="field">
                 <p class="">Email</p>
-                <input name="email" type="text" id="email" placeholder="ex:youremail@tutungan.com" required>
+                <input type="text" id="email" placeholder="ex:youremail@tutungan.com" required>
             </div>
             <div class="field">
                 <p class="">Password</p>
-                <input name="password" type="password" id="password" required>
+                <input type="password" id="password" required>
                 <div class="lupaPass">
                     <button>
                         <p class="">Lupa password?</p>
                     </button>
                 </div>
             </div>
-            <button class="buttonMasuk" type="submit" action="{{ url('/home')}}">
+            <button class="buttonMasuk">
                 <p class="">Masuk</p>
             </button>
         </form>
