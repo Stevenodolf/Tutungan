@@ -577,5 +577,110 @@ button{
     // End of Swiper
 }
 
+//Keranjang
+.keranjang{
+    .columnA {
+        float: left;
+        width: 70%;
+    }
+    .columnB {
+        float: left;
+        width: 30%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .option{
+        .pilihSemua{
+            display: flex;
+            align-items: center;
+        }
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        border-bottom: 2px solid rgba(49, 53, 59, 0.5);
+        padding: 10px 10px;
+        margin-bottom: 15px;
+    }
+
+    .keranjangDetail{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin-bottom: 30px;
+        .productDetail{
+            width: 100%;
+            background: #FFFFFF;
+            margin-left: 25px;
+            height: 120px;
+            border: 1px solid rgba(49, 53, 59, 0.05);
+            box-sizing: border-box;
+            box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+            border-radius: 5px;
+            padding: 0 15px;
+            .detail{
+                display: flex;
+                align-items: center;
+                img{
+                    width: 80px;
+                    height: 80px;
+                }
+            }
+            .deleteAdd{
+                display: flex;
+                justify-content: flex-end;
+                padding-bottom: 10px;
+                button{
+                    background: transparent;
+                    border:none;
+                    display: flex;
+                    align-items: center;
+                    border-right: 1px solid rgba(49, 53, 59, 0.3);
+                    img{
+                        width: 15px;
+                        height: 15px;
+                    }
+
+                }
+                input[type=number]{
+                    margin-left: 10px;
+                }
+
+            }
+        }
+    }
+
+    .total{
+        width: 275px;
+        height: 157px;
+        background: #FFFFFF;
+        border: 1px solid rgba(49, 53, 59, 0.2);
+        box-sizing: border-box;
+        box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+        border-radius: 5px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        button{
+            color: #010101;
+            height: 36px;
+            background: #FFD901;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+        }
+    }
+}
+
 
 

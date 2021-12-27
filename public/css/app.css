@@ -603,3 +603,116 @@ button {
      object-fit: cover;
 }
 
+.keranjang {
+  /* Clear floats after the columns */
+}
+
+.keranjang .columnA {
+  float: left;
+  width: 70%;
+}
+
+.keranjang .columnB {
+  float: left;
+  width: 30%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.keranjang .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.keranjang .option {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 2px solid rgba(49, 53, 59, 0.5);
+  padding: 10px 10px;
+  margin-bottom: 15px;
+}
+
+.keranjang .option .pilihSemua {
+  display: flex;
+  align-items: center;
+}
+
+.keranjang .keranjangDetail {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.keranjang .keranjangDetail .productDetail {
+  width: 100%;
+  background: #FFFFFF;
+  margin-left: 25px;
+  height: 120px;
+  border: 1px solid rgba(49, 53, 59, 0.05);
+  box-sizing: border-box;
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  padding: 0 15px;
+}
+
+.keranjang .keranjangDetail .productDetail .detail {
+  display: flex;
+  align-items: center;
+}
+
+.keranjang .keranjangDetail .productDetail .detail img {
+  width: 80px;
+  height: 80px;
+}
+
+.keranjang .keranjangDetail .productDetail .deleteAdd {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+
+.keranjang .keranjangDetail .productDetail .deleteAdd button {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid rgba(49, 53, 59, 0.3);
+}
+
+.keranjang .keranjangDetail .productDetail .deleteAdd button img {
+  width: 15px;
+  height: 15px;
+}
+
+.keranjang .keranjangDetail .productDetail .deleteAdd input[type=number] {
+  margin-left: 10px;
+}
+
+.keranjang .total {
+  width: 275px;
+  height: 157px;
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-sizing: border-box;
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+}
+
+.keranjang .total button {
+  color: #010101;
+  height: 36px;
+  background: #FFD901;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+
