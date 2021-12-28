@@ -41,6 +41,38 @@ button {
   left: 0;
 }
 
+.contentExtraSmall {
+  font-size: 10px;
+}
+
+.contentSmall {
+  font-size: 12px;
+}
+
+.contentSemiNormal {
+  font-size: 14px;
+}
+
+.contentNormal {
+  font-size: 16px;
+}
+
+.contentSemiBig {
+  font-size: 18px;
+}
+
+.contentBig {
+  font-size: 24px;
+}
+
+.contentSemiExtraBig {
+  font-size: 30px;
+}
+
+.contentExtraBig {
+  font-size: 36px;
+}
+
 .loginPopUp {
   background-color: white;
   width: 490px;
@@ -233,6 +265,12 @@ button {
   background-color: #FFD901;
   border: none;
   cursor: pointer;
+}
+
+.footer2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .homeCarousel {
@@ -603,10 +641,6 @@ button {
      object-fit: cover;
 }
 
-.keranjang {
-  /* Clear floats after the columns */
-}
-
 .keranjang .columnA {
   float: left;
   width: 70%;
@@ -708,6 +742,173 @@ button {
 }
 
 .keranjang .total button {
+  color: #010101;
+  height: 36px;
+  background: #FFD901;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+
+.checkout .columnA {
+  float: left;
+  width: 70%;
+}
+
+.checkout .columnB {
+  float: left;
+  width: 30%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.checkout .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.checkout .information {
+  border-bottom: 2px solid rgba(49, 53, 59, 0.5);
+  border-top: 2px solid rgba(49, 53, 59, 0.5);
+  padding: 12px 0;
+}
+
+.checkout .itemDetail .productDetail {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.checkout .itemDetail .productDetail img {
+  width: 80px;
+  height: 80px;
+}
+
+.checkout .itemDetail .productDetail .detail {
+  display: flex;
+  align-items: center;
+}
+
+.checkout .itemDetail .productDetail .shipmentDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkout .total {
+  width: 275px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-sizing: border-box;
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+}
+
+.checkout .total button {
+  color: #010101;
+  height: 36px;
+  background: #FFD901;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+
+.checkout .total .ringkasanHarga .section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkout .total .ringkasanTotal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkout .paymentPopup {
+  background-color: white;
+  width: 490px;
+  margin-right: 8%;
+  padding: 20px 15px;
+  border-radius: 9px;
+  height: 319px;
+  display: none;
+}
+
+.checkout .paymentPopup .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkout .paymentPopup .title button {
+  background-color: transparent;
+  border: none;
+}
+
+.checkout .paymentPopup .title button img {
+  width: 25px;
+  height: 25px;
+}
+
+.checkout .paymentPopup .section .subSection {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.checkout .paymentPopup .section .subSection2 {
+  display: flex;
+  align-items: center;
+}
+
+.checkout .paymentPopup .section .subSection2 img {
+  width: 46px;
+  height: 40px;
+}
+
+.checkout .paymentPopup .section button {
+  color: #010101;
+  height: 36px;
+  background: #FFD901;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+
+.checkout .pembayaranVerifikasi {
+  background-color: white;
+  width: 490px;
+  margin-right: 8%;
+  padding: 20px 15px;
+  border-radius: 9px;
+  height: 319px;
+  display: none;
+}
+
+.checkout .pembayaranVerifikasi .section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkout .pembayaranVerifikasi .section img {
+  width: 120px;
+  height: 120px;
+}
+
+.checkout .pembayaranVerifikasi button {
   color: #010101;
   height: 36px;
   background: #FFD901;

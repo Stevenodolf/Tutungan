@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('keranjang.keranjang');
-// });
+ Route::get('/', function () {
+     return view('checkout.checkout');
+ });
 
 //Route::get('/', 'HomeController@home');
 
