@@ -60,7 +60,7 @@
                                 <h4>Ship From:</h4>
                             </div>
                             <div class="columnB">
-                                <h4>China</h4>
+                                <h4>{{$wish_origin}}</h4>
                             </div>
                         </div>
                         <div class="row" style="display: flex;align-items: center;flex-wrap: wrap;">

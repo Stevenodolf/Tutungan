@@ -27,7 +27,7 @@ class WishController extends Controller
             $wish_created_at = $wish->created_at;
             $wish_detail = $wish->detail;
             $wish_image = $wish->image;
-            $wish_status_id = $wish->getStatusWishRelation->name;
+            $wish_status_name = $wish->getStatusWishRelation->name;
             if ($wish->approved_by == NULL){
                 $wish_approved_by = NULL;
             }
@@ -45,7 +45,7 @@ class WishController extends Controller
             // return view('wishDetail', compact('wish'));
             return view('wish.wishDetail', ['auth' => $auth, 'user' => $user, 'wish' => $wish, 'wish_name' => $wish_name, 'wish_price' => $wish_price,
                                         'wish_category' => $wish_category, 'wish_created_by' => $wish_created_by, 'wish_created_at' => $wish_created_at,
-                                        'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status_id' => $wish_status_id, 'wish_approved_by' => $wish_approved_by,
+                                        'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status_name' => $wish_status_name, 'wish_approved_by' => $wish_approved_by,
                                         'wish_deadline' => $wish_deadline, 'wish_curr_qty' => $wish_curr_qty, 'wish_target_qty' => $wish_target_qty, 'wish_stock' => $wish_stock,
                                         'wish_updated_at' => $wish_updated_at]);
         }
@@ -74,7 +74,6 @@ class WishController extends Controller
         $wish_updated_at = $wish->updated_at;
 
 
-        // return view('wishDetail', compact('wish'));
         return view('wish.wishDetail', ['auth' => $auth, 'wish' => $wish, 'wish_name' => $wish_name, 'wish_price' => $wish_price,
                                     'wish_category' => $wish_category, 'wish_created_by' => $wish_created_by, 'wish_created_at' => $wish_created_at,
                                     'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status_id' => $wish_status_id, 'wish_approved_by' => $wish_approved_by,
