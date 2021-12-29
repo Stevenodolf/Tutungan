@@ -42,4 +42,5 @@ $(document).ready(function () {
     });
 
     proBar.goto(30);
+
 })
