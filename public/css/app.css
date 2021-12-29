@@ -795,7 +795,17 @@ button {
 .checkout .itemDetail .productDetail .shipmentDetail {
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.checkout .itemDetail .productDetail .shipmentDetail select {
+  width: 300px;
+  height: 36px;
+  outline: none;
+  background: #FFD901;
+  border: none;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-top: 5px;
 }
 
 .checkout .total {
@@ -822,18 +832,27 @@ button {
   border-radius: 5px;
   border: none;
   width: 100%;
+  margin-top: 25px;
+}
+
+.checkout .total .ringkasanHarga {
+  margin-top: 15px;
 }
 
 .checkout .total .ringkasanHarga .section {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .checkout .total .ringkasanTotal {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 15px;
+  border-top: 1px solid rgba(49, 53, 59, 0.3);
+  font-weight: bold;
 }
 
 .checkout .paymentPopup {
@@ -866,16 +885,19 @@ button {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  padding: 15px 0;
 }
 
 .checkout .paymentPopup .section .subSection2 {
   display: flex;
   align-items: center;
+  padding-bottom: 15px;
 }
 
 .checkout .paymentPopup .section .subSection2 img {
   width: 46px;
   height: 40px;
+  margin-right: 5px;
 }
 
 .checkout .paymentPopup .section button {
@@ -885,6 +907,7 @@ button {
   border-radius: 5px;
   border: none;
   width: 100%;
+  margin-top: 45px;
 }
 
 .checkout .pembayaranVerifikasi {
@@ -895,6 +918,8 @@ button {
   border-radius: 9px;
   height: 319px;
   display: none;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .checkout .pembayaranVerifikasi .section {

@@ -8,7 +8,7 @@ $(document).ready(function () {
     });
     $('#bayar').click(function () {
         $('#paymentPopup').css('display','none');
-        $('#pembayaranVerifikasi').css('display','block');
+        $('#pembayaranVerifikasi').css('display','flex');
     });
     $('#kembaliBeranda').click(function () {
         $('#pembayaranVerifikasi').css('display','none');

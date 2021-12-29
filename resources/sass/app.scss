@@ -759,7 +759,17 @@ button{
             .shipmentDetail{
                 display: flex;
                 flex-direction: column;
-                align-items: center;
+                //align-items: center;
+                select{
+                    width: 300px;
+                    height: 36px;
+                    outline: none;
+                    background: #FFD901;
+                    border: none;
+                    border-radius: 5px;
+                    padding: 0 10px;
+                    margin-top: 5px;
+                }
             }
         }
     }
@@ -784,18 +794,24 @@ button{
             border-radius: 5px;
             border: none;
             width: 100%;
+            margin-top: 25px;
         }
         .ringkasanHarga{
+            margin-top: 15px;
             .section{
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                margin-bottom: 10px;
             }
         }
         .ringkasanTotal{
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid rgba(49, 53, 59, 0.3);
+            font-weight: bold;
         }
     }
 
@@ -827,14 +843,16 @@ button{
                 display: flex;
                 align-items: baseline;
                 justify-content: space-between;
+                padding: 15px 0;
             }
             .subSection2{
                 display: flex;
                 align-items: center;
-
+                padding-bottom: 15px;
                 img{
                     width: 46px;
                     height: 40px;
+                    margin-right: 5px;
                 }
             }
             button{
@@ -844,6 +862,7 @@ button{
                 border-radius: 5px;
                 border: none;
                 width: 100%;
+                margin-top: 45px;
             }
         }
     }
@@ -856,6 +875,8 @@ button{
         border-radius: 9px;
         height: 319px;
         display: none;
+        flex-direction: column;
+        justify-content: space-around;
         .section{
             display: flex;
             flex-direction: column;

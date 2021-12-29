@@ -39,32 +39,70 @@
                             </select>
                         </div>
                     </div>
+                    <div class="productDetail">
+                        <div class="detail">
+                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                            <div>
+                                <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>
+                                <p class="contentSmall">5 Box</p>
+                                <p class="contentNormal">Rp250.000</p>
+                            </div>
+                        </div>
+                        <div class="shipmentDetail">
+                            <p class="contentSemiNormal">Pilih Pengiriman</p>
+                            <select>
+                                <option value="">Pengiriman</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="productDetail">
+                        <div class="detail">
+                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                            <div>
+                                <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>
+                                <p class="contentSmall">5 Box</p>
+                                <p class="contentNormal">Rp250.000</p>
+                            </div>
+                        </div>
+                        <div class="shipmentDetail">
+                            <p class="contentSemiNormal">Pilih Pengiriman</p>
+                            <select>
+                                <option value="">Pengiriman</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="columnB">
                 <div class="total">
-                    <p class="contentBig">Ringkasan</p>
+                    <h2>Ringkasan</h2>
                     <div class="ringkasanHarga">
                         <div class="section">
-                            <p class="contentExtraSmall">Total Harga</p>
-                            <p class="contentExtraSmall">Rp.250.000</p>
+                            <p class="contentSemiNormal">Total Harga</p>
+                            <p class="contentSemiNormal">Rp.250.000</p>
                         </div>
                         <div class="section">
-                            <p class="contentExtraSmall">Origin to Indonesia</p>
-                            <p class="contentExtraSmall">Rp.100.000</p>
+                            <p class="contentSemiNormal">Origin to Indonesia</p>
+                            <p class="contentSemiNormal">Rp.100.000</p>
                         </div>
                         <div class="section">
-                            <p class="contentExtraSmall">Indonesia to User</p>
-                            <p class="contentExtraSmall">Rp.20.000</p>
+                            <p class="contentSemiNormal">Indonesia to User</p>
+                            <p class="contentSemiNormal">Rp.20.000</p>
                         </div>
                         <div class="section">
-                            <p class="contentExtraSmall">Asuransi</p>
-                            <p class="contentExtraSmall">Rp.2.500</p>
+                            <p class="contentSemiNormal">Asuransi</p>
+                            <p class="contentSemiNormal">Rp.2.500</p>
                         </div>
                     </div>
                     <div class="ringkasanTotal">
-                        <p class="contentSmall">Total Tagihan</p>
-                        <p class="contentSmall">Rp147.500</p>
+                        <p class="contentSemiNormal">Total Tagihan</p>
+                        <p class="contentSemiNormal" style="color: red">Rp147.500</p>
                     </div>
 
                     <button id="pilihPembayaran">Pilih Pembayaran</button>
@@ -83,21 +121,22 @@
                 <div class="section">
                     <div class="subSection">
                         <p class="contentSemiBig">Metode Pembayaran</p>
-                        <p class="contentSemiNormal">Lihat Semua</p>
+                        <p class="contentSemiNormal" style="color: rgba(49, 53, 59, 0.5);cursor: pointer">Lihat Semua</p>
                     </div>
                     <div class="subSection2">
                         <img src="{{asset('images/bca.png')}}">
                         <p class="contentSemiBig">BCA Virtual Account</p>
                     </div>
                 </div>
-                <div class="section">
+                <div class="section" style="padding-top: 15px;border-top: 2px solid rgba(49, 53, 59, 0.3);">
                     <p class="contentSemiBig">Ringkasan Pembayaran</p>
                     <div class="subSection">
-                        <p class="contentSmall">Total Pembayaran</p>
-                        <p class="contentSmall">Rp.250.000</p>
+                        <p class="contentSemiNormal" style="color: rgba(49, 53, 59, 0.5);">Total Pembayaran</p>
+                        <p class="contentSemiNormal" style="color: #FF0000;font-weight: bold;">Rp.250.000</p>
                     </div>
                     <button id="bayar">Bayar</button>
                 </div>
+
             </div>
             <div class="pembayaranVerifikasi" id="pembayaranVerifikasi">
                 <div class="section">
