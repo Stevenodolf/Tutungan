@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -37,12 +37,15 @@ class HomeController extends Controller
 
         //last minute
         $curr_date = Carbon::now();
-        $lastminute = Wish::whereRaw('DATEDIFF(deadline, curr_date) < 7')->get();
+        // $lastminute = Wish::whereRaw('DATEDIFF(deadline, curr_date) < 7')->get();
 
         //category
         $categories = Category::all();
 
         //for you
         $for_you = Wish::inRandomOrder()->get();
+
+        return view('home.home', ['auth' => $auth, 'wishes' => $wishes,
+                             'categories' => $categories, 'for_you' => $for_you]);
     }
 }

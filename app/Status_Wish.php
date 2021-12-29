@@ -9,6 +9,6 @@ class Status_Wish extends Model
     protected $table = 'status_wish';
 
     public function getWishRelation(){
-        return $this->hasMany('App\Wish', 'status_id', 'id');
+        return $this->hasMany('App\Wish', 'status_wish_id', 'id');
     }
 }
