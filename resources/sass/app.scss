@@ -40,6 +40,33 @@ button{
     left: 0;
 }
 
+//Font
+.contentExtraSmall{
+    font-size: 10px;
+}
+.contentSmall{
+    font-size: 12px;
+}
+.contentSemiNormal{
+    font-size: 14px;
+}
+.contentNormal{
+    font-size: 16px;
+}
+.contentSemiBig{
+    font-size: 18px;
+}
+.contentBig{
+    font-size: 24px;
+}
+.contentSemiExtraBig{
+    font-size: 30px;
+}
+.contentExtraBig{
+    font-size: 36px;
+}
+//END OF GLOBAL
+
 
 
 //Login Popup
@@ -208,6 +235,15 @@ button{
             cursor: pointer;
         }
     }
+}
+
+//footer Biasa
+
+//footer Polos
+.footer2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 //Home
@@ -591,7 +627,6 @@ button{
         justify-content: center;
     }
 
-    /* Clear floats after the columns */
     .row:after {
         content: "";
         display: table;
@@ -648,7 +683,6 @@ button{
                         width: 15px;
                         height: 15px;
                     }
-
                 }
                 input[type=number]{
                     margin-left: 10px;
@@ -671,6 +705,187 @@ button{
         flex-direction: column;
         justify-content: space-around;
         flex-wrap: nowrap;
+        button{
+            color: #010101;
+            height: 36px;
+            background: #FFD901;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+        }
+    }
+}
+
+//Checkout
+.checkout{
+    .columnA {
+        float: left;
+        width: 70%;
+    }
+    .columnB {
+        float: left;
+        width: 30%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .information{
+        border-bottom: 2px solid rgba(49, 53, 59, 0.5);
+        border-top: 2px solid rgba(49, 53, 59, 0.5);
+        padding: 12px 0;
+    }
+
+    .itemDetail{
+        .productDetail{
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            img{
+                width: 80px;
+                height: 80px;
+            }
+            .detail{
+                display: flex;
+                align-items: center;
+            }
+            .shipmentDetail{
+                display: flex;
+                flex-direction: column;
+                //align-items: center;
+                select{
+                    width: 300px;
+                    height: 36px;
+                    outline: none;
+                    background: #FFD901;
+                    border: none;
+                    border-radius: 5px;
+                    padding: 0 10px;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+
+    .total{
+        width: 275px;
+        height: fit-content;
+        background: #FFFFFF;
+        border: 1px solid rgba(49, 53, 59, 0.2);
+        box-sizing: border-box;
+        box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+        border-radius: 5px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        button{
+            color: #010101;
+            height: 36px;
+            background: #FFD901;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            margin-top: 25px;
+        }
+        .ringkasanHarga{
+            margin-top: 15px;
+            .section{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+        }
+        .ringkasanTotal{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid rgba(49, 53, 59, 0.3);
+            font-weight: bold;
+        }
+    }
+
+    .paymentPopup{
+        background-color: white;
+        width: 490px;
+        margin-right: 8%;
+        padding: 20px 15px;
+        border-radius: 9px;
+        height: 319px;
+        display: none;
+        .title{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            //margin-bottom: 50px;
+            button{
+                background-color: transparent;
+                border: none;
+                img{
+                    width: 25px;
+                    height: 25px;
+
+                }
+            }
+        }
+        .section{
+            .subSection{
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+                padding: 15px 0;
+            }
+            .subSection2{
+                display: flex;
+                align-items: center;
+                padding-bottom: 15px;
+                img{
+                    width: 46px;
+                    height: 40px;
+                    margin-right: 5px;
+                }
+            }
+            button{
+                color: #010101;
+                height: 36px;
+                background: #FFD901;
+                border-radius: 5px;
+                border: none;
+                width: 100%;
+                margin-top: 45px;
+            }
+        }
+    }
+
+    .pembayaranVerifikasi{
+        background-color: white;
+        width: 490px;
+        margin-right: 8%;
+        padding: 20px 15px;
+        border-radius: 9px;
+        height: 319px;
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        .section{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            img{
+                width: 120px;
+                height: 120px;
+            }
+        }
         button{
             color: #010101;
             height: 36px;
