@@ -13,14 +13,9 @@ class WishController extends Controller
 {
     public function wishDetail($id){
         $auth = Auth::check();
-    
-        if($auth) {
-            //header user info
-            $user = User::where('id', Auth::user()->id)->first();
-        }
-    
+        
         //wish info
-        $wish = Wish::where('id', $id)->first;
+        $wish = Wish::where('id', $id)->first();
         $wish_name = $wish->name;
         $wish_price = $wish->price;
         $wish_category = $wish->getCategoryRelation->name;
@@ -28,19 +23,46 @@ class WishController extends Controller
         $wish_created_at = $wish->created_at;
         $wish_detail = $wish->detail;
         $wish_image = $wish->image;
-        $wish_status = $wish->getStatusRelation->name;
-        $wish_approved_by = $wish->getApprovedByRelation->username;
+        $wish_origin = $wish->origin;
+        $wish_web_link = $wish->web_link;
+        $wish_status_wish_name = $wish->getStatusWishRelation->name;
+        $wish_status_transaksi_name = $wish->getStatusTransaksiRelation->name;
+        if ($wish->approved_by == NULL){
+            $wish_approved_by = NULL;
+        }
+        else{
+            $wish_approved_by = $wish->getApprovedByRelation->username;
+        }
         // $wish_reason = $wish->getReasonRelation->name;
         $wish_deadline = $wish->deadline;
         $wish_curr_qty = $wish->curr_qty;
         $wish_target_qty = $wish->target_qty;
+        $wish_stock = $wish_target_qty - $wish_curr_qty;
+        $wish_min_order = $wish->min_order;
         $wish_updated_at = $wish->updated_at;
+        $for_you = Wish::inRandomOrder()->get();
+    
+    
+        if($auth) {
+            //header user info
+            $user = User::where('id', Auth::user()->id)->first();
 
-        return view('wish-detail', ['auth' => $auth, 'user' => $user, 'wish' => $wish, 'wish_name' => $wish_name, 'wish_price' => $wish_price,
+            // return view('wishDetail', compact('wish'));
+            return view('wish.wishDetail', ['auth' => $auth, 'user' => $user, 'wish' => $wish, 'wish_name' => $wish_name, 'wish_price' => $wish_price,
+                                        'wish_category' => $wish_category, 'wish_created_by' => $wish_created_by, 'wish_created_at' => $wish_created_at,
+                                        'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status_name' => $wish_status_name, 'wish_approved_by' => $wish_approved_by,
+                                        'wish_deadline' => $wish_deadline, 'wish_curr_qty' => $wish_curr_qty, 'wish_target_qty' => $wish_target_qty, 'wish_stock' => $wish_stock,
+                                        'wish_updated_at' => $wish_updated_at, 'wish_origin' => $wish_origin, 'wish_web_link' => $wish_web_link, 'for_you' => $for_you, 
+                                        'wish_status_transaksi_name' => $wish_status_transaksi_name, 'wish_min_order' => $wish_min_order]);
+        }
+
+        return view('wish.wishDetail', ['auth' => $auth, 'wish' => $wish, 'wish_name' => $wish_name, 'wish_price' => $wish_price,
                                     'wish_category' => $wish_category, 'wish_created_by' => $wish_created_by, 'wish_created_at' => $wish_created_at,
-                                    'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status' => $wish_status, 'wish_approved_by' => $wish_approved_by,
-                                    'wish_deadline' => $wish_deadline, 'wish_curr_qty' => $wish_curr_qty, 'wish_target_qty' => $wish_target_qty,
-                                    'wish_updated_at' => $wish_updated_at]);
+                                    'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status_wish_name' => $wish_status_wish_name, 'wish_approved_by' => $wish_approved_by,
+                                    'wish_deadline' => $wish_deadline, 'wish_curr_qty' => $wish_curr_qty, 'wish_target_qty' => $wish_target_qty,  'wish_stock' => $wish_stock,
+                                    'wish_updated_at' => $wish_updated_at, 'wish_origin' => $wish_origin, 'wish_web_link' => $wish_web_link, 'for_you' => $for_you,
+                                    'wish_status_transaksi_name' => $wish_status_transaksi_name, 'wish_min_order' => $wish_min_order]);
+    
     }
 
     public function getCreateWish(){

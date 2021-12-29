@@ -11,7 +11,7 @@
                 <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper bigPicture">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}" />
+                            <img src="{{asset($wish_image)}}" />
                         </div>
                         <div class="swiper-slide">
                             <img src="{{asset('images/dummyProduct.jpeg')}}" />
@@ -43,16 +43,16 @@
             </div>
             <div class="column">
                 <div class="product">
-                    <h3>Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</h3>
-                    <h5>Requested By Steven Odolf Yuwono</h5>
+                    <h3>{{$wish_name}}</h3>
+                    <h5>Requested By {{$wish_created_by}}</h5>
                     <div class="barWithText">
                         <div class="textProgress">
-                            <p>7500/15000</p>
+                            <p>{{$wish_curr_qty}}/{{$wish_target_qty}}</p>
                         </div>
                         <div class="progressBar"></div>
                     </div>
                     <div class="price">
-                        <h2>Rp50.000/box</h2>
+                        <h2>Rp{{$wish_price}}/box</h2>
                     </div>
                     <div class="information">
                         <div class="row" style="display: flex;align-items: center;">
@@ -60,7 +60,7 @@
                                 <h4>Ship From:</h4>
                             </div>
                             <div class="columnB">
-                                <h4>China</h4>
+                                <h4>{{$wish_origin}}</h4>
                             </div>
                         </div>
                         <div class="row" style="display: flex;align-items: center;flex-wrap: wrap;">
@@ -86,9 +86,7 @@
                                 <h4>Website Origin:</h4>
                             </div>
                             <div class="columnB">
-                                <h4>https://www.tokopedia.com/maskerm-1
-                                    /masker-medis-earloop-putih-m-4ply-surgical-mask-isi-50-pcs?
-                                    src=topads</h4>
+                                <h4>{{$wish_web_link}}</h4>
                             </div>
                         </div>
                     </div>
@@ -117,9 +115,9 @@
                         <h2>Atur Jumlah</h2>
                         <div class="inputTotal">
                             <input type="number">
-                            <p>Stok 7.500</p>
+                            <p>Stok {{$wish_stock}}</p>
                         </div>
-                        <p>Min. pembelian 5</p>
+                        <p>Min. pembelian {{$wish_min_order}}</p>
                     </div>
                     <div class="buttonCheckout">
                         <button class="addKeranjang">
@@ -138,8 +136,9 @@
                 <h2>Product Detail</h2>
             </div>
             <div class="content">
+                {{$wish_detail}}
                 {{--CONTOH AJA--}}
-                <p>KEMENKES RI AKD 21603120593</p>
+                {{-- <p>KEMENKES RI AKD 21603120593</p>
                 <br>
                 <br>
                 <p>Warna Masker Putih</p>
@@ -176,7 +175,7 @@
                     harian dengan perlindungan yang maksimal.</p>
                 <br>
                 <br>
-                <p>Stay safe , be well with M+</p>
+                <p>Stay safe , be well with M+</p> --}}
                 {{--end of CONTOH AJA--}}
             </div>
         </div>
@@ -185,7 +184,40 @@
 
     <div class="forYou">
         <h1>For You</h1>
-        <div class="row">
+        @if($for_you == NULL)
+            <div class="column">
+                No Wish.
+            </div>
+        @else
+            <div class="row">
+                @foreach($for_you as $wish)
+                    @php
+                        $deadline = strtotime($wish->deadline);
+                        $diff = $deadline - time();
+                        $time_left = Round($diff / 86400);
+                    @endphp 
+                    <div class="column">
+                        <div class="wish">
+                            <img src="{{asset($wish->image)}}"/>
+                            <div class="timeLeft">
+                                <p>Tersisa {{$time_left}} Hari Lagi</p>
+                            </div>
+                            <div class="content">
+                                <p>{{$wish->name}}</p>
+                                <h3>Rp {{$wish->price}}/pcs</h3>
+                                <div class="barWithText">
+                                    <div class="textProgress">
+                                        <p>{{$wish->curr_qty}}/{{$wish->target_qty}}</p>
+                                    </div>
+                                    <div class="progressBar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+        {{-- <div class="row">
             <div class="column">
                 <div class="wish">
                     <img src="{{asset('images/dummyProduct.jpeg')}}"/>
@@ -552,7 +584,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
 
