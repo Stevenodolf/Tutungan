@@ -137,46 +137,6 @@
             </div>
             <div class="content">
                 {{$wish_detail}}
-                {{--CONTOH AJA--}}
-                {{-- <p>KEMENKES RI AKD 21603120593</p>
-                <br>
-                <br>
-                <p>Warna Masker Putih</p>
-                <br>
-                <br>
-                <p>Ukuran Masker : 17 x 9,5cm</p>
-                <br>
-                <br>
-                <p>[1 Karton = 40 Box Masker]</p>
-                <br>
-                <br>
-                <p>[1 Box = 50 Pcs Masker] - Harga tertera adalah harga untuk 1 Box</p>
-                <br>
-                <br>
-                <p>Keunggulan:</p>
-                <p>- Terdiri dari 4 lapisan masker, namun tetap nyaman dan mudah bernapas</p>
-                <p>- Lapisan ke-3 terbuat dari meltblown atau Bacterial Filtration Efficiency</p>
-                <p>- Bahan non-woven (tidak mudah menyerap air)</p>
-                <p>- Model tali Earloop yang elastis serta kuat tidak mudah putus</p>
-                <p>- Dapat digunakan untuk para tenaga medis</p>
-                <p>- Kawat hidung yang dapat disesuaikan dan nyaman digunakan untuk waktu yang lama</p>
-                <br>
-                <br>
-                <p>M+ Surgical Mask adalah masker medis yang memiliki 4 lapisan filtrasi yang efektif
-                    menyaring Virus / Bakteri / Kuman, serta nyaman untuk penggunaan jangka waktu yang lama.
-                </p>
-                <br>
-                <br>
-                <p>Terbuat dari bahan non-woven sehingga tidak mudah menyerap air. Dilengkapi tali earloop
-                    yang elastis serta kawat penyangga hidung yang fleksibel agar nyaman saat masker ini digunakan.</p>
-                <br>
-                <br>
-                <p>Masker ini cocok untuk penggunaan kepada petugas medis maupun penggunaan
-                    harian dengan perlindungan yang maksimal.</p>
-                <br>
-                <br>
-                <p>Stay safe , be well with M+</p> --}}
-                {{--end of CONTOH AJA--}}
             </div>
         </div>
     </div>
