@@ -315,9 +315,9 @@
                         $deadline = strtotime($wish->deadline);
                         $diff = $deadline - time();
                         $time_left = Round($diff / 86400);
-                    @endphp 
+                    @endphp
                     <div class="column">
-                        <div class="wish">
+                        <div class="wish" onclick="window.location='{{ url("/wish/".$wish->id)}}'">
                             <img src="{{asset($wish->image)}}"/>
                             <div class="timeLeft">
                                 <p>Tersisa {{$time_left}} Hari Lagi</p>
