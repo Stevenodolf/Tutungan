@@ -73,6 +73,311 @@ button {
   font-size: 36px;
 }
 
+.firstRegister {
+  min-height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.firstRegister .registerContainer {
+  width: 478px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: white;
+  box-shadow: 1px 6px 4px rgba(49, 53, 75, 0.25);
+  border-radius: 5px;
+  padding: 25px;
+}
+
+.firstRegister .registerContainer .section {
+  margin-top: 35px;
+}
+
+.firstRegister .registerContainer .section .contentSemiBig {
+  margin-bottom: 10px;
+  color: rgba(49, 53, 59, 0.8);
+}
+
+.firstRegister .registerContainer .section input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid rgba(49, 53, 59, 0.15);
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px;
+  outline: none;
+}
+
+.firstRegister .registerContainer .section input:focus {
+  border-color: #D5B81B;
+}
+
+.firstRegister .registerContainer .section button {
+  background: rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+  border: none;
+  color: rgba(49, 53, 59, 0.6);
+}
+
+.firstRegister .registerContainer .section textarea {
+  resize: none;
+  width: 100%;
+  height: 100px;
+  border: 1px solid rgba(49, 53, 59, 0.15);
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+}
+
+.firstRegister .registerContainer .section textarea:focus {
+  border-color: #D5B81B;
+}
+
+.firstRegister .registerContainer .section2 {
+  margin-top: 35px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.firstRegister .registerContainer .section2 .contentSemiBig {
+  margin-bottom: 10px;
+  color: rgba(49, 53, 59, 0.8);
+}
+
+.firstRegister .registerContainer .section2 input {
+  width: 60%;
+  height: 50px;
+  border: 1px solid rgba(49, 53, 59, 0.15);
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px;
+  outline: none;
+}
+
+.firstRegister .registerContainer .section2 input:focus {
+  border-color: #D5B81B;
+}
+
+.firstRegister .registerContainer .section2 button {
+  background: rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+  border: none;
+  color: rgba(49, 53, 59, 0.6);
+}
+
+.secondRegister {
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 25px 50px 25px 0;
+}
+
+.secondRegister .registerContainer {
+  width: 478px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: white;
+  box-shadow: 1px 6px 4px rgba(49, 53, 75, 0.25);
+  border-radius: 5px;
+  padding: 25px;
+}
+
+.secondRegister .registerContainer .section {
+  margin-top: 35px;
+}
+
+.secondRegister .registerContainer .section .contentSemiBig {
+  margin-bottom: 10px;
+  color: rgba(49, 53, 59, 0.8);
+}
+
+.secondRegister .registerContainer .section input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid rgba(49, 53, 59, 0.15);
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px;
+  outline: none;
+}
+
+.secondRegister .registerContainer .section input:focus {
+  border-color: #D5B81B;
+}
+
+.secondRegister .registerContainer .section button {
+  background: rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+  border: none;
+  color: rgba(49, 53, 59, 0.6);
+}
+
+.secondRegister .registerContainer .section textarea {
+  resize: none;
+  width: 100%;
+  height: 100px;
+  border: 1px solid rgba(49, 53, 59, 0.15);
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+}
+
+.secondRegister .registerContainer .section textarea:focus {
+  border-color: #D5B81B;
+}
+
+.secondRegister .registerContainer .section2 {
+  margin-top: 35px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.secondRegister .registerContainer .section2 .contentSemiBig {
+  margin-bottom: 10px;
+  color: rgba(49, 53, 59, 0.8);
+}
+
+.secondRegister .registerContainer .section2 input {
+  width: 60%;
+  height: 50px;
+  border: 1px solid rgba(49, 53, 59, 0.15);
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px;
+  outline: none;
+}
+
+.secondRegister .registerContainer .section2 input:focus {
+  border-color: #D5B81B;
+}
+
+.secondRegister .registerContainer .section2 button {
+  background: rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+  border: none;
+  color: rgba(49, 53, 59, 0.6);
+}
+
+.login {
+  min-height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.login .loginContainer {
+  background-color: white;
+  width: 490px;
+  margin-right: 8%;
+  padding: 40px;
+  box-shadow: 1px 6px 4px rgba(49, 53, 75, 0.25);
+  border-radius: 5px;
+}
+
+.login .loginContainer .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.login .loginContainer .title button {
+  background-color: transparent;
+  border: none;
+}
+
+.login .loginContainer .title button img {
+  width: 25px;
+  height: 25px;
+}
+
+.login .loginContainer .section .field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.login .loginContainer .section .field p {
+  margin-bottom: 10px;
+}
+
+.login .loginContainer .section .field input {
+  outline: none;
+  height: 45px;
+  border: 2px solid rgba(49, 53, 59, 0.15);
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.login .loginContainer .section .field input:focus {
+  border-color: #F5D108;
+}
+
+.login .loginContainer .section .field .lupaPass {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.login .loginContainer .section .field .lupaPass button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: transparent;
+  border: none;
+  color: rgba(49, 53, 59, 0.5);
+}
+
+.login .loginContainer .section .buttonMasuk {
+  width: 100%;
+  height: 61px;
+  background: rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  border: none;
+  color: rgba(49, 53, 59, 0.6);
+}
+
+.login .loginContainer .daftarSection {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-top: 25px;
+}
+
+.login .loginContainer .daftarSection button {
+  background-color: transparent;
+  color: #D5B81B;
+  border: none;
+}
+
 .loginPopUp {
   background-color: white;
   width: 490px;
