@@ -16,7 +16,33 @@
                     </div>
                     <p class="">Hapus</p>
                 </div>
-                <div class="keranjangDetail">
+                @php
+                    $total = 0
+                @endphp
+                @foreach ($carts as $cart)
+                    @php
+                        $total = $total + $cart->getWishRelation->price
+                    @endphp
+                    <div class="keranjangDetail">
+                    <input type="checkbox">
+                    <div class="productDetail">
+                        <div class="detail">
+                            <img src="{{asset($cart->getWishRelation->image)}}"/>
+                            <div class="section">
+                                <p class="">{{$cart->getWishRelation->name}}</p>
+                                <p class="">Rp{{$cart->getWishRelation->price}}</p>
+                            </div>
+                        </div>
+                        <div class="deleteAdd">
+                            <button>
+                                <img src="{{asset('images/binRed.png')}}">
+                            </button>
+                            <input type="number">
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                {{-- <div class="keranjangDetail">
                     <input type="checkbox">
                     <div class="productDetail">
                         <div class="detail">
@@ -87,12 +113,12 @@
                             <input type="number">
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="columnB">
                 <div class="total">
                     <h2>Total</h2>
-                    <p class="">Rp.250.000</p>
+                    <p class="">Rp{{$total}}</p>
                     <button>Beli</button>
                 </div>
             </div>

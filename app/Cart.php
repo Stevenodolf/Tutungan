@@ -13,6 +13,6 @@ class Cart extends Model
     }
     
     public function getWishRelation(){
-        return $this->hasMany('App\Wish', 'id', 'wish_id');
+        return $this->hasOne('App\Wish', 'id', 'wish_id');
     }
 }

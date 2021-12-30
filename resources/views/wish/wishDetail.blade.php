@@ -92,45 +92,47 @@
                     </div>
                 </div>
             </div>
-            <div class="column" style="display: flex;justify-content: center;">
-                <div class="checkout">
-                    <div class="variant">
-                        <h2>Pilih Variant</h2>
-                        <select>
-                            <option value="" selected>Pilih Warna</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                        <select>
-                            <option value="" selected>Pilih Ukuran</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </div>
-                    <div class="total">
-                        <h2>Atur Jumlah</h2>
-                        <div class="inputTotal">
-                            <input type="number">
-                            <p>Stok {{$wish_stock}}</p>
+            @if($auth)
+                <div class="column" style="display: flex;justify-content: center;">
+                    <div class="checkout">
+                        <div class="variant">
+                            <h2>Pilih Variant</h2>
+                            <select>
+                                <option value="" selected>Pilih Warna</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                            <select>
+                                <option value="" selected>Pilih Ukuran</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
                         </div>
-                        <p>Min. pembelian {{$wish_min_order}}</p>
-                    </div>
-                    <div class="buttonCheckout">
-                        <button class="addKeranjang">
-                            <img class="plus" src="{{asset('images/plusBlack.png')}}"/>
-                            <p>Keranjang</p>
-                        </button>
-                        <button class="buyNow">
-                            <p>Beli Langsung</p>
-                        </button>
+                        <div class="total">
+                            <h2>Atur Jumlah</h2>
+                            <div class="inputTotal">
+                                <input type="number">
+                                <p>Stok {{$wish_stock}}</p>
+                            </div>
+                            <p>Min. pembelian {{$wish_min_order}}</p>
+                        </div>
+                        <div class="buttonCheckout">
+                            <button class="addKeranjang" href="/wish/add-to-cart/{{$user->id}}/{{$wish->id}}">
+                                <img class="plus" src="{{asset('images/plusBlack.png')}}"/>
+                                <p>Keranjang</p>
+                            </button>
+                            <button class="buyNow">
+                                <p>Beli Langsung</p>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            @endif
         <div class="productDetail">
             <div class="title">
                 <h2>Product Detail</h2>
