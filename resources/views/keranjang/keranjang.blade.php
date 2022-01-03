@@ -21,7 +21,7 @@
                 @endphp
                 @foreach ($carts as $cart)
                     @php
-                        $total = $total + $cart->getWishRelation->price
+                        $total = $total + $cart->total_price
                     @endphp
                     <div class="keranjangDetail">
                     <input type="checkbox">
@@ -29,11 +29,11 @@
                         <div class="detail">
                             <img src="{{asset($cart->getWishRelation->image)}}"/>
                             <div class="section">
-                                <p class="">{{$cart->getWishRelation->name}}</p>
-                                <p class="">Rp{{$cart->getWishRelation->price}}</p>
+                                <p class="">{{$cart->getWishRelation->name}} x {{$cart->qty}}</p>
+                                <p class="">Rp{{$cart->total_price}}</p>
                             </div>
                         </div>
-                        <div class="deleteAdd">
+                        <div class="deleteAdd" onclick="window.location='{{ url("/wish/delete-cart/".$cart->id)}}'">
                             <button>
                                 <img src="{{asset('images/binRed.png')}}">
                             </button>
