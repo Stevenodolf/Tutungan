@@ -17,6 +17,8 @@ Route::get('/', 'HomeController@home');
 
 Route::get('/login', 'Auth\LoginController@getLogin');
 Route::post('/login', 'Auth\LoginController@postLogin');
+Route::get('/register', 'Auth\RegisterController@getRegister');
+Route::post('/register', 'Auth\RegisterController@postRegister');
 
 Route::get('/wish/{id}', 'WishController@wishDetail');
 Route::post('/wish/{id}', 'CartController@addCart');

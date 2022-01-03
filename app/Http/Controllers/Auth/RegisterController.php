@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -77,5 +78,12 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
             'address' => $data['address']
         ]);
+    }
+
+    public function getRegister(){
+        $auth = false;
+        Auth::logout();
+
+        return view('register.register', ['auth' => $auth]);
     }
 }
