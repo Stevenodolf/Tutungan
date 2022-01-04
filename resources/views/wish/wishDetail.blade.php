@@ -99,7 +99,7 @@
                             @csrf
                             {{ csrf_field() }}
 
-                            <div class="variant">q
+                            <div class="variant">
                                 <input type="hidden" id="wish_id" name="wish_id" value="{{$wish->id}}">
                                 <h2>Pilih Variant</h2>
                                 <select>
