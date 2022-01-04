@@ -96,10 +96,10 @@
                 <div class="column" style="display: flex;justify-content: center;">
                     <div class="checkout">
                         <form method="POST" action="/wish/{{$wish->id}}" enctype="multipart/form-data">
-                            <div class="variant">
-                                @csrf
-                                {{ csrf_field() }}
+                            @csrf
+                            {{ csrf_field() }}
 
+                            <div class="variant">q
                                 <input type="hidden" id="wish_id" name="wish_id" value="{{$wish->id}}">
                                 <h2>Pilih Variant</h2>
                                 <select>

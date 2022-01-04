@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2021 at 10:22 AM
+-- Generation Time: Jan 03, 2022 at 02:51 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -31,6 +31,8 @@ CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `wish_id` int(11) DEFAULT NULL,
+  `qty` int(11) NOT NULL DEFAULT 1,
+  `total_price` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -216,19 +218,6 @@ INSERT INTO `shipper` (`id`, `name`, `type`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status`
---
-
-CREATE TABLE `status` (
-  `id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `status_transaksi`
 --
 
@@ -263,6 +252,15 @@ CREATE TABLE `status_wish` (
   `created_by` datetime NOT NULL,
   `updated_by` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `status_wish`
+--
+
+INSERT INTO `status_wish` (`id`, `name`, `created_by`, `updated_by`) VALUES
+(1, 'Menunggu Verifikasi', '2021-12-27 07:53:02', '2021-12-27 07:53:02'),
+(2, 'Tenggat Waktu Belum Tercapai', '2021-12-27 07:53:02', '2021-12-27 07:53:02'),
+(3, 'Tenggat Waktu Tercapai', '2021-12-29 09:47:31', '2021-12-29 09:47:31');
 
 -- --------------------------------------------------------
 
@@ -377,12 +375,16 @@ CREATE TABLE `wish` (
   `created_by` int(11) NOT NULL,
   `detail` varchar(200) DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
-  `status` int(11) NOT NULL,
+  `origin` varchar(50) DEFAULT NULL,
+  `web_link` varchar(200) DEFAULT NULL,
+  `status_wish_id` int(11) NOT NULL,
+  `status_transaksi_id` int(11) DEFAULT NULL,
   `approved_by` int(11) DEFAULT NULL,
   `reason_id` int(11) DEFAULT NULL,
   `deadline` datetime NOT NULL,
   `curr_qty` int(11) DEFAULT NULL,
   `target_qty` int(11) NOT NULL,
+  `min_order` int(11) NOT NULL DEFAULT 1,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -391,10 +393,10 @@ CREATE TABLE `wish` (
 -- Dumping data for table `wish`
 --
 
-INSERT INTO `wish` (`id`, `name`, `price`, `category_id`, `created_by`, `detail`, `image`, `status`, `approved_by`, `reason_id`, `deadline`, `curr_qty`, `target_qty`, `created_at`, `updated_at`) VALUES
-(1, 'Hand Sanitizer', 10000, 9, 1, 'Saniter Hand Sanitizer', 'images/wish/wish1.jpg', 1, NULL, NULL, '2022-01-24 08:36:45', 10, 100, '2021-12-24 08:36:45', '2021-12-24 08:36:45'),
-(2, 'Botol Tupperware', 99000, 15, 1, 'Botol Minum Tupperware 1 Liter.', 'images/wish/wish2.jpg\n', 1, NULL, NULL, '2022-01-14 08:49:58', 5, 100, '2021-12-24 08:49:58', '2021-12-24 08:49:58'),
-(3, 'Tisu Basah', 14900, 19, 1, 'Tisu Basah Cussons Baby.\r\nAman untuk Bayi.', 'images/wish/wish3.jpg', 1, NULL, NULL, '2021-12-29 15:28:30', 50, 200, '2021-12-24 09:28:30', '2021-12-24 09:28:30');
+INSERT INTO `wish` (`id`, `name`, `price`, `category_id`, `created_by`, `detail`, `image`, `origin`, `web_link`, `status_wish_id`, `status_transaksi_id`, `approved_by`, `reason_id`, `deadline`, `curr_qty`, `target_qty`, `min_order`, `created_at`, `updated_at`) VALUES
+(1, 'Hand Sanitizer', 10000, 9, 1, 'Saniter Hand Sanitizer', 'images/wish/wish1.jpg', 'China', 'https://www.alibaba.com/product-detail/Custom-private-labels-1L-70-75_1600087659880.html?spm=a2700.galleryofferlist.topad_classic.d_image.528a4921CiHtvK', 1, 1, NULL, NULL, '2022-01-24 08:36:45', 10, 100, 10, '2021-12-24 08:36:45', '2021-12-24 08:36:45'),
+(2, 'Botol Tupperware', 99000, 15, 1, 'Botol Minum Tupperware 1 Liter.', 'images/wish/wish2.jpg\n', 'Indonesia', 'https://www.alibaba.com/product-detail/Eco-friendly-reusable-travel-folding-bottle_1600172795151.html?spm=a2700.galleryofferlist.topad_classic.d_title.677567a4oSa2PS', 1, 1, NULL, NULL, '2022-01-14 08:49:58', 5, 100, 2, '2021-12-24 08:49:58', '2021-12-24 08:49:58'),
+(3, 'Tisu Basah', 14900, 19, 1, 'Tisu Basah Cussons Baby.\r\nAman untuk Bayi.', 'images/wish/wish3.jpg', 'China', 'https://www.alibaba.com/product-detail/Hot-selling-Custom-Baby-Wipes-20pcs_1600348248331.html?spm=a2700.galleryofferlist.normal_offer.d_image.5a776d37UW3oid&s=p', 1, 1, NULL, NULL, '2021-12-29 15:28:30', 50, 200, 20, '2021-12-24 09:28:30', '2021-12-24 09:28:30');
 
 --
 -- Indexes for dumped tables
@@ -459,12 +461,6 @@ ALTER TABLE `shipper`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `status`
---
-ALTER TABLE `status`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `status_transaksi`
 --
 ALTER TABLE `status_transaksi`
@@ -514,11 +510,18 @@ ALTER TABLE `wish`
   ADD KEY `fk_approved_by_idx` (`approved_by`),
   ADD KEY `fk_category_id_idx` (`category_id`),
   ADD KEY `fk_reason_id_idx` (`reason_id`),
-  ADD KEY `fk_status_id_idx` (`status`);
+  ADD KEY `fk_status_id_idx` (`status_wish_id`),
+  ADD KEY `fk_status_transaksi_id_idx` (`status_transaksi_id`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -531,6 +534,24 @@ ALTER TABLE `failed_jobs`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `review`
+--
+ALTER TABLE `review`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sub_status_transaksi`
+--
+ALTER TABLE `sub_status_transaksi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -547,7 +568,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `fk_cart_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `fl_card_wish_id` FOREIGN KEY (`wish_id`) REFERENCES `wish` (`id`);
+  ADD CONSTRAINT `fl_cart_wish_id` FOREIGN KEY (`wish_id`) REFERENCES `wish` (`id`);
 
 --
 -- Constraints for table `review`
@@ -578,7 +599,8 @@ ALTER TABLE `wish`
   ADD CONSTRAINT `fk_wish_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   ADD CONSTRAINT `fk_wish_created_by` FOREIGN KEY (`created_by`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `fk_wish_reason_id` FOREIGN KEY (`reason_id`) REFERENCES `reason` (`id`),
-  ADD CONSTRAINT `fk_wish_status_id` FOREIGN KEY (`status`) REFERENCES `status_transaksi` (`id`);
+  ADD CONSTRAINT `fk_wish_status_transaksi_id` FOREIGN KEY (`status_transaksi_id`) REFERENCES `status_transaksi` (`id`),
+  ADD CONSTRAINT `fk_wish_status_wish_id` FOREIGN KEY (`status_wish_id`) REFERENCES `status_wish` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

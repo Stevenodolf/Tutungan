@@ -7,7 +7,10 @@
 @section('content')
     <div class="firstRegister" style="background-image: url({{asset('images/daftar1.png')}})">
         <div class="registerContainer">
-            <form method="POST" action="register">
+            <form method="POST" action="register" enctype="multipart/form-data">
+                @csrf
+                {{ csrf_field() }}
+
                 <h1>Daftar</h1>
                 <p class="contentSemiBig">Sudah punya akun? <span style="color: #D5B81B;cursor: pointer">Masuk</span></p>
                 <div class="section">
@@ -27,10 +30,11 @@
                     <input type="password" id="password2" name="password2"/>
                 </div>
                 <div class="section">
-                    <button>
+                    <button type="submit">
                         <p class="contentNormal">Daftar</p>
                     </button>
                 </div>
+
             </form>
         </div>
     </div>

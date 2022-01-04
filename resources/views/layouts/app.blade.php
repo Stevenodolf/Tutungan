@@ -31,7 +31,7 @@
 <div id="app">
     <div>
         <div class="navbar">
-            <div class="logo">
+            <div class="logo" onclick="window.location='{{ url("/")}}'">
                 <img src="{{asset('images/tutunganLogo.png')}}">
             </div>
             <div class="locationSection">
@@ -46,7 +46,7 @@
                 <button><img src="{{asset('images/search.png')}}"></button>
             </form>
             <div>
-                <button class="buttonWithImage"><img src="{{asset('images/shopping-cart.png')}}"></button>
+                <button class="buttonWithImage" onclick="window.location='{{ url("/cart")}}'"><img src="{{asset('images/shopping-cart.png')}}"></button>
                 <button class="buttonWithImage"><img src="{{asset('images/bell.png')}}"></button>
             </div>
             @guest

@@ -20,7 +20,28 @@
                     </p>
                 </div>
                 <div class="itemDetail">
-                    <div class="productDetail">
+                    @foreach ($wishes as $wish)
+                        <div class="productDetail">
+                            <div class="detail">
+                                <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                                <div>
+                                    <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>
+                                    <p class="contentSmall">5 Box</p>
+                                    <p class="contentNormal">Rp250.000</p>
+                                </div>
+                            </div>
+                            <div class="shipmentDetail">
+                                <p class="contentSemiNormal">Pilih Pengiriman</p>
+                                <select>
+                                    <option value="">Pengiriman</option>
+                                    @foreach ($dshippers as $dshipper)
+                                        <option value="{{$dshipper->id}}">{{$dshipper->name}}</option>  
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    @endforeach
+                    {{-- <div class="productDetail">
                         <div class="detail">
                             <img src="{{asset('images/dummyProduct.jpeg')}}"/>
                             <div>
@@ -76,7 +97,7 @@
                                 <option>3</option>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="columnB">
@@ -85,7 +106,7 @@
                     <div class="ringkasanHarga">
                         <div class="section">
                             <p class="contentSemiNormal">Total Harga</p>
-                            <p class="contentSemiNormal">Rp.250.000</p>
+                            <p class="contentSemiNormal">Rp.{{$transaction->total_price}}}</p>
                         </div>
                         <div class="section">
                             <p class="contentSemiNormal">Origin to Indonesia</p>
