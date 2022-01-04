@@ -1325,8 +1325,49 @@ button {
   margin-top: 10px;
 }
 
+.detailAkun .content .titleWithButton {
+  border-bottom: 1px solid #000000;
+  padding-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detailAkun .content .titleWithButton .titleInButton .contentSemiBig {
+  margin-top: 10px;
+}
+
+.detailAkun .content .titleWithButton .buttonContainer button {
+  display: flex;
+  align-items: center;
+  background: #FFD901;
+  border-radius: 5px;
+  padding: 14px;
+  border: none;
+}
+
+.detailAkun .content .titleWithButton .buttonContainer button img {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+}
+
+.detailAkun .content .buttonSimpan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detailAkun .content .buttonSimpan button {
+  padding: 12px 25px;
+  background: #FFD901;
+  border: none;
+  border-radius: 5px;
+}
+
 .detailAkun .content .profil {
   display: flex;
+  flex-direction: column;
   flex-wrap: nowrap;
 }
 
@@ -1383,5 +1424,287 @@ button {
 .detailAkun .content .profil .biodata .section select {
   height: 35px;
   width: 100%;
+}
+
+.detailAkun .content .alamatPengiriman {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.detailAkun .content .alamatPengiriman .listAlamat {
+  margin: 15px 0;
+}
+
+.detailAkun .content .alamatPengiriman .listAlamat .titleWithEmblem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.detailAkun .content .alamatPengiriman .listAlamat .titleWithEmblem .emblem {
+  width: 58px;
+  height: 32px;
+  background: #57B793;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+}
+
+.detailAkun .content .alamatPengiriman .keterangan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detailAkun .content .alamatPengiriman .keterangan .section .sectionText {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.detailAkun .content .alamatPengiriman .keterangan .section button {
+  background: #FFD901;
+  border-radius: 5px;
+  padding: 9px 15px;
+  border: none;
+}
+
+.detailAkun .content .alamatPengiriman .buttonBawah {
+  margin-top: 10px;
+}
+
+.detailAkun .content .alamatPengiriman .buttonBawah button {
+  color: #57B793;
+  background: none;
+  border: none;
+  border-right: 1px solid rgba(99, 99, 99, 0.5);
+}
+
+.detailAkun .content .alamatPengiriman .buttonBawah button:last-child {
+  border-right: none;
+}
+
+.detailAkun .content .alamatPengiriman:last-child {
+  border-bottom: none;
+}
+
+.detailAkun .content .creditDebit {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit img {
+  margin-right: 20px;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit .titleWithEmblem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit .titleWithEmblem .emblem {
+  width: 58px;
+  height: 32px;
+  background: #57B793;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit .keterangan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit .keterangan .section .sectionText {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit .keterangan .section button {
+  background: #FFD901;
+  border-radius: 5px;
+  padding: 9px 15px;
+  border: none;
+}
+
+.detailAkun .content .creditDebit .buttonSamping button {
+  color: #57B793;
+  background: none;
+  border: none;
+  border-right: 1px solid rgba(99, 99, 99, 0.5);
+}
+
+.detailAkun .content .creditDebit .buttonSamping button:last-child {
+  border-right: none;
+}
+
+.detailAkun .content .creditDebit:last-child {
+  border-bottom: none;
+}
+
+.detailAkun .content .changePassword {
+  margin: 30px 0;
+}
+
+.detailAkun .content .changePassword .section .sectionInput {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.detailAkun .content .changePassword .section .sectionInput input {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 35px;
+  width: 270px;
+  outline: none;
+  padding: 0 5px;
+}
+
+.detailAkun .content .changePassword button {
+  margin-left: 150px;
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  background: #FFD901;
+  border-radius: 5px;
+}
+
+.popUpTambahAlamat {
+  width: 441px;
+  height: 733px;
+  background: white;
+  padding: 24px;
+}
+
+.popUpTambahAlamat .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.popUpTambahAlamat .title button {
+  background-color: transparent;
+  border: none;
+}
+
+.popUpTambahAlamat .title button img {
+  width: 25px;
+  height: 25px;
+}
+
+.popUpTambahAlamat .section h4 {
+  margin-bottom: 25px;
+}
+
+.popUpTambahAlamat .section .sectionInputSelect {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.popUpTambahAlamat .section .sectionInputSelect input[type=text] {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 35px;
+  width: 100%;
+}
+
+.popUpTambahAlamat .section .sectionInputSelect select {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 35px;
+  width: 100%;
+}
+
+.popUpTambahAlamat .section .sectionInputSelect textarea {
+  resize: none;
+  width: 100%;
+  height: 45px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.popUpTambahAlamat .buttonSimpan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popUpTambahAlamat .buttonSimpan button {
+  padding: 12px 25px;
+  background: #FFD901;
+  border: none;
+  border-radius: 5px;
+}
+
+.popUpTambahCreditDebit {
+  width: 441px;
+  background: white;
+  padding: 24px;
+}
+
+.popUpTambahCreditDebit .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.popUpTambahCreditDebit .title button {
+  background-color: transparent;
+  border: none;
+}
+
+.popUpTambahCreditDebit .title button img {
+  width: 25px;
+  height: 25px;
+}
+
+.popUpTambahCreditDebit .section .sectionInput {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.popUpTambahCreditDebit .section .sectionInput input[type=text] {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 35px;
+  width: 60%;
+}
+
+.popUpTambahCreditDebit .buttonSimpan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popUpTambahCreditDebit .buttonSimpan button {
+  padding: 12px 25px;
+  background: #FFD901;
+  border: none;
+  border-radius: 5px;
 }
 
