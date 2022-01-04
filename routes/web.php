@@ -13,11 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@home');
+Route::get('/', function () {
+    return view('detailAkun.detailAkun');
+});
 
-Route::get('/login', 'Auth\LoginController@getLogin');
-Route::post('/login', 'Auth\LoginController@postLogin');
-
-Route::get('/wish/{id}', 'WishController@wishDetail');
-Route::post('/wish/add-to-cart/{user_id}/{wish_id}', 'CartController@addCart');
-Route::get('/cart', 'CartController@cart');
+//Route::get('/', 'HomeController@home');
+//
+//Route::get('/login', 'Auth\LoginController@getLogin');
+//Route::post('/login', 'Auth\LoginController@postLogin');
+//
+//Route::get('/wish/{id}', 'WishController@wishDetail');
+//Route::post('/wish/add-to-cart/{user_id}/{wish_id}', 'CartController@addCart');
+//Route::get('/cart', 'CartController@cart');
