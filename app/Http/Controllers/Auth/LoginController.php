@@ -44,7 +44,7 @@ class LoginController extends Controller
         $auth = false;
         Auth::logout();
 
-        return redirect('home');
+        return view('login.login', ['auth' => $auth]);
     }
 
     public function postLogin(Request $request){
