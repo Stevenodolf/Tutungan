@@ -29,7 +29,7 @@
 </head>
 <body>
 <div id="app">
-    <div>
+    <div style="margin: 0 120px;">
         <div class="navbar">
             <div class="logo" onclick="window.location='{{ url("/")}}'">
                 <img src="{{asset('images/tutunganLogo.png')}}">
@@ -113,7 +113,7 @@
         </div>
     </nav> --}}
 
-    <main style="min-height: 100vh;">
+    <main>
         @yield('content')
     </main>
 </div>
@@ -128,7 +128,7 @@
                 <img src="{{asset('images/close.png')}}"/>
             </button>
         </div>
-        <form class="login">
+        <form class="loginSection">
             <div class="field">
                 <p class="">Email</p>
                 <input name="email" type="text" id="email" placeholder="ex:youremail@tutungan.com" required>

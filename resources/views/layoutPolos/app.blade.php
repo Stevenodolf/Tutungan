@@ -29,9 +29,11 @@
 </head>
 <body>
 <div id="app">
-    <div class="navbar">
-        <div class="logo">
-            <img src="{{asset('images/tutunganLogo.png')}}">
+    <div style="margin: 0 120px;">
+        <div class="navbar">
+            <div class="logo">
+                <img src="{{asset('images/tutunganLogo.png')}}">
+            </div>
         </div>
     </div>
 
@@ -39,9 +41,11 @@
         @yield('content')
     </main>
 
-    <div class="footer2">
-        <img src="{{asset('images/footer2Left.png')}}">
-        <img src="{{asset('images/footer2Right.png')}}">
+    <div style="margin: 25px 120px;">
+        <div class="footer2">
+            <img src="{{asset('images/footer2Left.png')}}">
+            <img src="{{asset('images/footer2Right.png')}}">
+        </div>
     </div>
 </div>
 </body>
