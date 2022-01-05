@@ -20,26 +20,18 @@
                         </div>
                         <p class="">Hapus</p>
                     </div>
-                    @php
-                        $total_price = 0;
-                        $total_qty = 0;
-                    @endphp
-                    @foreach ($carts as $cart)
-                        @php
-                            $total_price = $total_price + $cart->total_price;
-                            $total_qty = $total_qty + $cart->qty;
-                        @endphp
+                    @foreach ($cart_items as $cart_item)
                         <div class="keranjangDetail">
                         <input type="checkbox">
                         <div class="productDetail">
                             <div class="detail">
-                                <img src="{{asset($cart->getWishRelation->image)}}"/>
+                                <img src="{{asset($cart_item->getWishRelation->image)}}"/>
                                 <div class="section">
-                                    <p class="">{{$cart->getWishRelation->name}} x {{$cart->qty}}</p>
-                                    <p class="">Rp{{$cart->total_price}}</p>
+                                    <p class="">{{$cart_item->getWishRelation->name}} x {{$cart_item->qty}}</p>
+                                    <p class="">Rp{{$cart_item->total_price}}</p>
                                 </div>
                             </div>
-                            <div class="deleteAdd" onclick="window.location='{{ url("/wish/delete-cart/".$cart->id)}}'">
+                            <div class="deleteAdd" onclick="window.location='{{ url("/wish/delete-cart/".$cart_item->id)}}'">
                                 <button>
                                     <img src="{{asset('images/binRed.png')}}">
                                 </button>
@@ -124,9 +116,9 @@
                 <div class="columnB">
                     <div class="total">
                         <h2>Total</h2>
-                        <p class="">Rp{{$total_price}}</p>
-                        <input type="hidden" name="total_price" value="{{$total_price}}">
-                        <input type="hidden" name="total_qty" value="{{$total_qty}}">
+                        <p class="">Rp{{$cart->total_price}}</p>
+                        <input type="hidden" name="total_price" value="{{$cart->total_price}}">
+                        <input type="hidden" name="total_qty" value="{{$cart->total_qty}}">
                         <button type="submit" onclick="window.location='{{ url("/checkout")}}'">Checkout</button>
                     </div>
                 </div>
