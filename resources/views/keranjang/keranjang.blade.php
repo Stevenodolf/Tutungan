@@ -8,7 +8,10 @@
     <div class="contentContainer">
         <div class="keranjang">
             <h1>Keranjang</h1>
-            <div class="row">
+        <div class="row">
+            <form method="POST" action="/checkout" enctype="multipart/form-data">
+                @csrf
+                {{ csrf_field() }}
                 <div class="columnA">
                     <div class="option">
                         <div class="pilihSemua">
@@ -18,30 +21,32 @@
                         <p class="">Hapus</p>
                     </div>
                     @php
-                        $total = 0
+                        $total_price = 0;
+                        $total_qty = 0;
                     @endphp
                     @foreach ($carts as $cart)
                         @php
-                            $total = $total + $cart->getWishRelation->price
+                            $total_price = $total_price + $cart->total_price;
+                            $total_qty = $total_qty + $cart->qty;
                         @endphp
                         <div class="keranjangDetail">
-                            <input type="checkbox">
-                            <div class="productDetail">
-                                <div class="detail">
-                                    <img src="{{asset($cart->getWishRelation->image)}}"/>
-                                    <div class="section">
-                                        <p class="">{{$cart->getWishRelation->name}}</p>
-                                        <p class="">Rp{{$cart->getWishRelation->price}}</p>
-                                    </div>
-                                </div>
-                                <div class="deleteAdd">
-                                    <button>
-                                        <img src="{{asset('images/binRed.png')}}">
-                                    </button>
-                                    <input type="number">
+                        <input type="checkbox">
+                        <div class="productDetail">
+                            <div class="detail">
+                                <img src="{{asset($cart->getWishRelation->image)}}"/>
+                                <div class="section">
+                                    <p class="">{{$cart->getWishRelation->name}} x {{$cart->qty}}</p>
+                                    <p class="">Rp{{$cart->total_price}}</p>
                                 </div>
                             </div>
+                            <div class="deleteAdd" onclick="window.location='{{ url("/wish/delete-cart/".$cart->id)}}'">
+                                <button>
+                                    <img src="{{asset('images/binRed.png')}}">
+                                </button>
+                                <input type="number">
+                            </div>
                         </div>
+                    </div>
                     @endforeach
                     {{-- <div class="keranjangDetail">
                         <input type="checkbox">
@@ -119,11 +124,14 @@
                 <div class="columnB">
                     <div class="total">
                         <h2>Total</h2>
-                        <p class="">Rp{{$total}}</p>
-                        <button>Beli</button>
+                        <p class="">Rp{{$total_price}}</p>
+                        <input type="hidden" name="total_price" value="{{$total_price}}">
+                        <input type="hidden" name="total_qty" value="{{$total_qty}}">
+                        <button type="submit" onclick="window.location='{{ url("/checkout")}}'">Checkout</button>
                     </div>
                 </div>
-            </div>
+
+            </form>
         </div>
 
         <div class="forYou">

@@ -17,7 +17,7 @@ class Transaction extends Model
     }
 
     public function getTransactionStatusRelation(){
-        return $this->hasOne('App\Transaction_Status', 'id', 'transaction_status');
+        return $this->hasOne('App\Status_Transaksi', 'id', 'status_transaksi_id');
     }
 
     public function getShipperRelation(){
