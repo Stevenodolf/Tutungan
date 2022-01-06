@@ -25,8 +25,8 @@ class TransactionController extends Controller
             $transaction->total_price = $request->total_price;
             $transaction->total_qty = $request->total_qty;
             $transaction->wish_id = Cart::where('user_id', $user->id)->get('wish_id')->toArray();
-
-            $transaction->save();  
+            // $transaction->wish_id = $wishes->implode('wish_id', ',');
+            $transaction->save();
 
             return view('checkout.checkout', ['auth' => $auth, 'user' => $user]);
         }

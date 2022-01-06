@@ -20,42 +20,34 @@
                             </div>
                             <p class="">Hapus</p>
                         </div>
-                        @php
-                            $total_price = 0;
-                            $total_qty = 0;
-                        @endphp
-                        @foreach ($carts as $cart)
-                            @php
-                                $total_price = $total_price + $cart->total_price;
-                                $total_qty = $total_qty + $cart->qty;
-                            @endphp
-                            <div class="keranjangDetail">
-                                <input type="checkbox">
-                                <div class="productDetail">
-                                    <div class="detail">
-                                        <img src="{{asset($cart->getWishRelation->image)}}"/>
-                                        <div class="section">
-                                            <p class="">{{$cart->getWishRelation->name}} x {{$cart->qty}}</p>
-                                            <p class="">Rp{{$cart->total_price}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="deleteAdd" onclick="window.location='{{ url("/wish/delete-cart/".$cart->id)}}'">
-                                        <button>
-                                            <img src="{{asset('images/binRed.png')}}">
-                                        </button>
-                                        <input type="number">
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                        {{-- <div class="keranjangDetail">
-                            <input type="checkbox">
-                            <div class="productDetail">
-                                <div class="detail">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                                    <div class="section">
-                                        <p class="">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>
-                                        <p class="">Rp250.000</p>
+                      @foreach ($cart_items as $cart_item)
+                          <div class="keranjangDetail">
+                          <input type="checkbox">
+                          <div class="productDetail">
+                              <div class="detail">
+                                  <img src="{{asset($cart_item->getWishRelation->image)}}"/>
+                                  <div class="section">
+                                      <p class="">{{$cart_item->getWishRelation->name}} x {{$cart_item->qty}}</p>
+                                      <p class="">Rp{{$cart_item->total_price}}</p>
+                                  </div>
+                              </div>
+                              <div class="deleteAdd" onclick="window.location='{{ url("/wish/delete-cart/".$cart_item->id)}}'">
+                                  <button>
+                                      <img src="{{asset('images/binRed.png')}}">
+                                  </button>
+                                  <input type="number">
+                              </div>
+                          </div>
+                      </div>
+                      @endforeach
+                      {{-- <div class="keranjangDetail">
+                          <input type="checkbox">
+                          <div class="productDetail">
+                              <div class="detail">
+                                  <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                                  <div class="section">
+                                      <p class="">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>
+                                      <p class="">Rp250.000</p>
                                     </div>
                                 </div>
                                 <div class="deleteAdd">
@@ -129,6 +121,15 @@
                             <input type="hidden" name="total_qty" value="{{$total_qty}}">
                             <button type="submit" onclick="window.location='{{ url("/checkout")}}'">Checkout</button>
                         </div>
+                    </div> --}}
+                </div>
+                <div class="columnB">
+                    <div class="total">
+                        <h2>Total</h2>
+                        <p class="">Rp{{$cart->total_price}}</p>
+                        <input type="hidden" name="total_price" value="{{$cart->total_price}}">
+                        <input type="hidden" name="total_qty" value="{{$cart->total_qty}}">
+                        <button type="submit" onclick="window.location='{{ url("/checkout")}}'">Checkout</button>
                     </div>
 
                 </form>

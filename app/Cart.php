@@ -12,7 +12,7 @@ class Cart extends Model
         return $this->hasOne('App\User', 'id', 'user_id');
     }
     
-    public function getWishRelation(){
-        return $this->hasOne('App\Wish', 'id', 'wish_id');
+    public function getCartItemRelation(){
+        return $this->hasMany('App\Cart_Item', 'cart_id', 'id');
     }
 }
