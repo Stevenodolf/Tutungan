@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('wish.createWish');
 // });
 
+Route::get('/', 'HomeController@home');
 
 Route::get('/login', 'Auth\LoginController@getLogin')->name('login');
 Route::post('/login', 'Auth\LoginController@postLogin');
