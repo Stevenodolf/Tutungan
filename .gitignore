@@ -10,3 +10,9 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+public/js/.DS_Store
+.DS_Store
+database/.DS_Store
+public/.DS_Store
+public/js/script/.DS_Store
+public/.DS_Store
