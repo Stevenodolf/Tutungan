@@ -8,24 +8,45 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Tutungan</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/script/jquery/jquery.js') }}"></script>
-    <script src="{{ asset('js/script/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('js/script/proBar/proBar.js') }}"></script>
-    <script src="{{ asset('js/src/main.js') }}"></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('font/stylesheet.css') }}" rel="stylesheet">
     <link href="{{ asset('js/script/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('js/script/quill/quill.snow.css') }}" rel="stylesheet">
+    <link href="{{ asset('js/script/quill/quill.bubble.css') }}" rel="stylesheet">
+    <link href="{{ asset('js/script/filepond/filepond.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('js/script/filepond/filepond-plugin-image-preview.min.css') }}" rel="stylesheet">
 
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/script/jquery/jquery.js')}}"></script>
+    <script src="{{ asset('js/src/main.js') }}"></script>
+    <!-- Swiper	-->
+    <script src="{{ asset('js/script/swiper/swiper-bundle.min.js') }}"></script>
+    <!-- Probar	-->
+    <script src="{{ asset('js/script/proBar/proBar.js') }}"></script>
+    <!-- Quill	-->
+    <script src="{{ asset('js/script/quill/quill.js') }}"></script>
+    <script src="{{ asset('js/script/quill/image-resize.min.js') }}"></script>
+    <script src="{{ asset('js/script/quill/image-drop.min.js') }}"></script>
+    <!-- Filepond	-->
+    <script src="{{ asset('js/script/filepond/filepond.min.js') }}"></script>
+    <script src="{{ asset('js/script/filepond/filepond.jquery.js') }}"></script>
+    <script src="{{ asset('js/script/filepond/filepond-plugin-file-validate-size.js') }}"></script>
+    <script src="{{ asset('js/script/filepond/filepond-plugin-file-encode.js') }}"></script>
+    <script src="{{ asset('js/script/filepond/filepond-plugin-image-preview.min.js') }}"></script>
+    <script src="{{ asset('js/script/filepond/filepond-plugin-file-validate-type.min.js') }}"></script>
     <!-- Content -->
     @yield('head')
+
+
+
+
+
+
 </head>
 <body>
 <div id="app">

@@ -42,7 +42,7 @@ button{
 .contentContainer{
     padding: 25px 120px;
     //width: 100%;
-    height: calc(100vh - 140px);
+    min-height: calc(100vh - 140px);
 }
 
 //Font
@@ -1536,6 +1536,7 @@ button{
         }
     }
 }
+
 .popUpTambahCreditDebit{
     width: 441px;
     //height: 440px;
@@ -1582,4 +1583,80 @@ button{
         }
     }
 
+}
+
+//Buat Wish
+.buatWish{
+    .section{
+        width: 100%;
+        height: fit-content;
+        background: #FFFFFF;
+        border: 1px solid rgba(49, 53, 59, 0.2);
+        box-sizing: border-box;
+        box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+        border-radius: 5px;
+        padding: 40px;
+        margin-top: 25px;
+        .sectionInputSelect{
+            display: flex;
+            align-items: flex-start;
+            margin-top: 30px;
+            .ql-editor{
+                min-height: 150px;
+            }
+            .doubleText{
+                width: 30%;
+            }
+            input[type=text]{
+                height: 30px;
+                width: 100%;
+                padding: 0 10px;
+                margin-left: 30px;
+            }
+            select{
+                height: 30px;
+                width: 100%;
+                margin-left: 30px;
+            }
+        }
+    }
+    .notice{
+        background: rgba(255, 217, 1, 0.25);
+        box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+        border-radius: 5px;
+        padding: 24px 40px;
+        display: flex;
+        align-items: center;
+        margin-top: 25px;
+        img{
+            margin-right: 10px;
+        }
+    }
+    .buttonKanan{
+        margin-top: 25px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        img{
+            width: 24px;
+            height: 24px;
+        }
+        button{
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+        }
+        .batal{
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            box-sizing: border-box;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        .simpan{
+            background: #FFD901;
+            border-radius: 5px;
+            border: none;
+        }
+    }
 }
