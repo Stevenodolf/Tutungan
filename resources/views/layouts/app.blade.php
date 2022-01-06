@@ -66,18 +66,85 @@
                 <input type="text" placeholder="Search here...">
                 <button><img src="{{asset('images/search.png')}}"></button>
             </form>
-            <div>
+            <div class="dropdownKeranjang">
                 <button class="buttonWithImage" onclick="window.location='{{ url("/cart")}}'"><img src="{{asset('images/shopping-cart.png')}}"></button>
-                <button class="buttonWithImage"><img src="{{asset('images/bell.png')}}"></button>
+                <div class="dropdownList">
+                    <div class="title">
+                        <p class="contentSemiNormal">Keranjang Anda</p>
+                        <button>
+                            <p class="contentSemiNormal">Lihat Semua</p>
+                        </button>
+                    </div>
+                    <div class="content">
+                        <div class="sectionPicture">
+                            <img src="{{asset('images/dummyProduct.jpeg')}}">
+                            <div class="sectionText">
+                                <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgic...</p>
+                                <p class="contentSmall">5 pcs</p>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <p class="contentSemiNormal">Rp50.000</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="dropdownNotifikasi">
+                <button class="buttonWithImage"><img src="{{asset('images/bell.png')}}"></button>
+                <div class="dropdownList">
+                    <div class="title">
+                        <p class="contentSemiNormal">Notifikasi</p>
+                        <button>
+                            <p class="contentSemiNormal">Lihat Semua</p>
+                        </button>
+                    </div>
+                    <div class="content">
+                        <img src="{{asset('images/dummyProduct.jpeg')}}">
+                        <div class="sectionText">
+                            <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">Transaksi Dibatalkan</p>
+                            <p class="contentSemiNormal">Transaksi anda telah dibatalkan, ketuk untuk lihat lebih lanjut.</p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <img src="{{asset('images/dummyProduct.jpeg')}}">
+                        <div class="sectionText">
+                            <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">Pesanan sudah sampai tujuan!</p>
+                            <p class="contentSemiNormal">Terima kasih sudah menggunakan layanan Tutungan!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             @guest
-                <div class="buttonLoginRegister">
-                    <button class="buttonLogin" id="buttonLogin">Masuk</button>
-                    <button class="buttonRegister">Daftar</button>
+                <button class="buttonAddWish">
+                    <img src="{{asset('images/plusBlack.png')}}">
+                    Wish
+                </button>
+                <div class="dropdownProfil">
+                    <button class="buttonUser">
+                        <img src="{{asset('images/dummyUser.png')}}">
+                        <p class="contentNormal">Steven Yuwono</p>
+                        <img id="arrowUser" src="{{asset('images/arrowDownBlack.png')}}">
+                    </button>
+                    <div class="dropdownList">
+                        <button>
+                            <p class="contentSemiNormal">Akun Saya</p>
+                        </button>
+                        <button>
+                            <p class="contentSemiNormal">Wish Saya</p>
+                        </button>
+                        <button>
+                            <p class="contentSemiNormal">Transaksi Saya</p>
+                        </button>
+                        <button>
+                            <p class="contentSemiNormal">Logout</p>
+                        </button>
+                    </div>
                 </div>
             @else
                 <div class="buttonLoginRegister">
-
+                    <button class="buttonLogin" id="buttonLogin">Masuk</button>
+                    <button class="buttonRegister">Daftar</button>
                 </div>
             @endguest
 

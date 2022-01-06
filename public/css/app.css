@@ -1,7 +1,10 @@
+* {
+  font-family: "lato", "latoregular", "latoblack", "latoblackitalic", "latobold", "latobolditalic", "latoitalic", "latolightitalic", "latolight";
+}
+
 body {
   padding: 0;
   margin: 0;
-  font-family: "lato", "latoregular", "latoblack", "latoblackitalic", "latobold", "latobolditalic", "latoitalic", "latolightitalic", "latolight";
 }
 
 p,
@@ -474,6 +477,153 @@ button {
   align-items: center;
 }
 
+.navbar .dropdownProfil {
+  position: relative;
+  display: inline-block;
+}
+
+.navbar .dropdownProfil .dropdownList {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  margin-top: 5px;
+  z-index: 1;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-sizing: border-box;
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+}
+
+.navbar .dropdownProfil .dropdownList button {
+  width: 100%;
+  display: flex;
+  background: white;
+  border: none;
+  padding: 5px 5px;
+}
+
+.navbar .dropdownNotifikasi {
+  position: relative;
+  display: inline-block;
+}
+
+.navbar .dropdownNotifikasi .dropdownList {
+  display: none;
+  position: absolute;
+  width: 300px;
+  margin-top: 5px;
+  z-index: 1;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-sizing: border-box;
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+}
+
+.navbar .dropdownNotifikasi .dropdownList .title {
+  color: #636363;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 10px;
+}
+
+.navbar .dropdownNotifikasi .dropdownList .title button {
+  color: #D5B81B;
+  border: none;
+  background: white;
+}
+
+.navbar .dropdownNotifikasi .dropdownList .content {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 10px;
+}
+
+.navbar .dropdownNotifikasi .dropdownList .content img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.navbar .dropdownNotifikasi .dropdownList .content .sectionText {
+  color: #636363;
+}
+
+.navbar .dropdownNotifikasi .dropdownList .content:last-child {
+  border: none;
+}
+
+.navbar .dropdownKeranjang {
+  position: relative;
+  display: inline-block;
+}
+
+.navbar .dropdownKeranjang .dropdownList {
+  display: none;
+  position: absolute;
+  margin-top: 5px;
+  width: 420px;
+  z-index: 1;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-sizing: border-box;
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+}
+
+.navbar .dropdownKeranjang .dropdownList .title {
+  color: #636363;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 10px;
+}
+
+.navbar .dropdownKeranjang .dropdownList .title button {
+  color: #D5B81B;
+  border: none;
+  background: white;
+}
+
+.navbar .dropdownKeranjang .dropdownList .content {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 10px;
+}
+
+.navbar .dropdownKeranjang .dropdownList .content .sectionPicture {
+  display: flex;
+}
+
+.navbar .dropdownKeranjang .dropdownList .content .sectionPicture img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.navbar .dropdownKeranjang .dropdownList .content .sectionPicture .sectionText .contentSemiNormal {
+  margin-bottom: 5px;
+}
+
+.navbar .dropdownKeranjang .dropdownList .content .section {
+  color: #57B793;
+}
+
+.navbar .dropdownKeranjang .dropdownList .content:last-child {
+  border: none;
+}
+
 .navbar .logo {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -571,6 +721,42 @@ button {
   background-color: #FFD901;
   border: none;
   cursor: pointer;
+}
+
+.navbar .buttonAddWish {
+  width: 70px;
+  height: 36px;
+  background-color: #FFD901;
+  border: none;
+}
+
+.navbar .buttonAddWish img {
+  width: 10px;
+  height: 10px;
+}
+
+.navbar .buttonUser {
+  height: 36px;
+  background-color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.navbar .buttonUser img {
+  width: 30px;
+  height: 30px;
+}
+
+.navbar .buttonUser #arrowUser {
+  width: 10px;
+  height: 10px;
+}
+
+.navbar .buttonUser .contentNormal {
+  margin: 0 5px;
 }
 
 .footer2 {
