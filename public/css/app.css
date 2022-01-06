@@ -4,10 +4,6 @@ body {
   font-family: "lato", "latoregular", "latoblack", "latoblackitalic", "latobold", "latobolditalic", "latoitalic", "latolightitalic", "latolight";
 }
 
-#app {
-  margin: 25px 120px;
-}
-
 p,
 h1,
 h2,
@@ -39,6 +35,11 @@ button {
   margin: 0;
   top: 0;
   left: 0;
+}
+
+.contentContainer {
+  padding: 25px 120px;
+  min-height: calc(100vh - 140px);
 }
 
 .contentExtraSmall {
@@ -403,17 +404,17 @@ button {
   height: 25px;
 }
 
-.loginPopUp .login .field {
+.loginPopUp .loginSection .field {
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
 }
 
-.loginPopUp .login .field p {
+.loginPopUp .loginSection .field p {
   margin-bottom: 10px;
 }
 
-.loginPopUp .login .field input {
+.loginPopUp .loginSection .field input {
   outline: none;
   height: 45px;
   border: 2px solid rgba(49, 53, 59, 0.15);
@@ -423,17 +424,17 @@ button {
   font-size: 16px;
 }
 
-.loginPopUp .login .field input:focus {
+.loginPopUp .loginSection .field input:focus {
   border-color: #F5D108;
 }
 
-.loginPopUp .login .field .lupaPass {
+.loginPopUp .loginSection .field .lupaPass {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.loginPopUp .login .field .lupaPass button {
+.loginPopUp .loginSection .field .lupaPass button {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -442,7 +443,7 @@ button {
   color: rgba(49, 53, 59, 0.5);
 }
 
-.loginPopUp .login .buttonMasuk {
+.loginPopUp .loginSection .buttonMasuk {
   width: 100%;
   height: 61px;
   background: rgba(49, 53, 59, 0.15);
@@ -466,7 +467,7 @@ button {
 
 .navbar {
   width: 100%;
-  height: 10vh;
+  height: 90px;
   background-color: transparent;
   display: flex;
   justify-content: space-between;
@@ -1245,5 +1246,552 @@ button {
   border-radius: 5px;
   border: none;
   width: 100%;
+}
+
+.detailAkun {
+  display: flex;
+  justify-content: space-around;
+}
+
+.detailAkun .sideMenu {
+  width: 294px;
+  height: 521px;
+  padding: 30px;
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-sizing: border-box;
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+}
+
+.detailAkun .sideMenu .profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #000000;
+}
+
+.detailAkun .sideMenu .profile img {
+  margin-bottom: 10px;
+}
+
+.detailAkun .sideMenu .menu {
+  padding: 20px 0;
+}
+
+.detailAkun .sideMenu .menu .list {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.detailAkun .sideMenu .menu .list img {
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+}
+
+.detailAkun .sideMenu .menu .subList {
+  padding-left: 35px;
+}
+
+.detailAkun .sideMenu .menu .subList .list {
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.detailAkun .sideMenu .menu .subList .list .contentSemiBig {
+  color: #636363;
+}
+
+.detailAkun .content {
+  width: 890px;
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-sizing: border-box;
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.detailAkun .content .title {
+  border-bottom: 1px solid #000000;
+  padding-bottom: 30px;
+}
+
+.detailAkun .content .title .contentSemiBig {
+  margin-top: 10px;
+}
+
+.detailAkun .content .titleWithButton {
+  border-bottom: 1px solid #000000;
+  padding-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detailAkun .content .titleWithButton .titleInButton .contentSemiBig {
+  margin-top: 10px;
+}
+
+.detailAkun .content .titleWithButton .buttonContainer button {
+  display: flex;
+  align-items: center;
+  background: #FFD901;
+  border-radius: 5px;
+  padding: 14px;
+  border: none;
+}
+
+.detailAkun .content .titleWithButton .buttonContainer button img {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+}
+
+.detailAkun .content .buttonSimpan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detailAkun .content .buttonSimpan button {
+  padding: 12px 25px;
+  background: #FFD901;
+  border: none;
+  border-radius: 5px;
+}
+
+.detailAkun .content .profil {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.detailAkun .content .profil .profilPict {
+  display: flex;
+  flex-direction: column;
+  padding-right: 15px;
+  margin-top: 15px;
+  border-right: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.detailAkun .content .profil .profilPict img {
+  width: 218px;
+  height: 218px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.detailAkun .content .profil .profilPict input[type=button] {
+  width: 213px;
+  height: 35px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.detailAkun .content .profil .profilPict input[type=file] {
+  display: none;
+}
+
+.detailAkun .content .profil .biodata {
+  padding: 0 40px 0 40px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.detailAkun .content .profil .biodata h3 {
+  margin-bottom: 30px;
+}
+
+.detailAkun .content .profil .biodata .section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.detailAkun .content .profil .biodata .section .contentSemiNormal {
+  width: 110px;
+}
+
+.detailAkun .content .profil .biodata .section input,
+.detailAkun .content .profil .biodata .section select {
+  height: 35px;
+  width: 100%;
+}
+
+.detailAkun .content .alamatPengiriman {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.detailAkun .content .alamatPengiriman .listAlamat {
+  margin: 15px 0;
+}
+
+.detailAkun .content .alamatPengiriman .listAlamat .titleWithEmblem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.detailAkun .content .alamatPengiriman .listAlamat .titleWithEmblem .emblem {
+  width: 58px;
+  height: 32px;
+  background: #57B793;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+}
+
+.detailAkun .content .alamatPengiriman .keterangan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detailAkun .content .alamatPengiriman .keterangan .section .sectionText {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.detailAkun .content .alamatPengiriman .keterangan .section button {
+  background: #FFD901;
+  border-radius: 5px;
+  padding: 9px 15px;
+  border: none;
+}
+
+.detailAkun .content .alamatPengiriman .buttonBawah {
+  margin-top: 10px;
+}
+
+.detailAkun .content .alamatPengiriman .buttonBawah button {
+  color: #57B793;
+  background: none;
+  border: none;
+  border-right: 1px solid rgba(99, 99, 99, 0.5);
+}
+
+.detailAkun .content .alamatPengiriman .buttonBawah button:last-child {
+  border-right: none;
+}
+
+.detailAkun .content .alamatPengiriman:last-child {
+  border-bottom: none;
+}
+
+.detailAkun .content .creditDebit {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit img {
+  margin-right: 20px;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit .titleWithEmblem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit .titleWithEmblem .emblem {
+  width: 58px;
+  height: 32px;
+  background: #57B793;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit .keterangan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit .keterangan .section .sectionText {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.detailAkun .content .creditDebit .listCreditDebit .keterangan .section button {
+  background: #FFD901;
+  border-radius: 5px;
+  padding: 9px 15px;
+  border: none;
+}
+
+.detailAkun .content .creditDebit .buttonSamping button {
+  color: #57B793;
+  background: none;
+  border: none;
+  border-right: 1px solid rgba(99, 99, 99, 0.5);
+}
+
+.detailAkun .content .creditDebit .buttonSamping button:last-child {
+  border-right: none;
+}
+
+.detailAkun .content .creditDebit:last-child {
+  border-bottom: none;
+}
+
+.detailAkun .content .changePassword {
+  margin: 30px 0;
+}
+
+.detailAkun .content .changePassword .section .sectionInput {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.detailAkun .content .changePassword .section .sectionInput input {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 35px;
+  width: 270px;
+  outline: none;
+  padding: 0 5px;
+}
+
+.detailAkun .content .changePassword button {
+  margin-left: 150px;
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  background: #FFD901;
+  border-radius: 5px;
+}
+
+.popUpTambahAlamat {
+  width: 441px;
+  height: 733px;
+  background: white;
+  padding: 24px;
+}
+
+.popUpTambahAlamat .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.popUpTambahAlamat .title button {
+  background-color: transparent;
+  border: none;
+}
+
+.popUpTambahAlamat .title button img {
+  width: 25px;
+  height: 25px;
+}
+
+.popUpTambahAlamat .section h4 {
+  margin-bottom: 25px;
+}
+
+.popUpTambahAlamat .section .sectionInputSelect {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.popUpTambahAlamat .section .sectionInputSelect input[type=text] {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 35px;
+  width: 100%;
+}
+
+.popUpTambahAlamat .section .sectionInputSelect select {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 35px;
+  width: 100%;
+}
+
+.popUpTambahAlamat .section .sectionInputSelect textarea {
+  resize: none;
+  width: 100%;
+  height: 45px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.popUpTambahAlamat .buttonSimpan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popUpTambahAlamat .buttonSimpan button {
+  padding: 12px 25px;
+  background: #FFD901;
+  border: none;
+  border-radius: 5px;
+}
+
+.popUpTambahCreditDebit {
+  width: 441px;
+  background: white;
+  padding: 24px;
+}
+
+.popUpTambahCreditDebit .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.popUpTambahCreditDebit .title button {
+  background-color: transparent;
+  border: none;
+}
+
+.popUpTambahCreditDebit .title button img {
+  width: 25px;
+  height: 25px;
+}
+
+.popUpTambahCreditDebit .section .sectionInput {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.popUpTambahCreditDebit .section .sectionInput input[type=text] {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 35px;
+  width: 60%;
+}
+
+.popUpTambahCreditDebit .buttonSimpan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popUpTambahCreditDebit .buttonSimpan button {
+  padding: 12px 25px;
+  background: #FFD901;
+  border: none;
+  border-radius: 5px;
+}
+
+.buatWish .section {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-sizing: border-box;
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  padding: 40px;
+  margin-top: 25px;
+}
+
+.buatWish .section .sectionInputSelect {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.buatWish .section .sectionInputSelect .ql-editor {
+  min-height: 150px;
+}
+
+.buatWish .section .sectionInputSelect .doubleText {
+  width: 30%;
+}
+
+.buatWish .section .sectionInputSelect input[type=text] {
+  height: 30px;
+  width: 100%;
+  padding: 0 10px;
+  margin-left: 30px;
+}
+
+.buatWish .section .sectionInputSelect select {
+  height: 30px;
+  width: 100%;
+  margin-left: 30px;
+}
+
+.buatWish .notice {
+  background: rgba(255, 217, 1, 0.25);
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  padding: 24px 40px;
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.buatWish .notice img {
+  margin-right: 10px;
+}
+
+.buatWish .buttonKanan {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.buatWish .buttonKanan img {
+  width: 24px;
+  height: 24px;
+}
+
+.buatWish .buttonKanan button {
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+}
+
+.buatWish .buttonKanan .batal {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.buatWish .buttonKanan .simpan {
+  background: #FFD901;
+  border-radius: 5px;
+  border: none;
 }
 
