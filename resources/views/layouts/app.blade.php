@@ -116,6 +116,11 @@
             </div>
 
             @guest
+                <div class="buttonLoginRegister">
+                    <button class="buttonLogin" id="buttonLogin">Masuk</button>
+                    <button class="buttonRegister">Daftar</button>
+                </div>
+            @else
                 <button class="buttonAddWish">
                     <img src="{{asset('images/plusBlack.png')}}">
                     Wish
@@ -140,11 +145,6 @@
                             <p class="contentSemiNormal">Logout</p>
                         </button>
                     </div>
-                </div>
-            @else
-                <div class="buttonLoginRegister">
-                    <button class="buttonLogin" id="buttonLogin">Masuk</button>
-                    <button class="buttonRegister">Daftar</button>
                 </div>
             @endguest
 
