@@ -131,6 +131,7 @@
                                         <strong> {{$errors->first()}}</strong>
                                     </div>
                                 @endif
+                                <input type="hidden" name="wish_id" value="{{$wish->id}}">
                                 <div class="buttonCheckout">
                                     <button class="addKeranjang" type="submit" action={{ url('/wish/add-to-cart')}}>
                                         <img class="plus" src="{{asset('images/plusBlack.png')}}"/>

@@ -116,22 +116,12 @@
                     <div class="columnB">
                         <div class="total">
                             <h2>Total</h2>
-                            <p class="">Rp{{$total_price}}</p>
-                            <input type="hidden" name="total_price" value="{{$total_price}}">
-                            <input type="hidden" name="total_qty" value="{{$total_qty}}">
+                            <p class="">Rp{{$cart->total_price}}</p>
+                            <input type="hidden" name="total_price" value="{{$cart->total_price}}">
+                            <input type="hidden" name="total_qty" value="{{$cart->total_qty}}">
                             <button type="submit" onclick="window.location='{{ url("/checkout")}}'">Checkout</button>
                         </div>
-                    </div> --}}
-                </div>
-                <div class="columnB">
-                    <div class="total">
-                        <h2>Total</h2>
-                        <p class="">Rp{{$cart->total_price}}</p>
-                        <input type="hidden" name="total_price" value="{{$cart->total_price}}">
-                        <input type="hidden" name="total_qty" value="{{$cart->total_qty}}">
-                        <button type="submit" onclick="window.location='{{ url("/checkout")}}'">Checkout</button>
                     </div>
-
                 </form>
             </div>
 
