@@ -1981,3 +1981,114 @@ button {
   border: none;
 }
 
+.cariWish {
+  display: flex;
+  align-items: flex-start;
+}
+
+.cariWish .filter {
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-sizing: border-box;
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 15px;
+}
+
+.cariWish .filter h3 {
+  margin-bottom: 15px;
+}
+
+.cariWish .filter .content .section {
+  margin-bottom: 15px;
+}
+
+.cariWish .filter .content .section h4 {
+  margin-bottom: 10px;
+}
+
+.cariWish .filter .content .section .subSection {
+  padding-left: 5px;
+}
+
+.cariWish .filter .content .section .subSection .checkboxText {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cariWish .filter .content .section .subSection .checkboxText:last-child {
+  margin-bottom: 0;
+}
+
+.cariWish .filter .content .section .subSection .textInput {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cariWish .filter .content .section .subSection .textInput input[type=text] {
+  height: 30px;
+}
+
+.cariWish .filter .content .section .subSection .textInput .contentNormal {
+  width: 45px;
+  color: #636363;
+}
+
+.cariWish .filter .content .section .subSection .textInput:last-child {
+  margin-bottom: 0px;
+}
+
+.cariWish .filter .content .section:last-child {
+  margin-bottom: 0;
+}
+
+.cariWish .hasilPencarian {
+  width: 100%;
+}
+
+.cariWish .hasilPencarian .topTab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 0 10px;
+}
+
+.cariWish .hasilPencarian .topTab .section {
+  display: flex;
+  align-items: center;
+}
+
+.cariWish .hasilPencarian .topTab .section img {
+  margin-right: 5px;
+}
+
+.cariWish .hasilPencarian .topTab .section select {
+  margin-left: 5px;
+  height: 30px;
+  padding: 5px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.cariWish .hasilPencarian .hasil .column {
+  float: left;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+}
+
+.cariWish .hasilPencarian .hasil .row:after {
+  content: "";
+  display: table;
+  clear: both;
+  margin-bottom: 15px;
+}
+
