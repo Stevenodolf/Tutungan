@@ -325,7 +325,7 @@
                                 </div>
                                 <div class="content">
                                     <p>{{$wish->name}}</p>
-                                    <h3>Rp {{$wish->price}}/pcs</h3>
+                                    <h3>Rp {{number_format($wish->price, 0, ',', '.')}}/pcs</h3>
                                     <div class="barWithText">
                                         <div class="textProgress">
                                             <p>{{$wish->curr_qty}}/{{$wish->target_qty}}</p>

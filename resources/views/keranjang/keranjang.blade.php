@@ -28,7 +28,7 @@
                                   <img src="{{asset($cart_item->getWishRelation->image)}}"/>
                                   <div class="section">
                                       <p class="">{{$cart_item->getWishRelation->name}} x {{$cart_item->qty}}</p>
-                                      <p class="">Rp{{$cart_item->total_price}}</p>
+                                      <p class="">Rp {{number_format($cart_item->total_price, 0, ',', '.')}}</p>
                                   </div>
                               </div>
                               <div class="deleteAdd" onclick="window.location='{{ url("/wish/delete-cart/".$cart_item->id)}}'">
@@ -116,7 +116,7 @@
                     <div class="columnB">
                         <div class="total">
                             <h2>Total</h2>
-                            <p class="">Rp{{$cart->total_price}}</p>
+                            <p class="">Rp {{number_format($cart->total_price, 0, ',', '.')}}</p>
                             <input type="hidden" name="total_price" value="{{$cart->total_price}}">
                             <input type="hidden" name="total_qty" value="{{$cart->total_qty}}">
                             <button type="submit" onclick="window.location='{{ url("/checkout")}}'">Checkout</button>

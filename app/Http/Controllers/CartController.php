@@ -59,13 +59,14 @@ class CartController extends Controller
             $cart_item->qty = $request->qty;
             $wish_price = $wish->price;
             $cart_item->total_price = $wish_price * $request->qty;
-            $cart_item->created_at = Carbon::now();
-            $cart_item->updated_at = Carbon::now();
-
+            $cart_item->created_at = Carbon::now()->format('Y-m-d H:i:s');
+            $cart_item->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+            $cart_item->save();
+            
             $cart->total_qty = $cart->total_qty + $cart_item->qty;
             $cart->total_price = $cart->total_price + $cart_item->total_price;
-            $cart->updated_at = Carbon::now();
-            $cart_item->save();
+            $cart->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+            $cart->save();
 
             return redirect('cart');
         }
@@ -78,8 +79,14 @@ class CartController extends Controller
             // $user = User::where('id', Auth::user()->id)->first();
             $user = User::where('id', 1)->first();
 
+            $cart = Cart::where('user_id', $user->id)->first();
             $cart_item = Cart_Item::where('id', $cart_item_id)->first();
             $cart_item->delete();
+
+            $cart->total_qty = $cart->total_qty - $cart_item->qty;
+            $cart->total_price = $cart->total_price - $cart_item->total_price;
+            $cart->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+            $cart->save();
 
             return redirect('cart');
         }

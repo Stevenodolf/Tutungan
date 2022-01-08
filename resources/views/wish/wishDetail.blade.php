@@ -53,7 +53,7 @@
                             <div class="progressBar"></div>
                         </div>
                         <div class="price">
-                            <h2>Rp{{$wish_price}}/box</h2>
+                            <h2>Rp {{number_format($wish_price, 0, ',', '.')}}/box</h2>
                         </div>
                         <div class="information">
                             <div class="row" style="display: flex;align-items: center;">
