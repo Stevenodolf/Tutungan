@@ -21,14 +21,14 @@
                         </p>
                     </div>
                     <div class="itemDetail">
-                        @foreach ($wishes as $wish)
+                        @foreach ($transaction_items as $transaction_item)
                             <div class="productDetail">
                                 <div class="detail">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                                    <img src="{{asset($transaction_item->getWishRelation->image)}}"/>
                                     <div>
-                                        <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>
-                                        <p class="contentSmall">5 Box</p>
-                                        <p class="contentNormal">Rp250.000</p>
+                                        <p class="contentSemiNormal">{{$transaction_item->getWishRelation->name}}</p>
+                                        <p class="contentSmall">{{$transaction_item->qty}}</p>
+                                        <p class="contentNormal">Rp {{number_format($transaction_item->total_price, 0, ',', '.')}}</p>
                                     </div>
                                 </div>
                                 <div class="shipmentDetail">
@@ -69,24 +69,24 @@
                         <div class="ringkasanHarga">
                             <div class="section">
                                 <p class="contentSemiNormal">Total Harga</p>
-                                <p class="contentSemiNormal">Rp.{{$transaction->total_price}}}</p>
+                                <p class="contentSemiNormal">Rp {{number_format($transaction->total_price, 0, ',', '.')}}</p>
                             </div>
                             <div class="section">
                                 <p class="contentSemiNormal">Origin to Indonesia</p>
-                                <p class="contentSemiNormal">Rp.100.000</p>
+                                <p class="contentSemiNormal">Rp 100.000</p>
                             </div>
                             <div class="section">
                                 <p class="contentSemiNormal">Indonesia to User</p>
-                                <p class="contentSemiNormal">Rp.20.000</p>
+                                <p class="contentSemiNormal">Rp 20.000</p>
                             </div>
                             <div class="section">
                                 <p class="contentSemiNormal">Asuransi</p>
-                                <p class="contentSemiNormal">Rp.2.500</p>
+                                <p class="contentSemiNormal">Rp 2.500</p>
                             </div>
                         </div>
                         <div class="ringkasanTotal">
                             <p class="contentSemiNormal">Total Tagihan</p>
-                            <p class="contentSemiNormal" style="color: red">Rp147.500</p>
+                            <p class="contentSemiNormal" style="color: red">Rp 147.500</p>
                         </div>
 
                         <button id="pilihPembayaran">Pilih Pembayaran</button>
