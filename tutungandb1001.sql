@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2022 at 08:40 AM
+-- Generation Time: Jan 10, 2022 at 04:35 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -30,12 +30,42 @@ SET time_zone = "+00:00";
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `wish_id` int(11) DEFAULT NULL,
-  `qty` int(11) NOT NULL DEFAULT 1,
+  `total_qty` int(11) NOT NULL DEFAULT 1,
   `total_price` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `user_id`, `total_qty`, `total_price`, `created_at`, `updated_at`) VALUES
+(1, 1, 55, 1240000, '2022-01-04 05:31:39', '2022-01-10 15:31:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_item`
+--
+
+CREATE TABLE `cart_item` (
+  `id` int(11) NOT NULL,
+  `cart_id` int(11) NOT NULL,
+  `wish_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `total_price` int(11) NOT NULL,
+  `created_at` date NOT NULL,
+  `updated_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart_item`
+--
+
+INSERT INTO `cart_item` (`id`, `cart_id`, `wish_id`, `qty`, `total_price`, `created_at`, `updated_at`) VALUES
+(13, 1, 2, 5, 495000, '2022-01-10', '2022-01-10'),
+(14, 1, 3, 50, 745000, '2022-01-10', '2022-01-10');
 
 -- --------------------------------------------------------
 
@@ -302,19 +332,35 @@ INSERT INTO `sub_status_transaksi` (`id`, `name`, `created_at`, `updated_at`) VA
 CREATE TABLE `transaction` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `wish_id` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
   `payment_date` datetime DEFAULT NULL,
-  `process_date` datetime DEFAULT NULL,
-  `shipping_date` datetime DEFAULT NULL,
-  `received_date` datetime DEFAULT NULL,
-  `finished_date` datetime DEFAULT NULL,
   `total_price` int(11) NOT NULL,
   `total_qty` int(11) NOT NULL,
-  `shipper_id` int(11) DEFAULT NULL,
+  `total_bayar` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction_item`
+--
+
+CREATE TABLE `transaction_item` (
+  `id` int(11) NOT NULL,
+  `transaction_id` int(11) NOT NULL,
+  `wish_id` int(11) NOT NULL,
+  `status_transaksi_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `total_price` int(11) NOT NULL,
+  `process_date` date DEFAULT NULL,
+  `shipping_date` date DEFAULT NULL,
+  `received_date` date DEFAULT NULL,
+  `finished_date` date DEFAULT NULL,
+  `shipper_id` int(11) DEFAULT NULL,
+  `created_at` date NOT NULL,
+  `updated_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -331,7 +377,7 @@ CREATE TABLE `user` (
   `phone_number` varchar(45) NOT NULL,
   `bod` datetime NOT NULL,
   `gender` int(11) DEFAULT NULL,
-  `address` varchar(200) NOT NULL,
+  `address` varchar(200) DEFAULT NULL,
   `disable` int(11) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -396,7 +442,7 @@ CREATE TABLE `wish` (
 INSERT INTO `wish` (`id`, `name`, `price`, `category_id`, `created_by`, `detail`, `image`, `origin`, `web_link`, `status_wish_id`, `status_transaksi_id`, `approved_by`, `reason_id`, `deadline`, `curr_qty`, `target_qty`, `min_order`, `created_at`, `updated_at`) VALUES
 (1, 'Hand Sanitizer', 10000, 9, 1, 'Saniter Hand Sanitizer', 'images/wish/wish1.jpg', 'China', 'https://www.alibaba.com/product-detail/Custom-private-labels-1L-70-75_1600087659880.html?spm=a2700.galleryofferlist.topad_classic.d_image.528a4921CiHtvK', 1, 1, NULL, NULL, '2022-01-24 08:36:45', 10, 100, 10, '2021-12-24 08:36:45', '2021-12-24 08:36:45'),
 (2, 'Botol Tupperware', 99000, 15, 1, 'Botol Minum Tupperware 1 Liter.', 'images/wish/wish2.jpg\n', 'Indonesia', 'https://www.alibaba.com/product-detail/Eco-friendly-reusable-travel-folding-bottle_1600172795151.html?spm=a2700.galleryofferlist.topad_classic.d_title.677567a4oSa2PS', 1, 1, NULL, NULL, '2022-01-14 08:49:58', 5, 100, 2, '2021-12-24 08:49:58', '2021-12-24 08:49:58'),
-(3, 'Tisu Basah', 14900, 19, 1, 'Tisu Basah Cussons Baby.\r\nAman untuk Bayi.', 'images/wish/wish3.jpg', 'China', 'https://www.alibaba.com/product-detail/Hot-selling-Custom-Baby-Wipes-20pcs_1600348248331.html?spm=a2700.galleryofferlist.normal_offer.d_image.5a776d37UW3oid&s=p', 1, 1, NULL, NULL, '2021-12-29 15:28:30', 50, 200, 20, '2021-12-24 09:28:30', '2021-12-24 09:28:30');
+(3, 'Tisu Basah', 14900, 19, 1, 'Tisu Basah Cussons Baby.\r\nAman untuk Bayi.', 'images/wish/wish3.jpg', 'China', 'https://www.alibaba.com/product-detail/Hot-selling-Custom-Baby-Wipes-20pcs_1600348248331.html?spm=a2700.galleryofferlist.normal_offer.d_image.5a776d37UW3oid&s=p', 1, 1, NULL, NULL, '2022-02-16 15:28:30', 50, 200, 20, '2021-12-24 09:28:30', '2021-12-24 09:28:30');
 
 --
 -- Indexes for dumped tables
@@ -407,8 +453,15 @@ INSERT INTO `wish` (`id`, `name`, `price`, `category_id`, `created_by`, `detail`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user_id_idx` (`user_id`),
-  ADD KEY `fk_wish_id_idx` (`wish_id`);
+  ADD KEY `fk_user_id_idx` (`user_id`);
+
+--
+-- Indexes for table `cart_item`
+--
+ALTER TABLE `cart_item`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_cart_id_idx` (`cart_id`) USING BTREE,
+  ADD KEY `fk_wish_id_idx` (`wish_id`) USING BTREE;
 
 --
 -- Indexes for table `category`
@@ -483,9 +536,17 @@ ALTER TABLE `sub_status_transaksi`
 --
 ALTER TABLE `transaction`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user_id_idx` (`user_id`),
-  ADD KEY `fk_wish_id_idx` (`wish_id`),
-  ADD KEY `fk_shipper_id_idx` (`shipper_id`);
+  ADD KEY `fk_user_id_idx` (`user_id`);
+
+--
+-- Indexes for table `transaction_item`
+--
+ALTER TABLE `transaction_item`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_transaction_id_idx` (`transaction_id`) USING BTREE,
+  ADD KEY `fk_wish_id_idx` (`wish_id`) USING BTREE,
+  ADD KEY `fk_shipper_id_idx` (`shipper_id`) USING BTREE,
+  ADD KEY `fk_status_transaksi_id_idx` (`status_transaksi_id`) USING BTREE;
 
 --
 -- Indexes for table `user`
@@ -521,7 +582,13 @@ ALTER TABLE `wish`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `cart_item`
+--
+ALTER TABLE `cart_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -551,7 +618,13 @@ ALTER TABLE `sub_status_transaksi`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `transaction_item`
+--
+ALTER TABLE `transaction_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -567,8 +640,14 @@ ALTER TABLE `users`
 -- Constraints for table `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `fk_cart_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `fl_cart_wish_id` FOREIGN KEY (`wish_id`) REFERENCES `wish` (`id`);
+  ADD CONSTRAINT `fk_cart_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `cart_item`
+--
+ALTER TABLE `cart_item`
+  ADD CONSTRAINT `fk_cart_items_cart_id` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`),
+  ADD CONSTRAINT `fk_cart_items_wish_id` FOREIGN KEY (`wish_id`) REFERENCES `wish` (`id`);
 
 --
 -- Constraints for table `review`
@@ -581,9 +660,16 @@ ALTER TABLE `review`
 -- Constraints for table `transaction`
 --
 ALTER TABLE `transaction`
-  ADD CONSTRAINT `fk_transaction_shipper_id` FOREIGN KEY (`shipper_id`) REFERENCES `shipper` (`id`),
-  ADD CONSTRAINT `fk_transaction_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `fk_transaction_wish_id` FOREIGN KEY (`wish_id`) REFERENCES `wish` (`id`);
+  ADD CONSTRAINT `fk_transaction_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `transaction_item`
+--
+ALTER TABLE `transaction_item`
+  ADD CONSTRAINT `fk_transaction_item_shipper_id` FOREIGN KEY (`shipper_id`) REFERENCES `shipper` (`id`),
+  ADD CONSTRAINT `fk_transaction_item_status_transaksi_id` FOREIGN KEY (`status_transaksi_id`) REFERENCES `status_transaksi` (`id`),
+  ADD CONSTRAINT `fk_transaction_item_transaction_id` FOREIGN KEY (`transaction_id`) REFERENCES `transaction` (`id`),
+  ADD CONSTRAINT `fk_transaction_item_wish_id` FOREIGN KEY (`wish_id`) REFERENCES `wish` (`id`);
 
 --
 -- Constraints for table `user`

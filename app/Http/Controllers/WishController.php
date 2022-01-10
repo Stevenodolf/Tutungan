@@ -127,18 +127,4 @@ class WishController extends Controller
 
         }
     }
-
-    public function checkOut(){
-        // $auth = Auth::check();
-        $auth = true;
-
-        if($auth){
-            // $user = User::where('id', Auth::user()->id)->first();
-            $user = User::where('id', 1)->first();
-
-            return view('checkout.checkout', ['auth' => $auth, 'user' => $user]);
-        }
-
-        return redirect('login');
-    }
 }
