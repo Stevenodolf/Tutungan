@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'HomeController@home');
+Route::get('/home', function(){
+    return redirect('/');
+});
 
 Route::get('/login', 'Auth\LoginController@getLogin')->name('login');
 Route::post('/login', 'Auth\LoginController@postLogin');
@@ -28,5 +31,7 @@ Route::get('/wish/{id}', 'WishController@wishDetail');
 Route::post('/wish/{id}', 'CartController@addCart');
 Route::get('/wish/delete-cart/{cart_item_id}', 'CartController@deleteCart');
 Route::get('/cart', 'CartController@cart');
+Route::post('/cart', 'CartController@postCart');
 
-Route::post('/checkout', 'TransactionController@checkOut');
+Route::get('/checkout', 'TransactionController@checkout');
+Route::post('/checkout', 'TransactionController@postCheckout');

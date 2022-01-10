@@ -8,6 +8,9 @@ use App\User;
 use App\Wish;
 use App\Cart;
 use App\Cart_Item;
+use App\Transaction;
+use App\Transaction_Item;
+use App\Shipper;
 use Carbon\Carbon;
 use Validator;
 
@@ -90,6 +93,41 @@ class CartController extends Controller
 
             return redirect('cart');
         }
+        return redirect('login');
+    }
+
+    public function postCart(Request $request){
+        // $auth = Auth::check();
+        $auth = true;
+
+        if($auth){
+            // $user = User::where('id', Auth::user()->id)->first();
+            $user = User::where('id', 1)->first();
+
+            $transaction = new Transaction;
+            $transaction->user_id = $user->id;
+            $transaction->total_price = $request->total_price;
+            $transaction->total_qty = $request->total_qty;
+            // $transaction->wish_id = $wishes->implode('wish_id', ',');
+            $transaction->save();
+
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+            foreach ($cart_items as $cart_item){
+                $transaction_item = new Transaction_Item;
+                $transaction_item->transaction_id = $transaction->id;
+                $transaction_item->wish_id = $cart_item->wish_id;
+                $transaction_item->status_transaksi_id = 1;
+                $transaction_item->qty = $cart_item->qty;
+                $transaction_item->total_price = $cart_item->total_price;
+                $transaction_item->created_at = Carbon::now()->format('Y-m-d H:i:s');
+                $transaction_item->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+                $transaction_item->save();
+            }
+
+            return redirect('checkout');
+        }
+
         return redirect('login');
     }
 }

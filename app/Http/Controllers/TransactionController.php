@@ -14,42 +14,42 @@ use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
-    public function checkOut(Request $request){
+    public function checkout(){
         // $auth = Auth::check();
         $auth = true;
 
         if($auth){
-            // $user = User::where('id', Auth::user()->id)->first();
             $user = User::where('id', 1)->first();
-
-            $transaction = new Transaction;
-            $transaction->user_id = $user->id;
-            $transaction->status_transaksi_id = 1;
-            $transaction->total_price = $request->total_price;
-            $transaction->total_qty = $request->total_qty;
-            // $transaction->wish_id = $wishes->implode('wish_id', ',');
-            $transaction->save();
-
-            $cart = Cart::where('user_id', $user->id)->first();
-            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
-            foreach ($cart_items as $cart_item){
-                $transaction_item = new Transaction_Item;
-                $transaction_item->transaction_id = $transaction->id;
-                $transaction_item->wish_id = $cart_item->wish_id;
-                $transaction_item->qty = $cart_item->qty;
-                $transaction_item->total_price = $cart_item->total_price;
-                $transaction_item->created_at = Carbon::now()->format('Y-m-d H:i:s');
-                $transaction_item->updated_at = Carbon::now()->format('Y-m-d H:i:s');
-                $transaction_item->save();
-            }
+            // $user = User::where('id', Auth->usser()->id)->first();
+            $transaction = Transaction::where('user_id', $user->id)->first();
 
             $transaction_items = Transaction_Item::where('transaction_id', $transaction->id)->get();
+            $jumlah_wish = Transaction_Item::where('transaction_id', $transaction->id)->count();
             $dshippers = Shipper::where('type', 'domestic')->get();
 
             return view('checkout.checkout', ['auth' => $auth, 'user' => $user, 'transaction_items' => $transaction_items,
-                                              'dshippers' => $dshippers, 'transaction' => $transaction]);
+                                              'dshippers' => $dshippers, 'transaction' => $transaction, 'jumlah_wish' => $jumlah_wish]);
         }
 
+        return redirect('login');
+    }
+
+    public function postCheckout(Request $request){
+        $auth = Auth::check();
+        $auth = true;
+
+        if($auth){
+            $user = User::where('id', 1)->first();
+            $transaction = Transaction::where('user_id', $user->id)->first();
+            $transaction->total_bayar = $request->total_bayar;
+
+            $transaction_items = Transaction_Item::where('status_transaksi_id', 1)->get();
+            foreach($transaction_items as $transaction_item){
+                $transaction_item->status_transaksi_id = 2;
+            }
+
+            return redirect('home');
+        }
         return redirect('login');
     }
 }

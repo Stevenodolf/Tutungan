@@ -9,7 +9,7 @@
         <div class="keranjang">
             <h1>Keranjang</h1>
             <div class="row">
-                <form method="POST" action="/checkout" enctype="multipart/form-data">
+                <form method="POST" action="/cart" enctype="multipart/form-data">
                     @csrf
                     {{ csrf_field() }}
                     <div class="columnA">
@@ -119,7 +119,7 @@
                             <p class="">Rp {{number_format($cart->total_price, 0, ',', '.')}}</p>
                             <input type="hidden" name="total_price" value="{{$cart->total_price}}">
                             <input type="hidden" name="total_qty" value="{{$cart->total_qty}}">
-                            <button type="submit" onclick="window.location='{{ url("/checkout")}}'">Checkout</button>
+                            <button type="submit">Checkout</button>
                         </div>
                     </div>
                 </form>
