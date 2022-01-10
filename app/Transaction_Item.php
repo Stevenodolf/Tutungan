@@ -15,4 +15,8 @@ class Transaction_Item extends Model
     public function getWishRelation(){
         return $this->hasOne('App\Wish', 'id', 'wish_id');
     }
+
+    public function getShipperRelation(){
+        return $this->hasOne('App\Shipper', 'id', 'shipper_id');
+    }
 }

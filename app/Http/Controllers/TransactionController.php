@@ -6,31 +6,50 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Cart;
+use App\Cart_Item;
 use App\Transaction;
+use App\Transaction_Item;
+use App\Shipper;
 use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
-    public function checkOut(Request $request){
+    public function checkout(){
         // $auth = Auth::check();
         $auth = true;
 
         if($auth){
-            // $user = User::where('id', Auth::user()->id)->first();
             $user = User::where('id', 1)->first();
+            // $user = User::where('id', Auth->usser()->id)->first();
+            $transaction = Transaction::where('user_id', $user->id)->first();
 
-            $transaction = new Transaction;
-            $transaction->user_id = $user->id;
-            $transaction->status_transaksi_id = 1;
-            $transaction->total_price = $request->total_price;
-            $transaction->total_qty = $request->total_qty;
-            $transaction->wish_id = Cart::where('user_id', $user->id)->get('wish_id')->toArray();
-            // $transaction->wish_id = $wishes->implode('wish_id', ',');
-            $transaction->save();
+            $transaction_items = Transaction_Item::where('transaction_id', $transaction->id)->get();
+            $jumlah_wish = Transaction_Item::where('transaction_id', $transaction->id)->count();
+            $dshippers = Shipper::where('type', 'domestic')->get();
 
-            return view('checkout.checkout', ['auth' => $auth, 'user' => $user]);
+            return view('checkout.checkout', ['auth' => $auth, 'user' => $user, 'transaction_items' => $transaction_items,
+                                              'dshippers' => $dshippers, 'transaction' => $transaction, 'jumlah_wish' => $jumlah_wish]);
         }
 
+        return redirect('login');
+    }
+
+    public function postCheckout(Request $request){
+        $auth = Auth::check();
+        $auth = true;
+
+        if($auth){
+            $user = User::where('id', 1)->first();
+            $transaction = Transaction::where('user_id', $user->id)->first();
+            $transaction->total_bayar = $request->total_bayar;
+
+            $transaction_items = Transaction_Item::where('status_transaksi_id', 1)->get();
+            foreach($transaction_items as $transaction_item){
+                $transaction_item->status_transaksi_id = 2;
+            }
+
+            return redirect('home');
+        }
         return redirect('login');
     }
 }

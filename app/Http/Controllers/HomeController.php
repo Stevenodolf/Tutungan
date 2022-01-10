@@ -43,7 +43,7 @@ class HomeController extends Controller
         $categories = Category::all();
 
         //for you
-        $for_you = Wish::inRandomOrder()->get();
+        $for_you = Wish::where('deadline', '>', Carbon::now())->inRandomOrder()->get();
 
         return view('home.home', ['auth' => $auth, 'wishes' => $wishes,
                              'categories' => $categories, 'for_you' => $for_you]);

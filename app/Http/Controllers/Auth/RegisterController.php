@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Cart;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -124,11 +125,18 @@ class RegisterController extends Controller
         $user->address = NULL;
         $user->disable = 0;
         $user->timestamps();
-
         $user->save();
         
         $data = $request->only('username', 'password');
         $auth = Auth::attempt($data);
+
+
+        $cart = new Cart;
+        $cart->user_id = $user->id;
+        $cart->total_price = 0;
+        $cart->total_qty = 0;
+        $cart->timestamp();
+        $cart->save();
 
         return view('login.login', ['auth' => $auth, 'user' => $user]);
     }

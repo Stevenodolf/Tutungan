@@ -9,7 +9,7 @@
         <div class="keranjang">
             <h1>Keranjang</h1>
             <div class="row">
-                <form method="POST" action="/checkout" enctype="multipart/form-data">
+                <form method="POST" action="/cart" enctype="multipart/form-data">
                     @csrf
                     {{ csrf_field() }}
                     <div class="columnA">
@@ -28,7 +28,7 @@
                                   <img src="{{asset($cart_item->getWishRelation->image)}}"/>
                                   <div class="section">
                                       <p class="">{{$cart_item->getWishRelation->name}} x {{$cart_item->qty}}</p>
-                                      <p class="">Rp{{$cart_item->total_price}}</p>
+                                      <p class="">Rp {{number_format($cart_item->total_price, 0, ',', '.')}}</p>
                                   </div>
                               </div>
                               <div class="deleteAdd" onclick="window.location='{{ url("/wish/delete-cart/".$cart_item->id)}}'">
@@ -116,10 +116,10 @@
                     <div class="columnB">
                         <div class="total">
                             <h2>Total</h2>
-                            <p class="">Rp{{$cart->total_price}}</p>
+                            <p class="">Rp {{number_format($cart->total_price, 0, ',', '.')}}</p>
                             <input type="hidden" name="total_price" value="{{$cart->total_price}}">
                             <input type="hidden" name="total_qty" value="{{$cart->total_qty}}">
-                            <button type="submit" onclick="window.location='{{ url("/checkout")}}'">Checkout</button>
+                            <button type="submit">Checkout</button>
                         </div>
                     </div>
                 </form>
