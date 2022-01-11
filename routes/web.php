@@ -13,25 +13,45 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('detailAkun.detailAkun');
-// });
+ Route::get('/', function () {
+     return view('detailAkun.detailAkunTemplate');
+ });
 
-Route::get('/', 'HomeController@home');
-Route::get('/home', function(){
-    return redirect('/');
+ Route::get('/wishsaya', function () {
+     return view('detailAkun.wishSaya');
+ });
+
+ Route::get('/profil', function () {
+    return view('detailAkun.profil');
+ });
+
+ Route::get('/alamatpengiriman', function () {
+    return view('detailAkun.alamatPengiriman');
+ });
+
+Route::get('/kartukreditdebit', function () {
+    return view('detailAkun.kartuKreditDebit');
 });
 
-Route::get('/login', 'Auth\LoginController@getLogin')->name('login');
-Route::post('/login', 'Auth\LoginController@postLogin');
-Route::get('/register', 'Auth\RegisterController@getRegister')->name('register');
-Route::post('/register', 'Auth\RegisterController@postRegister');
+Route::get('/ubahpassword', function () {
+    return view('detailAkun.ubahPassword');
+});
 
-Route::get('/wish/{id}', 'WishController@wishDetail');
-Route::post('/wish/{id}', 'CartController@addCart');
-Route::get('/wish/delete-cart/{cart_item_id}', 'CartController@deleteCart');
-Route::get('/cart', 'CartController@cart');
-Route::post('/cart', 'CartController@postCart');
-
-Route::get('/checkout', 'TransactionController@checkout');
-Route::post('/checkout', 'TransactionController@postCheckout');
+//Route::get('/', 'HomeController@home');
+//Route::get('/home', function(){
+//    return redirect('/');
+//});
+//
+//Route::get('/login', 'Auth\LoginController@getLogin')->name('login');
+//Route::post('/login', 'Auth\LoginController@postLogin');
+//Route::get('/register', 'Auth\RegisterController@getRegister')->name('register');
+//Route::post('/register', 'Auth\RegisterController@postRegister');
+//
+//Route::get('/wish/{id}', 'WishController@wishDetail');
+//Route::post('/wish/{id}', 'CartController@addCart');
+//Route::get('/wish/delete-cart/{cart_item_id}', 'CartController@deleteCart');
+//Route::get('/cart', 'CartController@cart');
+//Route::post('/cart', 'CartController@postCart');
+//
+//Route::get('/checkout', 'TransactionController@checkout');
+//Route::post('/checkout', 'TransactionController@postCheckout');
