@@ -17,24 +17,24 @@ use Illuminate\Support\Facades\Route;
      return view('detailAkun.detailAkunTemplate');
  });
 
- Route::get('/wishsaya', function () {
-     return view('detailAkun.wishSaya');
- });
-
  Route::get('/profil', function () {
-    return view('detailAkun.profil');
+    return view('detailAkun.akunSaya.profil');
  });
 
  Route::get('/alamatpengiriman', function () {
-    return view('detailAkun.alamatPengiriman');
+    return view('detailAkun.akunSaya.alamatPengiriman');
  });
 
 Route::get('/kartukreditdebit', function () {
-    return view('detailAkun.kartuKreditDebit');
+    return view('detailAkun.akunSaya.kartuKreditDebit');
 });
 
 Route::get('/ubahpassword', function () {
-    return view('detailAkun.ubahPassword');
+    return view('detailAkun.akunSaya.ubahPassword');
+});
+
+Route::get('/wishsaya', function () {
+    return view('detailAkun.wishSaya.wishSaya');
 });
 
 //Route::get('/', 'HomeController@home');

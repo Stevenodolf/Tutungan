@@ -1637,6 +1637,80 @@ button{
             }
         }
     }
+    .contentV2{
+        //display: flex;
+        width: 910px;
+        height: 161px;
+        background: #FFFFFF;
+        border: 1px solid rgba(49, 53, 59, 0.2);
+        //box-sizing: border-box;
+        box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+        border-radius: 5px;
+        //padding: 30px;
+        .upperSection{
+            display: flex;
+            height: 78px;
+            //background: #007aff;
+            .filter{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 130px;
+                //background: #ff9900;
+                border-top: 8px solid #000000;
+                .contentSemiBig{
+                    font-weight: 500;
+                    text-align: center;
+                }
+            }
+        }
+        .lowerSection{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 83px;
+            //background: #9933ff;
+            .searchbar{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                width: 880px;
+                height: 46px;
+                border-radius: 5px;
+                border: 1px solid #C4C4C4;
+                input{
+                    width: 835px;
+                    padding: 13px 15px;
+                    margin: 0 2px;
+                    border-radius: 5px 0 0 5px;
+                    border: none;
+                    //padding: 0 5px 0 5px;
+                    //border: 1px solid #31353B;
+                    //outline: none;
+                }
+
+                button{
+                    border: none;
+                    height: 46px;
+                    width: 46px;
+                    border-radius: 0 5px 5px 0;
+                //    position: absolute;
+                //    border: none;
+                //    border-left: 1px solid rgba($color: #31353B, $alpha: 0.2);
+                //    background-color: transparent;
+                }
+
+                //input:focus{
+                //    outline: none;
+                //    border-color: #F5D108;
+                //}
+
+            }
+            .searchbar:focus{
+                border-color: #F5D108;
+            }
+        }
+    }
 }
 
 .popUpTambahAlamat{
