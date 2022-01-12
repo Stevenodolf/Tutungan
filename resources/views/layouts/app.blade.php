@@ -130,7 +130,9 @@
                 <button class="buttonWithImage" onclick="openLoginPopup();"><img src="{{asset('images/bell.png')}}"></button>
                 <div class="buttonLoginRegister">
                     <button class="buttonLogin" onclick="openLoginPopup();">Masuk</button>
-                    <button class="buttonRegister">Daftar</button>
+                    <form method="GET" action="{{url('/register')}}">
+                        <button type="submit" class="buttonRegister">Daftar</button>
+                    </form>
                 </div>
             @else
                 <div class="dropdownKeranjang">
@@ -299,9 +301,9 @@
         </form>
         <div class="daftarSection">
             <p class="">Baru di Tutungan?</p>
-            <button>
-                <p class="">Daftar</p>
-            </button>
+            <a href="{{url('/register')}}">
+                <p class="contentSemiBig">Daftar</p>
+            </a>
         </div>
     </div>
 </div>
