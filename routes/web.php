@@ -12,20 +12,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//
 // Route::get('/', function () {
 //     return view('detailAkun.detailAkun');
 // });
 
-Route::get('/', 'HomeController@home');
+Route::get('/', 'HomeController@home')->name('home');
+
 Route::get('/home', function(){
     return redirect('/');
 });
 
-Route::get('/login', 'Auth\LoginController@getLogin')->name('login');
-Route::post('/login', 'Auth\LoginController@postLogin');
-Route::get('/register', 'Auth\RegisterController@getRegister')->name('register');
-Route::post('/register', 'Auth\RegisterController@postRegister');
+Route::get('/login', 'AuthController@showLoginPage');
+Route::post('/login', 'AuthController@postLogin')->name('postLogin');
+//Route::get('/register', 'Auth\RegisterController@getRegister')->name('register');
+//Route::post('/register', 'Auth\RegisterController@postRegister');
+Route::get('/logout','AuthController@logout')->name('logout');
 
 Route::get('/wish/{id}', 'WishController@wishDetail');
 Route::post('/wish/{id}', 'CartController@addCart');
