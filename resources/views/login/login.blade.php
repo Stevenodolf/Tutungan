@@ -31,9 +31,9 @@
             </form>
             <div class="daftarSection">
                 <p class="contentSemiBig">Baru di Tutungan?</p>
-                <button>
+                <a href="{{url('/register')}}">
                     <p class="contentSemiBig">Daftar</p>
-                </button>
+                </a>
             </div>
         </div>
     </div>

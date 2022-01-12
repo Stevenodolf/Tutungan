@@ -23,10 +23,10 @@ Route::get('/home', function(){
     return redirect('/');
 });
 
-Route::get('/login', 'AuthController@showLoginPage');
+Route::get('/login', 'AuthController@showLoginPage')->name('getLogin');
 Route::post('/login', 'AuthController@postLogin')->name('postLogin');
-//Route::get('/register', 'Auth\RegisterController@getRegister')->name('register');
-//Route::post('/register', 'Auth\RegisterController@postRegister');
+Route::get('/register', 'AuthController@showRegisterPage')->name('getRegister');
+Route::post('/register', 'AuthController@postRegister') ->name('postRegister');
 Route::get('/logout','AuthController@logout')->name('logout');
 
 Route::get('/wish/{id}', 'WishController@wishDetail');

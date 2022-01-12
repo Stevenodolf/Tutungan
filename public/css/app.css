@@ -107,6 +107,28 @@ button {
   color: rgba(49, 53, 59, 0.8);
 }
 
+.firstRegister .registerContainer .section #day,
+.firstRegister .registerContainer .section #year {
+  height: 45px;
+  width: 125px;
+  padding: 5px;
+}
+
+.firstRegister .registerContainer .section #month {
+  height: 45px;
+  width: 145px;
+  padding: 5px;
+}
+
+.firstRegister .registerContainer .section select {
+  border: 1px solid rgba(49, 53, 59, 0.15);
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  height: 45px;
+  padding: 5px;
+}
+
 .firstRegister .registerContainer .section input {
   width: 100%;
   height: 50px;
@@ -376,7 +398,7 @@ button {
   margin-top: 25px;
 }
 
-.login .loginContainer .daftarSection button {
+.login .loginContainer .daftarSection a {
   background-color: transparent;
   color: #D5B81B;
   border: none;
@@ -462,7 +484,7 @@ button {
   margin-top: 25px;
 }
 
-.loginPopUp .daftarSection button {
+.loginPopUp .daftarSection a {
   background-color: transparent;
   color: #D5B81B;
   border: none;
@@ -706,6 +728,11 @@ button {
   height: 30px;
 }
 
+.navbar .buttonLoginRegister {
+  display: flex;
+  justify-content: space-between;
+}
+
 .navbar .buttonLoginRegister .buttonLogin {
   width: 70px;
   height: 36px;
@@ -713,6 +740,7 @@ button {
   color: #F5D108;
   background-color: transparent;
   cursor: pointer;
+  margin-right: 15px;
 }
 
 .navbar .buttonLoginRegister .buttonRegister {
