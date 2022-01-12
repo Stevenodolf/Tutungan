@@ -77,6 +77,33 @@ button {
   font-size: 36px;
 }
 
+.statusGreen {
+  font-size: 14px;
+  font-weight: 800;
+  color: #57B793;
+  background: #DEFDE0;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.statusYellow {
+  font-size: 14px;
+  font-weight: 800;
+  color: #C8774A;
+  background: #FCEEB8;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.statusRed {
+  font-size: 14px;
+  font-weight: 800;
+  color: #DC354F;
+  background: #FBEBEF;
+  padding: 8px;
+  border-radius: 5px;
+}
+
 .firstRegister {
   min-height: 100vh;
   width: 100%;
@@ -1436,7 +1463,7 @@ button {
 
 .detailAkun {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .detailAkun .sideMenu {
@@ -1773,6 +1800,15 @@ button {
 }
 
 .detailAkun .contentV2 {
+  display: flex;
+  width: 910px;
+  margin-left: 45px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.detailAkun .contentV2 .filterSection {
   width: 910px;
   height: 161px;
   background: #FFFFFF;
@@ -1781,32 +1817,33 @@ button {
   border-radius: 5px;
 }
 
-.detailAkun .contentV2 .upperSection {
+.detailAkun .contentV2 .filterSection .upperSection {
   display: flex;
   height: 78px;
 }
 
-.detailAkun .contentV2 .upperSection .filter {
+.detailAkun .contentV2 .filterSection .upperSection .filter {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 130px;
   border-top: 8px solid #000000;
+  cursor: pointer;
 }
 
-.detailAkun .contentV2 .upperSection .filter .contentSemiBig {
+.detailAkun .contentV2 .filterSection .upperSection .filter .contentSemiBig {
   font-weight: 500;
   text-align: center;
 }
 
-.detailAkun .contentV2 .lowerSection {
+.detailAkun .contentV2 .filterSection .lowerSection {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 83px;
 }
 
-.detailAkun .contentV2 .lowerSection .searchbar {
+.detailAkun .contentV2 .filterSection .lowerSection .searchbar {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -1816,7 +1853,7 @@ button {
   border: 1px solid #C4C4C4;
 }
 
-.detailAkun .contentV2 .lowerSection .searchbar input {
+.detailAkun .contentV2 .filterSection .lowerSection .searchbar input {
   width: 835px;
   padding: 13px 15px;
   margin: 0 2px;
@@ -1824,15 +1861,156 @@ button {
   border: none;
 }
 
-.detailAkun .contentV2 .lowerSection .searchbar button {
+.detailAkun .contentV2 .filterSection .lowerSection .searchbar button {
   border: none;
   height: 46px;
   width: 46px;
   border-radius: 0 5px 5px 0;
 }
 
-.detailAkun .contentV2 .lowerSection .searchbar:focus {
+.detailAkun .contentV2 .filterSection .lowerSection .searchbar:focus {
   border-color: #F5D108;
+}
+
+.detailAkun .contentV2 .wishSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 910px;
+  margin-top: 15px;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell {
+  display: flex;
+  justify-content: center;
+  width: 910px;
+  height: 249px;
+  background: #FFFFFF;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 21px 27px 21px 27px;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 11px;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .header .textWishMaker {
+  font-weight: 800;
+  margin-right: 11px;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .header .contentSmall {
+  font-family: "latobold";
+  margin-right: 11px;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 24px;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail img {
+  width: 118px;
+  height: 118px;
+  border-radius: 5px;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 723px;
+  height: 118px;
+  margin-left: 15px;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .wishInfo {
+  width: 387px;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .wishInfo .contentSemiNormal {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .wishInfo .contentSmall {
+  font-family: "latoregular";
+  color: #808080;
+  font-weight: 400;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator {
+  width: 723px;
+  height: 64px;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator .contentSmall {
+  font-family: "latoregular";
+  color: #b1b1b1;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator .progressNumber {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 7px;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator .progressNumber .contentBig {
+  font-family: "latobold";
+  color: #b1b1b1;
+  margin-right: 4px;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator .progressNumber .textCurrentProgress {
+  color: #D5B81B;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator .progressBar {
+  width: 723px;
+  height: 11px;
+  background: #FFF09E;
+  border-radius: 5px;
+  position: relative;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator .progressBar .currentBar {
+  width: 20%;
+  height: 100%;
+  background: #D5B81B;
+  border-radius: 5px;
+  position: absolute;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .edit {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .edit .buttonOnEdit {
+  font-family: "latobold";
+  color: #57B793;
+  margin-right: 11px;
+  cursor: pointer;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .edit .separator {
+  font-family: "lato";
+  color: #b1b1b1;
+  margin-right: 11px;
 }
 
 .popUpTambahAlamat {

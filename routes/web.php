@@ -47,7 +47,7 @@ Route::get('/wishsaya', function () {
 //Route::get('/register', 'Auth\RegisterController@getRegister')->name('register');
 //Route::post('/register', 'Auth\RegisterController@postRegister');
 //
-//Route::get('/wish/{id}', 'WishController@wishDetail');
+Route::get('/wish/{id}', 'WishController@wishDetail');
 //Route::post('/wish/{id}', 'CartController@addCart');
 //Route::get('/wish/delete-cart/{cart_item_id}', 'CartController@deleteCart');
 //Route::get('/cart', 'CartController@cart');

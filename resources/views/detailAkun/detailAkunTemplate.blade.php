@@ -19,16 +19,16 @@
                     </div>
                     <div class="subList">
                         <div class="list">
-                            <p href="profil" class="contentSemiBig">Profil</p>
+                            <p class="contentSemiBig">Profil</p>
                         </div>
                         <div class="list">
-                            <p href="alamatPengiriman" class="contentSemiBig">Alamat Pengiriman</p>
+                            <p class="contentSemiBig">Alamat Pengiriman</p>
                         </div>
                         <div class="list">
-                            <p href="kartuKreditDebit" class="contentSemiBig">Kartu Kredit/Debit</p>
+                            <p class="contentSemiBig">Kartu Kredit/Debit</p>
                         </div>
                         <div class="list">
-                            <p href="ubahPassword" class="contentSemiBig">Ubah Password</p>
+                            <p class="contentSemiBig">Ubah Password</p>
                         </div>
                     </div>
                     <div class="list">
