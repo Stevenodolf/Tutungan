@@ -32,7 +32,7 @@ class HomeController extends Controller
             //header user info
             $user = User::where('id', Auth::user()->id)->first();
         }
-        
+
         $wishes = Wish::all();
 
         //last minute

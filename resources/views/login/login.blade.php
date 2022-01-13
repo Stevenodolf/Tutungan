@@ -10,7 +10,8 @@
             <div class="title">
                 <h1>Masuk</h1>
             </div>
-            <form class="section">
+            <form class="section" method="POST">
+                {{ csrf_field() }}
                 <div class="field">
                     <p class="">Email</p>
                     <input name="email" type="text" id="email" placeholder="ex:youremail@tutungan.com" required>
@@ -24,15 +25,15 @@
                         </button>
                     </div>
                 </div>
-                <button class="buttonMasuk" type="submit" action="{{ url('/home')}}">
+                <button class="buttonMasuk" type="submit">
                     <p class="contentSemiBig">Masuk</p>
                 </button>
             </form>
             <div class="daftarSection">
                 <p class="contentSemiBig">Baru di Tutungan?</p>
-                <button>
+                <a href="{{url('/register')}}">
                     <p class="contentSemiBig">Daftar</p>
-                </button>
+                </a>
             </div>
         </div>
     </div>

@@ -122,6 +122,24 @@ button{
                 margin-bottom: 10px;
                 color: rgba(49, 53, 59, 0.8);
             }
+            #day, #year{
+                height: 45px;
+                width: 125px;
+                padding: 5px;
+            }
+            #month{
+                height: 45px;
+                width: 145px;
+                padding: 5px;
+            }
+            select{
+                border: 1px solid rgba(49, 53, 59, 0.15);
+                box-sizing: border-box;
+                border-radius: 5px;
+                width: 100%;
+                height: 45px;
+                padding: 5px;
+            }
             input{
                 width: 100%;
                 height: 50px;
@@ -358,7 +376,7 @@ button{
             justify-content: center;
             align-items: baseline;
             margin-top: 25px;
-            button{
+            a{
                 background-color: transparent;
                 color: #D5B81B;
                 border: none;
@@ -435,7 +453,7 @@ button{
         justify-content: center;
         align-items: baseline;
         margin-top: 25px;
-        button{
+        a{
             background-color: transparent;
             color: #D5B81B;
             border: none;
@@ -459,7 +477,7 @@ button{
             position: absolute;
             min-width: 160px;
             margin-top: 5px;
-            z-index: 1;
+            z-index: 2;
             //display: flex;
             flex-direction: column;
             background: #FFFFFF;
@@ -650,6 +668,8 @@ button{
         }
     }
     .buttonLoginRegister{
+        display: flex;
+        justify-content: space-between;
         .buttonLogin{
             width: 70px;
             height: 36px;
@@ -657,6 +677,7 @@ button{
             color: #F5D108;
             background-color: transparent;
             cursor: pointer;
+            margin-right: 15px;
         }
         .buttonRegister{
             width: 70px;

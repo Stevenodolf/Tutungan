@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- Route::get('/', function () {
-     return view('detailAkun.detailAkunTemplate');
- });
+
+//  Route::get('/', function () {
+//      return view('detailAkun.detailAkunTemplate');
+//  });
 
  Route::get('/profil', function () {
     return view('detailAkun.akunSaya.profil');
@@ -36,6 +37,24 @@ Route::get('/ubahpassword', function () {
 Route::get('/wishsaya', function () {
     return view('detailAkun.wishSaya.wishSaya');
 });
+
+//
+// Route::get('/', function () {
+//     return view('detailAkun.detailAkun');
+// });
+
+Route::get('/', 'HomeController@home')->name('home');
+
+Route::get('/home', function(){
+    return redirect('/');
+});
+
+Route::get('/login', 'AuthController@showLoginPage')->name('getLogin');
+Route::post('/login', 'AuthController@postLogin')->name('postLogin');
+Route::get('/register', 'AuthController@showRegisterPage')->name('getRegister');
+Route::post('/register', 'AuthController@postRegister') ->name('postRegister');
+Route::get('/logout','AuthController@logout')->name('logout');
+
 
 //Route::get('/', 'HomeController@home');
 //Route::get('/home', function(){

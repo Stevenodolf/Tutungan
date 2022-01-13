@@ -55,83 +55,145 @@
             <div class="logo" onclick="window.location='{{ url("/")}}'">
                 <img src="{{asset('images/tutunganLogo.png')}}">
             </div>
-            <div class="locationSection">
-                <img src="{{asset('images/location.png')}}">
-                <div class="locationText">
-                    <p>Dikirim ke</p>
-                    <p>Indonesia</p>
+            @guest
+                <div class="locationSection" onclick="openLoginPopup();">
+                    <img src="{{asset('images/location.png')}}">
+                    <div class="locationText">
+                        <p>Dikirim ke</p>
+                        <p>Indonesia</p>
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="locationSection">
+                    <img src="{{asset('images/location.png')}}">
+                    <div class="locationText">
+                        <p>Dikirim ke</p>
+                        <p>Indonesia</p>
+                    </div>
+                </div>
+            @endguest
             <form class="searchbar">
                 <input type="text" placeholder="Search here...">
                 <button><img src="{{asset('images/search.png')}}"></button>
             </form>
-            <div class="dropdownKeranjang">
-                <button class="buttonWithImage" onclick="window.location='{{ url("/cart")}}'"><img src="{{asset('images/shopping-cart.png')}}"></button>
-                <div class="dropdownList">
-                    <div class="title">
-                        <p class="contentSemiNormal">Keranjang Anda</p>
-                        <button>
-                            <p class="contentSemiNormal">Lihat Semua</p>
-                        </button>
-                    </div>
-                    <div class="content">
-                        <div class="sectionPicture">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}">
-                            <div class="sectionText">
-                                <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgic...</p>
-                                <p class="contentSmall">5 pcs</p>
-                            </div>
-                        </div>
-                        <div class="section">
-                            <p class="contentSemiNormal">Rp50.000</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="dropdownNotifikasi">
-                <button class="buttonWithImage"><img src="{{asset('images/bell.png')}}"></button>
-                <div class="dropdownList">
-                    <div class="title">
-                        <p class="contentSemiNormal">Notifikasi</p>
-                        <button>
-                            <p class="contentSemiNormal">Lihat Semua</p>
-                        </button>
-                    </div>
-                    <div class="content">
-                        <img src="{{asset('images/dummyProduct.jpeg')}}">
-                        <div class="sectionText">
-                            <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">Transaksi Dibatalkan</p>
-                            <p class="contentSemiNormal">Transaksi anda telah dibatalkan, ketuk untuk lihat lebih lanjut.</p>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <img src="{{asset('images/dummyProduct.jpeg')}}">
-                        <div class="sectionText">
-                            <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">Pesanan sudah sampai tujuan!</p>
-                            <p class="contentSemiNormal">Terima kasih sudah menggunakan layanan Tutungan!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+{{--            <div class="dropdownKeranjang">--}}
+{{--                <button class="buttonWithImage" onclick="window.location='{{ url("/cart")}}'"><img src="{{asset('images/shopping-cart.png')}}"></button>--}}
+{{--                <div class="dropdownList">--}}
+{{--                    <div class="title">--}}
+{{--                        <p class="contentSemiNormal">Keranjang Anda</p>--}}
+{{--                        <button>--}}
+{{--                            <p class="contentSemiNormal">Lihat Semua</p>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                    <div class="content">--}}
+{{--                        <div class="sectionPicture">--}}
+{{--                            <img src="{{asset('images/dummyProduct.jpeg')}}">--}}
+{{--                            <div class="sectionText">--}}
+{{--                                <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgic...</p>--}}
+{{--                                <p class="contentSmall">5 pcs</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="section">--}}
+{{--                            <p class="contentSemiNormal">Rp50.000</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="dropdownNotifikasi">--}}
+{{--                <button class="buttonWithImage"><img src="{{asset('images/bell.png')}}"></button>--}}
+{{--                <div class="dropdownList">--}}
+{{--                    <div class="title">--}}
+{{--                        <p class="contentSemiNormal">Notifikasi</p>--}}
+{{--                        <button>--}}
+{{--                            <p class="contentSemiNormal">Lihat Semua</p>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                    <div class="content">--}}
+{{--                        <img src="{{asset('images/dummyProduct.jpeg')}}">--}}
+{{--                        <div class="sectionText">--}}
+{{--                            <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">Transaksi Dibatalkan</p>--}}
+{{--                            <p class="contentSemiNormal">Transaksi anda telah dibatalkan, ketuk untuk lihat lebih lanjut.</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="content">--}}
+{{--                        <img src="{{asset('images/dummyProduct.jpeg')}}">--}}
+{{--                        <div class="sectionText">--}}
+{{--                            <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">Pesanan sudah sampai tujuan!</p>--}}
+{{--                            <p class="contentSemiNormal">Terima kasih sudah menggunakan layanan Tutungan!</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
             @guest
+                <button class="buttonWithImage" onclick="openLoginPopup();"><img src="{{asset('images/shopping-cart.png')}}"></button>
+                <button class="buttonWithImage" onclick="openLoginPopup();"><img src="{{asset('images/bell.png')}}"></button>
                 <div class="buttonLoginRegister">
-                    <button class="buttonLogin" id="buttonLogin">Masuk</button>
-                    <button class="buttonRegister">Daftar</button>
+                    <button class="buttonLogin" onclick="openLoginPopup();">Masuk</button>
+                    <form method="GET" action="{{url('/register')}}">
+                        <button type="submit" class="buttonRegister">Daftar</button>
+                    </form>
                 </div>
             @else
+                <div class="dropdownKeranjang">
+                    <button class="buttonWithImage" ><img src="{{asset('images/shopping-cart.png')}}"></button>
+                    <div class="dropdownList" id="dropdownKeranjang">
+                        <div class="title">
+                            <p class="contentSemiNormal">Keranjang Anda</p>
+                            <button onclick="window.location='{{ url("/cart")}}'">
+                                <p class="contentSemiNormal">Lihat Semua</p>
+                            </button>
+                        </div>
+                        <div class="content">
+                            <div class="sectionPicture">
+                                <img src="{{asset('images/dummyProduct.jpeg')}}">
+                                <div class="sectionText">
+                                    <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgic...</p>
+                                    <p class="contentSmall">5 pcs</p>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <p class="contentSemiNormal">Rp50.000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdownNotifikasi">
+                    <button class="buttonWithImage"><img src="{{asset('images/bell.png')}}"></button>
+                    <div class="dropdownList" id="dropdownNotif">
+                        <div class="title">
+                            <p class="contentSemiNormal">Notifikasi</p>
+                            <button>
+                                <p class="contentSemiNormal">Lihat Semua</p>
+                            </button>
+                        </div>
+                        <div class="content">
+                            <img src="{{asset('images/dummyProduct.jpeg')}}">
+                            <div class="sectionText">
+                                <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">Transaksi Dibatalkan</p>
+                                <p class="contentSemiNormal">Transaksi anda telah dibatalkan, ketuk untuk lihat lebih lanjut.</p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <img src="{{asset('images/dummyProduct.jpeg')}}">
+                            <div class="sectionText">
+                                <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">Pesanan sudah sampai tujuan!</p>
+                                <p class="contentSemiNormal">Terima kasih sudah menggunakan layanan Tutungan!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <button class="buttonAddWish">
                     <img src="{{asset('images/plusBlack.png')}}">
                     Wish
                 </button>
                 <div class="dropdownProfil">
-                    <button class="buttonUser">
+                    <button class="buttonUser" onclick="openUserDropdown();">
                         <img src="{{asset('images/dummyUser.png')}}">
                         <p class="contentNormal">Steven Yuwono</p>
                         <img id="arrowUser" src="{{asset('images/arrowDownBlack.png')}}">
                     </button>
-                    <div class="dropdownList">
+                    <div class="dropdownList" id="dropdownList">
                         <button>
                             <p class="contentSemiNormal">Akun Saya</p>
                         </button>
@@ -141,9 +203,11 @@
                         <button>
                             <p class="contentSemiNormal">Transaksi Saya</p>
                         </button>
-                        <button>
-                            <p class="contentSemiNormal">Logout</p>
-                        </button>
+                        <form method="GET" action="{{route('logout')}}">
+                            <button type="submit">
+                                <p class="contentSemiNormal">Logout</p>
+                            </button>
+                        </form>
                     </div>
                 </div>
             @endguest
@@ -216,7 +280,8 @@
                 <img src="{{asset('images/close.png')}}"/>
             </button>
         </div>
-        <form class="loginSection">
+        <form class="loginSection" method="POST" action="{{route('postLogin')}}">
+            {{ csrf_field() }}
             <div class="field">
                 <p class="">Email</p>
                 <input name="email" type="text" id="email" placeholder="ex:youremail@tutungan.com" required>
@@ -230,15 +295,15 @@
                     </button>
                 </div>
             </div>
-            <button class="buttonMasuk" type="submit" action="{{ url('/home')}}">
+            <button class="buttonMasuk" type="submit">
                 <p class="">Masuk</p>
             </button>
         </form>
         <div class="daftarSection">
             <p class="">Baru di Tutungan?</p>
-            <button>
-                <p class="">Daftar</p>
-            </button>
+            <a href="{{url('/register')}}">
+                <p class="contentSemiBig">Daftar</p>
+            </a>
         </div>
     </div>
 </div>
