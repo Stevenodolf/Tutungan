@@ -42,6 +42,10 @@ Route::get('/transaksisaya', function () {
     return view('detailAkun.transaksiSaya.transaksiSaya');
 });
 
+Route::get('/notifikasi', function () {
+    return view('detailAkun.notifikasi.notifikasi');
+});
+
 //
 // Route::get('/', function () {
 //     return view('detailAkun.detailAkun');

@@ -2169,6 +2169,60 @@ button {
   cursor: pointer;
 }
 
+.detailAkun .contentV3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 662px;
+  background: #FFFFFF;
+  margin-left: 45px;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.detailAkun .contentV3 .title {
+  font-family: "latobold";
+  margin-bottom: 20px;
+}
+
+.detailAkun .contentV3 .notificationCell {
+  display: flex;
+  align-items: center;
+  height: 115px;
+  width: 100%;
+}
+
+.detailAkun .contentV3 .notificationCell img {
+  width: 75px;
+  height: 75px;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.detailAkun .contentV3 .notificationCell .detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailAkun .contentV3 .notificationCell .detail .date {
+  color: #ababab;
+  margin-bottom: 10px;
+}
+
+.detailAkun .contentV3 .notificationCell .detail .title {
+  color: #636363;
+  font-family: "latobold";
+  margin-bottom: 1px;
+}
+
+.detailAkun .contentV3 .notificationCell .detail .subtitle {
+  color: #636363;
+  font-family: "latoregular";
+}
+
 .popUpTambahAlamat {
   width: 441px;
   height: 733px;
