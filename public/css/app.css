@@ -1906,13 +1906,14 @@ button {
   margin-bottom: 11px;
 }
 
-.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .header .textWishMaker {
-  font-weight: 800;
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .header .contentSmall {
+  font-family: "latoregular";
   margin-right: 11px;
 }
 
-.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .header .contentSmall {
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .header .textWishMaker {
   font-family: "latobold";
+  font-weight: 1000;
   margin-right: 11px;
 }
 
