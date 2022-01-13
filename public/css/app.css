@@ -2188,37 +2188,44 @@ button {
   margin-bottom: 20px;
 }
 
-.detailAkun .contentV3 .notificationCell {
+.detailAkun .contentV3 .notificationSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.detailAkun .contentV3 .notificationSection .notificationCell {
   display: flex;
   align-items: center;
   height: 115px;
   width: 100%;
 }
 
-.detailAkun .contentV3 .notificationCell img {
+.detailAkun .contentV3 .notificationSection .notificationCell img {
   width: 75px;
   height: 75px;
   border-radius: 5px;
   margin-right: 15px;
 }
 
-.detailAkun .contentV3 .notificationCell .detail {
+.detailAkun .contentV3 .notificationSection .notificationCell .detail {
   display: flex;
   flex-direction: column;
 }
 
-.detailAkun .contentV3 .notificationCell .detail .date {
+.detailAkun .contentV3 .notificationSection .notificationCell .detail .date {
   color: #ababab;
   margin-bottom: 10px;
 }
 
-.detailAkun .contentV3 .notificationCell .detail .title {
+.detailAkun .contentV3 .notificationSection .notificationCell .detail .title {
   color: #636363;
   font-family: "latobold";
   margin-bottom: 1px;
 }
 
-.detailAkun .contentV3 .notificationCell .detail .subtitle {
+.detailAkun .contentV3 .notificationSection .notificationCell .detail .subtitle {
   color: #636363;
   font-family: "latoregular";
 }
