@@ -38,6 +38,10 @@ Route::get('/wishsaya', function () {
     return view('detailAkun.wishSaya.wishSaya');
 });
 
+Route::get('/transaksisaya', function () {
+    return view('detailAkun.transaksiSaya.transaksiSaya');
+});
+
 //
 // Route::get('/', function () {
 //     return view('detailAkun.detailAkun');
