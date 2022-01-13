@@ -1993,7 +1993,53 @@ button{
             }
         }
     }
-
+    .contentV3{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 662px;
+        background: #FFFFFF;
+        margin-left: 45px;
+        border: 1px solid rgba(49, 53, 59, 0.2);
+        box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+        padding: 20px;
+        border-radius: 5px;
+        .title{
+            font-family: "latobold";
+            margin-bottom: 20px;
+        }
+        .notificationCell{
+            display: flex;
+            align-items: center;
+            height: 115px;
+            width: 100%;
+            //background: #c44e47;
+            img{
+                width: 75px;
+                height: 75px;
+                border-radius: 5px;
+                margin-right: 15px;
+            }
+            .detail{
+                display: flex;
+                flex-direction: column;
+                .date{
+                    color: #ababab;
+                    margin-bottom: 10px;
+                }
+                .title{
+                    color: #636363;
+                    font-family: "latobold";
+                    margin-bottom: 1px;
+                }
+                .subtitle{
+                    color: #636363;
+                    font-family: "latoregular";
+                }
+            }
+        }
+    }
 }
 
 .popUpTambahAlamat{
