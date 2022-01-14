@@ -136,12 +136,12 @@
                                     <div class="progressIndicator">
                                         <p class="contentSmall">Kontribusi Wish</p>
                                         <div class="progressNumber">
-                                            <p class="contentBig textCurrentProgress">20</p>
+                                            <p class="contentBig textCurrentProgress">100</p>
                                             <p class="contentBig">/</p>
                                             <p class="contentBig">100</p>
                                         </div>
                                         <div class="progressBar">
-                                            <div class="currentBar"></div>
+                                            <div class="currentBar" style="width: 100%"></div>
                                         </div>
                                     </div>
                                 </div>
