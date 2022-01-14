@@ -38,3 +38,29 @@ Route::post('/cart', 'CartController@postCart');
 
 Route::get('/checkout', 'TransactionController@checkout');
 Route::post('/checkout', 'TransactionController@postCheckout');
+
+// DETAIL AKUN
+Route::get('/akunSaya/profil', function(){
+    return view('detailAkun.akunSaya.profil');
+});
+Route::get('/akunSaya/alamatpengiriman', function(){
+    return view('detailAkun.akunSaya.alamatPengiriman');
+});
+Route::get('/akunSaya/kartukreditdebit', function(){
+    return view('detailAkun.akunSaya.kartuKreditDebit');
+});
+Route::get('/akunSaya/ubahpassword', function(){
+    return view('detailAkun.akunSaya.ubahPassword');
+});
+Route::get('/notifikasi', function(){
+    return view('detailAkun.notifikasi.notifikasi');
+});
+Route::get('/wishsaya', function(){
+    return view('detailAkun.wishSaya.wishSaya');
+});
+Route::get('/transaksisaya', function(){
+    return view('detailAkun.transaksiSaya.transaksiSaya');
+});
+Route::get('/transaksisaya/detailtransaksi', function(){
+    return view('detailAkun.transaksiSaya.detailTransaksi');
+});

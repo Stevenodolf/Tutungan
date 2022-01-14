@@ -2169,6 +2169,384 @@ button {
   cursor: pointer;
 }
 
+.detailAkun .contentV2 .transactionDetailSection {
+  width: 910px;
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .header {
+  display: flex;
+  justify-content: space-around;
+  width: 910px;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .header .headerContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 880px;
+  margin: 14px 15px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .header .headerContent .buttonKembali {
+  display: flex;
+  cursor: pointer;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .header .headerContent .buttonKembali img {
+  width: 24px;
+  height: 24px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .header .headerContent .buttonKembali .text {
+  font-family: "latobold";
+}
+
+.detailAkun .contentV2 .transactionDetailSection .header .headerContent .indicator {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .header .headerContent .indicator .noTransaksi {
+  color: #636363;
+  margin-right: 20px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader {
+  background: #FFFFFF;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent {
+  margin-top: 18px;
+  margin-left: 21px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .title {
+  font-family: "latobold";
+  font-weight: 1000;
+  color: #636363;
+  margin-bottom: 20px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .leftSection {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .leftSection .information {
+  display: flex;
+  margin-bottom: 28px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .leftSection .information .infoType {
+  width: 76px;
+  color: #ababab;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .leftSection .information .infoDetail {
+  color: #31353B;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .leftSection .information .infoDetailAlamat {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection {
+  width: 491px;
+  margin-right: 34px;
+  border: 1px solid #D6D7D8;
+  border-radius: 5px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection .rightSectionContent {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-left: 0px;
+  margin: 20px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection .rightSectionContent .shipmentStatus {
+  display: flex;
+  margin-bottom: 15px;
+  height: 48px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection .rightSectionContent .shipmentStatus::before {
+  content: "";
+  height: 63px;
+  position: absolute;
+  margin-left: 126px;
+  margin-top: 3px;
+  border-color: #ababab;
+  border-style: dashed;
+  border-width: 0 0 0 1px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection .rightSectionContent .shipmentStatus:last-of-type::before {
+  display: none;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection .rightSectionContent .shipmentStatus:first-of-type .dot {
+  background: #57B793;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection .rightSectionContent .shipmentStatus:first-of-type .shipmentStatusDetail .title {
+  color: #57B793;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection .rightSectionContent .shipmentStatus .date {
+  width: 107px;
+  color: #ababab;
+  text-align: right;
+  margin-right: 15px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection .rightSectionContent .shipmentStatus .dot {
+  width: 9px;
+  height: 9px;
+  z-index: 2;
+  background: #636363;
+  border-radius: 50%;
+  margin-top: 3px;
+  margin-right: 15px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection .rightSectionContent .shipmentStatus .shipmentStatusDetail {
+  width: 305px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection .rightSectionContent .shipmentStatus .shipmentStatusDetail .title {
+  font-family: "latoregular";
+  font-weight: 500;
+  color: #31353B;
+  margin-bottom: 6px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection .rightSectionContent .shipmentStatus .shipmentStatusDetail .detail {
+  font-family: "latoregular";
+  font-weight: 500;
+  color: #ababab;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .cellHeader {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .cellHeader .contentSmall {
+  font-family: "latoregular";
+  margin-right: 11px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .cellHeader .textWishMaker {
+  font-family: "latobold";
+  font-weight: 1000;
+  margin-right: 11px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 24px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail img {
+  width: 118px;
+  height: 118px;
+  border-radius: 5px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail .detailContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 723px;
+  height: 118px;
+  margin-left: 15px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail .detailContent .wishInfo {
+  width: 387px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail .detailContent .wishInfo .contentSemiNormal {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail .detailContent .wishInfo .contentSmall {
+  font-family: "latoregular";
+  color: #808080;
+  font-weight: 400;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail .detailContent .totalPrice {
+  position: absolute;
+  margin-left: 631px;
+  margin-top: 51px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail .detailContent .progressIndicator {
+  width: 723px;
+  height: 64px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail .detailContent .progressIndicator .contentSmall {
+  font-family: "latoregular";
+  color: #b1b1b1;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail .detailContent .progressIndicator .progressNumber {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 7px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail .detailContent .progressIndicator .progressNumber .contentBig {
+  font-family: "latobold";
+  color: #b1b1b1;
+  margin-right: 4px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail .detailContent .progressIndicator .progressNumber .textCurrentProgress {
+  color: #D5B81B;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail .detailContent .progressIndicator .progressBar {
+  width: 723px;
+  height: 11px;
+  background: #FFF09E;
+  border-radius: 5px;
+  position: relative;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle2 .wishCellContent .detail .detailContent .progressIndicator .progressBar .currentBar {
+  width: 20%;
+  height: 100%;
+  background: #D5B81B;
+  border-radius: 5px;
+  position: absolute;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  width: 855px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection {
+  width: 494px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .paymentInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .paymentInfo:first-of-type {
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #bfbfbf;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .paymentInfo .infoType {
+  color: #808080;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .paymentInfo .infoDetail {
+  text-align: right;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .totalPayment {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px dashed #bfbfbf;
+  padding-top: 10px;
+  font-family: "latobold";
+  font-weight: 1000;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .totalPayment .title {
+  color: #808080;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .totalPayment .totalPaymentDetail {
+  text-align: right;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .button {
+  width: 325px;
+  height: 45px;
+  background: #FFFFFF;
+  border: 1px solid;
+  border-radius: 5px;
+  font-family: "latobold";
+  font-size: 18px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px lightskyblue;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .buttonBlack {
+  border-color: #bfbfbf;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .buttonBlack:hover {
+  background: #D9D9D9;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .buttonBlack:active {
+  background: #bfbfbf;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .buttonRed {
+  border-color: #EE9E8A;
+  color: #DE3E16;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .buttonRed:hover {
+  background: #FBEBEF;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .buttonRed:active {
+  background: #EE9E8A;
+  color: #FFFFFF;
+}
+
 .detailAkun .contentV3 {
   display: flex;
   flex-direction: column;
