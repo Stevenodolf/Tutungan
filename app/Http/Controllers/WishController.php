@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TemporaryFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -14,7 +15,7 @@ class WishController extends Controller
     public function wishDetail($id){
         // $auth = Auth::check();
         $auth = true;
-        
+
         //wish info
         $wish = Wish::where('id', $id)->first();
         $wish_name = $wish->name;
@@ -42,8 +43,8 @@ class WishController extends Controller
         $wish_min_order = $wish->min_order;
         $wish_updated_at = $wish->updated_at;
         $for_you = Wish::inRandomOrder()->get();
-    
-    
+
+
         if($auth) {
             //header user info
             // $user = User::where('id', Auth::user()->id)->first();
@@ -54,7 +55,7 @@ class WishController extends Controller
                                         'wish_category' => $wish_category, 'wish_created_by' => $wish_created_by, 'wish_created_at' => $wish_created_at,
                                         'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status_wish_name' => $wish_status_wish_name, 'wish_approved_by' => $wish_approved_by,
                                         'wish_deadline' => $wish_deadline, 'wish_curr_qty' => $wish_curr_qty, 'wish_target_qty' => $wish_target_qty, 'wish_stock' => $wish_stock,
-                                        'wish_updated_at' => $wish_updated_at, 'wish_origin' => $wish_origin, 'wish_web_link' => $wish_web_link, 'for_you' => $for_you, 
+                                        'wish_updated_at' => $wish_updated_at, 'wish_origin' => $wish_origin, 'wish_web_link' => $wish_web_link, 'for_you' => $for_you,
                                         'wish_status_transaksi_name' => $wish_status_transaksi_name, 'wish_min_order' => $wish_min_order]);
         }
 
@@ -64,7 +65,7 @@ class WishController extends Controller
                                     'wish_deadline' => $wish_deadline, 'wish_curr_qty' => $wish_curr_qty, 'wish_target_qty' => $wish_target_qty,  'wish_stock' => $wish_stock,
                                     'wish_updated_at' => $wish_updated_at, 'wish_origin' => $wish_origin, 'wish_web_link' => $wish_web_link, 'for_you' => $for_you,
                                     'wish_status_transaksi_name' => $wish_status_transaksi_name, 'wish_min_order' => $wish_min_order]);
-    
+
     }
 
     public function getCreateWish(){
@@ -74,7 +75,7 @@ class WishController extends Controller
             $user = User::where('id', Auth::user()->id)->first();
             $categories = Category::all();
 
-            return view('create-wish', ['auth' => $auth, 'user' => $user, 'categories' => $categories]);
+            return view('wish.createWish', ['auth' => $auth, 'user' => $user, 'categories' => $categories]);
         }
         redirect('login');
     }
@@ -84,14 +85,20 @@ class WishController extends Controller
 
         if($auth){
             $user = User::where('id', Auth::user()->id)->first();
-                    
+
             $wish = new Wish();
             $wish->name = $request->wish_name; //string
             $wish->price = $request->wish_price; //int
             $wish->category_id = $request->wish_category_id; //int
             $wish->created_by = $user->id;
             $wish->detail = $request->detail; //string
-            $wish->image = $request->image; //string
+            $temporaryFile = TemporaryFile::where('folder',$request->wishPicture)->first();
+            if($temporaryFile){
+                $wish->addMedia(storage_path('app/public/uploads/tmp' . $request->wishPicture . '/' . $temporaryFile->filename))->toMediaCollection('uploads');
+                rmdir(storage_path('app/public/uploads/tmp' . $request->wishPicture));
+                $temporaryFile->delete();
+            }
+//            $wish->image = $request->image; //string
             $wish->status_id = $request->status_id; //int
             $wish->approved_by = $request->approved_by; //int
             $wish->deadline = $request->deadline; //datetime
@@ -99,9 +106,9 @@ class WishController extends Controller
             $wish->target_qty = $request->target_qty; //int
             $wish->created_at = Carbon::now();
             $wish->updated_at = Carbon::now();
-    
+
             $wish->save();
-    
+
             return redirect('create-wish');
         }
         return redirect('login');

@@ -37,16 +37,27 @@ $(document).ready(function () {
     FilePond.registerPlugin(FilePondPluginImagePreview);
     FilePond.registerPlugin(FilePondPluginFileValidateType);
     //Attachment for Sub Ticket
-    const inputElement = document.getElementById('fotoProduk');
+    const inputElement = document.querySelector('input[id="wishPicture"]');
     const pond = FilePond.create(inputElement,{
         allowMultiple: true,
         credits:false,
         maxTotalFileSize:'10MB',
         allowFileEncode:true,
-        instantUpload: false,
-        allowProcess: false,
+        // instantUpload: false,
+        // allowProcess: false,
         maxFiles: 4,
-        acceptedFileTypes: ['image/*']
+        acceptedFileTypes: ['image/*'],
+        storeAsFile: true,
+        server:{
+            url:'/upload',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        }
+    });
+
+    FilePond.setOptions({
+
     });
 });
 

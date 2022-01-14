@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="_token" content="{{ csrf_token() }}">
 
     <title>Tutungan</title>
     <!-- Styles -->
@@ -183,10 +183,12 @@
                         </div>
                     </div>
                 </div>
-                <button class="buttonAddWish">
-                    <img src="{{asset('images/plusBlack.png')}}">
-                    Wish
-                </button>
+                <form action="{{url('/createWish')}}">
+                    <button type="submit" class="buttonAddWish">
+                        <img src="{{asset('images/plusBlack.png')}}">
+                        Wish
+                    </button>
+                </form>
                 <div class="dropdownProfil">
                     <button class="buttonUser" onclick="openUserDropdown();">
                         <img src="{{asset('images/dummyUser.png')}}">
