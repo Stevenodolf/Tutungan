@@ -177,7 +177,8 @@
                             </div>
                         </div>
                         <div class="rightSection">
-
+                            <button class="button buttonBlack">Lihat Invoice</button>
+                            <button class="button buttonRed">Batalkan Transaksi</button>
                         </div>
                     </div>
                 </div>

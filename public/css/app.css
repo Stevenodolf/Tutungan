@@ -2195,6 +2195,7 @@ button {
 
 .detailAkun .contentV2 .transactionDetailSection .header .headerContent .buttonKembali {
   display: flex;
+  cursor: pointer;
 }
 
 .detailAkun .contentV2 .transactionDetailSection .header .headerContent .buttonKembali img {
@@ -2455,6 +2456,7 @@ button {
   display: flex;
   justify-content: space-between;
   margin-bottom: 36px;
+  width: 855px;
 }
 
 .detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection {
@@ -2495,6 +2497,54 @@ button {
 
 .detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .totalPayment .totalPaymentDetail {
   text-align: right;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .button {
+  width: 325px;
+  height: 45px;
+  background: #FFFFFF;
+  border: 1px solid;
+  border-radius: 5px;
+  font-family: "latobold";
+  font-size: 18px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px lightskyblue;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .buttonBlack {
+  border-color: #bfbfbf;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .buttonBlack:hover {
+  background: #D9D9D9;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .buttonBlack:active {
+  background: #bfbfbf;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .buttonRed {
+  border-color: #EE9E8A;
+  color: #DE3E16;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .buttonRed:hover {
+  background: #FBEBEF;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .rightSection .buttonRed:active {
+  background: #EE9E8A;
+  color: #FFFFFF;
 }
 
 .detailAkun .contentV3 {
