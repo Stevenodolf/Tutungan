@@ -2451,6 +2451,52 @@ button {
   position: absolute;
 }
 
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection {
+  width: 494px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .paymentInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .paymentInfo:first-of-type {
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #bfbfbf;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .paymentInfo .infoType {
+  color: #808080;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .paymentInfo .infoDetail {
+  text-align: right;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .totalPayment {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px dashed #bfbfbf;
+  padding-top: 10px;
+  font-family: "latobold";
+  font-weight: 1000;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .totalPayment .title {
+  color: #808080;
+}
+
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle3 .leftSection .totalPayment .totalPaymentDetail {
+  text-align: right;
+}
+
 .detailAkun .contentV3 {
   display: flex;
   flex-direction: column;

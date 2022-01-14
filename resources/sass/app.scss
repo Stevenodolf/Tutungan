@@ -2248,6 +2248,46 @@ button{
                             }
                         }
                     }
+                    .contentAfterTitle3{
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 36px;
+                        .leftSection{
+                            width: 494px;
+                            .paymentInfo{
+                                display: flex;
+                                justify-content: space-between;
+                                margin-bottom: 10px;
+                                &:first-of-type{
+                                    padding-bottom: 10px;
+                                    border-bottom: 1px dashed #bfbfbf;
+                                }
+                                .infoType{
+                                    color: #808080;
+                                }
+                                .infoDetail{
+                                    text-align: right;
+                                }
+                            }
+                            .totalPayment{
+                                display: flex;
+                                justify-content: space-between;
+                                border-top: 1px dashed #bfbfbf;
+                                padding-top: 10px;
+                                font-family: "latobold";
+                                font-weight: 1000;
+                                .title{
+                                    color: #808080;
+                                }
+                                .totalPaymentDetail{
+                                    text-align: right;
+                                }
+                            }
+                        }
+                        .rightSection{
+
+                        }
+                    }
                 }
             }
         }

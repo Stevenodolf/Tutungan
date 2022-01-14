@@ -150,6 +150,39 @@
                     </div>
                 </div>
             </div>
+            <div class="sectionAfterHeader">
+                <div class="sectionContent">
+                    <p class="contentSemiBig title">Detail Pembayaran</p>
+                    <div class="contentAfterTitle3">
+                        <div class="leftSection">
+                            <div class="paymentInfo">
+                                <p class="infoType">Metode Pembayaran</p>
+                                <p class="infoDetail">BCA Virtual Account</p>
+                            </div>
+                            <div class="paymentInfo">
+                                <p class="infoType">Total Harga</p>
+                                <p class="infoDetail">Rp1.000.000</p>
+                            </div>
+                            <div class="paymentInfo">
+                                <p class="infoType">Biaya Pengiriman</p>
+                                <p class="infoDetail">Rp40.000</p>
+                            </div>
+                            <div class="paymentInfo">
+                                <p class="infoType">Diskon Pengiriman</p>
+                                <p class="infoDetail">-Rp8.000</p>
+                            </div>
+                            <div class="totalPayment">
+                                <p class="title">Total Pembayaran</p>
+                                <p class="totalPaymentDetail">Rp1.032.000</p>
+                            </div>
+                        </div>
+                        <div class="rightSection">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection
