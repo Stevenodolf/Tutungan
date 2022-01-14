@@ -1992,6 +1992,265 @@ button{
                 }
             }
         }
+        .transactionDetailSection{
+            width: 910px;
+            background: #FFFFFF;
+            border: 1px solid rgba(49, 53, 59, 0.2);
+            box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+            border-radius: 5px;
+            .header{
+                display: flex;
+                justify-content: space-around;
+                width: 910px;
+                border-bottom: 1px solid #bfbfbf;
+                .headerContent{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 880px;
+                    margin: 14px 15px;
+                    .buttonKembali{
+                        display: flex;
+                        img{
+                            width: 24px;
+                            height: 24px;
+                        }
+                        .text{
+                            font-family: "latobold";
+                        }
+                    }
+                    .indicator{
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                        .noTransaksi{
+                            color: #636363;
+                            margin-right: 20px;
+                        }
+                    }
+                }
+            }
+            .sectionAfterHeader{
+                //height: 560px;
+                background: #FFFFFF;
+                border-bottom: 1px solid #bfbfbf;
+                .sectionContent{
+                    margin-top: 18px;
+                    margin-left: 21px;
+                    .title{
+                        font-family: "latobold";
+                        font-weight: 1000;
+                        color: #636363;
+                        margin-bottom: 20px;
+                    }
+                    .contentAfterTitle1{
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 18px;
+                        .leftSection{
+                            display: flex;
+                            flex-direction: column;
+                            margin-top: 20px;
+                            .information{
+                                display: flex;
+                                margin-bottom: 28px;
+                                .infoType{
+                                    width: 76px;
+                                    color: #ababab;
+                                }
+                                .infoDetail{
+                                    color: #31353B;
+                                }
+                                .infoDetailAlamat{
+                                    display: flex;
+                                    flex-direction: column;
+                                }
+                            }
+                        }
+                        .rightSection{
+                            width: 491px;
+                            //height: 487px;
+                            margin-right: 34px;
+                            border: 1px solid #D6D7D8;
+                            border-radius: 5px;
+
+                            .rightSectionContent{
+                                display: flex;
+                                flex-direction: column;
+                                flex-wrap: wrap;
+                                padding-left: 0px;
+                                margin: 20px;
+                                .shipmentStatus{
+                                    $gap: 15px;
+                                    $height: 48px;
+
+                                    display: flex;
+                                    margin-bottom: $gap;
+                                    height: $height;
+                                    &::before{
+                                        content: "";
+                                        //width: 1px;
+                                        height: $height + $gap;
+                                        position: absolute;
+                                        margin-left: 126px;
+                                        margin-top: 3px;
+                                        border-color: #ababab;
+                                        border-style: dashed;
+                                        border-width: 0 0 0 1px;
+                                    }
+                                    &:last-of-type::before{
+                                        display: none;
+                                    }
+                                    &:first-of-type{
+                                        .dot{
+                                            background: #57B793;
+                                        }
+                                        .shipmentStatusDetail{
+                                            .title{
+                                                color: #57B793;
+                                            }
+                                        }
+                                    }
+                                    .date{
+                                        width: 107px;
+                                        color: #ababab;
+                                        text-align: right;
+                                        margin-right: 15px;
+                                    }
+                                    .dot{
+                                        width: 9px;
+                                        height: 9px;
+                                        z-index: 2;
+                                        background: #636363;
+                                        border-radius: 50%;
+                                        margin-top: 3px;
+                                        margin-right: 15px;
+                                    }
+
+                                    .shipmentStatusDetail{
+                                        width: 305px;
+                                        .title{
+                                            font-family: "latoregular";
+                                            font-weight: 500;
+                                            color: #31353B;
+                                            margin-bottom: 6px;
+                                        }
+                                        .detail{
+                                            font-family: "latoregular";
+                                            font-weight: 500;
+                                            color: #ababab;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .contentAfterTitle2{
+                        .wishCellContent{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            //background: #c44e47;
+                            //padding: 21px 27px 21px 27px;
+                            .cellHeader{
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: center;
+                                margin-bottom: 15px;
+                                //background: #57B793;
+                                .contentSmall{
+                                    font-family: "latoregular";
+                                    margin-right: 11px;
+                                }
+                                .textWishMaker{
+                                    font-family: "latobold";
+                                    font-weight: 1000;
+                                    margin-right: 11px;
+                                }
+                            }
+                            .detail{
+                                display: flex;
+                                justify-content: flex-start;
+                                //width: 856px;
+                                //height: 118px;
+                                //background: #d5b81b;
+                                margin-bottom: 24px;
+                                img{
+                                    width: 118px;
+                                    height: 118px;
+                                    border-radius: 5px;
+                                }
+                                .detailContent{
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: space-between;
+                                    width: 723px;
+                                    height: 118px;
+                                    //background: #008a00;
+                                    margin-left: 15px;
+                                    .wishInfo{
+                                        width: 387px;
+                                        //height: 37px;
+                                        //background: #007aff;
+                                        .contentSemiNormal{
+                                            font-weight: 500;
+                                            margin-bottom: 6px;
+                                        }
+                                        .contentSmall{
+                                            font-family: "latoregular";
+                                            color: #808080;
+                                            font-weight: 400;
+                                        }
+                                    }
+                                    .totalPrice{
+                                        position: absolute;
+                                        margin-left: 631px;
+                                        margin-top: 51px;
+                                    }
+                                    .progressIndicator{
+                                        width: 723px;
+                                        height: 64px;
+                                        //background: #c44e47;
+                                        .contentSmall{
+                                            font-family: "latoregular";
+                                            color: #b1b1b1;
+                                        }
+                                        .progressNumber {
+                                            display: flex;
+                                            flex-direction: row;
+                                            margin-bottom: 7px;
+                                            .contentBig{
+                                                font-family: "latobold";
+                                                color: #b1b1b1;
+                                                margin-right: 4px;
+                                            }
+                                            .textCurrentProgress{
+                                                color: #D5B81B;
+                                            }
+                                        }
+                                        .progressBar{
+                                            width: 723px;
+                                            height: 11px;
+                                            background: #FFF09E;
+                                            border-radius: 5px;
+                                            position: relative;
+                                            .currentBar{
+                                                width: 20%;
+                                                height: 100%;
+                                                background: #D5B81B;
+                                                border-radius: 5px;
+                                                position: absolute;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     .contentV3{
         display: flex;
