@@ -24,8 +24,6 @@ Route::get('/home', function(){
     return redirect('/');
 });
 
-//Upload
-Route::post('/upload','UploadController@store');
 
 //Auth
 Route::get('/login', 'AuthController@showLoginPage')->name('getLogin');
