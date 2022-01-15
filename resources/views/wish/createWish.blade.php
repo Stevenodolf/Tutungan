@@ -8,7 +8,8 @@
     <div class="contentContainer">
         <div class="buatWish">
             <h2>Buat Wish</h2>
-            <form method="POST" enctype="multipart/form-data" action="">
+            <form method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }}
                 <div class="section">
                     <h4>Informasi Produk Wish</h4>
                     <div class="sectionInputSelect">
@@ -16,14 +17,14 @@
                             <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Nama Produk *</p>
                             <p class="contentSemiNormal" style="color: #747474;">Nama min. 5 kata yang terdiri dari jenis produk, merek, warna, dan keterangan lainnya.</p>
                         </div>
-                        <input placeholder="" type="text" name="">
+                        <input placeholder="" type="text" name="wishName" required>
                     </div>
                     <div class="sectionInputSelect">
                         <div class="doubleText">
                             <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Kategori Produk *</p>
                             {{--                        <p class="contentSemiNormal" style="color: #747474;">Nama min. 5 kata yang terdiri dari jenis produk, merek, warna, dan keterangan lainnya.</p>--}}
                         </div>
-                        <select>
+                        <select name="categoryId" required>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -40,6 +41,7 @@
                         </div>
                         <div style="width: 100%;margin-left: 30px;">
                             <div id="description"></div>
+                            <input type="hidden" id="quill_html" name="description"/>
                         </div>
                     </div>
                     <div class="sectionInputSelect">
@@ -50,19 +52,31 @@
                                 - Optimal 700x700 px</p>
                         </div>
                         <div style="margin-left: 30px;width: 100%">
-                            <input type="file" name="wishPicture" id="wishPicture"/>
+                            <input type="file" name="wishPicture[]" id="wishPicture"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="section">
                     <h4>Detail Pembelian Produk Wish</h4>
+{{--                    <div class="sectionInputSelect">--}}
+{{--                        <div class="doubleText">--}}
+{{--                            <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Jenis Sumber Pembelian Produk *</p>--}}
+{{--                            --}}{{--                        <p class="contentSemiNormal" style="color: #747474;">Nama min. 5 kata yang terdiri dari jenis produk, merek, warna, dan keterangan lainnya.</p>--}}
+{{--                        </div>--}}
+{{--                        <select>--}}
+{{--                            <option>1</option>--}}
+{{--                            <option>2</option>--}}
+{{--                            <option>3</option>--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
                     <div class="sectionInputSelect">
                         <div class="doubleText">
-                            <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Jenis Sumber Pembelian Produk *</p>
-                            {{--                        <p class="contentSemiNormal" style="color: #747474;">Nama min. 5 kata yang terdiri dari jenis produk, merek, warna, dan keterangan lainnya.</p>--}}
+                            <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Asal Negara Produk*</p>
+                            <p class="contentSemiNormal" style="color: #747474;">Asal negara produk yaitu asal negara dari mana
+                                produk akan dikirimkan.</p>
                         </div>
-                        <select>
+                        <select name="origin" required>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -78,21 +92,14 @@
                                 produk berupa akun sosial media, masukkan
                                 link menuju profil akun sosial media tersebut.</p>
                         </div>
-                        <select>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
+                        <input placeholder="" type="text" name="webLink" required>
                     </div>
                     <div class="sectionInputSelect">
                         <div class="doubleText">
                             <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Minimal Pembelian *</p>
-                            <p class="contentSemiNormal" style="color: #747474;">Minimal pembelian yaitu target jumlah barang
-                                yang ingin dicapai dari total kontribusi Wish.
-                                Angka yang tertulis disini akan menjadi target
-                                jumlah kontribusi Wish.</p>
+                            <p class="contentSemiNormal" style="color: #747474;">Minimal pembelian yaitu jumlah minimal pembelian di wish yang akan anda buat.</p>
                         </div>
-                        <input placeholder="" type="text">
+                        <input placeholder="" type="text" name="minOrder" required>
                     </div>
                     <div class="sectionInputSelect">
                         <div class="doubleText">
@@ -100,15 +107,14 @@
                             <p class="contentSemiNormal" style="color: #747474;">Harga satuan yaitu harga per item apabila
                                 minimal pembelian tercapai.</p>
                         </div>
-                        <input placeholder="" type="text">
+                        <input placeholder="" type="text" name="price">
                     </div>
                     <div class="sectionInputSelect">
                         <div class="doubleText">
-                            <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Jumlah Pembelian *</p>
-                            <p class="contentSemiNormal" style="color: #747474;">Harga satuan yaitu harga per item apabila
-                                minimal pembelian tercapai.</p>
+                            <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Target *</p>
+                            <p class="contentSemiNormal" style="color: #747474;">Target yaitu jumlah barang yang ingin dicapai di wish yang akan anda buat.</p>
                         </div>
-                        <input placeholder="" type="text">
+                        <input placeholder="" type="text" name="targetQty">
                     </div>
                 </div>
 
@@ -123,7 +129,7 @@
                         <img src="{{asset('images/closeSmall.png')}}">
                         <p class="contentSemiBig">Batalkan</p>
                     </button>
-                    <button class="simpan">
+                    <button class="simpan" type="submit">
                         <img src="{{asset('images/checkBlack.png')}}">
                         <p class="contentSemiBig">Simpan</p>
                     </button>

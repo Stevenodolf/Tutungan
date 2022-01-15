@@ -30,6 +30,9 @@ $(document).ready(function () {
     };
 
     let editor = new Quill('#description', options);
+    editor.on('text-change', function(delta, oldDelta, source) {
+        document.getElementById("quill_html").value = editor.root.innerHTML;
+    });
 
     //Filepond
     FilePond.registerPlugin(FilePondPluginFileValidateSize);
@@ -43,22 +46,13 @@ $(document).ready(function () {
         credits:false,
         maxTotalFileSize:'10MB',
         allowFileEncode:true,
-        // instantUpload: false,
-        // allowProcess: false,
+        instantUpload: false,
+        allowProcess: false,
         maxFiles: 4,
         acceptedFileTypes: ['image/*'],
         storeAsFile: true,
-        server:{
-            url:'/upload',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        }
     });
 
-    FilePond.setOptions({
-
-    });
 });
 
 

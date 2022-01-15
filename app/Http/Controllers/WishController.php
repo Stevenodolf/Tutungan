@@ -9,6 +9,7 @@ use App\User;
 use App\Wish;
 use App\Category;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class WishController extends Controller
 {
@@ -87,31 +88,59 @@ class WishController extends Controller
             $user = User::where('id', Auth::user()->id)->first();
 
             $wish = new Wish();
-            $wish->name = $request->wish_name; //string
-            $wish->price = $request->wish_price; //int
-            $wish->category_id = $request->wish_category_id; //int
+            $wish->id = floor(time()-999999999);
+            $wish->name = $request->wishName; //string
+            $wish->price = $request->price; //int
+            $wish->category_id = $request->categoryId; //int
             $wish->created_by = $user->id;
-            $wish->detail = $request->detail; //string
-            $temporaryFile = TemporaryFile::where('folder',$request->wishPicture)->first();
-            if($temporaryFile){
-                $wish->addMedia(storage_path('app/public/uploads/tmp' . $request->wishPicture . '/' . $temporaryFile->filename))->toMediaCollection('uploads');
-                rmdir(storage_path('app/public/uploads/tmp' . $request->wishPicture));
-                $temporaryFile->delete();
+            $wish->detail = $request->description; //string
+            //picture
+            $file = $request->file('wishPicture');
+            $folder = uniqid() . '-' . now()->timestamp;
+            foreach ($file as $files){
+                $filename = $files->getClientOriginalName();
+                $files->storeAs('uploads/' . $folder, $filename);
             }
-//            $wish->image = $request->image; //string
-            $wish->status_id = $request->status_id; //int
-            $wish->approved_by = $request->approved_by; //int
-            $wish->deadline = $request->deadline; //datetime
-            $wish->curr_qty = $request->curr_qty; //int, total qty yg dibeli wish creator
-            $wish->target_qty = $request->target_qty; //int
+            $wish->image = 'uploads/' .$folder . '/';//string
+            $wish->web_link = $request->webLink;
+            $wish->status_wish_id = '1'; //int
+            $wish->origin = $request->origin;
+            $wish->deadline = Carbon::now()->addDays(8);; //datetime
+            $wish->min_order = $request->minOrder;
+            $wish->curr_qty = '0'; //int, total qty yg dibeli wish creator
+            $wish->target_qty = $request->targetQty; //int
             $wish->created_at = Carbon::now();
             $wish->updated_at = Carbon::now();
-
+//            $wish->name = $request->wish_name; //string
+//            $wish->price = $request->wish_price; //int
+//            $wish->category_id = $request->wish_category_id; //int
+//            $wish->created_by = $user->id;
+//            $wish->detail = $request->detail; //string
+//            //picture
+//            if($request->hasFile('wishPicture')) {
+//                $file = $request->file('wishPicture');
+//                $folder = uniqid() . '-' . now()->timestamp;
+//                foreach ($file as $files){
+//                    $filename = $files->getClientOriginalName();
+//                    $files->storeAs('uploads/' . $folder, $filename);
+//                }
+//                $wish->image = 'uploads' .$folder;//string
+//            }
+//            else{
+//                $wish->image = '';
+//            }
+//            $wish->status_id = $request->status_id; //int
+//            $wish->approved_by = $request->approved_by; //int
+//            $wish->deadline = $request->deadline; //datetime
+//            $wish->curr_qty = $request->curr_qty; //int, total qty yg dibeli wish creator
+//            $wish->target_qty = $request->target_qty; //int
+//            $wish->created_at = Carbon::now();
+//            $wish->updated_at = Carbon::now();
             $wish->save();
 
-            return redirect('create-wish');
+            return redirect()->route('home');
         }
-        return redirect('login');
+        return redirect('')->route('getLogin');
     }
 
     public function getEditWish($id){
