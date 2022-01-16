@@ -20,9 +20,7 @@
                     <p class="">Password</p>
                     <input name="password" type="password" id="password" required>
                     <div class="lupaPass">
-                        <button>
-                            <p class="contentSemiBig">Lupa password?</p>
-                        </button>
+                        <a href="{{url('/forgotPassword')}}" class="contentSemiBig">Lupa password?</a>
                     </div>
                 </div>
                 <button class="buttonMasuk" type="submit">

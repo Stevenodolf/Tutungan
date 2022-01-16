@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+//
 //  Route::get('/', function () {
-//      return view('detailAkun.detailAkunTemplate');
+//      return view('email.forgotPassword');
 //  });
 
 Route::get('/', 'HomeController@home')->name('home');
@@ -24,6 +24,12 @@ Route::get('/home', function(){
     return redirect('/');
 });
 
+
+//Forgot Password
+Route::get('/forgotPassword', 'ForgotPasswordController@showForgotPassword');
+Route::post('/forgotPassword', 'ForgotPasswordController@submitForgotPassword');
+Route::get('/resetPassword/{token}', 'ForgotPasswordController@showResetPassword')->name('resetPassword');
+Route::post('/resetPassword', 'ForgotPasswordController@submitResetPassword')->name('submitReset');
 
 //Auth
 Route::get('/login', 'AuthController@showLoginPage')->name('getLogin');
