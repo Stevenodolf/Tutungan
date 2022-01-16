@@ -27,11 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->call(function () {
-            DB::table('password_resets')
-                ->where('created_at','<',Carbon::now()->subDays(1))
-                ->delete();
-        })->hourly();
+        $schedule->command('removeTokenForgotPass:run')->everyMinute();
     }
 
     /**

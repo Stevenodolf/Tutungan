@@ -10,20 +10,19 @@
                     <div style="margin-bottom: 15px;">
                         <h1>Reset Password</h1>
                     </div>
-                    <p style="font-size: 16px">Seems like you forgot your password for Tutungan. if this is true, click below to reset your password</p>
+                    <p style="font-size: 16px;padding: 15px 0;">Seems like you forgot your password for Tutungan. if this is true, click below to reset your password</p>
                     <a style="-webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-    text-decoration: none;
-    background: #FFD901;color:
-    black;width: 200px;padding:
-    15px;border-radius: 9px;
-    border: none;margin: 15px 0"
+                                -moz-appearance: button;
+                                appearance: button;
+                                text-decoration: none;
+                                background: #FFD901;color:
+                                black;width: 200px;padding:
+                                15px;border-radius: 9px;
+                                border: none;
+                                margin: 15px 0;"
+
                        href="{{route('resetPassword', $token)}}">Reset My Password</a>
-{{--                    <form action="{{route('resetPassword', $token)}}" method="GET">--}}
-{{--                        <button type="submit" >Reset My Password</button>--}}
-{{--                    </form>--}}
-                    <p style="font-size: 16px">if you did not forgot your password, you can safely ignore this email.</p>
+                    <p style="font-size: 16px;padding: 15px 0;">if you did not forgot your password, you can safely ignore this email.</p>
                 </div>
             </td>
             <td>&nbsp;</td>
