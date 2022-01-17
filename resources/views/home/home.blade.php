@@ -19,18 +19,18 @@
                         <img src="{{asset('images/dummySlide2.png')}}"/>
                     </div>
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+{{--                <div class="swiper-button-next"></div>--}}
+{{--                <div class="swiper-button-prev"></div>--}}
                 <div class="swiper-pagination"></div>
             </div>
         </div>
 
         <div class="lastMinuteSection">
-            <div class="banner">
-                <img src="{{asset('images/lastMinute.png')}}"/>
-            </div>
+{{--            <div class="banner">--}}
+{{--                <img src="{{asset('images/lastMinute.png')}}"/>--}}
+{{--            </div>--}}
 
-            <div class="lastMinute">
+            <div class="lastMinute" style="background-image: url({{asset('images/lastMinute.png')}})">
                 <div class="listWish">
                     <div class="swiper lastMinuteSwipe">
                         <div class="swiper-wrapper">
@@ -203,6 +203,7 @@
         </div>
 
         <div class="category">
+
             <div class="swiper categorySwipe">
                 <div class="swiper-wrapper">
                     @foreach($categories as $category)
@@ -298,25 +299,35 @@
                         </div>
                     </div> --}}
                 </div>
-                <div class="swiper-button-next nextCategory"></div>
-                <div class="swiper-button-prev prevCategory"></div>
             </div>
+            <div class="swiper-button-prev prevCategory"></div>
+            <div class="swiper-button-next nextCategory"></div>
         </div>
 
         <div class="forYou">
             <h1>For You</h1>
             @if($for_you == NULL)
-                <div class="column">
-                    No Wish.
+                <div class="row">
+                    <div class="column">
+                        No Wish.
+                    </div>
                 </div>
             @else
-                <div class="row">
-                    @foreach($for_you as $wish)
-                        @php
-                            $deadline = strtotime($wish->deadline);
-                            $diff = $deadline - time();
-                            $time_left = Round($diff / 86400);
-                        @endphp
+                @foreach($for_you as $wish)
+                    @php
+                        $deadline = strtotime($wish->deadline);
+                        $diff = $deadline - time();
+                        $time_left = Round($diff / 86400);
+                    @endphp
+                    @if($loop->index == 0)
+                        <div class="row">
+                    @endif
+                    @if(($loop->iteration-1) % 5 == 0 && $loop->index != 0)
+                        </div>
+                        @if(($loop->iteration-1) != ($loop->count-1))
+                            <div class="row">
+                        @endif
+                    @endif
                         <div class="column">
                             <div class="wish" onclick="window.location='{{ url("/wish/".$wish->id)}}'">
                                 <img src="{{asset($wish->image)}}"/>
@@ -324,7 +335,7 @@
                                     <p>Tersisa {{$time_left}} Hari Lagi</p>
                                 </div>
                                 <div class="content">
-                                    <p>{{$wish->name}}</p>
+                                    <p>{{Str::of($wish->name)->limit(40)}}</p>
                                     <h3>Rp {{number_format($wish->price, 0, ',', '.')}}/pcs</h3>
                                     <div class="barWithText">
                                         <div class="textProgress">
@@ -335,8 +346,34 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                </div>
+                @endforeach
+{{--                <div class="row">--}}
+{{--                    @foreach($for_you as $wish)--}}
+{{--                        @php--}}
+{{--                            $deadline = strtotime($wish->deadline);--}}
+{{--                            $diff = $deadline - time();--}}
+{{--                            $time_left = Round($diff / 86400);--}}
+{{--                        @endphp--}}
+{{--                        <div class="column">--}}
+{{--                            <div class="wish" onclick="window.location='{{ url("/wish/".$wish->id)}}'">--}}
+{{--                                <img src="{{asset($wish->image)}}"/>--}}
+{{--                                <div class="timeLeft">--}}
+{{--                                    <p>Tersisa {{$time_left}} Hari Lagi</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="content">--}}
+{{--                                    <p>{{$wish->name}}</p>--}}
+{{--                                    <h3>Rp {{number_format($wish->price, 0, ',', '.')}}/pcs</h3>--}}
+{{--                                    <div class="barWithText">--}}
+{{--                                        <div class="textProgress">--}}
+{{--                                            <p>{{$wish->curr_qty}}/{{$wish->target_qty}}</p>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="progressBar"></div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
         @endif
         <!-- <div class="row">
             <div class="column">

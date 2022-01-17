@@ -50,7 +50,7 @@ button{
     left: 0;
 }
 .contentContainer{
-    padding: 25px 120px;
+    margin: 0 100px;
     //width: 100%;
     min-height: calc(100vh - 140px);
 }
@@ -646,8 +646,9 @@ button{
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        width: calc(60% - 150px);
         input{
-            width: 28vw;
+            width: 100%;
             height: 35px;
             padding: 0 50px 0 5px;
             border: 1px solid #31353B;
@@ -768,37 +769,34 @@ button{
         //height: 100%;
         object-fit: cover;
     }
-    .swiper-button-next,
-    .swiper-button-prev{
-        color: #F5D108;
-        background-color: white;
-        border: 1px solid transparent;
-        border-radius: 50%;
-        font-size: 50px;
-        width: 60px;
-        height: 60px;
-    }
-    .swiper-pagination{
-        //bottom: 4.5vh!important;
+    .swiper-pagination-bullet-active {
+        background-color: #000000;
     }
 }
 
 //Wish
 .wish {
-    height: 334px;
-    width: 200px;
+    height: 340px;
+    width: 230px;
+    padding: 10px;
     background-color: white;
     border-radius: 5px;
     cursor: pointer;
     filter: drop-shadow(1px 6px 4px rgba(49, 53, 59, 0.12));
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     img {
-        width: 200px;
-        height: 200px;
+        width: 220px;
+        height: 220px;
     }
 
     .content {
-        padding: 2px 6px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
     }
 
     .timeLeft {
@@ -822,10 +820,16 @@ button{
     .lastMinute {
         display: flex;
         justify-content: flex-end;
-
+        background-repeat: no-repeat;
+        background-position: left;
+        background-size: contain;
+        width: 100%;
+        height: 380px;
+        align-items: center;
+        flex-wrap: nowrap;
         .listWish {
-            width: 59vw;
-            height: 41vh;
+            width: 75%;
+            //height: 41vh;
             display: flex;
             align-items: center;
             .swiper-wrapper{
@@ -851,13 +855,46 @@ button{
 //Category
 .category{
     margin-top: 30px;
-
+    position: relative;
     .categorySwipe{
-        padding: 0 85px;
+        width: 90%;
     }
     .swiper-slide {
-        width: fit-content !important;
-        margin-right: 20px;
+        width: auto;
+        //margin-right: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    .swiper-button-next{
+        display: block;
+        right: 5px !important;
+        background-repeat: no-repeat;
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E") !important;
+        background-color: white;
+        background-position: center;
+        background-size: 15px;
+        box-shadow: 1px 6px 4px rgba(49, 53, 59, 0.12);
+        border-radius: 5px;
+        height: 30px;
+        width: 30px;
+        padding: 5px;
+    }
+    .swiper-button-prev{
+        display: block;
+        left: 5px !important;
+        background-repeat: no-repeat;
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E") !important;
+        background-color: white;
+        background-position: center;
+        background-size: 15px;
+        box-shadow: 1px 6px 4px rgba(49, 53, 59, 0.12);
+        border-radius: 5px;
+        height: 30px;
+        width: 30px;
+        padding: 5px;
+    }
+    .swiper-button-next::after, .swiper-button-prev::after{
+        content: "";
     }
     .filter{
         width: 120px;
@@ -880,15 +917,29 @@ button{
 
 //For You/Looks like for you Section
 .forYou{
-    .column {
-        float: left;
-        width: 20%;
-        display: flex;
-        justify-content: space-evenly;
-    }
+    margin-top: 30px;
     .row{
         margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: nowrap;
     }
+    .column{
+        margin: 10px 10px 10px 0;
+    }
+    .column:last-child{
+        margin: 10px 0 10px 0;
+    }
+    //.column {
+    //    float: left;
+    //    width: 20%;
+    //    display: flex;
+    //    justify-content: space-evenly;
+    //}
+    //.row{
+    //    margin-top: 30px;
+    //}
 
     /* Clear floats after the columns */
     .row:after {
@@ -2588,7 +2639,6 @@ button{
 }
 
 //Cari Wish
-
 .cariWish{
     display: flex;
     align-items: flex-start;
@@ -2684,5 +2734,64 @@ button{
     }
 
 
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1366px){
+    .contentContainer{
+        margin: 0 80px;
+    }
+    .forYou{
+        .row{
+            margin-top: 15px;
+        }
+    }
+    .wish {
+        height: 312px;
+        width: 180px;
+        img {
+            width: 180px;
+            height: 180px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1440px){
+    .forYou{
+        .row{
+            margin-top: 20px;
+        }
+    }
+    .wish {
+        height: 328px;
+        width: 206px;
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    }
+}
+@media only screen and (min-width: 1600px) and (max-width: 1919px){
+    .contentContainer{
+        margin: 0 140px;
+    }
+    .forYou{
+        .row{
+            margin-top: 25px;
+        }
+    }
+    .wish {
+        height: 340px;
+        width: 218px;
+        img {
+            width: 220px;
+            height: 220px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1920px){
+    .contentContainer{
+        margin: 0 270px;
+    }
 }
 

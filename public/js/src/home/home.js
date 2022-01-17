@@ -4,23 +4,38 @@ $(document).ready(function(){
     let swiperHomepage = new Swiper(".swiper-container", {
         cssMode: true,
         loop: true,
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+        autoplay: {
+            delay: 10000,
         },
+        // navigation: {
+        //     nextEl: ".swiper-button-next",
+        //     prevEl: ".swiper-button-prev",
+        // },
         pagination: {
             el: '.swiper-pagination',
             type: 'bullets',
+            clickable: 'true'
         },
 
     });
 
     let swiperLastMinute = new Swiper(".lastMinuteSwipe", {
-        // slidesPerView: 4,
+        slidesPerView: 'auto',
         spaceBetween: 0
     });
 
-
+    let swiperCategory = new Swiper(".categorySwipe", {
+        // cssMode: true,
+        // loop: true,
+        slidesPerView: 'auto',
+        spaceBetween: 30,
+        centeredSlides:true,
+        centeredSlidesBounds:true,
+        navigation: {
+            nextEl: ".nextCategory",
+            prevEl: ".prevCategory",
+        },
+    });
 
     let proBar = new ProBar({
         bgColor: "#C4C4C4",
@@ -46,15 +61,4 @@ $(document).ready(function(){
     });
 
     proBar.goto(30);
-
-    let swiperCategory = new Swiper(".categorySwipe", {
-        // cssMode: true,
-        // loop: true,
-        slidesPerView: 7,
-        spaceBetween: 0,
-        navigation: {
-            nextEl: ".nextCategory",
-            prevEl: ".prevCategory",
-        },
-    });
 });
