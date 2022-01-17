@@ -28,7 +28,7 @@
                     <div thumbsSlider="" class="swiper listPicture">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img src="{{asset('images/dummyProduct.jpeg')}}" />
+                                <img src="{{asset($wish_image)}}" />
                             </div>
                             <div class="swiper-slide">
                                 <img src="{{asset('images/dummyProduct.jpeg')}}" />

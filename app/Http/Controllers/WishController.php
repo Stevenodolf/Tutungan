@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Storage;
 class WishController extends Controller
 {
     public function wishDetail($id){
-        // $auth = Auth::check();
-        $auth = true;
+        $auth = Auth::check();
+        // $auth = true;
 
         //wish info
         $wish = Wish::where('id', $id)->first();
@@ -43,13 +43,12 @@ class WishController extends Controller
         $wish_stock = $wish_target_qty - $wish_curr_qty;
         $wish_min_order = $wish->min_order;
         $wish_updated_at = $wish->updated_at;
-        $for_you = Wish::inRandomOrder()->get();
-
+        $for_you = Wish::where('deadline', '>', Carbon::now())->inRandomOrder()->get();
 
         if($auth) {
             //header user info
             // $user = User::where('id', Auth::user()->id)->first();
-            $user = User::where('id', 1)->first();
+            $user = User::where('id', Auth::user()->id)->first();
 
             // return view('wishDetail', compact('wish'));
             return view('wish.wishDetail', ['auth' => $auth, 'user' => $user, 'wish' => $wish, 'wish_name' => $wish_name, 'wish_price' => $wish_price,

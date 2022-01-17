@@ -100,7 +100,7 @@
                                 <input type="hidden" id="total_bayar" name="total_bayar">
                             </div>
 
-                            <button id="pilihPembayaran">Pilih Pembayaran</button>
+                            <a id="pilihPembayaran">Pilih Pembayaran</a>
                         </div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                                 <p class="contentSemiNormal" style="color: rgba(49, 53, 59, 0.5);">Total Pembayaran</p>
                                 <p class="contentSemiNormal" style="color: #FF0000;font-weight: bold;">Rp {{number_format($total_bayar, 0, ',', '.')}}</p>
                             </div>
-                            <button id="bayar">Bayar</button>
+                            <a id="bayar">Bayar</a>
                         </div>
 
                     </div>

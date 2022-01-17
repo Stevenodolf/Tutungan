@@ -10,16 +10,17 @@ use App\Cart_Item;
 use App\Transaction;
 use App\Transaction_Item;
 use App\Shipper;
+use App\Wish;
 use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
     public function checkout(){
-        // $auth = Auth::check();
-        $auth = true;
+        $auth = Auth::check();
+        // $auth = true;
 
         if($auth){
-            $user = User::where('id', 1)->first();
+            $user = User::where('id', Auth::user()->id)->first();
             // $user = User::where('id', Auth->usser()->id)->first();
             $transaction = Transaction::where('user_id', $user->id)->first();
 
@@ -36,16 +37,18 @@ class TransactionController extends Controller
 
     public function postCheckout(Request $request){
         $auth = Auth::check();
-        $auth = true;
+        // $auth = true;
 
         if($auth){
-            $user = User::where('id', 1)->first();
+            $user = User::where('id', Auth::user()->id)->first();
             $transaction = Transaction::where('user_id', $user->id)->first();
             $transaction->total_bayar = $request->total_bayar;
 
             $transaction_items = Transaction_Item::where('status_transaksi_id', 1)->get();
             foreach($transaction_items as $transaction_item){
                 $transaction_item->status_transaksi_id = 2;
+                $wish = Wish::where('id', $transaction_item->wish_id)->first();
+                $wish->curr_qty = $wish->curr_qty - $transaction_item->qty;
             }
 
             return redirect('home');

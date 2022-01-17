@@ -31,6 +31,21 @@ class HomeController extends Controller
         if($auth) {
             //header user info
             $user = User::where('id', Auth::user()->id)->first();
+
+            $wishes = Wish::all();
+
+            //last minute
+            $curr_date = Carbon::now();
+            // $lastminute = Wish::whereRaw('DATEDIFF(deadline, curr_date) < 7')->get();
+
+            //category
+            $categories = Category::all();
+
+            //for you
+            $for_you = Wish::where('deadline', '>', Carbon::now())->inRandomOrder()->get();
+
+            return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'user' => $user,
+                             'categories' => $categories, 'for_you' => $for_you]);
         }
 
         $wishes = Wish::all();
