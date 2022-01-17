@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\User;
+use App\Cart;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {
@@ -28,7 +30,8 @@ class AuthController extends Controller
     public function postRegister(Request $request){
         if($request->password == $request->password2){
             $user = new User();
-            $user->id = rand(2,50);
+            $id = rand(2,50);
+            $user->id = $id;
             $user->username = $request->username;
             $user->email = $request->email ;
             $user->phone_number = $request->pnumber;
@@ -36,7 +39,16 @@ class AuthController extends Controller
             $user->gender = $request->gender;
             $user->password = bcrypt($request->password);
             $user->role_id = '2';
+            $user->created_at = Carbon::now();
+            $user->updated_at = Carbon::now();
             $user->save();
+
+            $cart = new Cart();
+            $cart->user_id = $id;
+            $cart->created_at = Carbon::now();
+            $cart->updated_at = Carbon::now();
+            $cart->save();
+
             return redirect()->route('home');
         }else{
             return redirect()->route('getRegister');

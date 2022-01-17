@@ -17,11 +17,12 @@ use Validator;
 class CartController extends Controller
 {
     public function cart(){
-        // $auth = Auth::check();
-        $auth = true;
+        $auth = Auth::check();
+        // $auth = true;
+
         if($auth){
             // $user = User::where('id', Auth::user()->id)->first();
-            $user = User::where('id', 1)->first();
+            $user = User::where('id', Auth::user()->id)->first();
 
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
@@ -32,7 +33,9 @@ class CartController extends Controller
     }
 
     public function addCart(Request $request){
-        $auth = true;
+        $auth = Auth::check();
+        // $auth = true;
+
         if($auth){
             $wish = Wish::where('id', $request->wish_id)->first();
             $min_order = $wish->min_order;
@@ -53,7 +56,7 @@ class CartController extends Controller
             }
 
             // $user = User::where('id', Auth::user()->id)->first();
-            $user = User::where('id', 1)->first();
+            $user = User::where('id', Auth::user()->id)->first();
 
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_item = new Cart_Item();
@@ -77,10 +80,12 @@ class CartController extends Controller
     }
 
     public function deleteCart($cart_item_id){
-        $auth = true;
+        $auth = Auth::check();
+        // $auth = true;
+
         if($auth){
             // $user = User::where('id', Auth::user()->id)->first();
-            $user = User::where('id', 1)->first();
+            $user = User::where('id', Auth::user()->id)->first();
 
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_item = Cart_Item::where('id', $cart_item_id)->first();
@@ -97,12 +102,12 @@ class CartController extends Controller
     }
 
     public function postCart(Request $request){
-        // $auth = Auth::check();
-        $auth = true;
+        $auth = Auth::check();
+        // $auth = true;
 
         if($auth){
             // $user = User::where('id', Auth::user()->id)->first();
-            $user = User::where('id', 1)->first();
+            $user = User::where('id', Auth::user()->id)->first();
 
             $transaction = new Transaction;
             $transaction->user_id = $user->id;

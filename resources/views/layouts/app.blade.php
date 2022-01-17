@@ -190,7 +190,7 @@
                 <div class="dropdownProfil">
                     <button class="buttonUser" onclick="openUserDropdown();">
                         <img src="{{asset('images/dummyUser.png')}}">
-                        <p class="contentNormal">Steven Yuwono</p>
+                        <p class="contentNormal">{{$user->username}}</p>
                         <img id="arrowUser" src="{{asset('images/arrowDownBlack.png')}}">
                     </button>
                     <div class="dropdownList" id="dropdownList">

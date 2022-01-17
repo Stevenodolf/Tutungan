@@ -31,8 +31,8 @@
                                       <p class="">Rp {{number_format($cart_item->total_price, 0, ',', '.')}}</p>
                                   </div>
                               </div>
-                              <div class="deleteAdd" onclick="window.location='{{ url("/wish/delete-cart/".$cart_item->id)}}'">
-                                  <button>
+                              <div class="deleteAdd">
+                                  <button onclick="window.location='{{ url("/wish/delete-cart/".$cart_item->id)}}'">
                                       <img src="{{asset('images/binRed.png')}}">
                                   </button>
                                   <input type="number">
