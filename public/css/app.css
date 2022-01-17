@@ -16,6 +16,17 @@ h5 {
   margin: 0;
 }
 
+a {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
 button {
   cursor: pointer;
 }
@@ -129,9 +140,12 @@ button {
   margin-top: 35px;
 }
 
-.firstRegister .registerContainer .section .contentSemiBig {
-  margin-bottom: 10px;
+.firstRegister .registerContainer .section a {
   color: rgba(49, 53, 59, 0.8);
+}
+
+.firstRegister .registerContainer .section a .contentSemiBig {
+  margin-bottom: 10px;
 }
 
 .firstRegister .registerContainer .section #day,
@@ -400,7 +414,7 @@ button {
   align-items: center;
 }
 
-.login .loginContainer .section .field .lupaPass button {
+.login .loginContainer .section .field .lupaPass a {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -486,7 +500,7 @@ button {
   align-items: center;
 }
 
-.loginPopUp .loginSection .field .lupaPass button {
+.loginPopUp .loginSection .field .lupaPass a {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;

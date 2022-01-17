@@ -30,6 +30,9 @@ $(document).ready(function () {
     };
 
     let editor = new Quill('#description', options);
+    editor.on('text-change', function(delta, oldDelta, source) {
+        document.getElementById("quill_html").value = editor.root.innerHTML;
+    });
 
     //Filepond
     FilePond.registerPlugin(FilePondPluginFileValidateSize);
@@ -37,7 +40,7 @@ $(document).ready(function () {
     FilePond.registerPlugin(FilePondPluginImagePreview);
     FilePond.registerPlugin(FilePondPluginFileValidateType);
     //Attachment for Sub Ticket
-    const inputElement = document.getElementById('fotoProduk');
+    const inputElement = document.querySelector('input[id="wishPicture"]');
     const pond = FilePond.create(inputElement,{
         allowMultiple: true,
         credits:false,
@@ -46,8 +49,10 @@ $(document).ready(function () {
         instantUpload: false,
         allowProcess: false,
         maxFiles: 4,
-        acceptedFileTypes: ['image/*']
+        acceptedFileTypes: ['image/*'],
+        storeAsFile: true,
     });
+
 });
 
 

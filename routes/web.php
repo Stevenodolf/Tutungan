@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+//
 //  Route::get('/', function () {
-//      return view('detailAkun.detailAkunTemplate');
+//      return view('email.forgotPassword');
 //  });
 
 Route::get('/', 'HomeController@home')->name('home');
@@ -24,12 +24,22 @@ Route::get('/home', function(){
     return redirect('/');
 });
 
+
+//Forgot Password
+Route::get('/forgotPassword', 'ForgotPasswordController@showForgotPassword');
+Route::post('/forgotPassword', 'ForgotPasswordController@submitForgotPassword');
+Route::get('/resetPassword/{token}', 'ForgotPasswordController@showResetPassword')->name('resetPassword');
+Route::post('/resetPassword', 'ForgotPasswordController@submitResetPassword')->name('submitReset');
+
+//Auth
 Route::get('/login', 'AuthController@showLoginPage')->name('getLogin');
 Route::post('/login', 'AuthController@postLogin')->name('postLogin');
 Route::get('/register', 'AuthController@showRegisterPage')->name('getRegister');
 Route::post('/register', 'AuthController@postRegister') ->name('postRegister');
 Route::get('/logout','AuthController@logout')->name('logout');
 
+Route::get('/createWish', 'WishController@getCreateWish');
+Route::post('/createWish', 'WishController@postCreateWish');
 Route::get('/wish/{id}', 'WishController@wishDetail');
 Route::post('/wish/{id}', 'CartController@addCart');
 Route::get('/wish/delete-cart/{cart_item_id}', 'CartController@deleteCart');
