@@ -42,15 +42,10 @@
     <!-- Content -->
     @yield('head')
 
-
-
-
-
-
 </head>
 <body>
 <div id="app">
-    <div style="margin: 0 120px;">
+    <div style="margin: 0 8%">
         <div class="navbar">
             <div class="logo" onclick="window.location='{{ url("/")}}'">
                 <img src="{{asset('images/tutunganLogo.png')}}">
