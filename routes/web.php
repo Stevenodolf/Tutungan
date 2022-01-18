@@ -24,6 +24,9 @@ Route::get('/home', function(){
     return redirect('/');
 });
 
+Route::get('/tick', function(){
+    return view('wish.tick');
+});
 
 //Forgot Password
 Route::get('/forgotPassword', 'ForgotPasswordController@showForgotPassword');

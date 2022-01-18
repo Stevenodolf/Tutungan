@@ -144,6 +144,66 @@ button{
         }
     }
 }
+
+.tick {
+    font-size:1rem; white-space:nowrap; font-family:arial,sans-serif;
+}
+
+.tick-flip,.tick-text-inline {
+    font-size:2.5em;
+}
+
+.tick-label {
+    margin-top:1em;font-size:1em;
+}
+
+.tick-char {
+    width:1.5em;
+}
+
+.tick-text-inline {
+    display:inline-block;text-align:center;min-width:1em;
+}
+
+.tick-text-inline+.tick-text-inline {
+    margin-left:-.325em;
+}
+
+.tick-group {
+    margin:0 .5em;text-align:center;
+}
+
+body {
+    background-color: rgb(255, 235, 230) !important;
+}
+
+.tick-text-inline {
+    color: rgb(98, 99, 92) !important;
+}
+
+.tick-label {
+    color: rgb(98, 99, 92) !important;
+}
+
+.tick-flip-panel {
+    color: rgb(255, 255, 255) !important;
+}
+
+.tick-flip {
+    font-family: !important;
+}
+
+.tick-flip-panel-text-wrapper {
+    line-height: 1.45 !important;
+}
+
+.tick-flip-panel {
+    background-color: rgb(59, 61, 59) !important;
+}
+
+.tick-flip {
+    border-radius:0.12em !important;
+}
 //END OF GLOBAL
 
 //Register
@@ -1132,22 +1192,33 @@ button{
         flex-direction: column;
         width: 292px;
         height: 361px;
-        background: #008a00;
+        //background: #008a00;
         .timeSection {
-            height: 90px;
-            background: #FF4545;
+            //height: 90px;
+            background: #EA260D;
             border: 1px solid rgba(49, 53, 59, 0.2);
             box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
             border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 20px;
             .title {
-                
+                color: #FFFFFF;
+                margin-bottom: 10px;
             }
-            .ticker {
-
-            }
+            //.ticker {
+            //    height: 57px;
+            //    background: #57B793;
+            //    color: #EA260D;
+            //}
         }
         .purchaseSection {
-
+            display: flex;
+            flex-direction: column;
+            height: 261px;
+            background: #FFFFFF;
+            border: 1px solid rgba(49, 53, 59, 0.2);
+            box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+            border-radius: 5px;
         }
     }
 

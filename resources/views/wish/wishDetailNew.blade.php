@@ -107,6 +107,17 @@
             </div>
             <div class="rightSection">
                 <div class="timeSection">
+                    <p class="contentSemiNormal title">Sisa Waktu</p>
+                    <div class="ticker">
+                        <div class="tick"
+                             data-value="Hello World">
+
+                            <span data-view="flip"></span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="purchaseSection">
 
                 </div>
             </div>
