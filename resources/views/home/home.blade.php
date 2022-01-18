@@ -332,7 +332,8 @@
                     @endif
                         <div class="column">
                             <div class="wish" onclick="window.location='{{ url("/wish/".$wish->id)}}'">
-                                <img src="{{asset($wish->image)}}"/>
+{{--                                <img src="{{asset($wish->image[0])}}"/>--}}
+                                <img src="{{asset('uploads/'.json_decode($wish->image)[0])}}"/>
                                 <div class="timeLeft">
                                     <p>Tersisa {{$time_left}} Hari Lagi</p>
                                 </div>

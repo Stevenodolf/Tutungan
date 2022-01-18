@@ -97,10 +97,12 @@ class WishController extends Controller
             $file = $request->file('wishPicture');
             $folder = uniqid() . '-' . now()->timestamp;
             foreach ($file as $files){
-                $filename = $files->getClientOriginalName();
+                $filename = uniqid(). '.' .$files->getClientOriginalExtension();
                 $files->storeAs('uploads/' . $folder, $filename);
+                $data[] = $folder .'/'. $filename;
             }
-            $wish->image = 'uploads/' .$folder . '/';//string
+
+            $wish->image = json_encode($data);//string
             $wish->web_link = $request->webLink;
             $wish->status_wish_id = '1'; //int
             $wish->origin = $request->origin;
