@@ -29,7 +29,7 @@ class WishController extends Controller
         $wish_origin = $wish->origin;
         $wish_web_link = $wish->web_link;
         $wish_status_wish_name = $wish->getStatusWishRelation->name;
-        $wish_status_transaksi_name = $wish->getStatusTransaksiRelation->name;
+        // $wish_status_transaksi_name = $wish->getStatusTransaksiRelation->name;
         if ($wish->approved_by == NULL){
             $wish_approved_by = NULL;
         }
@@ -56,7 +56,7 @@ class WishController extends Controller
                                         'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status_wish_name' => $wish_status_wish_name, 'wish_approved_by' => $wish_approved_by,
                                         'wish_deadline' => $wish_deadline, 'wish_curr_qty' => $wish_curr_qty, 'wish_target_qty' => $wish_target_qty, 'wish_stock' => $wish_stock,
                                         'wish_updated_at' => $wish_updated_at, 'wish_origin' => $wish_origin, 'wish_web_link' => $wish_web_link, 'for_you' => $for_you,
-                                        'wish_status_transaksi_name' => $wish_status_transaksi_name, 'wish_min_order' => $wish_min_order]);
+                                        'wish_min_order' => $wish_min_order]);
         }
 
         return view('wish.wishDetail', ['auth' => $auth, 'wish' => $wish, 'wish_name' => $wish_name, 'wish_price' => $wish_price,
@@ -64,7 +64,7 @@ class WishController extends Controller
                                     'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status_wish_name' => $wish_status_wish_name, 'wish_approved_by' => $wish_approved_by,
                                     'wish_deadline' => $wish_deadline, 'wish_curr_qty' => $wish_curr_qty, 'wish_target_qty' => $wish_target_qty,  'wish_stock' => $wish_stock,
                                     'wish_updated_at' => $wish_updated_at, 'wish_origin' => $wish_origin, 'wish_web_link' => $wish_web_link, 'for_you' => $for_you,
-                                    'wish_status_transaksi_name' => $wish_status_transaksi_name, 'wish_min_order' => $wish_min_order]);
+                                    'wish_min_order' => $wish_min_order]);
 
     }
 

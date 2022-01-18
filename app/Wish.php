@@ -31,4 +31,13 @@ class Wish extends Model
     public function getReasonRelation(){
         return $this->hasOne('App\Reason', 'id', 'reason_id');
     }
+
+
+
+
+
+
+    public function getUserRelation(){
+        return $this->hasOne('App\User', 'id', 'created_by');
+    }
 }

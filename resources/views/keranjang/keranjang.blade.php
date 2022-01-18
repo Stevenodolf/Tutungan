@@ -32,9 +32,9 @@
                                   </div>
                               </div>
                               <div class="deleteAdd">
-                                  <button onclick="window.location='{{ url("/wish/delete-cart/".$cart_item->id)}}'">
+                                  <a onclick="window.location='{{ url("/wish/delete-cart/".$cart_item->id)}}'">
                                       <img src="{{asset('images/binRed.png')}}">
-                                  </button>
+                                  </a>
                                   <input type="number">
                               </div>
                           </div>

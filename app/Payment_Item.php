@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Transaction_Item extends Model
+class Payment_Item extends Model
 {
-    protected $table = 'transaction_item';
+    protected $table = 'payment_item';
     
     public function getTransactionRelation(){
-        return $this->hasOne('App\Transaction', 'id', 'transaction_id');
+        return $this->hasOne('App\Payment', 'id', 'payment_id');
     }
 
     public function getWishRelation(){

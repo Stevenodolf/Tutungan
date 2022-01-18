@@ -25,24 +25,37 @@
                             </p>
                         </div>
                         <div class="itemDetail">
-                            @foreach ($transaction_items as $transaction_item)
+                            @php
+                                $grand_oti = 0;
+                                $grand_itu = 0;
+                                $grand_fee = 0;
+                                $grand_payment = 0;
+                            @endphp
+                            @foreach ($payment_items as $payment_item)
+                                @php
+                                    $grand_oti = $grand_oti + $payment_item->total_oti;
+                                    $grand_itu = $grand_itu + $payment_item->total_itu;
+                                    $grand_fee = $grand_fee + $payment_item->total_fee;
+                                    $grand_payment = $grand_payment + $payment_item->total_price;
+                                @endphp
                                 <div class="productDetail">
                                     <div class="detail">
-                                        <img src="{{asset($transaction_item->getWishRelation->image)}}"/>
+                                        <img src="{{asset($payment_item->getWishRelation->image)}}"/>
                                         <div>
-                                            <p class="contentSemiNormal">{{$transaction_item->getWishRelation->name}}</p>
-                                            <p class="contentSmall">{{$transaction_item->qty}}</p>
-                                            <p class="contentNormal">Rp {{number_format($transaction_item->total_price, 0, ',', '.')}}</p>
+                                            <p class="contentSemiNormal">{{$payment_item->getWishRelation->name}}</p>
+                                            <p class="contentSmall">{{$payment_item->qty}}</p>
+                                            <p class="contentNormal">Rp {{number_format($payment_item->total_price, 0, ',', '.')}}</p>
                                         </div>
                                     </div>
                                     <div class="shipmentDetail">
                                         <p class="contentSemiNormal">Pilih Pengiriman</p>
-                                        <select>
+                                        <select id="pilihEkspedisi"`>
                                             <option value="">Pengiriman</option>
                                             @foreach ($dshippers as $dshipper)
                                                 <option value="{{$dshipper->id}}">{{$dshipper->name}}</option>
                                             @endforeach
                                         </select>
+                                        <div id="message"></div>
                                     </div>
                                 </div>
                             @endforeach
@@ -72,32 +85,38 @@
                             <h2>Ringkasan</h2>
                             <div class="ringkasanHarga">
                                 @php
-                                    $oti =  $jumlah_wish * 30000;
-                                    $itu = $jumlah_wish * 20000;
-                                    $asuransi = $jumlah_wish * 2500;
-                                    $total_bayar = $transaction->total_price + $oti + $itu + $asuransi;
+                                    // $oti =  $jumlah_wish * 30000;
+                                    // $itu = $jumlah_wish * 20000;
+                                    // $admin = $jumlah_wish * 2500;
+                                    // $total_payment = $payment->total_price + $oti + $itu + $admin;
+
+                                    $total_payment = $grand_payment + $grand_oti + $grand_itu + $grand_fee;
                                 @endphp
+                                {{-- <input type="hidden" name="grand_oti" id="grand_oti" value="{{$oti}}">
+                                <input type="hidden" name="grand_itu" id="grand_itu" value="{{$itu}}">
+                                <input type="hidden" name="grand_itu" id="grand_fee" value="{{$admin}}"> --}}
+                                <input type="hidden" name="total_payment" id="total_payment" value="{{$total_payment}}">
+
                                 <div class="section">
                                     <p class="contentSemiNormal">Total Harga</p>
-                                    <p class="contentSemiNormal">Rp {{number_format($transaction->total_price, 0, ',', '.')}}</p>
+                                    <p class="contentSemiNormal">Rp {{number_format($grand_payment, 0, ',', '.')}}</p>
                                 </div>
                                 <div class="section">
                                     <p class="contentSemiNormal">Origin to Indonesia</p>
-                                    <p class="contentSemiNormal">Rp {{number_format($oti, 0, ',', '.')}}</p>
+                                    <p class="contentSemiNormal">Rp {{number_format($grand_oti, 0, ',', '.')}}</p>
                                 </div>
                                 <div class="section">
                                     <p class="contentSemiNormal">Indonesia to User</p>
-                                    <p class="contentSemiNormal">Rp {{number_format($itu, 0, ',', '.')}}</p>
+                                    <p class="contentSemiNormal">Rp {{number_format($grand_itu, 0, ',', '.')}}</p>
                                 </div>
                                 <div class="section">
-                                    <p class="contentSemiNormal">Asuransi</p>
-                                    <p class="contentSemiNormal">Rp {{number_format($asuransi, 0, ',', '.')}}</p>
+                                    <p class="contentSemiNormal">Biaya Admin</p>
+                                    <p class="contentSemiNormal">Rp {{number_format($grand_fee, 0, ',', '.')}}</p>
                                 </div>
                             </div>
                             <div class="ringkasanTotal">
                                 <p class="contentSemiNormal">Total Tagihan</p>
-                                <p class="contentSemiNormal" style="color: red">Rp {{number_format($total_bayar, 0, ',', '.')}}</p>
-                                <input type="hidden" id="total_bayar" name="total_bayar">
+                                <p class="contentSemiNormal" style="color: red">Rp {{number_format($total_payment, 0, ',', '.')}}</p>
                             </div>
 
                             <a id="pilihPembayaran">Pilih Pembayaran</a>
@@ -127,7 +146,7 @@
                             <p class="contentSemiBig">Ringkasan Pembayaran</p>
                             <div class="subSection">
                                 <p class="contentSemiNormal" style="color: rgba(49, 53, 59, 0.5);">Total Pembayaran</p>
-                                <p class="contentSemiNormal" style="color: #FF0000;font-weight: bold;">Rp {{number_format($total_bayar, 0, ',', '.')}}</p>
+                                <p class="contentSemiNormal" style="color: #FF0000;font-weight: bold;">Rp {{number_format($total_payment, 0, ',', '.')}}</p>
                             </div>
                             <a id="bayar">Bayar</a>
                         </div>

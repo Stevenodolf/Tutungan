@@ -8,8 +8,8 @@ use App\User;
 use App\Wish;
 use App\Cart;
 use App\Cart_Item;
-use App\Transaction;
-use App\Transaction_Item;
+use App\Payment;
+use App\Payment_Item;
 use App\Shipper;
 use Carbon\Carbon;
 use Validator;
@@ -27,6 +27,19 @@ class CartController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
+            $total_qty = 0;
+            $total_price = 0;
+            foreach($cart_items as $cart_item){
+                $total_qty = $total_qty + $cart_item->qty;
+                $total_price = $total_price + $cart_item->total_price;
+            }
+
+            $cart = Cart::where('user_id', $user->id)->update([
+                'total_qty' => $total_qty,
+                'total_price' => $total_price
+            ]);
+            $cart = Cart::where('user_id', $user->id)->first();
+            
             return view('keranjang.keranjang', ['user' => $user, 'cart' => $cart, 'cart_items' => $cart_items]);
         }
         return redirect('login');
@@ -69,8 +82,8 @@ class CartController extends Controller
             $cart_item->updated_at = Carbon::now()->format('Y-m-d H:i:s');
             $cart_item->save();
             
-            $cart->total_qty = $cart->total_qty + $cart_item->qty;
-            $cart->total_price = $cart->total_price + $cart_item->total_price;
+            // $cart->total_qty = $cart->total_qty + $cart_item->qty;
+            // $cart->total_price = $cart->total_price + $cart_item->total_price;
             $cart->updated_at = Carbon::now()->format('Y-m-d H:i:s');
             $cart->save();
 
@@ -91,8 +104,8 @@ class CartController extends Controller
             $cart_item = Cart_Item::where('id', $cart_item_id)->first();
             $cart_item->delete();
 
-            $cart->total_qty = $cart->total_qty - $cart_item->qty;
-            $cart->total_price = $cart->total_price - $cart_item->total_price;
+            // $cart->total_qty = $cart->total_qty - $cart_item->qty;
+            // $cart->total_price = $cart->total_price - $cart_item->total_price;
             $cart->updated_at = Carbon::now()->format('Y-m-d H:i:s');
             $cart->save();
 
@@ -109,25 +122,27 @@ class CartController extends Controller
             // $user = User::where('id', Auth::user()->id)->first();
             $user = User::where('id', Auth::user()->id)->first();
 
-            $transaction = new Transaction;
-            $transaction->user_id = $user->id;
-            $transaction->total_price = $request->total_price;
-            $transaction->total_qty = $request->total_qty;
-            // $transaction->wish_id = $wishes->implode('wish_id', ',');
-            $transaction->save();
+            $payment = new Payment;
+            $payment->user_id = $user->id;
+            $payment->total_price = $request->total_price;
+            $payment->total_qty = $request->total_qty;
+            // $payment->wish_id = $wishes->implode('wish_id', ',');
+            $payment->save();
 
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
             foreach ($cart_items as $cart_item){
-                $transaction_item = new Transaction_Item;
-                $transaction_item->transaction_id = $transaction->id;
-                $transaction_item->wish_id = $cart_item->wish_id;
-                $transaction_item->status_transaksi_id = 1;
-                $transaction_item->qty = $cart_item->qty;
-                $transaction_item->total_price = $cart_item->total_price;
-                $transaction_item->created_at = Carbon::now()->format('Y-m-d H:i:s');
-                $transaction_item->updated_at = Carbon::now()->format('Y-m-d H:i:s');
-                $transaction_item->save();
+                $payment_item = new Payment_Item;
+                $payment_item->payment_id = $payment->id;
+                $payment_item->cart_item_id = $cart_item->id;
+                $payment_item->wish_id = $cart_item->wish_id;
+                $payment_item->status_transaksi_id = 1;
+                $payment_item->qty = $cart_item->qty;
+                $payment_item->total_price = $cart_item->total_price;
+                $payment_item->total_fee = 10000;
+                $payment_item->created_at = Carbon::now()->format('Y-m-d H:i:s');
+                $payment_item->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+                $payment_item->save();
             }
 
             return redirect('checkout');
