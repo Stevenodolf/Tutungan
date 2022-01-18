@@ -23,6 +23,11 @@
                         <a href="{{url('/forgotPassword')}}" class="contentSemiBig">Lupa password?</a>
                     </div>
                 </div>
+                @if($errors->any())
+                    <div style="color:red" role="alert">
+                        <strong> {{$errors->first()}}</strong>
+                    </div>
+                @endif
                 <button class="buttonMasuk" type="submit">
                     <p class="contentSemiBig">Masuk</p>
                 </button>

@@ -39,7 +39,7 @@ class CartController extends Controller
                 'total_price' => $total_price
             ]);
             $cart = Cart::where('user_id', $user->id)->first();
-            
+
             return view('keranjang.keranjang', ['user' => $user, 'cart' => $cart, 'cart_items' => $cart_items]);
         }
         return redirect('login');
@@ -68,7 +68,6 @@ class CartController extends Controller
                 return redirect()->back()->withErrors($validator->errors());
             }
 
-            // $user = User::where('id', Auth::user()->id)->first();
             $user = User::where('id', Auth::user()->id)->first();
 
             $cart = Cart::where('user_id', $user->id)->first();

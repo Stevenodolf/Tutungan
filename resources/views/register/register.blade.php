@@ -52,6 +52,11 @@
                     <input type="password" id="password2" name="password2" required/>
                 </div>
                 <div class="section">
+                    @if($errors->any())
+                        <div style="color:red" role="alert">
+                            <strong> {{$errors->first()}}</strong>
+                        </div>
+                    @endif
                     <button type="submit">
                         <p class="contentNormal">Daftar</p>
                     </button>
