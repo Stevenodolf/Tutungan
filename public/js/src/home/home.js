@@ -4,13 +4,14 @@ $(document).ready(function(){
     let swiperHomepage = new Swiper(".swiper-container", {
         cssMode: true,
         loop: true,
+        disableOnInteraction: true,
         autoplay: {
             delay: 10000,
         },
-        // navigation: {
-        //     nextEl: ".swiper-button-next",
-        //     prevEl: ".swiper-button-prev",
-        // },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
         pagination: {
             el: '.swiper-pagination',
             type: 'bullets',
@@ -21,7 +22,11 @@ $(document).ready(function(){
 
     let swiperLastMinute = new Swiper(".lastMinuteSwipe", {
         slidesPerView: 'auto',
-        spaceBetween: 0
+        spaceBetween: 0,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
     });
 
     let swiperCategory = new Swiper(".categorySwipe", {

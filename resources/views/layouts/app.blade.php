@@ -131,7 +131,7 @@
                 </div>
             @else
                 <div class="dropdownKeranjang">
-                    <button class="buttonWithImage" ><img src="{{asset('images/shopping-cart.png')}}"></button>
+                    <button class="buttonWithImage" onclick="openKeranjangDropdown()"><img src="{{asset('images/shopping-cart.png')}}"></button>
                     <div class="dropdownList" id="dropdownKeranjang">
                         <div class="title">
                             <p class="contentSemiNormal">Keranjang Anda</p>
@@ -154,7 +154,7 @@
                     </div>
                 </div>
                 <div class="dropdownNotifikasi">
-                    <button class="buttonWithImage"><img src="{{asset('images/bell.png')}}"></button>
+                    <button class="buttonWithImage" onclick="openNotifDropdown()"><img src="{{asset('images/bell.png')}}"></button>
                     <div class="dropdownList" id="dropdownNotif">
                         <div class="title">
                             <p class="contentSemiNormal">Notifikasi</p>

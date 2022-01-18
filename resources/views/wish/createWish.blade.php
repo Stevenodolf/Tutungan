@@ -47,9 +47,7 @@
                     <div class="sectionInputSelect">
                         <div class="doubleText">
                             <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Foto Produk *</p>
-                            <p class="contentSemiNormal" style="color: #747474;">Ukuran gambar: maks. 10 MB
-                                Format gambar: .JPG, .JPEG, .PNG Resolusi gambar: - Minimum 300x300 px
-                                - Optimal 700x700 px</p>
+                            <p class="contentSemiNormal" style="color: #747474;">Ukuran gambar: maks. 10 MB</p>
                         </div>
                         <div style="margin-left: 30px;width: 100%">
                             <input type="file" name="wishPicture[]" id="wishPicture"/>
@@ -125,10 +123,10 @@
                 </div>
 
                 <div class="buttonKanan">
-                    <button class="batal">
+                    <a href="{{url('/')}}" class="batal">
                         <img src="{{asset('images/closeSmall.png')}}">
                         <p class="contentSemiBig">Batalkan</p>
-                    </button>
+                    </a>
                     <button class="simpan" type="submit">
                         <img src="{{asset('images/checkBlack.png')}}">
                         <p class="contentSemiBig">Simpan</p>
