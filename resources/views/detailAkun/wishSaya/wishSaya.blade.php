@@ -55,7 +55,7 @@
                                     <p class="contentBig">/</p>
                                     <p class="contentBig">100</p>
                                 </div>
-                                <div class="progressBar">
+                                <div class="barProgress">
                                     <div class="currentBar"></div>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@
                                     <p class="contentBig">/</p>
                                     <p class="contentBig">1000</p>
                                 </div>
-                                <div class="progressBar">
+                                <div class="barProgress">
                                     <div class="currentBar" style="width: 50%"></div>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@
                                     <p class="contentBig">/</p>
                                     <p class="contentBig">200</p>
                                 </div>
-                                <div class="progressBar">
+                                <div class="barProgress">
                                     <div class="currentBar" style="width: 75%"></div>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
                                     <p class="contentBig">/</p>
                                     <p class="contentBig">200</p>
                                 </div>
-                                <div class="progressBar">
+                                <div class="barProgress">
                                     <div class="currentBar" style="width: 100%; color: #57B793"></div>
                                 </div>
                             </div>
@@ -191,7 +191,7 @@
                                     <p class="contentBig">/</p>
                                     <p class="contentBig">200</p>
                                 </div>
-                                <div class="progressBar">
+                                <div class="barProgress">
                                     <div class="currentBar" style="width: 100%; background: #57B793"></div>
                                 </div>
                             </div>
@@ -225,7 +225,7 @@
                                     <p class="contentBig">/</p>
                                     <p class="contentBig">200</p>
                                 </div>
-                                <div class="progressBar" style="background: #FBEBEF">
+                                <div class="barProgress" style="background: #FBEBEF">
                                     <div class="currentBar" style="width: 75%; background: #DC354F"></div>
                                 </div>
                             </div>

@@ -19,8 +19,10 @@ $(document).ready(function () {
     });
 
     let proBar = new ProBar({
-        bgColor: "#C4C4C4",
-        color:"#DE3E16",
+        // bgColor: "#C4C4C4",
+        // color:"#DE3E16",
+        bgColor: "#FFF09E",
+        color: "#D5B81B",
         speed:0.2,
         wrapper:".progressBar",
         height:10,
@@ -28,19 +30,19 @@ $(document).ready(function () {
         wrapperId : "progressBarId",
         finishAnimation : false,
         rounded : { // use it to round Corners of Probar.
-            topLeft : 2,
-            topRight : 2,
-            bottomLeft : 2,
-            bottomRight : 2
+            topLeft : 5,
+            topRight : 5,
+            bottomLeft : 5,
+            bottomRight : 5
         },
         roundedInternal : { // use it to round Corners of Probar (internal).
-            topLeft : 2,
-            topRight : 2,
-            bottomLeft : 2,
-            bottomRight : 2
+            topLeft : 5,
+            topRight : 5,
+            bottomLeft : 5,
+            bottomRight : 5
         }
     });
 
-    proBar.goto(30);
+    proBar.goto(50);
 
 })
