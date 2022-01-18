@@ -77,7 +77,7 @@ class WishController extends Controller
 
             return view('wish.createWish', ['auth' => $auth, 'user' => $user, 'categories' => $categories]);
         }
-        redirect('login');
+        return redirect('login');
     }
 
     public function postCreateWish(Request $request){
