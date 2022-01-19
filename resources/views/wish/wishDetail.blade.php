@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="contentContainer">
-        <div class="wishDetail">
+        <div class="wishDetailXXX">
             <div class="row">
                 <div class="column">
                     <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper bigPicture">
@@ -155,6 +155,7 @@
                 </div>
             </div>
         </div>
+
 
 
         <div class="forYou">

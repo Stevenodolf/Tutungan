@@ -116,6 +116,47 @@ button {
   border-radius: 5px;
 }
 
+.progressIndicator {
+  width: 100%;
+}
+
+.progressIndicator .contentSmall {
+  font-family: "latoregular";
+  color: #b1b1b1;
+}
+
+.progressIndicator .progressNumber {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 7px;
+}
+
+.progressIndicator .progressNumber .contentBig {
+  font-family: "latobold";
+  color: #b1b1b1;
+  margin-right: 4px;
+}
+
+.progressIndicator .progressNumber .textCurrentProgress {
+  color: #D5B81B;
+}
+
+.progressIndicator .barProgress {
+  width: 100%;
+  height: 11px;
+  background: #FFF09E;
+  border-radius: 5px;
+  position: relative;
+}
+
+.progressIndicator .barProgress .currentBar {
+  width: 20%;
+  height: 100%;
+  background: #D5B81B;
+  border-radius: 5px;
+  position: absolute;
+}
+
 .firstRegister {
   min-height: 100vh;
   width: 100%;
@@ -1139,148 +1180,345 @@ button {
   clear: both;
 }
 
-.wishDetail .column {
-  float: left;
-  width: 33.33%;
+.wishDetail {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
 }
 
-.wishDetail .row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.wishDetail .product .price {
-  margin: 10px 0;
-  border-top: 2px solid rgba(49, 53, 59, 0.2);
-  border-bottom: 2px solid rgba(49, 53, 59, 0.2);
-}
-
-.wishDetail .product .price h2 {
-  margin: 10px 0;
-}
-
-.wishDetail .product .information .columnA {
-  float: left;
-  width: 40%;
-  color: rgba(49, 53, 59, 0.5);
-}
-
-.wishDetail .product .information .columnB {
-  float: left;
-  width: 60%;
-}
-
-.wishDetail .product .information .columnB .imgShip {
-  width: 50px;
-}
-
-.wishDetail .product .information .columnB .imgInfo {
-  width: 20px;
-}
-
-.wishDetail .product .information .row {
-  margin-bottom: 27px;
-}
-
-.wishDetail .product .information .row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.wishDetail .checkout {
-  width: 275px;
-  height: 100%;
+.wishDetail .leftSection {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background: #FFFFFF;
+  width: 875px;
+  margin-right: 32px;
+}
+
+.wishDetail .leftSection .upperSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 875px;
+  margin-bottom: 15px;
+}
+
+.wishDetail .leftSection .upperSection .images {
+  width: 350px;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo {
+  display: flex;
+  flex-direction: column;
+  width: 496px;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .upperInfo {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #D6D7D8;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .upperInfo .title {
+  font-family: "latobold";
+  color: #31353B;
+  margin-bottom: 5px;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .upperInfo .requested {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .upperInfo .requested .label {
+  color: #C1C2C4;
+  margin-right: 3px;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .upperInfo .requested .name {
+  color: #D5B81B;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .middleInfo {
+  border-bottom: 1px solid #D6D7D8;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .middleInfo .price {
+  font-size: 27px;
+  font-family: "latobold";
+  font-weight: 1000;
+  color: #31353B;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .lowerInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow:last-of-type {
+  margin-bottom: 0px;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow:last-of-type .infoDetail {
+  cursor: pointer;
+  font-family: "latobold";
+  color: #D5B81B;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow .infoType {
+  width: 33%;
+  white-space: nowrap;
+  color: #989A9D;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow .infoDetail {
+  display: flex;
+  width: 67%;
+  color: #31353B;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow .shipping {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow .shipping .imgShipping {
+  width: 50px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  aspect-ratio: auto;
+  margin-right: 10px;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow .protection {
+  flex-direction: column;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow .protection .protectionItem {
+  display: flex;
+  flex-direction: row;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow .protection .protectionItem:first-of-type {
+  margin-bottom: 15px;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow .protection .protectionItem .protectionName {
+  color: #31353B;
+  margin-right: 5px;
+}
+
+.wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow .protection .protectionItem .imgProtection {
+  width: 20px;
+  cursor: pointer;
+}
+
+.wishDetail .leftSection .lowerSection {
   border: 1px solid rgba(49, 53, 59, 0.2);
   box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
   border-radius: 5px;
 }
 
-.wishDetail .checkout .variant {
+.wishDetail .leftSection .lowerSection .title {
+  font-family: "latobold";
+  color: #31353B;
+  padding: 25px 21px;
+  border-bottom: 1px solid #D6D7D8;
+}
+
+.wishDetail .leftSection .lowerSection .sectionContent {
+  padding: 25px 21px;
+}
+
+.wishDetail .rightSection {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
-  border-bottom: 1px solid rgba(49, 53, 59, 0.2);
-  padding: 20px 20px;
+  width: 292px;
+  height: 361px;
 }
 
-.wishDetail .checkout .variant select {
-  width: 235px;
-  height: 36px;
-  margin-top: 20px;
-  outline: none;
+.wishDetail .rightSection .timeSection {
+  background: #EA260D;
   border: 1px solid rgba(49, 53, 59, 0.2);
-  box-sizing: border-box;
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
   border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 20px;
 }
 
-.wishDetail .checkout .variant select:hover {
-  color: #F5D108;
-  border-color: #F5D108;
+.wishDetail .rightSection .timeSection .title {
+  font-family: "latobold";
+  color: #FFFFFF;
+  margin-bottom: 10px;
 }
 
-.wishDetail .checkout .total {
-  padding: 20px 20px;
+.wishDetail .rightSection .timeSection .ticker .tick {
+  font-size: 2em;
 }
 
-.wishDetail .checkout .total .inputTotal {
+.wishDetail .rightSection .timeSection .ticker .tick .tick-label {
+  font-size: 10px;
+  color: #FFFFFF;
+}
+
+.wishDetail .rightSection .timeSection .ticker .tick .tick-group {
+  margin: 0 0.25em;
+}
+
+.wishDetail .rightSection .timeSection .ticker .tick .tick-flip-panel {
+  color: #EA260D;
+  background: #FFFFFF;
+}
+
+.wishDetail .rightSection .purchaseSection {
   display: flex;
-  margin-top: 20px;
-  margin-bottom: 8px;
-}
-
-.wishDetail .checkout .total p {
-  margin-left: 5px;
-}
-
-.wishDetail .checkout .buttonCheckout .addKeranjang {
-  width: 235px;
-  height: 36px;
-  background: #FFD901;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
   border-radius: 5px;
-  border: 1px solid #FFD901;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  padding: 20px;
+}
+
+.wishDetail .rightSection .purchaseSection .title {
+  font-family: "latobold";
+  margin-bottom: 10px;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing {
+  width: 250px;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing input[type=number] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing input[type=number]::-webkit-inner-spin-button,
+.wishDetail .rightSection .purchaseSection .purchasing input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input {
+  border: 1px solid #D6D7D8;
+  border-radius: 5px;
+  display: inline-flex;
+  width: 100%;
   margin-bottom: 25px;
 }
 
-.wishDetail .checkout .buttonCheckout .addKeranjang .plus {
+.wishDetail .rightSection .purchaseSection .purchasing .number-input,
+.wishDetail .rightSection .purchaseSection .purchasing .number-input * {
+  box-sizing: border-box;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input button {
+  outline: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input button:hover {
+  background: #D9D9D9;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input button:active {
+  background: #bfbfbf;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input button:before,
+.wishDetail .rightSection .purchaseSection .purchasing .number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: "";
   width: 10px;
-  height: 10px;
+  height: 2px;
+  background-color: #212121;
+  transform: translate(-50%, -50%);
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input input[type=number] {
+  width: 100%;
+  height: 30px;
+  padding: 0.5rem;
+  border: solid #D6D7D8;
+  border-width: 0 2px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wishDetail .rightSection .purchaseSection .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 45px;
+  background: #FFFFFF;
+  border: 1px solid;
+  border-radius: 5px;
+  font-family: "latobold";
+  font-size: 14px;
+  line-height: 45px;
+}
+
+.wishDetail .rightSection .purchaseSection .button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px lightskyblue;
+}
+
+.wishDetail .rightSection .purchaseSection .button img {
+  width: 20px;
   margin-right: 5px;
 }
 
-.wishDetail .checkout .buttonCheckout .buyNow {
-  width: 235px;
-  height: 36px;
-  background: #FFFFFF;
-  border: 1px solid #FFD901;
-  box-sizing: border-box;
-  border-radius: 5px;
-  margin-bottom: 20px;
+.wishDetail .rightSection .purchaseSection .buttonBlack {
+  border-color: #bfbfbf;
+  color: #000000;
 }
 
-.wishDetail .productDetail {
-  width: 875px;
-  border: 1px solid rgba(49, 53, 59, 0.2);
-  filter: drop-shadow(1px 6px 6px rgba(49, 53, 59, 0.15));
-  border-radius: 5px;
+.wishDetail .rightSection .purchaseSection .buttonBlack:hover {
+  background: #D9D9D9;
 }
 
-.wishDetail .productDetail .title {
-  padding: 25px 20px;
-  border-bottom: 1px solid rgba(49, 53, 59, 0.2);
+.wishDetail .rightSection .purchaseSection .buttonBlack:active {
+  background: #bfbfbf;
 }
 
-.wishDetail .productDetail .content {
-  padding: 25px 20px;
+.wishDetail .rightSection .purchaseSection .buttonYellow {
+  border-color: #DFCC60;
+  background: #FFD901;
+  margin-bottom: 10px;
+}
+
+.wishDetail .rightSection .purchaseSection .buttonYellow:hover {
+  background: #D5B81B;
+}
+
+.wishDetail .rightSection .purchaseSection .buttonYellow:active {
+  background: #DFCC60;
 }
 
 .wishDetail .swiper {
@@ -1318,10 +1556,6 @@ button {
   background-position: center;
 }
 
-.wishDetail .bigPicture {
-  width: 80%;
-}
-
 .wishDetail .listPicture {
   height: 20%;
   box-sizing: border-box;
@@ -1332,14 +1566,221 @@ button {
 .wishDetail .listPicture .swiper-slide {
   width: 25%;
   height: 100%;
-  opacity: 0.4;
 }
 
 .wishDetail .listPicture .swiper-slide-thumb-active {
-  opacity: 1;
+  border: 2px solid #D5B81B;
 }
 
 .wishDetail .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.wishDetailXXX .column {
+  float: left;
+  width: 33.33%;
+}
+
+.wishDetailXXX .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.wishDetailXXX .product .price {
+  margin: 10px 0;
+  border-top: 2px solid rgba(49, 53, 59, 0.2);
+  border-bottom: 2px solid rgba(49, 53, 59, 0.2);
+}
+
+.wishDetailXXX .product .price h2 {
+  margin: 10px 0;
+}
+
+.wishDetailXXX .product .information .columnA {
+  float: left;
+  width: 40%;
+  color: rgba(49, 53, 59, 0.5);
+}
+
+.wishDetailXXX .product .information .columnB {
+  float: left;
+  width: 60%;
+}
+
+.wishDetailXXX .product .information .columnB .imgShip {
+  width: 50px;
+}
+
+.wishDetailXXX .product .information .columnB .imgInfo {
+  width: 20px;
+}
+
+.wishDetailXXX .product .information .row {
+  margin-bottom: 27px;
+}
+
+.wishDetailXXX .product .information .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.wishDetailXXX .checkout {
+  width: 275px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+}
+
+.wishDetailXXX .checkout .variant {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid rgba(49, 53, 59, 0.2);
+  padding: 20px 20px;
+}
+
+.wishDetailXXX .checkout .variant select {
+  width: 235px;
+  height: 36px;
+  margin-top: 20px;
+  outline: none;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.wishDetailXXX .checkout .variant select:hover {
+  color: #F5D108;
+  border-color: #F5D108;
+}
+
+.wishDetailXXX .checkout .total {
+  padding: 20px 20px;
+}
+
+.wishDetailXXX .checkout .total .inputTotal {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.wishDetailXXX .checkout .total p {
+  margin-left: 5px;
+}
+
+.wishDetailXXX .checkout .buttonCheckout .addKeranjang {
+  width: 235px;
+  height: 36px;
+  background: #FFD901;
+  border-radius: 5px;
+  border: 1px solid #FFD901;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.wishDetailXXX .checkout .buttonCheckout .addKeranjang .plus {
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+}
+
+.wishDetailXXX .checkout .buttonCheckout .buyNow {
+  width: 235px;
+  height: 36px;
+  background: #FFFFFF;
+  border: 1px solid #FFD901;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.wishDetailXXX .productDetail {
+  width: 875px;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  filter: drop-shadow(1px 6px 6px rgba(49, 53, 59, 0.15));
+  border-radius: 5px;
+}
+
+.wishDetailXXX .productDetail .title {
+  padding: 25px 20px;
+  border-bottom: 1px solid rgba(49, 53, 59, 0.2);
+}
+
+.wishDetailXXX .productDetail .content {
+  padding: 25px 20px;
+}
+
+.wishDetailXXX .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.wishDetailXXX .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wishDetailXXX .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.wishDetailXXX .swiper {
+  width: 100%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wishDetailXXX .swiper-slide {
+  background-size: cover;
+  background-position: center;
+}
+
+.wishDetailXXX .bigPicture {
+  width: 80%;
+}
+
+.wishDetailXXX .listPicture {
+  height: 20%;
+  box-sizing: border-box;
+  width: 80%;
+  padding: 10px 0;
+}
+
+.wishDetailXXX .listPicture .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.wishDetailXXX .listPicture .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.wishDetailXXX .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
@@ -2140,48 +2581,6 @@ button {
   font-family: "latoregular";
   color: #808080;
   font-weight: 400;
-}
-
-.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator {
-  width: 723px;
-  height: 64px;
-}
-
-.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator .contentSmall {
-  font-family: "latoregular";
-  color: #b1b1b1;
-}
-
-.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator .progressNumber {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 7px;
-}
-
-.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator .progressNumber .contentBig {
-  font-family: "latobold";
-  color: #b1b1b1;
-  margin-right: 4px;
-}
-
-.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator .progressNumber .textCurrentProgress {
-  color: #D5B81B;
-}
-
-.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator .progressBar {
-  width: 723px;
-  height: 11px;
-  background: #FFF09E;
-  border-radius: 5px;
-  position: relative;
-}
-
-.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent .progressIndicator .progressBar .currentBar {
-  width: 20%;
-  height: 100%;
-  background: #D5B81B;
-  border-radius: 5px;
-  position: absolute;
 }
 
 .detailAkun .contentV2 .wishSection .wishCell .wishCellContent .edit {

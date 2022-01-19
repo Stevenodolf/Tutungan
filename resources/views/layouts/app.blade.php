@@ -16,7 +16,9 @@
     <link href="{{ asset('js/script/quill/quill.bubble.css') }}" rel="stylesheet">
     <link href="{{ asset('js/script/filepond/filepond.min.css') }}" rel="stylesheet">
     <link href="{{ asset('js/script/filepond/filepond-plugin-image-preview.min.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('js/script/flip/flip.min.css' ) }}" rel="stylesheet">
+{{--    <link href="{{ asset('js/script/flip/tick.core.min.css') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('js/script/flip/tick.view.flip.min.css') }}" rel="stylesheet">--}}
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
@@ -39,6 +41,9 @@
     <script src="{{ asset('js/script/filepond/filepond-plugin-file-encode.js') }}"></script>
     <script src="{{ asset('js/script/filepond/filepond-plugin-image-preview.min.js') }}"></script>
     <script src="{{ asset('js/script/filepond/filepond-plugin-file-validate-type.min.js') }}"></script>
+    <!-- Flip	-->
+    <script src="{{ asset('js/script/flip/flip.min.js') }}"></script>
+{{--    <script src="{{ asset('js/script/flip/tick.core.kickstart.min.js') }}"></script>--}}
     <!-- Content -->
     @yield('head')
 

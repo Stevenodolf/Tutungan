@@ -24,6 +24,9 @@ Route::get('/home', function(){
     return redirect('/');
 });
 
+Route::get('/tick', function(){
+    return view('wish.tick');
+});
 
 //Forgot Password
 Route::get('/forgotPassword', 'ForgotPasswordController@showForgotPassword');
@@ -41,7 +44,7 @@ Route::get('/logout','AuthController@logout')->name('logout');
 Route::get('/createWish', 'WishController@getCreateWish');
 Route::post('/createWish', 'WishController@postCreateWish');
 Route::get('/wish/{id}', 'WishController@wishDetail');
-Route::post('/wish/{id}', 'CartController@addCart');
+Route::post('/wish/{id}', 'CartController@addCart')->name('addToCart');
 Route::get('/wish/delete-cart/{cart_item_id}', 'CartController@deleteCart');
 Route::get('/cart', 'CartController@cart');
 Route::post('/cart', 'CartController@postCart');
