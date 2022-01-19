@@ -150,5 +150,450 @@
                 </div>
             </div>
         </div>
+        <div class="forYou">
+            <h1>For You</h1>
+            @if($for_you == NULL)
+                <div class="row">
+                    <div class="column">
+                        No Wish.
+                    </div>
+                </div>
+            @else
+                @foreach($for_you as $wish)
+                    @php
+                        $deadline = strtotime($wish->deadline);
+                        $diff = $deadline - time();
+                        $time_left = Round($diff / 86400);
+                    @endphp
+                    @if($loop->index == 0)
+                        <div class="row">
+                            @endif
+                            @if(($loop->iteration-1) % 5 == 0 && $loop->index != 0)
+                        </div>
+                        @if(($loop->iteration-1) != ($loop->count-1))
+                            <div class="row">
+                                @endif
+                                @endif
+                                <div class="column">
+                                    <div class="wish" onclick="window.location='{{ url("/wish/".$wish->id)}}'">
+                                        <img src="{{asset($wish->image)}}"/>
+                                        <div class="timeLeft">
+                                            <p>Tersisa {{$time_left}} Hari Lagi</p>
+                                        </div>
+                                        <div class="content">
+                                            <p>{{Str::of($wish->name)->limit(40)}}</p>
+                                            <h3>Rp {{number_format($wish->price, 0, ',', '.')}}/pcs</h3>
+                                            <div class="barWithText">
+                                                <div class="textProgress">
+                                                    <p>{{$wish->curr_qty}}/{{$wish->target_qty}}</p>
+                                                </div>
+                                                <div class="progressBar"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                            {{--                <div class="row">--}}
+                            {{--                    @foreach($for_you as $wish)--}}
+                            {{--                        @php--}}
+                            {{--                            $deadline = strtotime($wish->deadline);--}}
+                            {{--                            $diff = $deadline - time();--}}
+                            {{--                            $time_left = Round($diff / 86400);--}}
+                            {{--                        @endphp--}}
+                            {{--                        <div class="column">--}}
+                            {{--                            <div class="wish" onclick="window.location='{{ url("/wish/".$wish->id)}}'">--}}
+                            {{--                                <img src="{{asset($wish->image)}}"/>--}}
+                            {{--                                <div class="timeLeft">--}}
+                            {{--                                    <p>Tersisa {{$time_left}} Hari Lagi</p>--}}
+                            {{--                                </div>--}}
+                            {{--                                <div class="content">--}}
+                            {{--                                    <p>{{$wish->name}}</p>--}}
+                            {{--                                    <h3>Rp {{number_format($wish->price, 0, ',', '.')}}/pcs</h3>--}}
+                            {{--                                    <div class="barWithText">--}}
+                            {{--                                        <div class="textProgress">--}}
+                            {{--                                            <p>{{$wish->curr_qty}}/{{$wish->target_qty}}</p>--}}
+                            {{--                                        </div>--}}
+                            {{--                                        <div class="progressBar"></div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+                            {{--                        </div>--}}
+                            {{--                    @endforeach--}}
+                            {{--                </div>--}}
+                            @endif
+                            <!-- <div class="row">
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="wish">
+                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                    <div class="timeLeft">
+                        <p>Tersisa 5 Hari Lagi</p>
+                    </div>
+                    <div class="content">
+                        <p>Laci lapis 3 warna biru merk lion star</p>
+                        <h3>Rp 15.000/pcs</h3>
+                        <div class="barWithText">
+                            <div class="textProgress">
+                                <p>7500/15000</p>
+                            </div>
+                            <div class="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+
+
+                            </div>
+        </div>
     </div>
 @endsection

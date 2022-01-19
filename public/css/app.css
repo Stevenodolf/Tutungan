@@ -1087,13 +1087,13 @@ button {
 .wishDetail {
   display: flex;
   justify-content: center;
+  margin-bottom: 100px;
 }
 
 .wishDetail .leftSection {
   display: flex;
   flex-direction: column;
   width: 875px;
-  height: 1184px;
   margin-right: 32px;
 }
 
