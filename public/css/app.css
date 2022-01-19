@@ -156,73 +156,6 @@ button {
   position: absolute;
 }
 
-.tick {
-  font-size: 1rem;
-  white-space: nowrap;
-  font-family: arial, sans-serif;
-}
-
-.tick-flip,
-.tick-text-inline {
-  font-size: 2.5em;
-}
-
-.tick-label {
-  margin-top: 1em;
-  font-size: 1em;
-}
-
-.tick-char {
-  width: 1.5em;
-}
-
-.tick-text-inline {
-  display: inline-block;
-  text-align: center;
-  min-width: 1em;
-}
-
-.tick-text-inline + .tick-text-inline {
-  margin-left: -0.325em;
-}
-
-.tick-group {
-  margin: 0 0.5em;
-  text-align: center;
-}
-
-body {
-  background-color: #ffebe6 !important;
-}
-
-.tick-text-inline {
-  color: #62635c !important;
-}
-
-.tick-label {
-  color: #62635c !important;
-}
-
-.tick-flip-panel {
-  color: white !important;
-}
-
-.tick-flip {
-  font-family: !important;
-}
-
-.tick-flip-panel-text-wrapper {
-  line-height: 1.45 !important;
-}
-
-.tick-flip-panel {
-  background-color: #3b3d3b !important;
-}
-
-.tick-flip {
-  border-radius: 0.12em !important;
-}
-
 .firstRegister {
   min-height: 100vh;
   width: 100%;
@@ -1327,18 +1260,169 @@ body {
 }
 
 .wishDetail .rightSection .timeSection .title {
+  font-family: "latobold";
   color: #FFFFFF;
   margin-bottom: 10px;
+}
+
+.wishDetail .rightSection .timeSection .ticker .tick {
+  font-size: 2em;
+}
+
+.wishDetail .rightSection .timeSection .ticker .tick .tick-label {
+  font-size: 10px;
+  color: #FFFFFF;
+}
+
+.wishDetail .rightSection .timeSection .ticker .tick .tick-group {
+  margin: 0 0.25em;
+}
+
+.wishDetail .rightSection .timeSection .ticker .tick .tick-flip-panel {
+  color: #EA260D;
+  background: #FFFFFF;
 }
 
 .wishDetail .rightSection .purchaseSection {
   display: flex;
   flex-direction: column;
-  height: 261px;
   background: #FFFFFF;
   border: 1px solid rgba(49, 53, 59, 0.2);
   box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
   border-radius: 5px;
+  padding: 20px;
+}
+
+.wishDetail .rightSection .purchaseSection .title {
+  font-family: "latobold";
+  margin-bottom: 10px;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing {
+  width: 250px;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing input[type=number] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing input[type=number]::-webkit-inner-spin-button,
+.wishDetail .rightSection .purchaseSection .purchasing input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input {
+  border: 1px solid #D6D7D8;
+  border-radius: 5px;
+  display: inline-flex;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input,
+.wishDetail .rightSection .purchaseSection .purchasing .number-input * {
+  box-sizing: border-box;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input button {
+  outline: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input button:hover {
+  background: #D9D9D9;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input button:active {
+  background: #bfbfbf;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input button:before,
+.wishDetail .rightSection .purchaseSection .purchasing .number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 2px;
+  background-color: #212121;
+  transform: translate(-50%, -50%);
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .number-input input[type=number] {
+  width: 100%;
+  height: 30px;
+  padding: 0.5rem;
+  border: solid #D6D7D8;
+  border-width: 0 2px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wishDetail .rightSection .purchaseSection .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 45px;
+  background: #FFFFFF;
+  border: 1px solid;
+  border-radius: 5px;
+  font-family: "latobold";
+  font-size: 14px;
+  line-height: 45px;
+}
+
+.wishDetail .rightSection .purchaseSection .button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px lightskyblue;
+}
+
+.wishDetail .rightSection .purchaseSection .button img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.wishDetail .rightSection .purchaseSection .buttonBlack {
+  border-color: #bfbfbf;
+  color: #000000;
+}
+
+.wishDetail .rightSection .purchaseSection .buttonBlack:hover {
+  background: #D9D9D9;
+}
+
+.wishDetail .rightSection .purchaseSection .buttonBlack:active {
+  background: #bfbfbf;
+}
+
+.wishDetail .rightSection .purchaseSection .buttonYellow {
+  border-color: #DFCC60;
+  background: #FFD901;
+  margin-bottom: 10px;
+}
+
+.wishDetail .rightSection .purchaseSection .buttonYellow:hover {
+  background: #D5B81B;
+}
+
+.wishDetail .rightSection .purchaseSection .buttonYellow:active {
+  background: #DFCC60;
 }
 
 .wishDetail .swiper {

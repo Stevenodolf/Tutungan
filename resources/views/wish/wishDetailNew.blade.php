@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('head')
+    <script>
+        var wishDetail = {deadline: "{{$wish_deadline}}"}
+    </script>
     <script src="{{ asset('js/src/wish/wishDetail.js') }}"></script>
 @endsection
 
@@ -109,15 +112,40 @@
                 <div class="timeSection">
                     <p class="contentSemiNormal title">Sisa Waktu</p>
                     <div class="ticker">
-                        <div class="tick"
-                             data-value="Hello World">
-
-                            <span data-view="flip"></span>
-
+                        <div class="tick" data-did-init="setupTickCountDown" data-credits="false">
+                            <div data-repeat="true"
+                                 data-layout="horizontal center fit"
+                                 data-transform="preset(d, h, m, s) -> delay">
+                                <div class="tick-group" data-layout="vertical right">
+                                    <div data-key="label"
+                                          data-view="text"
+                                          class="tick-label"></div>
+                                    <div data-key="value"
+                                         data-repeat="true"
+                                         data-transform="pad(00) -> split -> delay">
+                                        <span data-view="flip"></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="purchaseSection">
+                    <p class="contentSemiNormal title">Atur Jumlah</p>
+{{--                    <form method="post" action="{{ route('addToCart') }}" class="purchasing">--}}
+                    <form method="post" class="purchasing">
+                        <div class="number-input">
+                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+                            <input class="quantity" min="1" name="quantity" value="1" type="number">
+                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                        </div>
+                        <button class="button buttonYellow" type="submit">
+                            <img src="{{ asset('images/shopping-cart-add.png' )}}">
+                            Tambah ke Keranjang
+                        </button>
+
+                    </form>
+                    <button class="button buttonBlack" type="submit">Beli Langsung</button>
 
                 </div>
             </div>

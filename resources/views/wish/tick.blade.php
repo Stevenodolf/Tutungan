@@ -6,34 +6,22 @@
 
 @section('content')
     <div class="contentContainer">
-{{--        <div class="tick" data-did-init="handleTickInit">--}}
+        <div class="tick" data-did-init="setupTickCountDown" data-credits="false">
+            <div data-repeat="true"
+                 data-layout="horizontal center fit"
+                 data-transform="preset(d, h, m, s) -> delay">
+                <div class="tick-group" data-layout="vertical right">
+                    <div data-key="value"
+                         data-repeat="true"
+                         data-transform="pad(00) -> split -> delay">
+                        <span data-view="flip"></span>
+                    </div>
 
-{{--            <div data-repeat="true" data-layout="horizontal fit" data-transform="preset(d, h, m, s) -> delay">--}}
-
-{{--                <div class="tick-group">--}}
-
-{{--                    <div data-key="value" data-repeat="true" data-transform="pad(00) -> split -> delay">--}}
-
-{{--                        <span data-view="flip"></span>--}}
-
-{{--                    </div>--}}
-
-{{--                    <span data-key="label" data-view="text" class="tick-label"></span>--}}
-
-{{--                </div>--}}
-
-{{--            </div>--}}
-
-{{--        </div>--}}
-
-        <div class="tick" data-value="Hello World">
-
-            <span data-view="flip"></span>
-
-        </div>
-
-        <div class="tick-onended-message" style="display:none">
-            <p>Time's up</p>
+                    <span data-key="label"
+                          data-view="text"
+                          class="tick-label"></span>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
