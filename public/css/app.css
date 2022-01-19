@@ -1864,7 +1864,7 @@ button {
   border-right: 1px solid rgba(49, 53, 59, 0.3);
 }
 
-.keranjang .keranjangDetail .productDetail .deleteAdd a img {
+.keranjang .keranjangDetail .productDetail .deleteAdd button img {
   width: 15px;
   height: 15px;
 }
@@ -1972,7 +1972,7 @@ button {
   flex-wrap: nowrap;
 }
 
-.checkout .total a {
+.checkout .total button {
   color: #010101;
   height: 36px;
   background: #FFD901;
@@ -1980,7 +1980,6 @@ button {
   border: none;
   width: 100%;
   margin-top: 25px;
-  text-align: center;
 }
 
 .checkout .total .ringkasanHarga {
@@ -2048,7 +2047,7 @@ button {
   margin-right: 5px;
 }
 
-.checkout .paymentPopup .section a {
+.checkout .paymentPopup .section button {
   color: #010101;
   height: 36px;
   background: #FFD901;
@@ -2056,7 +2055,6 @@ button {
   border: none;
   width: 100%;
   margin-top: 45px;
-  text-align: center;
 }
 
 .checkout .pembayaranVerifikasi {
