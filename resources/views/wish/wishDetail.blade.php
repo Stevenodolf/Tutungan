@@ -118,8 +118,6 @@
                 </div>
                 <div class="purchaseSection">
                     <p class="contentSemiNormal title">Atur Jumlah</p>
-                    {{--                    <form method="post" action="{{ route('addToCart') }}" class="purchasing">--}}
-
                     <form method="post" class="purchasing">
                         {{ csrf_field() }}
                         <input type="hidden" name="wish_id" value="{{$wish->id}}">
@@ -128,6 +126,7 @@
                             <input class="quantity" min="1" name="qty" value="1" type="number">
                             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                         </div>
+                        <p class="contentSmall stock">Stok: {{ $wish_stock }}</p>
                         <button class="button buttonYellow" type="submit" formaction="{{ url('/wish/'.$wish->id) }}">
                             <img src="{{ asset('images/shopping-cart-add.png' )}}">
                             Tambah ke Keranjang

@@ -1414,7 +1414,7 @@ button {
   border-radius: 5px;
   display: inline-flex;
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
 }
 
 .wishDetail .rightSection .purchaseSection .purchasing .number-input,
@@ -1468,6 +1468,11 @@ button {
   font-size: 14px;
   font-weight: bold;
   text-align: center;
+}
+
+.wishDetail .rightSection .purchaseSection .purchasing .stock {
+  color: #747474;
+  margin-bottom: 25px;
 }
 
 .wishDetail .rightSection .purchaseSection .button {
