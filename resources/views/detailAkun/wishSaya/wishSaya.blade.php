@@ -34,13 +34,24 @@
             </div>
         </div>
         <div class="wishSection">
+            @php
+                $idx = 1;
+            @endphp
             @foreach($wishes as $wish)
                 <div class="wishCell">
                     <div class="wishCellContent">
                     <div class="header">
                         <p class="contentSmall textWishMaker">Oleh: {{ $wish->getCreatedByRelation->username }}</p>
                         @if($wish->status_wish_id >= 3)
-                            <p class="contentSmall">{{ $wish->created_at }} - {{ $wish->deadline }}</p>
+                            <p class="contentSmall"><span id="created{{ $idx }}"></span> - <span id="deadline{{ $idx }}"></span></p>
+                            <script>
+                                var createdDate = "{{ $wish->created_at }}";
+                                createdDate = createdDate.replace(/\s/g, 'T');
+                                var deadlineDate = "{{ $wish->deadline }}";
+                                deadlineDate = deadlineDate.replace(/\s/g, 'T');
+                                document.getElementById("created" + {{ $idx }}).innerHTML = moment(createdDate).format('DD MMM YYYY');
+                                document.getElementById("deadline" + {{ $idx }}).innerHTML = moment(deadlineDate).format('DD MMM YYYY');
+                            </script>
                         @endif
                         <p class="statusYellow">{{ $wish->getStatusWishRelation->name }}</p>
                     </div>
@@ -55,13 +66,46 @@
                             <div class="progressIndicator">
                                 <p class="contentSmall">Kontribusi Wish</p>
                                 <div class="progressNumber">
-                                    <p class="contentBig textCurrentProgress">{{ $wish->curr_qty }}</p>
+                                    <p id="currentPro{{ $idx }}" class="contentBig textCurrentProgress">{{ $wish->curr_qty }}</p>
                                     <p class="contentBig">/</p>
-                                    <p class="contentBig">{{ $wish->target_qty }}</p>
+                                    <p id="targetPro{{ $idx }}" class="contentBig">{{ $wish->target_qty }}</p>
                                 </div>
-                                <div class="barProgress">
-                                    <div class="currentBar"></div>
-                                </div>
+                                <div id="progressBarId{{ $idx }}" class="progressBar{{ $idx }}"></div>
+                                <script>
+                                    let proBar = new ProBar({
+                                        // bgColor: "#C4C4C4",
+                                        // color:"#DE3E16",
+                                        bgColor: "#FFF09E",
+                                        color: "#D5B81B",
+                                        speed:0.2,
+                                        wrapper:".progressBar{{ $idx }}",
+                                        height:10,
+                                        classNameBar : "timer",
+                                        wrapperId : "progressBarId{{ $idx }}",
+                                        finishAnimation : false,
+                                        rounded : { // use it to round Corners of Probar.
+                                            topLeft : 5,
+                                            topRight : 5,
+                                            bottomLeft : 5,
+                                            bottomRight : 5
+                                        },
+                                        roundedInternal : { // use it to round Corners of Probar (internal).
+                                            topLeft : 5,
+                                            topRight : 5,
+                                            bottomLeft : 5,
+                                            bottomRight : 5
+                                        }
+                                    });
+
+                                    var current = $("#currentPro").text();
+                                    var target = $("#targetPro").text()
+                                    var progress = (current/target)*100;
+                                    console.log("Current: " + current);
+                                    console.log("Target: " + target);
+                                    console.log("Progress: " + progress + "%");
+
+                                    proBar.goto(progress);
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -74,6 +118,9 @@
                     </div>
                 </div>
             </div>
+                @php
+                    $idx += 1;
+                @endphp
             @endforeach
 
 {{--            <div class="wishCell">--}}

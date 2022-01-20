@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Transaction;
 use App\User;
 use App\Wish;
 use Illuminate\Http\Request;
@@ -20,5 +21,15 @@ class AccountDetailController extends Controller
         }
 
         return redirect('login');
+    }
+
+    public function  getTransaksiSaya() {
+        $auth = Auth::check();
+
+        if($auth) {
+            $user = User::where('id', Auth::user()->id)->first();
+            $transactions = Transaction::where('created_by', $user->id)->get();
+        }
+
     }
 }
