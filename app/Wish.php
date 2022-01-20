@@ -32,12 +32,7 @@ class Wish extends Model
         return $this->hasOne('App\Reason', 'id', 'reason_id');
     }
 
-
-
-
-
-
-    public function getUserRelation(){
-        return $this->hasOne('App\User', 'id', 'created_by');
+    public function getOriginRelation(){
+        return $this->hasOne('App\Origin', 'id', 'origin_id');
     }
 }
