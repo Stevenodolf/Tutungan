@@ -107,8 +107,8 @@ class WishController extends Controller
             $wish->status_wish_id = '1'; //int
             $wish->origin = $request->origin;
             $wish->deadline = Carbon::now()->addDays(8);; //datetime
-            $wish->min_order = $request->minOrder;
-            $wish->curr_qty = '0'; //int, total qty yg dibeli wish creator
+            $wish->curr_qty = $request->purchaseQty; //int, total qty yg dibeli wish creator
+//            $wish->curr_qty = '0';
             $wish->target_qty = $request->targetQty; //int
             $wish->created_at = Carbon::now();
             $wish->updated_at = Carbon::now();

@@ -123,7 +123,7 @@
                         <input type="hidden" name="wish_id" value="{{$wish->id}}">
                         <div class="number-input">
                             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
-                            <input class="quantity" min="1" name="qty" value="1" type="number">
+                            <input class="quantity" min="1" max="{{$wish_stock}}" name="qty" value="1" type="number">
                             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                         </div>
                         <p class="contentSmall stock">Stok: {{ $wish_stock }}</p>

@@ -34,26 +34,30 @@
             </div>
         </div>
         <div class="wishSection">
-            <div class="wishCell">
-                <div class="wishCellContent">
+            @foreach($wishes as $wish)
+                <div class="wishCell">
+                    <div class="wishCellContent">
                     <div class="header">
-                        <p class="contentSmall textWishMaker">Oleh: Steven Yuwono</p>
-{{--                        <p class="contentSmall">1 Jan 2021 - 7 Jan 2021</p>--}}
-                        <p class="statusYellow">Menunggu Verifikasi</p>
+                        <p class="contentSmall textWishMaker">Oleh: {{ $wish->getCreatedByRelation->username }}</p>
+                        @if($wish->status_wish_id >= 3)
+                            <p class="contentSmall">{{ $wish->created_at }} - {{ $wish->deadline }}</p>
+                        @endif
+                        <p class="statusYellow">{{ $wish->getStatusWishRelation->name }}</p>
                     </div>
                     <div class="detail">
-                        <img src="{{asset('images/wish/wish1.jpg')}}" />
+                        <img src="{{asset('uploads/'.json_decode($wish->image)[0])}}" />
                         <div class="detailContent">
                             <div class="wishInfo">
-                                <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>
-                                <p class="contentSmall">Pesanan anda: 20 item</p>
+                                <p class="contentSemiNormal">{{ $wish->name }}</p>
+
+                                <p class="contentSmall">Pesanan anda: {{ $wish->curr_qty }} item</p> {{-- Harusnya menampilkan jumlah pesanan sesuai transaksi--}}
                             </div>
                             <div class="progressIndicator">
                                 <p class="contentSmall">Kontribusi Wish</p>
                                 <div class="progressNumber">
-                                    <p class="contentBig textCurrentProgress">20</p>
+                                    <p class="contentBig textCurrentProgress">{{ $wish->curr_qty }}</p>
                                     <p class="contentBig">/</p>
-                                    <p class="contentBig">100</p>
+                                    <p class="contentBig">{{ $wish->target_qty }}</p>
                                 </div>
                                 <div class="barProgress">
                                     <div class="currentBar"></div>
@@ -62,182 +66,220 @@
                         </div>
                     </div>
                     <div class="edit">
-                        <p class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</p>
-                        <p class="contentSemiBig separator">|</p>
-                        <p class="contentSemiNormal buttonOnEdit">Hapus</p>
+                        @if($wish->status_wish_id == 2)
+                            <p class="contentSemiNormal buttonOnEdit">Bayar</p>
+                        @elseif($wish->status_wish_id == 3)
+                            <p class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</p>
+                        @endif
                     </div>
                 </div>
             </div>
-            <div class="wishCell">
-                <div class="wishCellContent">
-                    <div class="header">
-                        <p class="contentSmall textWishMaker">Oleh: Steven Yuwono</p>
+            @endforeach
+
+{{--            <div class="wishCell">--}}
+{{--                <div class="wishCellContent">--}}
+{{--                    <div class="header">--}}
+{{--                        <p class="contentSmall textWishMaker">Oleh: Steven Yuwono</p>--}}
 {{--                        <p class="contentSmall">1 Jan 2021 - 7 Jan 2021</p>--}}
-                        <p class="statusYellow">Menunggu Pembayaran</p>
-                    </div>
-                    <div class="detail">
-                        <img src="{{asset('images/wish/wish2.jpg')}}" />
-                        <div class="detailContent">
-                            <div class="wishInfo">
-                                <p class="contentSemiNormal">Celana Panjang Pria Murah</p>
-                                <p class="contentSmall">Pesanan anda: 500 item</p>
-                            </div>
-                            <div class="progressIndicator">
-                                <p class="contentSmall">Kontribusi Wish</p>
-                                <div class="progressNumber">
-                                    <p class="contentBig textCurrentProgress">500</p>
-                                    <p class="contentBig">/</p>
-                                    <p class="contentBig">1000</p>
-                                </div>
-                                <div class="barProgress">
-                                    <div class="currentBar" style="width: 50%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="edit">
-                        <p class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</p>
-                        <p class="contentSemiBig separator">|</p>
-                        <p class="contentSemiNormal buttonOnEdit">Hapus</p>
-                    </div>
-                </div>
-            </div>
-            <div class="wishCell">
-                <div class="wishCellContent">
-                    <div class="header">
-                        <p class="contentSmall textWishMaker">Oleh: Steven Yuwono</p>
-                        <p class="contentSmall">1 Jan 2021 - 7 Jan 2021</p>
-                        <p class="statusYellow">Sedang Berjalan</p>
-                    </div>
-                    <div class="detail">
-                        <img src="{{asset('images/wish/wish3.jpg')}}" />
-                        <div class="detailContent">
-                            <div class="wishInfo">
-                                <p class="contentSemiNormal">Piring Cina Putih Ringan Murah</p>
-                                <p class="contentSmall">Pesanan anda: 50 item</p>
-                            </div>
-                            <div class="progressIndicator">
-                                <p class="contentSmall">Kontribusi Wish</p>
-                                <div class="progressNumber">
-                                    <p class="contentBig textCurrentProgress">150</p>
-                                    <p class="contentBig">/</p>
-                                    <p class="contentBig">200</p>
-                                </div>
-                                <div class="barProgress">
-                                    <div class="currentBar" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="edit">
-                        <p class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</p>
-                        <p class="contentSemiBig separator">|</p>
-                        <p class="contentSemiNormal buttonOnEdit">Hapus</p>
-                    </div>
-                </div>
-            </div>
-            <div class="wishCell">
-                <div class="wishCellContent">
-                    <div class="header">
-                        <p class="contentSmall textWishMaker">Oleh: Steven Yuwono</p>
-                        <p class="contentSmall">1 Jan 2021 - 7 Jan 2021</p>
-                        <p class="statusYellow">Diproses</p>
-                    </div>
-                    <div class="detail">
-                        <img src="{{asset('images/wish/wish3.jpg')}}" />
-                        <div class="detailContent">
-                            <div class="wishInfo">
-                                <p class="contentSemiNormal">Piring Cina Putih Ringan Murah</p>
-                                <p class="contentSmall">Pesanan anda: 50 item</p>
-                            </div>
-                            <div class="progressIndicator">
-                                <p class="contentSmall">Kontribusi Wish</p>
-                                <div class="progressNumber">
-                                    <p class="contentBig textCurrentProgress">200</p>
-                                    <p class="contentBig">/</p>
-                                    <p class="contentBig">200</p>
-                                </div>
-                                <div class="barProgress">
-                                    <div class="currentBar" style="width: 100%; color: #57B793"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="edit">
-                        <p class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</p>
-                        <p class="contentSemiBig separator">|</p>
-                        <p class="contentSemiNormal buttonOnEdit">Hapus</p>
-                    </div>
-                </div>
-            </div>
-            <div class="wishCell">
-                <div class="wishCellContent">
-                    <div class="header">
-                        <p class="contentSmall textWishMaker">Oleh: Steven Yuwono</p>
-                        <p class="contentSmall">1 Jan 2021 - 7 Jan 2021</p>
-                        <p class="statusGreen">Selesai</p>
-                    </div>
-                    <div class="detail">
-                        <img src="{{asset('images/wish/wish3.jpg')}}" />
-                        <div class="detailContent">
-                            <div class="wishInfo">
-                                <p class="contentSemiNormal">Piring Cina Putih Ringan Murah</p>
-                                <p class="contentSmall">Pesanan anda: 50 item</p>
-                            </div>
-                            <div class="progressIndicator">
-                                <p class="contentSmall">Kontribusi Wish</p>
-                                <div class="progressNumber">
-                                    <p class="contentBig textCurrentProgress" style="color: #57B793">200</p>
-                                    <p class="contentBig">/</p>
-                                    <p class="contentBig">200</p>
-                                </div>
-                                <div class="barProgress">
-                                    <div class="currentBar" style="width: 100%; background: #57B793"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                        <p class="statusYellow">Menunggu Verifikasi</p>--}}
+{{--                    </div>--}}
+{{--                    <div class="detail">--}}
+{{--                        <img src="{{asset('images/wish/wish1.jpg')}}" />--}}
+{{--                        <div class="detailContent">--}}
+{{--                            <div class="wishInfo">--}}
+{{--                                <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>--}}
+{{--                                <p class="contentSmall">Pesanan anda: 20 item</p>--}}
+{{--                            </div>--}}
+{{--                            <div class="progressIndicator">--}}
+{{--                                <p class="contentSmall">Kontribusi Wish</p>--}}
+{{--                                <div class="progressNumber">--}}
+{{--                                    <p class="contentBig textCurrentProgress">20</p>--}}
+{{--                                    <p class="contentBig">/</p>--}}
+{{--                                    <p class="contentBig">100</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="barProgress">--}}
+{{--                                    <div class="currentBar"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 {{--                    <div class="edit">--}}
 {{--                        <p class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</p>--}}
 {{--                        <p class="contentSemiBig separator">|</p>--}}
 {{--                        <p class="contentSemiNormal buttonOnEdit">Hapus</p>--}}
 {{--                    </div>--}}
-                </div>
-            </div>
-            <div class="wishCell">
-                <div class="wishCellContent">
-                    <div class="header">
-                        <p class="contentSmall textWishMaker">Oleh: Steven Yuwono</p>
-                        <p class="contentSmall">1 Jan 2021 - 7 Jan 2021</p>
-                        <p class="statusRed">Dibatalkan</p>
-                    </div>
-                    <div class="detail">
-                        <img src="{{asset('images/wish/wish3.jpg')}}" />
-                        <div class="detailContent">
-                            <div class="wishInfo">
-                                <p class="contentSemiNormal">Piring Cina Putih Ringan Murah</p>
-                                <p class="contentSmall">Pesanan anda: 50 item</p>
-                            </div>
-                            <div class="progressIndicator">
-                                <p class="contentSmall">Kontribusi Wish</p>
-                                <div class="progressNumber">
-                                    <p class="contentBig textCurrentProgress" style="color: #DC354F">150</p>
-                                    <p class="contentBig">/</p>
-                                    <p class="contentBig">200</p>
-                                </div>
-                                <div class="barProgress" style="background: #FBEBEF">
-                                    <div class="currentBar" style="width: 75%; background: #DC354F"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="wishCell">--}}
+{{--                <div class="wishCellContent">--}}
+{{--                    <div class="header">--}}
+{{--                        <p class="contentSmall textWishMaker">Oleh: Steven Yuwono</p>--}}
+{{--                        <p class="contentSmall">1 Jan 2021 - 7 Jan 2021</p>--}}
+{{--                        <p class="statusYellow">Menunggu Pembayaran</p>--}}
+{{--                    </div>--}}
+{{--                    <div class="detail">--}}
+{{--                        <img src="{{asset('images/wish/wish2.jpg')}}" />--}}
+{{--                        <div class="detailContent">--}}
+{{--                            <div class="wishInfo">--}}
+{{--                                <p class="contentSemiNormal">Celana Panjang Pria Murah</p>--}}
+{{--                                <p class="contentSmall">Pesanan anda: 500 item</p>--}}
+{{--                            </div>--}}
+{{--                            <div class="progressIndicator">--}}
+{{--                                <p class="contentSmall">Kontribusi Wish</p>--}}
+{{--                                <div class="progressNumber">--}}
+{{--                                    <p class="contentBig textCurrentProgress">500</p>--}}
+{{--                                    <p class="contentBig">/</p>--}}
+{{--                                    <p class="contentBig">1000</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="barProgress">--}}
+{{--                                    <div class="currentBar" style="width: 50%"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 {{--                    <div class="edit">--}}
 {{--                        <p class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</p>--}}
 {{--                        <p class="contentSemiBig separator">|</p>--}}
 {{--                        <p class="contentSemiNormal buttonOnEdit">Hapus</p>--}}
 {{--                    </div>--}}
-                </div>
-            </div>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="wishCell">--}}
+{{--                <div class="wishCellContent">--}}
+{{--                    <div class="header">--}}
+{{--                        <p class="contentSmall textWishMaker">Oleh: Steven Yuwono</p>--}}
+{{--                        <p class="contentSmall">1 Jan 2021 - 7 Jan 2021</p>--}}
+{{--                        <p class="statusYellow">Sedang Berjalan</p>--}}
+{{--                    </div>--}}
+{{--                    <div class="detail">--}}
+{{--                        <img src="{{asset('images/wish/wish3.jpg')}}" />--}}
+{{--                        <div class="detailContent">--}}
+{{--                            <div class="wishInfo">--}}
+{{--                                <p class="contentSemiNormal">Piring Cina Putih Ringan Murah</p>--}}
+{{--                                <p class="contentSmall">Pesanan anda: 50 item</p>--}}
+{{--                            </div>--}}
+{{--                            <div class="progressIndicator">--}}
+{{--                                <p class="contentSmall">Kontribusi Wish</p>--}}
+{{--                                <div class="progressNumber">--}}
+{{--                                    <p class="contentBig textCurrentProgress">150</p>--}}
+{{--                                    <p class="contentBig">/</p>--}}
+{{--                                    <p class="contentBig">200</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="barProgress">--}}
+{{--                                    <div class="currentBar" style="width: 75%"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="edit">--}}
+{{--                        <p class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</p>--}}
+{{--                        <p class="contentSemiBig separator">|</p>--}}
+{{--                        <p class="contentSemiNormal buttonOnEdit">Hapus</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="wishCell">--}}
+{{--                <div class="wishCellContent">--}}
+{{--                    <div class="header">--}}
+{{--                        <p class="contentSmall textWishMaker">Oleh: Steven Yuwono</p>--}}
+{{--                        <p class="contentSmall">1 Jan 2021 - 7 Jan 2021</p>--}}
+{{--                        <p class="statusYellow">Diproses</p>--}}
+{{--                    </div>--}}
+{{--                    <div class="detail">--}}
+{{--                        <img src="{{asset('images/wish/wish3.jpg')}}" />--}}
+{{--                        <div class="detailContent">--}}
+{{--                            <div class="wishInfo">--}}
+{{--                                <p class="contentSemiNormal">Piring Cina Putih Ringan Murah</p>--}}
+{{--                                <p class="contentSmall">Pesanan anda: 50 item</p>--}}
+{{--                            </div>--}}
+{{--                            <div class="progressIndicator">--}}
+{{--                                <p class="contentSmall">Kontribusi Wish</p>--}}
+{{--                                <div class="progressNumber">--}}
+{{--                                    <p class="contentBig textCurrentProgress">200</p>--}}
+{{--                                    <p class="contentBig">/</p>--}}
+{{--                                    <p class="contentBig">200</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="barProgress">--}}
+{{--                                    <div class="currentBar" style="width: 100%; color: #57B793"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="edit">--}}
+{{--                        <p class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</p>--}}
+{{--                        <p class="contentSemiBig separator">|</p>--}}
+{{--                        <p class="contentSemiNormal buttonOnEdit">Hapus</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="wishCell">--}}
+{{--                <div class="wishCellContent">--}}
+{{--                    <div class="header">--}}
+{{--                        <p class="contentSmall textWishMaker">Oleh: Steven Yuwono</p>--}}
+{{--                        <p class="contentSmall">1 Jan 2021 - 7 Jan 2021</p>--}}
+{{--                        <p class="statusGreen">Selesai</p>--}}
+{{--                    </div>--}}
+{{--                    <div class="detail">--}}
+{{--                        <img src="{{asset('images/wish/wish3.jpg')}}" />--}}
+{{--                        <div class="detailContent">--}}
+{{--                            <div class="wishInfo">--}}
+{{--                                <p class="contentSemiNormal">Piring Cina Putih Ringan Murah</p>--}}
+{{--                                <p class="contentSmall">Pesanan anda: 50 item</p>--}}
+{{--                            </div>--}}
+{{--                            <div class="progressIndicator">--}}
+{{--                                <p class="contentSmall">Kontribusi Wish</p>--}}
+{{--                                <div class="progressNumber">--}}
+{{--                                    <p class="contentBig textCurrentProgress" style="color: #57B793">200</p>--}}
+{{--                                    <p class="contentBig">/</p>--}}
+{{--                                    <p class="contentBig">200</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="barProgress">--}}
+{{--                                    <div class="currentBar" style="width: 100%; background: #57B793"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="edit">--}}
+{{--                        <p class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</p>--}}
+{{--                        <p class="contentSemiBig separator">|</p>--}}
+{{--                        <p class="contentSemiNormal buttonOnEdit">Hapus</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="wishCell">--}}
+{{--                <div class="wishCellContent">--}}
+{{--                    <div class="header">--}}
+{{--                        <p class="contentSmall textWishMaker">Oleh: Steven Yuwono</p>--}}
+{{--                        <p class="contentSmall">1 Jan 2021 - 7 Jan 2021</p>--}}
+{{--                        <p class="statusRed">Dibatalkan</p>--}}
+{{--                    </div>--}}
+{{--                    <div class="detail">--}}
+{{--                        <img src="{{asset('images/wish/wish3.jpg')}}" />--}}
+{{--                        <div class="detailContent">--}}
+{{--                            <div class="wishInfo">--}}
+{{--                                <p class="contentSemiNormal">Piring Cina Putih Ringan Murah</p>--}}
+{{--                                <p class="contentSmall">Pesanan anda: 50 item</p>--}}
+{{--                            </div>--}}
+{{--                            <div class="progressIndicator">--}}
+{{--                                <p class="contentSmall">Kontribusi Wish</p>--}}
+{{--                                <div class="progressNumber">--}}
+{{--                                    <p class="contentBig textCurrentProgress" style="color: #DC354F">150</p>--}}
+{{--                                    <p class="contentBig">/</p>--}}
+{{--                                    <p class="contentBig">200</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="barProgress" style="background: #FBEBEF">--}}
+{{--                                    <div class="currentBar" style="width: 75%; background: #DC354F"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="edit">--}}
+{{--                        <p class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</p>--}}
+{{--                        <p class="contentSemiBig separator">|</p>--}}
+{{--                        <p class="contentSemiNormal buttonOnEdit">Hapus</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
 @endsection

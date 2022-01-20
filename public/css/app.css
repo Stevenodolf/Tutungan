@@ -2560,6 +2560,9 @@ button {
   width: 118px;
   height: 118px;
   border-radius: 5px;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+  border: 1px solid #D9D9D9;
 }
 
 .detailAkun .contentV2 .wishSection .wishCell .wishCellContent .detail .detailContent {
@@ -2590,6 +2593,8 @@ button {
   display: flex;
   align-items: center;
   flex-direction: row;
+  justify-content: right;
+  width: 100%;
 }
 
 .detailAkun .contentV2 .wishSection .wishCell .wishCellContent .edit .buttonOnEdit {
