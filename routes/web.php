@@ -45,11 +45,12 @@ Route::get('/createWish', 'WishController@getCreateWish');
 Route::post('/createWish', 'WishController@postCreateWish');
 Route::get('/wish/{id}', 'WishController@wishDetail');
 Route::post('/wish/{id}', 'CartController@addCart')->name('addToCart');
+Route::post('/buy/{id}', 'CartController@buyWish')->name('buyWish');
 Route::get('/wish/delete-cart/{cart_item_id}', 'CartController@deleteCart');
 Route::get('/cart', 'CartController@cart');
 Route::post('/cart', 'CartController@postCart');
 
-Route::get('/checkout', 'PaymentController@checkout');
+Route::get('/checkout', 'PaymentController@checkout')->name('getCheckout');
 Route::post('/checkout', 'PaymentController@postCheckout');
 
 // DETAIL AKUN

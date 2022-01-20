@@ -15,34 +15,20 @@
                     <div class="images">
                         <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper bigPicture">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="{{asset($wish_image)}}" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}" />
-                                </div>
+                                @foreach(json_decode($wish_image) as $image)
+                                    <div class="swiper-slide">
+                                        <img src="{{asset('uploads/'.$image)}}"/>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                         <div thumbsSlider="" class="swiper listPicture">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="{{asset($wish_image)}}" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}" />
-                                </div>
+                                @foreach(json_decode($wish_image) as $image)
+                                    <div class="swiper-slide">
+                                        <img src="{{asset('uploads/'.$image)}}" />
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -56,9 +42,9 @@
                             <div class="progressIndicator">
                                 <p class="contentSmall">Kontribusi Wish</p>
                                 <div class="progressNumber">
-                                    <p class="contentBig textCurrentProgress">{{$wish_curr_qty}}</p>
+                                    <p id="currentPro" class="contentBig textCurrentProgress">{{$wish_curr_qty}}</p>
                                     <p class="contentBig">/</p>
-                                    <p class="contentBig">{{$wish_target_qty}}</p>
+                                    <p id="targetPro" class="contentBig">{{$wish_target_qty}}</p>
                                 </div>
                                 <div class="progressBar"></div>
                             </div>
@@ -133,20 +119,21 @@
                 <div class="purchaseSection">
                     <p class="contentSemiNormal title">Atur Jumlah</p>
                     {{--                    <form method="post" action="{{ route('addToCart') }}" class="purchasing">--}}
+
                     <form method="post" class="purchasing">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="wish_id" value="{{$wish->id}}">
                         <div class="number-input">
                             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
-                            <input class="quantity" min="1" name="quantity" value="1" type="number">
+                            <input class="quantity" min="1" name="qty" value="1" type="number">
                             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                         </div>
-                        <button class="button buttonYellow" type="submit">
+                        <button class="button buttonYellow" type="submit" formaction="{{ url('/wish/'.$wish->id) }}">
                             <img src="{{ asset('images/shopping-cart-add.png' )}}">
                             Tambah ke Keranjang
                         </button>
-
+                        <button class="button buttonBlack" type="submit" formaction="{{ url('/buy/'.$wish->id) }}">Beli Langsung</button>
                     </form>
-                    <button class="button buttonBlack" type="submit">Beli Langsung</button>
-
                 </div>
             </div>
         </div>

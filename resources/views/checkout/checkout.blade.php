@@ -40,7 +40,7 @@
                                 @endphp
                                 <div class="productDetail">
                                     <div class="detail">
-                                        <img src="{{asset($payment_item->getWishRelation->image)}}"/>
+                                        <img src="{{asset('uploads/'.$payment_item.json_decode($payment_item->getWishRelation->image)[0])}}"/>
                                         <div>
                                             <p class="contentSemiNormal">{{$payment_item->getWishRelation->name}}</p>
                                             <p class="contentSmall">{{$payment_item->qty}}</p>
