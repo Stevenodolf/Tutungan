@@ -62,8 +62,24 @@
                                 </script>
                             </div>
                             <div class="statusSection">
-    {{--                            <p class="contentSemiNormal dayIndicator">3 Hari Lagi</p>--}}
-                                <p class="statusYellow">{{ $transaction->getTransactionStatusRelation->name }}</p>
+                                @if($transaction->status_transaksi_id == 5)
+                                    <p class="statusGreen">{{ $transaction->getTransactionStatusRelation->name }}</p>
+                                @elseif($transaction->status_transaksi_id == 6)
+                                    <p class="statusRed">{{ $transaction->getTransactionStatusRelation->name }}</p>
+                                @elseif($transaction->status_transaksi_id == 2)
+                                    <p class="contentSemiNormal dayIndicator"><span id="day{{ $idx }}"></span> Hari Lagi</p>
+                                    <script>
+                                        var deadline = "{{ $transaction->getWishRelation->deadline }}"
+                                        deadline = deadline.replace(/\s/g, 'T');
+                                        var formattedDeadline = Tick.helper.date(deadline)
+                                        var today = Tick.helper.date()
+
+                                        document.getElementById("day" + {{ $idx }}).innerHTML = Tick.helper.duration(today, formattedDeadline, ['d']);
+                                    </script>
+                                    <p class="statusYellow">{{ $transaction->getTransactionStatusRelation->name }}</p>
+                                @else
+                                    <p class="statusYellow">{{ $transaction->getTransactionStatusRelation->name }}</p>
+                                @endif
                             </div>
 
                         </div>
@@ -83,7 +99,7 @@
                             </div>
                         </div>
                         <div class="edit">
-                            <p class="contentSemiNormal buttonOnEdit">Lihat Detail Transaksi</p>
+                            <p class="contentSemiNormal buttonOnEdit" onclick="window.location='{{ url("/transaksisaya/detailtransaksi/".$transaction->id)}}'">Lihat Detail Transaksi</p>
                         </div>
                     </div>
                 </div>

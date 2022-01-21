@@ -64,7 +64,13 @@
                                 document.getElementById("deadline" + {{ $idx }}).innerHTML = moment(deadlineDate).format('DD MMM YYYY');
                             </script>
                         @endif
-                        <p class="statusYellow">{{ $wish->getStatusWishRelation->name }}</p>
+                        @if($wish->status_wish_id == 5)
+                            <p class="statusGreen">{{ $wish->getStatusWishRelation->name }}</p>
+                        @elseif($wish->status_wish_id == 6)
+                            <p class="statusRed">{{ $wish->getStatusWishRelation->name }}</p>
+                        @else
+                            <p class="statusYellow">{{ $wish->getStatusWishRelation->name }}</p>
+                        @endif
                     </div>
                     <div class="detail">
                         <a href="wish/{{ $wish->id }}"><img src="{{asset('uploads/'.json_decode($wish->image)[0])}}" /></a>
@@ -77,7 +83,13 @@
                             <div class="progressIndicator">
                                 <p class="contentSmall">Kontribusi Wish</p>
                                 <div class="progressNumber">
-                                    <p id="currentPro{{ $idx }}" class="contentBig textCurrentProgress">{{ $wish->curr_qty }}</p>
+                                    @if($wish->status_wish_id == 5)
+                                        <p id="currentPro{{ $idx }}" class="contentBig textCurrentProgressGreen">{{ $wish->curr_qty }}</p>
+                                    @elseif($wish->status_wish_id == 6)
+                                        <p id="currentPro{{ $idx }}" class="contentBig textCurrentProgressRed">{{ $wish->curr_qty }}</p>
+                                    @else
+                                        <p id="currentPro{{ $idx }}" class="contentBig textCurrentProgressYellow">{{ $wish->curr_qty }}</p>
+                                    @endif
                                     <p class="contentBig">/</p>
                                     <p id="targetPro{{ $idx }}" class="contentBig">{{ $wish->target_qty }}</p>
                                 </div>
@@ -86,9 +98,19 @@
                                     $targetPro = $wish->target_qty;
                                     $progress = ($currentPro/$targetPro)*100;
                                 @endphp
-                                <div class="barProgress">
-                                    <div class="currentBar" style="width: {{ $progress }}%"></div>
-                                </div>
+                                @if($wish->status_wish_id == 5)
+                                    <div class="barProgress totalBarGreen">
+                                        <div class="currentBar currentBarGreen" style="width: {{ $progress }}%"></div>
+                                    </div>
+                                @elseif($wish->status_wish_id == 6)
+                                    <div class="barProgress totalBarRed">
+                                        <div class="currentBar currentBarRed" style="width: {{ $progress }}%"></div>
+                                    </div>
+                                @else
+                                    <div class="barProgress totalBarYellow">
+                                        <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
+                                    </div>
+                                @endif
 
 {{--                                <div id="progressBarId{{ $idx }}" class="progressBar{{ $idx }}"></div>--}}
 {{--                                <script>--}}

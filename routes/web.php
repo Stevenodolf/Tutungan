@@ -78,6 +78,7 @@ Route::get('/transaksisaya', 'AccountDetailController@getTransaksiSaya')->name('
 //Route::get('/transaksisaya', function(){
 //    return view('detailAkun.transaksiSaya.transaksiSaya');
 //});
-Route::get('/transaksisaya/detailtransaksi', function(){
-    return view('detailAkun.transaksiSaya.detailTransaksi');
-});
+Route::get('/transaksisaya/detailtransaksi/{id}', 'AccountDetailController@getDetailTransaksi')->name('getDetailTransaksi');
+//Route::get('/transaksisaya/detailtransaksi', function(){
+//    return view('detailAkun.transaksiSaya.detailTransaksi');
+//});

@@ -66,4 +66,19 @@ class AccountDetailController extends Controller
 
     }
 
+    public function getDetailTransaksi($id) {
+        $auth = Auth::check();
+
+        if($auth) {
+            $user = User::where('id', Auth::user()->id)->first();
+
+            $transaction = Transaction::where('id', $id)->first();
+            $wish = $transaction->getWishRelation;
+
+            return view('detailAkun.transaksiSaya.detailTransaksi', ['user' => $user, 'transaction' => $transaction, 'wish' => $wish]);
+        }
+
+        return redirect('login');
+    }
+
 }
