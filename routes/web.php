@@ -69,6 +69,7 @@ Route::get('/akunSaya/ubahpassword', function(){
 Route::get('/notifikasi', function(){
     return view('detailAkun.notifikasi.notifikasi');
 });
+//Route::get('/wishsaya', 'AccountDetailController@getWishSaya')->name('getWishSaya');
 Route::get('/wishsaya', 'AccountDetailController@getWishSaya')->name('getWishSaya');
 //Route::get('/wishsaya', function(){
 //    return view('detailAkun.wishSaya.wishSaya');

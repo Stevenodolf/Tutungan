@@ -10,30 +10,60 @@ use Illuminate\Support\Facades\Auth;
 
 class AccountDetailController extends Controller
 {
-    public function getWishSaya() {
+//    public function getWishSaya() {
+//        $auth = Auth::check();
+//
+//        if($auth) {
+//            $user = User::where('id', Auth::user()->id)->first();
+//            $wishes = Wish::where('created_by', $user->id)->get();
+//
+//            return view('detailAkun.wishSaya.wishSaya', ['user' => $user, 'wishes' => $wishes]);
+//        }
+//
+//        return redirect('login');
+//    }
+
+    public function getWishSaya(Request $request) {
         $auth = Auth::check();
+//        echo $request->filter;
 
         if($auth) {
             $user = User::where('id', Auth::user()->id)->first();
-            $wishes = Wish::where('created_by', $user->id)->get();
 
-            return view('detailAkun.wishSaya.wishSaya', ['user' => $user, 'wishes' => $wishes]);
+            if($request->filter == 0 or $request->filter == null) {
+                $wishes = Wish::where('created_by', $user->id)->get();
+                $filter = 0;
+            }else{
+                $filter = $request->filter;
+                $wishes = Wish::where('created_by', $user->id)->where('status_wish_id', $filter)->get();
+            }
+
+            return view('detailAkun.wishSaya.wishSaya', ['user' => $user, 'wishes' => $wishes, 'filter' => $filter]);
         }
 
         return redirect('login');
     }
 
-    public function getTransaksiSaya() {
+    public function getTransaksiSaya(Request $request) {
         $auth = Auth::check();
 
         if($auth) {
             $user = User::where('id', Auth::user()->id)->first();
-            $transactions = Transaction::where('user_id', $user->id)->where('status_transaksi_id', '!=', 0)->get();
 
-            return view('detailAkun.transaksiSaya.transaksiSaya', ['user' => $user, 'transactions' => $transactions]);
+            if($request->filter == 7 or $request->filter == null) {
+                $transactions = Transaction::where('user_id', $user->id)->where('status_transaksi_id', '!=', 0)->get();
+                $filter = 7;
+            }else{
+                $filter = $request->filter;
+                $transactions = Transaction::where('user_id', $user->id)->where('status_transaksi_id', '!=', 0)->where('status_transaksi_id', $filter)->get();
+            }
+
+            return view('detailAkun.transaksiSaya.transaksiSaya', ['user' => $user, 'transactions' => $transactions, 'filter' => $filter]);
+
         }
 
         return redirect('login');
 
     }
+
 }

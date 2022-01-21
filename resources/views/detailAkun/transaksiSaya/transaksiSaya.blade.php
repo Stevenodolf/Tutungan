@@ -4,27 +4,38 @@
     <div class="contentV2">
         <div class="filterSection">
             <div class="upperSection">
-                <div class="filter" style="border-top-color: #d5b81b; border-radius: 5px 0px 0px 0px">
-                    <p class="contentSemiBig">Semua</p>
-                </div>
-                <div class="filter">
-                    <p class="contentSemiBig">Menunggu Verifikasi</p>
-                </div>
-                <div class="filter">
-                    <p class="contentSemiBig">Menunggu Tenggat Waktu</p>
-                </div>
-                <div class="filter">
-                    <p class="contentSemiBig">Sedang<br>Diproses</p>
-                </div>
-                <div class="filter">
-                    <p class="contentSemiBig">Sedang<br>Dikirim</p>
-                </div>
-                <div class="filter">
-                    <p class="contentSemiBig">Sampai<br>Tujuan</p>
-                </div>
-                <div class="filter" style="border-radius: 0px 5px 0px 0px">
-                    <p class="contentSemiBig">Dibatalkan</p>
-                </div>
+                {{ csrf_field() }}
+                <form id="filter7" class="filter" method="get" action="{{ route('getTransaksiSaya') }}">
+                    <input type="hidden" name="filter" value="7">
+                    <button type="submit" class="contentSemiBig filterContent">Semua</button>
+                </form>
+                <form id="filter1" class="filter" method="get" action="{{ route('getTransaksiSaya') }}">
+                    <input type="hidden" name="filter" value="1">
+                    <button type="submit" class="contentSemiBig filterContent">Menunggu Pembayaran</button>
+                </form>
+                <form id="filter2" class="filter" method="get" action="{{ route('getTransaksiSaya') }}">
+                    <input type="hidden" name="filter" value="2">
+                    <button type="submit" class="contentSemiBig filterContent">Menunggu Tenggat Waktu</button>
+                </form>
+                <form id="filter3" class="filter" method="get" action="{{ route('getTransaksiSaya') }}">
+                    <input type="hidden" name="filter" value="3">
+                    <button type="submit" class="contentSemiBig filterContent">Sedang Diproses</button>
+                </form>
+                <form id="filter4" class="filter" method="get" action="{{ route('getTransaksiSaya') }}">
+                    <input type="hidden" name="filter" value="4">
+                    <button type="submit" class="contentSemiBig filterContent">Sedang Dikirim</button>
+                </form>
+                <form id="filter5" class="filter" method="get" action="{{ route('getTransaksiSaya') }}">
+                    <input type="hidden" name="filter" value="5">
+                    <button type="submit" class="contentSemiBig filterContent">Sampai Tujuan</button>
+                </form>
+                <form id="filter6" class="filter" method="get" action="{{ route('getTransaksiSaya') }}">
+                    <input type="hidden" name="filter" value="6">
+                    <button type="submit" class="contentSemiBig filterContent">Dibatalkan</button>
+                </form>
+                <script>
+                    $("#filter" + {{ $filter }}).css('border-top-color', '#d5b81b');
+                </script>
             </div>
             <div class="lowerSection">
                 <form class="searchbar">

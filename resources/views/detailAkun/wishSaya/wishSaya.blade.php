@@ -4,27 +4,38 @@
     <div class="contentV2">
         <div class="filterSection">
             <div class="upperSection">
-                <div class="filter" style="border-top-color: #d5b81b; border-radius: 5px 0px 0px 0px">
-                    <p class="contentSemiBig">Semua</p>
-                </div>
-                <div class="filter">
-                    <p class="contentSemiBig">Menunggu Verifikasi</p>
-                </div>
-                <div class="filter">
-                    <p class="contentSemiBig">Menunggu Pembayaran</p>
-                </div>
-                <div class="filter">
-                    <p class="contentSemiBig">Sedang Berjalan</p>
-                </div>
-                <div class="filter">
-                    <p class="contentSemiBig">Diproses</p>
-                </div>
-                <div class="filter">
-                    <p class="contentSemiBig">Selesai</p>
-                </div>
-                <div class="filter" style="border-radius: 0px 5px 0px 0px">
-                    <p class="contentSemiBig">Dibatalkan</p>
-                </div>
+                {{ csrf_field() }}
+                <form id="filter0" class="filter" method="get" action="{{ route('getWishSaya') }}">
+                    <input type="hidden" name="filter" value="0">
+                    <button type="submit" class="contentSemiBig filterContent">Semua</button>
+                </form>
+                <form id="filter1" class="filter" method="get" action="{{ route('getWishSaya') }}">
+                    <input type="hidden" name="filter" value="1">
+                    <button type="submit" class="contentSemiBig filterContent">Menunggu Verifikasi</button>
+                </form>
+                <form id="filter2" class="filter" method="get" action="{{ route('getWishSaya') }}">
+                    <input type="hidden" name="filter" value="2">
+                    <button type="submit" class="contentSemiBig filterContent">Menunggu Pembayaran</button>
+                </form>
+                <form id="filter3" class="filter" method="get" action="{{ route('getWishSaya') }}">
+                    <input type="hidden" name="filter" value="3">
+                    <button type="submit" class="contentSemiBig filterContent">Sedang Berjalan</button>
+                </form>
+                <form id="filter4" class="filter" method="get" action="{{ route('getWishSaya') }}">
+                    <input type="hidden" name="filter" value="4">
+                    <button type="submit" class="contentSemiBig filterContent">Diproses</button>
+                </form>
+                <form id="filter5" class="filter" method="get" action="{{ route('getWishSaya') }}">
+                    <input type="hidden" name="filter" value="5">
+                    <button type="submit" class="contentSemiBig filterContent">Selesai</button>
+                </form>
+                <form id="filter6" class="filter" method="get" action="{{ route('getWishSaya') }}">
+                    <input type="hidden" name="filter" value="6">
+                    <button type="submit" class="contentSemiBig filterContent">Dibatalkan</button>
+                </form>
+                <script>
+                    $("#filter" + {{ $filter }}).css('border-top-color', '#d5b81b');
+                </script>
             </div>
             <div class="lowerSection">
                 <form class="searchbar">
@@ -56,10 +67,10 @@
                         <p class="statusYellow">{{ $wish->getStatusWishRelation->name }}</p>
                     </div>
                     <div class="detail">
-                        <img src="{{asset('uploads/'.json_decode($wish->image)[0])}}" />
+                        <a href="wish/{{ $wish->id }}"><img src="{{asset('uploads/'.json_decode($wish->image)[0])}}" /></a>
                         <div class="detailContent">
                             <div class="wishInfo">
-                                <p class="contentSemiNormal">{{ $wish->name }}</p>
+                                <a href="wish/{{ $wish->id }}"><p class="contentSemiNormal wishName">{{ $wish->name }}</p></a>
 
                                 <p class="contentSmall">Pesanan anda: {{ $wish->curr_qty }} item</p> {{-- Harusnya menampilkan jumlah pesanan sesuai transaksi--}}
                             </div>
@@ -70,42 +81,51 @@
                                     <p class="contentBig">/</p>
                                     <p id="targetPro{{ $idx }}" class="contentBig">{{ $wish->target_qty }}</p>
                                 </div>
-                                <div id="progressBarId{{ $idx }}" class="progressBar{{ $idx }}"></div>
-                                <script>
-                                    let proBar = new ProBar({
-                                        // bgColor: "#C4C4C4",
-                                        // color:"#DE3E16",
-                                        bgColor: "#FFF09E",
-                                        color: "#D5B81B",
-                                        speed:0.2,
-                                        wrapper:".progressBar{{ $idx }}",
-                                        height:10,
-                                        classNameBar : "timer",
-                                        wrapperId : "progressBarId{{ $idx }}",
-                                        finishAnimation : false,
-                                        rounded : { // use it to round Corners of Probar.
-                                            topLeft : 5,
-                                            topRight : 5,
-                                            bottomLeft : 5,
-                                            bottomRight : 5
-                                        },
-                                        roundedInternal : { // use it to round Corners of Probar (internal).
-                                            topLeft : 5,
-                                            topRight : 5,
-                                            bottomLeft : 5,
-                                            bottomRight : 5
-                                        }
-                                    });
+                                @php
+                                    $currentPro = $wish->curr_qty;
+                                    $targetPro = $wish->target_qty;
+                                    $progress = ($currentPro/$targetPro)*100;
+                                @endphp
+                                <div class="barProgress">
+                                    <div class="currentBar" style="width: {{ $progress }}%"></div>
+                                </div>
 
-                                    var current = $("#currentPro").text();
-                                    var target = $("#targetPro").text()
-                                    var progress = (current/target)*100;
-                                    console.log("Current: " + current);
-                                    console.log("Target: " + target);
-                                    console.log("Progress: " + progress + "%");
+{{--                                <div id="progressBarId{{ $idx }}" class="progressBar{{ $idx }}"></div>--}}
+{{--                                <script>--}}
+{{--                                    const proBar{{ $idx }} = new ProBar({--}}
+{{--                                        // bgColor: "#C4C4C4",--}}
+{{--                                        // color:"#DE3E16",--}}
+{{--                                        bgColor: "#FFF09E",--}}
+{{--                                        color: "#D5B81B",--}}
+{{--                                        speed:0.2,--}}
+{{--                                        wrapper:".progressBar{{ $idx }}",--}}
+{{--                                        height:10,--}}
+{{--                                        classNameBar : "timer",--}}
+{{--                                        wrapperId : "progressBarId{{ $idx }}",--}}
+{{--                                        finishAnimation : false,--}}
+{{--                                        rounded : { // use it to round Corners of Probar.--}}
+{{--                                            topLeft : 5,--}}
+{{--                                            topRight : 5,--}}
+{{--                                            bottomLeft : 5,--}}
+{{--                                            bottomRight : 5--}}
+{{--                                        },--}}
+{{--                                        roundedInternal : { // use it to round Corners of Probar (internal).--}}
+{{--                                            topLeft : 5,--}}
+{{--                                            topRight : 5,--}}
+{{--                                            bottomLeft : 5,--}}
+{{--                                            bottomRight : 5--}}
+{{--                                        }--}}
+{{--                                    });--}}
 
-                                    proBar.goto(progress);
-                                </script>
+{{--                                    var current = $("#currentPro{{ $idx }}").text();--}}
+{{--                                    var target = $("#targetPro{{ $idx }}").text()--}}
+{{--                                    var progress{{ $idx }} = (current/target)*100;--}}
+{{--                                    console.log("Current: " + current);--}}
+{{--                                    console.log("Target: " + target);--}}
+{{--                                    console.log("Progress: " + progress{{ $idx }} + "%");--}}
+
+{{--                                    proBar{{ $idx }}.goto(progress{{ $idx }});--}}
+{{--                                </script>--}}
                             </div>
                         </div>
                     </div>
