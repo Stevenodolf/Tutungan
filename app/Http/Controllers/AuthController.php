@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\UserVerify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use App\User;
 use App\Cart;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Validator;
 
 class AuthController extends Controller
@@ -86,13 +90,27 @@ class AuthController extends Controller
         $user->updated_at = Carbon::now();
         $user->save();
 
-        $cart = new Cart();
-        $cart->user_id = $id;
-        $cart->created_at = Carbon::now();
-        $cart->updated_at = Carbon::now();
-        $cart->save();
+        $token = Str::random(64);
+        $userVerify = new UserVerify();
+        $userVerify->user_id = $id;
+        $userVerify->token = $token;
+        $userVerify->created_at = Carbon::now();
+        $userVerify->updated_at = Carbon::now();
+        $userVerify->save();
 
-        return redirect()->route('home');
+        Mail::send('email.confirmationEmail', ['token' => $token], function($message) use($request){
+            $message->to($request->email);
+            $message->subject('Email Verification');
+        });
+
+//        $cart = new Cart();
+//        $cart->user_id = $id;
+//        $cart->created_at = Carbon::now();
+//        $cart->updated_at = Carbon::now();
+//        $cart->save();
+
+        $messages = "We've Send you an email confirmation!";
+        return redirect()->route('getLogin');
     }
 
     public function logout(){
@@ -100,4 +118,26 @@ class AuthController extends Controller
         Session::flush();
         return redirect()->route('home');
     }
+
+    public function verifyAccount($token)
+    {
+        $verifyUser = DB::table('user_verify')->where('token', $token);
+
+        $messages = 'Sorry your email cannot be identified.';
+
+        if(!is_null($verifyUser) ){
+            $user = DB::table('user') -> where('id', $verifyUser->value('user_id'))->value('is_email_verified');
+            if($user != 1) {
+                DB::table('user')
+                    -> where('id', $verifyUser->value('user_id'))
+                    -> update(array('is_email_verified' => 1));
+                $messages = "Your e-mail is verified. You can now login.";
+            } else {
+                $messages = "Your e-mail is already verified. You can now login.";
+            }
+        }
+        return redirect()->route('getLogin')->with('message', $messages);
+    }
+
+
 }
