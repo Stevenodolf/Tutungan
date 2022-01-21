@@ -103,12 +103,6 @@ class AuthController extends Controller
             $message->subject('Email Verification');
         });
 
-//        $cart = new Cart();
-//        $cart->user_id = $id;
-//        $cart->created_at = Carbon::now();
-//        $cart->updated_at = Carbon::now();
-//        $cart->save();
-
         $messages = "We've Send you an email confirmation!";
         return redirect()->route('getLogin');
     }
@@ -135,6 +129,12 @@ class AuthController extends Controller
             } else {
                 $messages = "Your e-mail is already verified. You can now login.";
             }
+
+            $cart = new Cart();
+            $cart->user_id = $verifyUser->value('user_id');
+            $cart->created_at = Carbon::now();
+            $cart->updated_at = Carbon::now();
+            $cart->save();
         }
         return redirect()->route('getLogin')->with('message', $messages);
     }
