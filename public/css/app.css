@@ -2694,6 +2694,8 @@ button {
   height: 75px;
   border-radius: 5px;
   margin-right: 22px;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
 }
 
 .detailAkun .contentV2 .transactionSection .transactionCell .transactionCellContent .detail .leftSection .wishInfo {

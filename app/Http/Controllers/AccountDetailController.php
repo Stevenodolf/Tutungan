@@ -23,13 +23,17 @@ class AccountDetailController extends Controller
         return redirect('login');
     }
 
-    public function  getTransaksiSaya() {
+    public function getTransaksiSaya() {
         $auth = Auth::check();
 
         if($auth) {
             $user = User::where('id', Auth::user()->id)->first();
-            $transactions = Transaction::where('created_by', $user->id)->get();
+            $transactions = Transaction::where('user_id', $user->id)->where('status_transaksi_id', '!=', 0)->get();
+
+            return view('detailAkun.transaksiSaya.transaksiSaya', ['user' => $user, 'transactions' => $transactions]);
         }
+
+        return redirect('login');
 
     }
 }

@@ -158,11 +158,12 @@ class CartController extends Controller
         if($auth){
             // $user = User::where('id', Auth::user()->id)->first();
             $user = User::where('id', Auth::user()->id)->first();
+            $wish = Wish::where('id', $request->wish_id)->first();
 
             $payment = new Payment;
             $payment->user_id = $user->id;
             $payment->total_qty = $request->qty;
-            $wish_price = $request->price;
+            $wish_price = $wish->price;
             $payment->total_price = $wish_price * $request->qty;
 //            $payment->total_price = $request->total_price;
 //            $payment->total_qty = $request->total_qty;

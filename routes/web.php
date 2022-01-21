@@ -73,9 +73,10 @@ Route::get('/wishsaya', 'AccountDetailController@getWishSaya')->name('getWishSay
 //Route::get('/wishsaya', function(){
 //    return view('detailAkun.wishSaya.wishSaya');
 //});
-Route::get('/transaksisaya', function(){
-    return view('detailAkun.transaksiSaya.transaksiSaya');
-});
+Route::get('/transaksisaya', 'AccountDetailController@getTransaksiSaya')->name('getTransaksiSaya');
+//Route::get('/transaksisaya', function(){
+//    return view('detailAkun.transaksiSaya.transaksiSaya');
+//});
 Route::get('/transaksisaya/detailtransaksi', function(){
     return view('detailAkun.transaksiSaya.detailTransaksi');
 });

@@ -199,10 +199,10 @@
                         <button>
                             <p class="contentSemiNormal">Akun Saya</p>
                         </button>
-                        <button>
+                        <button href="wishsaya">
                             <p class="contentSemiNormal">Wish Saya</p>
                         </button>
-                        <button>
+                        <button href="wishsaya" >
                             <p class="contentSemiNormal">Transaksi Saya</p>
                         </button>
                         <form method="GET" action="{{route('logout')}}">

@@ -113,7 +113,7 @@
                         @if($wish->status_wish_id == 2)
                             <p class="contentSemiNormal buttonOnEdit">Bayar</p>
                         @elseif($wish->status_wish_id == 3)
-                            <p class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</p>
+                            <a href="/wish/{{ $wish->id }}" class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</a>
                         @endif
                     </div>
                 </div>
