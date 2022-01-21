@@ -45,7 +45,14 @@ $(document).ready(function () {
         }
     });
 
-    proBar.goto(50);
+    var current = $("#currentPro").text();
+    var target = $("#targetPro").text()
+    var progress = (current/target)*100;
+    console.log("Current: " + current);
+    console.log("Target: " + target);
+    console.log("Progress: " + progress + "%");
+
+    proBar.goto(progress);
 })
 
 function setupTickCountDown(tick) {

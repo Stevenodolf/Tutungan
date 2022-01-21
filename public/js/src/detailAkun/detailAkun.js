@@ -26,3 +26,5 @@ function bukaBagian(angka){
     $('[id^=content]').css('display', 'none');
     $('#content'+angka).css('display', 'block');
 }
+
+

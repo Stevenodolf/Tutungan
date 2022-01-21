@@ -51,8 +51,8 @@ class CartController extends Controller
 
         if($auth){
             $wish = Wish::where('id', $request->wish_id)->first();
-            $min_order = $wish->min_order;
             $stok = $wish->target_qty - $wish->curr_qty;
+            $min_order = $wish->min_order;
             $rules = [
                 'qty'           => "required|numeric|min:$min_order|max:$stok"
             ];
@@ -63,7 +63,7 @@ class CartController extends Controller
             ];
 
             $validator = Validator::make($request->all(), $rules, $errors);
-            
+
             if($validator->fails()){
                 return redirect()->back()->withErrors($validator->errors());
             }
@@ -80,7 +80,7 @@ class CartController extends Controller
             $cart_item->created_at = Carbon::now()->format('Y-m-d H:i:s');
             $cart_item->updated_at = Carbon::now()->format('Y-m-d H:i:s');
             $cart_item->save();
-            
+
             // $cart->total_qty = $cart->total_qty + $cart_item->qty;
             // $cart->total_price = $cart->total_price + $cart_item->total_price;
             $cart->updated_at = Carbon::now()->format('Y-m-d H:i:s');
@@ -144,7 +144,56 @@ class CartController extends Controller
                 $payment_item->save();
             }
 
-            return redirect('checkout');
+//            return redirect('checkout');
+            return redirect()->route('getCheckout');
+        }
+
+        return redirect('login');
+    }
+
+    public function buyWish(Request $request){
+        $auth = Auth::check();
+        // $auth = true;
+
+        if($auth){
+            // $user = User::where('id', Auth::user()->id)->first();
+            $user = User::where('id', Auth::user()->id)->first();
+            $wish = Wish::where('id', $request->wish_id)->first();
+
+            $payment = new Payment;
+            $payment->user_id = $user->id;
+            $payment->total_qty = $request->qty;
+            $wish_price = $wish->price;
+            $payment->total_price = $wish_price * $request->qty;
+//            $payment->total_price = $request->total_price;
+//            $payment->total_qty = $request->total_qty;
+            // $payment->wish_id = $wishes->implode('wish_id', ',');
+            $payment->save();
+
+
+
+//            $cart = Cart::where('user_id', $user->id)->first();
+//            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+//            foreach ($cart_items as $cart_item){
+//
+//            }
+
+            $wish = Wish::where('id', $request->wish_id)->first();
+
+            $payment_item = new Payment_Item;
+            $payment_item->payment_id = $payment->id;
+//            $payment_item->cart_item_id = $cart_item->id;
+            $payment_item->wish_id = $wish->id;
+            $payment_item->status_transaksi_id = 1;
+            $payment_item->qty = $payment->total_qty;
+            $payment_item->total_price = $payment->total_price;
+            $payment_item->total_fee = 10000;
+            $payment_item->created_at = Carbon::now()->format('Y-m-d H:i:s');
+            $payment_item->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+            $payment_item->save();
+
+//            return redirect('checkout');
+            return redirect()->route('getCheckout');
         }
 
         return redirect('login');

@@ -17,8 +17,7 @@
     <link href="{{ asset('js/script/filepond/filepond.min.css') }}" rel="stylesheet">
     <link href="{{ asset('js/script/filepond/filepond-plugin-image-preview.min.css') }}" rel="stylesheet">
     <link href="{{ asset('js/script/flip/flip.min.css' ) }}" rel="stylesheet">
-{{--    <link href="{{ asset('js/script/flip/tick.core.min.css') }}" rel="stylesheet">--}}
-{{--    <link href="{{ asset('js/script/flip/tick.view.flip.min.css') }}" rel="stylesheet">--}}
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
@@ -43,7 +42,8 @@
     <script src="{{ asset('js/script/filepond/filepond-plugin-file-validate-type.min.js') }}"></script>
     <!-- Flip	-->
     <script src="{{ asset('js/script/flip/flip.min.js') }}"></script>
-{{--    <script src="{{ asset('js/script/flip/tick.core.kickstart.min.js') }}"></script>--}}
+    <!-- Moment	-->
+    <script src="{{ asset('js/script/moment/moment-with-locales.min.js') }}"></script>
     <!-- Content -->
     @yield('head')
 
@@ -199,10 +199,10 @@
                         <button>
                             <p class="contentSemiNormal">Akun Saya</p>
                         </button>
-                        <button>
+                        <button href="wishsaya">
                             <p class="contentSemiNormal">Wish Saya</p>
                         </button>
-                        <button>
+                        <button href="wishsaya" >
                             <p class="contentSemiNormal">Transaksi Saya</p>
                         </button>
                         <form method="GET" action="{{route('logout')}}">

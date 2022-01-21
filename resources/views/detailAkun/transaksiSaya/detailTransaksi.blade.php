@@ -10,8 +10,14 @@
                         <p class="contentSemiBig text">Kembali</p>
                     </div>
                     <div class="indicator">
-                        <p class="noTransaksi">No. Transaksi: 0501221234567890</p>
-                        <p class="statusGreen">Selesai</p>
+                        <p class="noTransaksi">No. Transaksi: {{ $transaction->id }}</p>
+                        @if($transaction->status_transaksi_id == 5)
+                            <p class="statusGreen">{{ $transaction->getTransactionStatusRelation->name }}</p>
+                        @elseif($transaction->status_transaksi_id == 6)
+                            <p class="statusRed">{{ $transaction->getTransactionStatusRelation->name }}</p>
+                        @else
+                            <p class="statusYellow">{{ $transaction->getTransactionStatusRelation->name }}</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -31,7 +37,7 @@
                             <div class="information">
                                 <p class="contentSmall infoType">Alamat</p>
                                 <div class="infoDetailAlamat">
-                                    <p class="contentSmall infoDetail">Steven Yuwono</p>
+                                    <p class="contentSmall infoDetail">{{ $transaction->getUserRelation->username }}</p>
                                     <p class="contentSmall infoDetail">62812345678</p>
                                     <p class="contentSmall infoDetail">Jl. Ir. Soekarno No. 69, RT 04 RW 20</p>
                                     <p class="contentSmall infoDetail">Kota Surakarta - Pasar Kliwon</p>
@@ -122,27 +128,49 @@
                     <div class="contentAfterTitle2">
                         <div class="wishCellContent">
                             <div class="cellHeader">
-                                <p class="contentSmall textWishMaker">Oleh: Steven Yuwono</p>
+                                <p class="contentSmall textWishMaker">Oleh: {{ $wish->getCreatedByRelation->name }}</p>
                                 <p class="contentSmall">1 Jan 2021 - 7 Jan 2021</p>
                             </div>
                             <div class="detail">
-                                <img src="{{asset('images/wish/wish1.jpg')}}" />
+                                <img src="{{asset('uploads/'.json_decode($wish->image)[0])}}" />
                                 <div class="detailContent">
                                     <div class="wishInfo">
-                                        <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>
-                                        <p class="contentSmall">Pesanan anda: 20 item</p>
+                                        <p class="contentSemiNormal">{{ $wish->name }}</p>
+                                        <p class="contentSmall">Pesanan anda: {{ $transaction->qty }} item x Rp{{number_format($wish->price, 0, ',', '.')}}</p>
                                     </div>
-                                    <div class="contentSemiNormal totalPrice">Rp1.000.000</div>
+                                    <div class="contentSemiNormal totalPrice">Rp{{number_format($transaction->total_price, 0, ',', '.')}}</div>
                                     <div class="progressIndicator">
                                         <p class="contentSmall">Kontribusi Wish</p>
                                         <div class="progressNumber">
-                                            <p class="contentBig textCurrentProgress">100</p>
+                                            @if($wish->status_wish_id == 5)
+                                                <p class="contentBig textCurrentProgressGreen">{{ $wish->curr_qty }}</p>
+                                            @elseif($wish->status_wish_id == 6)
+                                                <p class="contentBig textCurrentProgressRed">{{ $wish->curr_qty }}</p>
+                                            @else
+                                                <p class="contentBig textCurrentProgressYellow">{{ $wish->curr_qty }}</p>
+                                            @endif
+{{--                                            <p class="contentBig textCurrentProgress">{{ $wish->curr_qty }}</p>--}}
                                             <p class="contentBig">/</p>
-                                            <p class="contentBig">100</p>
+                                            <p class="contentBig">{{ $wish->target_qty }}</p>
                                         </div>
-                                        <div class="progressBar">
-                                            <div class="currentBar" style="width: 100%"></div>
-                                        </div>
+                                        @php
+                                            $currentPro = $wish->curr_qty;
+                                            $targetPro = $wish->target_qty;
+                                            $progress = ($currentPro/$targetPro)*100;
+                                        @endphp
+                                        @if($wish->status_wish_id == 5)
+                                            <div class="barProgress totalBarGreen">
+                                                <div class="currentBar currentBarGreen" style="width: {{ $progress }}%"></div>
+                                            </div>
+                                        @elseif($wish->status_wish_id == 6)
+                                            <div class="barProgress totalBarRed">
+                                                <div class="currentBar currentBarRed" style="width: {{ $progress }}%"></div>
+                                            </div>
+                                        @else
+                                            <div class="barProgress totalBarYellow">
+                                                <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -161,24 +189,30 @@
                             </div>
                             <div class="paymentInfo">
                                 <p class="infoType">Total Harga</p>
-                                <p class="infoDetail">Rp1.000.000</p>
+                                <p class="infoDetail">Rp{{number_format($transaction->total_price, 0, ',', '.')}}</p>
                             </div>
                             <div class="paymentInfo">
-                                <p class="infoType">Biaya Pengiriman</p>
-                                <p class="infoDetail">Rp40.000</p>
+                                <p class="infoType">Biaya Pengiriman Origin ke Gudang</p>
+                                <p class="infoDetail">Rp{{number_format($transaction->total_oti, 0, ',', '.')}}</p>
                             </div>
                             <div class="paymentInfo">
-                                <p class="infoType">Diskon Pengiriman</p>
-                                <p class="infoDetail">-Rp8.000</p>
+                                <p class="infoType">Biaya Pengiriman Gudang ke Anda</p>
+                                <p class="infoDetail">Rp{{number_format($transaction->total_itu, 0, ',', '.')}}</p>
+                            </div>
+                            <div class="paymentInfo">
+                                <p class="infoType">Biaya Administrasi</p>
+                                <p class="infoDetail">Rp{{number_format($transaction->total_fee, 0, ',', '.')}}</p>
                             </div>
                             <div class="totalPayment">
                                 <p class="title">Total Pembayaran</p>
-                                <p class="totalPaymentDetail">Rp1.032.000</p>
+                                <p class="totalPaymentDetail">Rp{{number_format($transaction->total_payment, 0, ',', '.')}}</p>
                             </div>
                         </div>
                         <div class="rightSection">
                             <button class="button buttonBlack">Lihat Invoice</button>
-                            <button class="button buttonRed">Batalkan Transaksi</button>
+                            @if($transaction->status_transaksi_id == 6)
+                                <button class="button buttonRed">Batalkan Transaksi</button>
+                            @endif
                         </div>
                     </div>
                 </div>

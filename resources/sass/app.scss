@@ -22,6 +22,7 @@ a{
     -moz-appearance: button;
     appearance: button;
     text-decoration: none;
+    color: inherit;
 }
 a:visited{
     text-decoration: none;
@@ -125,23 +126,45 @@ button{
             color: #b1b1b1;
             margin-right: 4px;
         }
-        .textCurrentProgress{
+        .textCurrentProgressYellow{
             color: #D5B81B;
+        }
+        .textCurrentProgressGreen{
+            color: #57B793;
+        }
+        .textCurrentProgressRed{
+            color: #DC354F;
         }
     }
     .barProgress{
         width: 100%;
         height: 11px;
-        background: #FFF09E;
         border-radius: 5px;
         position: relative;
         .currentBar{
             width: 20%;
             height: 100%;
-            background: #D5B81B;
             border-radius: 5px;
             position: absolute;
         }
+        .currentBarYellow {
+            background: #D5B81B;
+        }
+        .currentBarGreen {
+            background: #57B793;
+        }
+        .currentBarRed {
+            background: #DC354F;
+        }
+    }
+    .totalBarYellow {
+        background: #FFF09E;
+    }
+    .totalBarGreen {
+        background: #DEFDE0;
+    }
+    .totalBarRed {
+        background: #FBEBEF;
     }
 }
 //END OF GLOBAL
@@ -1288,7 +1311,7 @@ button{
                     border-radius: 5px;
                     display: inline-flex;
                     width: 100%;
-                    margin-bottom: 25px;
+                    margin-bottom: 5px;
                 }
 
                 .number-input,
@@ -1329,7 +1352,6 @@ button{
                 .number-input button.plus:after {
                     transform: translate(-50%, -50%) rotate(90deg);
                 }
-
                 .number-input input[type=number] {
                     width: 100%;
                     height: 30px;
@@ -1339,6 +1361,10 @@ button{
                     font-size: 14px;
                     font-weight: bold;
                     text-align: center;
+                }
+                .stock {
+                    color: #747474;
+                    margin-bottom: 25px;
                 }
             }
             .button{
@@ -2286,7 +2312,21 @@ button{
                     width: 130px;
                     border-top: 8px solid #000000;
                     cursor: pointer;
+                    &:first-of-type {
+                        border-radius: 5px 0px 0px 0px;
+                    }
+                    &:last-of-type {
+                        border-radius: 0px 5px 0px 0px;
+                    }
                     //background: #ff9900;
+                    .filterContent {
+                        text-decoration: none;
+                        color: inherit;
+                        background: inherit;
+                        border: none;
+                        width: 100%;
+                        height: 100%;
+                    }
                     .contentSemiBig{
                         font-weight: 500;
                         text-align: center;
@@ -2374,6 +2414,8 @@ button{
                             width: 118px;
                             height: 118px;
                             border-radius: 5px;
+                            object-fit: scale-down;
+                            border: 1px solid #D9D9D9;
                         }
                         .detailContent{
                             display: flex;
@@ -2408,6 +2450,8 @@ button{
                         display: flex;
                         align-items: center;
                         flex-direction: row;
+                        justify-content: right;
+                        width: 100%;
                         //background: blueviolet;
                         .buttonOnEdit{
                             font-family: "latobold";
@@ -2496,9 +2540,14 @@ button{
                                 height: 75px;
                                 border-radius: 5px;
                                 margin-right: 22px;
+                                object-fit: scale-down;
                             }
                             .wishInfo{
                                 margin-top: 10px;
+                                .wishName {
+                                    color: #31353B;
+                                    text-decoration: none;
+                                }
                                 .wishName{
                                     margin-bottom: 6px;
                                 }
@@ -2727,6 +2776,7 @@ button{
                                     width: 118px;
                                     height: 118px;
                                     border-radius: 5px;
+                                    object-fit: scale-down;
                                 }
                                 .detailContent{
                                     display: flex;
@@ -2752,44 +2802,9 @@ button{
                                     }
                                     .totalPrice{
                                         position: absolute;
-                                        margin-left: 631px;
+                                        margin-left: 610px;
                                         margin-top: 51px;
-                                    }
-                                    .progressIndicator{
-                                        width: 723px;
-                                        height: 64px;
-                                        //background: #c44e47;
-                                        .contentSmall{
-                                            font-family: "latoregular";
-                                            color: #b1b1b1;
-                                        }
-                                        .progressNumber {
-                                            display: flex;
-                                            flex-direction: row;
-                                            margin-bottom: 7px;
-                                            .contentBig{
-                                                font-family: "latobold";
-                                                color: #b1b1b1;
-                                                margin-right: 4px;
-                                            }
-                                            .textCurrentProgress{
-                                                color: #D5B81B;
-                                            }
-                                        }
-                                        .progressBar{
-                                            width: 723px;
-                                            height: 11px;
-                                            background: #FFF09E;
-                                            border-radius: 5px;
-                                            position: relative;
-                                            .currentBar{
-                                                width: 20%;
-                                                height: 100%;
-                                                background: #D5B81B;
-                                                border-radius: 5px;
-                                                position: absolute;
-                                            }
-                                        }
+                                        text-align: right;
                                     }
                                 }
                             }

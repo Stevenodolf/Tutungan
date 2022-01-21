@@ -46,11 +46,12 @@ Route::get('/createWish', 'WishController@getCreateWish');
 Route::post('/createWish', 'WishController@postCreateWish');
 Route::get('/wish/{id}', 'WishController@wishDetail');
 Route::post('/wish/{id}', 'CartController@addCart')->name('addToCart');
+Route::post('/buy/{id}', 'CartController@buyWish')->name('buyWish');
 Route::get('/wish/delete-cart/{cart_item_id}', 'CartController@deleteCart');
 Route::get('/cart', 'CartController@cart');
 Route::post('/cart', 'CartController@postCart');
 
-Route::get('/checkout', 'PaymentController@checkout');
+Route::get('/checkout', 'PaymentController@checkout')->name('getCheckout');
 Route::post('/checkout', 'PaymentController@postCheckout');
 
 // DETAIL AKUN
@@ -69,12 +70,16 @@ Route::get('/akunSaya/ubahpassword', function(){
 Route::get('/notifikasi', function(){
     return view('detailAkun.notifikasi.notifikasi');
 });
-Route::get('/wishsaya', function(){
-    return view('detailAkun.wishSaya.wishSaya');
-});
-Route::get('/transaksisaya', function(){
-    return view('detailAkun.transaksiSaya.transaksiSaya');
-});
-Route::get('/transaksisaya/detailtransaksi', function(){
-    return view('detailAkun.transaksiSaya.detailTransaksi');
-});
+//Route::get('/wishsaya', 'AccountDetailController@getWishSaya')->name('getWishSaya');
+Route::get('/wishsaya', 'AccountDetailController@getWishSaya')->name('getWishSaya');
+//Route::get('/wishsaya', function(){
+//    return view('detailAkun.wishSaya.wishSaya');
+//});
+Route::get('/transaksisaya', 'AccountDetailController@getTransaksiSaya')->name('getTransaksiSaya');
+//Route::get('/transaksisaya', function(){
+//    return view('detailAkun.transaksiSaya.transaksiSaya');
+//});
+Route::get('/transaksisaya/detailtransaksi/{id}', 'AccountDetailController@getDetailTransaksi')->name('getDetailTransaksi');
+//Route::get('/transaksisaya/detailtransaksi', function(){
+//    return view('detailAkun.transaksiSaya.detailTransaksi');
+//});
