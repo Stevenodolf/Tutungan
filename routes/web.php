@@ -39,6 +39,7 @@ Route::get('/login', 'AuthController@showLoginPage')->name('getLogin');
 Route::post('/login', 'AuthController@postLogin')->name('postLogin');
 Route::get('/register', 'AuthController@showRegisterPage')->name('getRegister');
 Route::post('/register', 'AuthController@postRegister') ->name('postRegister');
+Route::get('/account/verify/{token}', 'AuthController@verifyAccount') ->name('userVerify');
 Route::get('/logout','AuthController@logout')->name('logout');
 
 Route::get('/createWish', 'WishController@getCreateWish');

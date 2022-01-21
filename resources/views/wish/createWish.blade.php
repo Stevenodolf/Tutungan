@@ -25,9 +25,9 @@
                             {{--                        <p class="contentSemiNormal" style="color: #747474;">Nama min. 5 kata yang terdiri dari jenis produk, merek, warna, dan keterangan lainnya.</p>--}}
                         </div>
                         <select name="categoryId" required>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                            @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="sectionInputSelect">
@@ -75,9 +75,9 @@
                                 produk akan dikirimkan.</p>
                         </div>
                         <select name="origin" required>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                            @foreach ($origins as $origin)
+                                <option value="{{$origin->id}}">{{$origin->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="sectionInputSelect">

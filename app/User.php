@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password','phone_number','bod','gender','address','role_id',
+        'username', 'email', 'password', 'is_email_verified','phone_number','bod','gender','address_id','role_id',
     ];
 
     /**
@@ -35,10 +35,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-//        'email_verified_at' => 'datetime',
+//        'is_email_verified' => 'datetime',
     ];
 
     protected $table = 'user';
+
 
     public function getRoleRelation(){
         return $this->hasOne('App\Role', 'id', 'role_id');

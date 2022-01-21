@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Wish;
 use App\Category;
+use App\Origin;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,7 +27,7 @@ class WishController extends Controller
         $wish_created_at = $wish->created_at;
         $wish_detail = $wish->detail;
         $wish_image = $wish->image;
-        $wish_origin = $wish->origin;
+        $wish_origin = $wish->getOriginRelation->name;
         $wish_web_link = $wish->web_link;
         $wish_status_wish_name = $wish->getStatusWishRelation->name;
         // $wish_status_transaksi_name = $wish->getStatusTransaksiRelation->name;
@@ -74,8 +75,9 @@ class WishController extends Controller
         if($auth){
             $user = User::where('id', Auth::user()->id)->first();
             $categories = Category::all();
+            $origins = Origin::all();
 
-            return view('wish.createWish', ['auth' => $auth, 'user' => $user, 'categories' => $categories]);
+            return view('wish.createWish', ['auth' => $auth, 'user' => $user, 'categories' => $categories, 'origins' => $origins]);
         }
         return redirect('login');
     }
@@ -104,11 +106,12 @@ class WishController extends Controller
 
             $wish->image = json_encode($data);//string
             $wish->web_link = $request->webLink;
-            $wish->status_wish_id = '1'; //int
-            $wish->origin = $request->origin;
-            $wish->deadline = Carbon::now()->addDays(8);; //datetime
             $wish->curr_qty = $request->purchaseQty; //int, total qty yg dibeli wish creator
-//            $wish->curr_qty = '0';
+//             $wish->curr_qty = $request->currQty; //int, total qty yg dibeli wish creator
+            $wish->status_wish_id = '3'; //int
+            $wish->origin_id = $request->origin_id;
+            $wish->deadline = Carbon::now()->addDays(7);; //datetime
+            $wish->min_order = 1;
             $wish->target_qty = $request->targetQty; //int
             $wish->created_at = Carbon::now();
             $wish->updated_at = Carbon::now();

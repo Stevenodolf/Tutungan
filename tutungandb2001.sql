@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2022 at 05:40 PM
+-- Generation Time: Jan 20, 2022 at 04:29 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -87305,7 +87305,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `total_qty`, `total_price`, `created_at`, `updated_at`) VALUES
-(29, 9, 35, 350000, '2022-01-18 16:22:36', '2022-01-18 16:38:37');
+(29, 9, 15, 150000, '2022-01-18 16:22:36', '2022-01-19 15:07:27'),
+(30, 17, 1, NULL, '2022-01-18 17:07:56', '2022-01-18 17:07:56');
 
 -- --------------------------------------------------------
 
@@ -87370,38 +87371,32 @@ INSERT INTO `category` (`id`, `name`, `image`, `created_at`, `updated_at`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Table structure for table `origin`
 --
 
-CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
+CREATE TABLE `origin` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Table structure for table `migrations`
+-- Dumping data for table `origin`
 --
 
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1);
+INSERT INTO `origin` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Australia', '2022-01-20 21:11:50', '2022-01-20 21:11:59'),
+(2, 'China', '2022-01-20 21:12:06', '2022-01-20 21:12:11'),
+(3, 'Germany', '2022-01-20 21:12:15', '2022-01-20 21:12:17'),
+(4, 'India', '2022-01-20 21:12:20', '2022-01-20 21:12:23'),
+(5, 'Italy', '2022-01-20 21:12:26', '2022-01-20 21:12:29'),
+(6, 'Japan', '2022-01-20 21:12:32', '2022-01-20 21:12:34'),
+(7, 'Korea', '2022-01-20 21:12:37', '2022-01-20 21:12:40'),
+(8, 'Malaysia', '2022-01-20 21:12:44', '2022-01-20 21:12:47'),
+(9, 'Russia', '2022-01-20 21:12:50', '2022-01-20 21:12:54'),
+(10, 'Singapore', '2022-01-20 21:12:57', '2022-01-20 21:13:00'),
+(11, 'United States of America', '2022-01-20 21:13:04', '2022-01-20 21:13:07');
 
 -- --------------------------------------------------------
 
@@ -87433,6 +87428,13 @@ CREATE TABLE `payment` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`id`, `user_id`, `payment_date`, `total_price`, `total_qty`, `total_payment`, `paid`, `created_at`, `updated_at`) VALUES
+(79, 9, NULL, 150000, 15, NULL, 0, '2022-01-19 15:07:23', '2022-01-19 15:07:23');
+
 -- --------------------------------------------------------
 
 --
@@ -87442,7 +87444,7 @@ CREATE TABLE `payment` (
 CREATE TABLE `payment_item` (
   `id` int(11) NOT NULL,
   `payment_id` int(11) NOT NULL,
-  `cart_item_id` int(11) NOT NULL,
+  `cart_item_id` int(11) DEFAULT NULL,
   `wish_id` int(11) NOT NULL,
   `status_transaksi_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
@@ -87459,6 +87461,13 @@ CREATE TABLE `payment_item` (
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment_item`
+--
+
+INSERT INTO `payment_item` (`id`, `payment_id`, `cart_item_id`, `wish_id`, `status_transaksi_id`, `qty`, `total_price`, `total_oti`, `total_itu`, `total_fee`, `total_payment`, `process_date`, `shipping_date`, `received_date`, `finished_date`, `shipper_id`, `created_at`, `updated_at`) VALUES
+(114, 79, 41, 1, 1, 15, 150000, 40000, 25000, 10000, 225000, NULL, NULL, NULL, NULL, NULL, '2022-01-19', '2022-01-19');
 
 -- --------------------------------------------------------
 
@@ -87667,7 +87676,7 @@ CREATE TABLE `user` (
   `address` varchar(200) DEFAULT NULL,
   `disable` int(11) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime DEFAULT NULL
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -87677,24 +87686,22 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`, `role_id`, `email`, `phone_number`, `bod`, `gender`, `address`, `disable`, `created_at`, `updated_at`) VALUES
 (1, 'test', 'test123', 2, 'test@gmail.com', '08123456789', '2021-12-24 07:50:43', 1, 'Jakarta Barat, Jakarta', 0, '2021-12-24 07:50:43', '2021-12-24 07:50:43'),
 (9, 'luwislim', '$2y$10$PEGhrfvJzoxKX8athY.98uLaqi9ds7klfk0xElqFHivJcMjqIhfdW', 2, 'luwislim@tutungan.com', '0811702338', '2000-10-13 00:00:00', 1, NULL, 0, '2022-01-18 16:22:36', '2022-01-18 16:22:36'),
+(17, 'limluwis', '$2y$10$LeHYSNkjJmpXB68v3Mgecu2j9y/.FNBZ6n0rE44WZXKk3BUhW7U/S', 2, 'limluwis@tutungan.com', '0811702338', '2000-10-13 00:00:00', 1, NULL, 0, '2022-01-18 17:07:56', '2022-01-18 17:07:56'),
 (42, 'stevenoy', '$2y$10$CKTPzhun0n28I/pHgrUZA.30em7gBAssrFkHli8cXgUf7jEJdzbtC', 2, 'stevenoy@tutungan.com', '0811702338', '2000-01-01 00:00:00', 1, NULL, 0, '2022-01-15 16:25:15', '2022-01-15 16:25:15');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `user_verify`
 --
 
-CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `user_verify` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -87708,30 +87715,28 @@ CREATE TABLE `wish` (
   `price` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   `created_by` int(11) NOT NULL,
-  `detail` varchar(200) DEFAULT NULL,
+  `detail` text DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
-  `origin` varchar(50) DEFAULT NULL,
+  `origin_id` int(11) DEFAULT NULL,
   `web_link` varchar(200) DEFAULT NULL,
   `status_wish_id` int(11) NOT NULL,
   `approved_by` int(11) DEFAULT NULL,
   `reason_id` int(11) DEFAULT NULL,
   `deadline` datetime NOT NULL,
-  `curr_qty` int(11) DEFAULT NULL,
+  `curr_qty` int(11) NOT NULL,
   `target_qty` int(11) NOT NULL,
   `min_order` int(11) NOT NULL DEFAULT 1,
   `contributor` int(11) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime DEFAULT NULL
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `wish`
 --
 
-INSERT INTO `wish` (`id`, `name`, `price`, `category_id`, `created_by`, `detail`, `image`, `origin`, `web_link`, `status_wish_id`, `approved_by`, `reason_id`, `deadline`, `curr_qty`, `target_qty`, `min_order`, `contributor`, `created_at`, `updated_at`) VALUES
-(1, 'Hand Sanitizer', 10000, 9, 1, 'Saniter Hand Sanitizer', 'images/wish/wish1.jpg', 'China', 'https://www.alibaba.com/product-detail/Custom-private-labels-1L-70-75_1600087659880.html?spm=a2700.galleryofferlist.topad_classic.d_image.528a4921CiHtvK', 3, NULL, NULL, '2022-01-24 08:36:45', 10, 100, 10, 1, '2021-12-24 08:36:45', '2022-01-18 16:38:45'),
-(2, 'Botol Tupperware', 99000, 15, 1, 'Botol Minum Tupperware 1 Liter.', 'images/wish/wish2.jpg\n', 'Indonesia', 'https://www.alibaba.com/product-detail/Eco-friendly-reusable-travel-folding-bottle_1600172795151.html?spm=a2700.galleryofferlist.topad_classic.d_title.677567a4oSa2PS', 3, NULL, NULL, '2022-01-14 08:49:58', 5, 100, 2, 1, '2021-12-24 08:49:58', '2021-12-24 08:49:58'),
-(3, 'Tisu Basah', 14900, 19, 1, 'Tisu Basah Cussons Baby.\r\nAman untuk Bayi.', 'images/wish/wish3.jpg', 'China', 'https://www.alibaba.com/product-detail/Hot-selling-Custom-Baby-Wipes-20pcs_1600348248331.html?spm=a2700.galleryofferlist.normal_offer.d_image.5a776d37UW3oid&s=p', 3, NULL, NULL, '2022-02-16 15:28:30', 30, 200, 20, 1, '2021-12-24 09:28:30', '2022-01-18 16:38:25');
+INSERT INTO `wish` (`id`, `name`, `price`, `category_id`, `created_by`, `detail`, `image`, `origin_id`, `web_link`, `status_wish_id`, `approved_by`, `reason_id`, `deadline`, `curr_qty`, `target_qty`, `min_order`, `contributor`, `created_at`, `updated_at`) VALUES
+(642655020, 'Hand Sanitizer Saniter', 14900, 15, 9, '<p>Alat untuk membersihkan barang-barang disekitar anda dengan mudah.</p>', '[\"61e8ed2bbd3bb-1642655019\\/61e8ed2bbd3e3.png\"]', NULL, 'https://www.tokopedia.com/sakuravit/saniter-hand-sanitizer-spray-60ml?whid=0', 3, NULL, NULL, '2022-01-28 05:03:39', 0, 1000, 1, 0, '2022-01-20 05:03:39', '2022-01-20 05:03:39');
 
 --
 -- Indexes for dumped tables
@@ -87794,15 +87799,9 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `failed_jobs`
+-- Indexes for table `origin`
 --
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `migrations`
---
-ALTER TABLE `migrations`
+ALTER TABLE `origin`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -87892,11 +87891,10 @@ ALTER TABLE `user`
   ADD KEY `fk_role_id_idx` (`role_id`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `user_verify`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+ALTER TABLE `user_verify`
+  ADD KEY `fk_user_id_idx` (`user_id`) USING BTREE;
 
 --
 -- Indexes for table `wish`
@@ -87907,7 +87905,8 @@ ALTER TABLE `wish`
   ADD KEY `fk_approved_by_idx` (`approved_by`),
   ADD KEY `fk_category_id_idx` (`category_id`),
   ADD KEY `fk_reason_id_idx` (`reason_id`),
-  ADD KEY `fk_status_id_idx` (`status_wish_id`);
+  ADD KEY `fk_status_id_idx` (`status_wish_id`),
+  ADD KEY `fk_origin_id_idx` (`origin_id`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -87923,37 +87922,31 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `cart_item`
 --
 ALTER TABLE `cart_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
+-- AUTO_INCREMENT for table `origin`
 --
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `origin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `payment_item`
 --
 ALTER TABLE `payment_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -87972,12 +87965,6 @@ ALTER TABLE `sub_status_transaksi`
 --
 ALTER TABLE `transaction`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -88053,12 +88040,19 @@ ALTER TABLE `user`
   ADD CONSTRAINT `fk_user_role_id` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);
 
 --
+-- Constraints for table `user_verify`
+--
+ALTER TABLE `user_verify`
+  ADD CONSTRAINT `fk_user_verify_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
 -- Constraints for table `wish`
 --
 ALTER TABLE `wish`
   ADD CONSTRAINT `fk_wish_approved_by` FOREIGN KEY (`approved_by`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `fk_wish_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   ADD CONSTRAINT `fk_wish_created_by` FOREIGN KEY (`created_by`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `fk_wish_origin_id` FOREIGN KEY (`origin_id`) REFERENCES `origin` (`id`),
   ADD CONSTRAINT `fk_wish_reason_id` FOREIGN KEY (`reason_id`) REFERENCES `reason` (`id`),
   ADD CONSTRAINT `fk_wish_status_wish_id` FOREIGN KEY (`status_wish_id`) REFERENCES `status_wish` (`id`);
 COMMIT;
