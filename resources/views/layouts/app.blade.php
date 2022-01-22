@@ -206,9 +206,12 @@
                         <a href="wishsaya">
                             <p class="contentSemiNormal">Wish Saya</p>
                         </a>
-                        <a href="wishsaya" >
+                        <button onclick="window.location='{{ url("/wishsaya")}}'">
+                            <p class="contentSemiNormal">Wish Saya</p>
+                        </button>
+                        <button onclick="window.location='{{ url("/transaksisaya")}}'" >
                             <p class="contentSemiNormal">Transaksi Saya</p>
-                        </a>
+                        </button>
                         <a href="{{'/logout'}}">
                             <p class="contentSemiNormal">Logout</p>
                         </a>

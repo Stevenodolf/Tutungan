@@ -20,39 +20,43 @@ $(document).ready(function () {
         },
     });
 
-    let proBar = new ProBar({
-        // bgColor: "#C4C4C4",
-        // color:"#DE3E16",
-        bgColor: "#FFF09E",
-        color: "#D5B81B",
-        speed:0.2,
-        wrapper:".progressBar",
-        height:10,
-        classNameBar : "timer",
-        wrapperId : "progressBarId",
-        finishAnimation : false,
-        rounded : { // use it to round Corners of Probar.
-            topLeft : 5,
-            topRight : 5,
-            bottomLeft : 5,
-            bottomRight : 5
-        },
-        roundedInternal : { // use it to round Corners of Probar (internal).
-            topLeft : 5,
-            topRight : 5,
-            bottomLeft : 5,
-            bottomRight : 5
-        }
-    });
+    // let proBar = new ProBar({
+    //     // bgColor: "#C4C4C4",
+    //     // color:"#DE3E16",
+    //     bgColor: "#FFF09E",
+    //     color: "#D5B81B",
+    //     speed:0.2,
+    //     wrapper:".progressBar",
+    //     height:10,
+    //     classNameBar : "timer",
+    //     wrapperId : "progressBarId",
+    //     finishAnimation : false,
+    //     rounded : { // use it to round Corners of Probar.
+    //         topLeft : 5,
+    //         topRight : 5,
+    //         bottomLeft : 5,
+    //         bottomRight : 5
+    //     },
+    //     roundedInternal : { // use it to round Corners of Probar (internal).
+    //         topLeft : 5,
+    //         topRight : 5,
+    //         bottomLeft : 5,
+    //         bottomRight : 5
+    //     }
+    // });
+    //
+    // var current = $("#currentPro").text();
+    // var target = $("#targetPro").text()
+    // var progress = (current/target)*100;
+    // console.log("Current: " + current);
+    // console.log("Target: " + target);
+    // console.log("Progress: " + progress + "%");
+    //
+    // proBar.goto(progress);
 
-    var current = $("#currentPro").text();
-    var target = $("#targetPro").text()
-    var progress = (current/target)*100;
-    console.log("Current: " + current);
-    console.log("Target: " + target);
-    console.log("Progress: " + progress + "%");
-
-    proBar.goto(progress);
+    var wishDesc = document.getElementById("wishDescription");
+    wishDesc.innerHTML = wishDetail.description;
+    wishDesc.innerHTML = wishDesc.textContent;
 })
 
 function setupTickCountDown(tick) {

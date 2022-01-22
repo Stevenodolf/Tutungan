@@ -2,13 +2,14 @@
 
 @section('head')
     <script>
-        var wishDetail = {deadline: "{{$wish_deadline}}"}
+        var wishDetail = {deadline: "{{$wish_deadline}}", description: "{{$wish_detail}}"}
     </script>
     <script src="{{ asset('js/src/wish/wishDetail.js') }}"></script>
 @endsection
 
 @section('content')
     <div class="contentContainer">
+        {{-- Wish Detail --}}
         <div class="wishDetail">
             <div class="leftSection">
                 <div class="upperSection">
@@ -42,15 +43,22 @@
                             <div class="progressIndicator">
                                 <p class="contentSmall">Kontribusi Wish</p>
                                 <div class="progressNumber">
-                                    <p id="currentPro" class="contentBig textCurrentProgress">{{$wish_curr_qty}}</p>
+                                    <p id="currentPro" class="contentBig textCurrentProgressYellow">{{$wish_curr_qty}}</p>
                                     <p class="contentBig">/</p>
                                     <p id="targetPro" class="contentBig">{{$wish_target_qty}}</p>
                                 </div>
-                                <div class="progressBar"></div>
+                                @php
+                                    $currentPro = $wish->curr_qty;
+                                    $targetPro = $wish->target_qty;
+                                    $progress = ($currentPro/$targetPro)*100;
+                                @endphp
+                                <div class="barProgress totalBarYellow">
+                                    <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="middleInfo">
-                            <p class="price">Rp{{number_format($wish_price, 0, ',', '.')}}/box</p>
+                            <p class="price">Rp{{number_format($wish_price, 0, ',', '.')}}/pcs</p>
                         </div>
                         <div class="lowerInfo">
                             <div class="infoRow">
@@ -89,7 +97,7 @@
                     <div class="contentBig title">
                         Product Detail
                     </div>
-                    <div class="sectionContent">
+                    <div id="wishDescription" class="sectionContent">
                         {{$wish_detail}}
                     </div>
                 </div>
@@ -138,9 +146,7 @@
         </div>
 
 
-
-
-
+        {{-- For You --}}
         <div class="forYou">
             <h1>For You</h1>
             @if($for_you == NULL)
@@ -150,9 +156,12 @@
                     </div>
                 </div>
             @else
-                @foreach($for_you as $wish)
+                @php
+                    $idx = 1;
+                @endphp
+                @foreach($for_you as $for_you_item)
                     @php
-                        $deadline = strtotime($wish->deadline);
+                        $deadline = strtotime($for_you_item->deadline);
                         $diff = $deadline - time();
                         $time_left = Round($diff / 86400);
                     @endphp
@@ -166,24 +175,35 @@
                                 @endif
                                 @endif
                                 <div class="column">
-                                    <div class="wish" onclick="window.location='{{ url("/wish/".$wish->id)}}'">
+                                    <div class="wish" onclick="window.location='{{ url("/wish/".$for_you_item->id)}}'">
                                         {{--                                <img src="{{asset($wish->image[0])}}"/>--}}
-                                        <img src="{{asset('uploads/'.json_decode($wish->image)[0])}}"/>
+                                        <img src="{{asset('uploads/'.json_decode($for_you_item->image)[0])}}"/>
                                         <div class="timeLeft">
                                             <p>Tersisa {{$time_left}} Hari Lagi</p>
                                         </div>
                                         <div class="content">
-                                            <p>{{Str::of($wish->name)->limit(40)}}</p>
-                                            <h3>Rp {{number_format($wish->price, 0, ',', '.')}}/pcs</h3>
-                                            <div class="barWithText">
+                                            <p>{{Str::of($for_you_item->name)->limit(40)}}</p>
+                                            <h3>Rp {{number_format($for_you_item->price, 0, ',', '.')}}/pcs</h3>
+                                            <div class="progressIndicator">
                                                 <div class="textProgress">
-                                                    <p>{{$wish->curr_qty}}/{{$wish->target_qty}}</p>
+                                                    <p>{{$for_you_item->curr_qty}}/{{$for_you_item->target_qty}}</p>
                                                 </div>
-                                                <div class="progressBar"></div>
+{{--                                                <div class="progressBar"></div>--}}
+                                                @php
+                                                    $currentPro = $for_you_item->curr_qty;
+                                                    $targetPro = $for_you_item->target_qty;
+                                                    $progress = ($currentPro/$targetPro)*100;
+                                                @endphp
+                                                <div class="barProgress totalBarYellow">
+                                                    <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            @php
+                                $idx += 1;
+                            @endphp
                             @endforeach
                             {{--                <div class="row">--}}
                             {{--                    @foreach($for_you as $wish)--}}
@@ -588,4 +608,7 @@
                             </div>
         </div>
     </div>
+    @php
+        echo $wish->name;
+    @endphp
 @endsection

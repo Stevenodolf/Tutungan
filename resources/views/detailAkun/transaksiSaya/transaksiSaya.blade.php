@@ -99,7 +99,11 @@
                             </div>
                         </div>
                         <div class="edit">
-                            <p class="contentSemiNormal buttonOnEdit" onclick="window.location='{{ url("/transaksisaya/detailtransaksi/".$transaction->id)}}'">Lihat Detail Transaksi</p>
+                            @if($transaction->status_transaksi_id == 1)
+                                <p class="contentSemiNormal buttonOnEdit" onclick="window.location='{{ url("/buy/".$transaction->getWishRelation->id)}}'">Bayar</p>
+                            @else
+                                <p class="contentSemiNormal buttonOnEdit" onclick="window.location='{{ url("/transaksisaya/detailtransaksi/".$transaction->id)}}'">Lihat Detail Transaksi</p>
+                            @endif
                         </div>
                     </div>
                 </div>
