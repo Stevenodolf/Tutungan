@@ -1845,6 +1845,7 @@ button{
                 width: 80px;
                 height: 80px;
                 object-fit: scale-down;
+                border: 1px solid #D9D9D9;
             }
             .detail{
                 display: flex;
@@ -2464,6 +2465,9 @@ button{
                             color: #57B793;
                             margin-right: 11px;
                             cursor: pointer;
+                            text-decoration: none;
+                            background: inherit;
+                            border: none;
                         }
                         .separator{
                             font-family: "lato";
@@ -2547,6 +2551,7 @@ button{
                                 border-radius: 5px;
                                 margin-right: 22px;
                                 object-fit: scale-down;
+                                border: 1px solid #D9D9D9;
                             }
                             .wishInfo{
                                 margin-top: 10px;

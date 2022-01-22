@@ -37,8 +37,9 @@ class AccountDetailController extends Controller
                 $filter = $request->filter;
                 $wishes = Wish::where('created_by', $user->id)->where('status_wish_id', $filter)->get();
             }
+            $transactions = Transaction::where('user_id', $user->id)->get();
 
-            return view('detailAkun.wishSaya.wishSaya', ['user' => $user, 'wishes' => $wishes, 'filter' => $filter]);
+            return view('detailAkun.wishSaya.wishSaya', ['user' => $user, 'wishes' => $wishes, 'filter' => $filter, 'transactions' => $transactions]);
         }
 
         return redirect('login');

@@ -1977,6 +1977,7 @@ button {
   height: 80px;
   -o-object-fit: scale-down;
      object-fit: scale-down;
+  border: 1px solid #D9D9D9;
 }
 
 .checkout .itemDetail .productDetail .detail {
@@ -2659,6 +2660,9 @@ button {
   color: #57B793;
   margin-right: 11px;
   cursor: pointer;
+  text-decoration: none;
+  background: inherit;
+  border: none;
 }
 
 .detailAkun .contentV2 .wishSection .wishCell .wishCellContent .edit .separator {
@@ -2753,6 +2757,7 @@ button {
   margin-right: 22px;
   -o-object-fit: scale-down;
      object-fit: scale-down;
+  border: 1px solid #D9D9D9;
 }
 
 .detailAkun .contentV2 .transactionSection .transactionCell .transactionCellContent .detail .leftSection .wishInfo {

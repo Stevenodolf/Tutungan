@@ -33,9 +33,6 @@
                             @endphp
                             @foreach ($payment_items as $payment_item)
                                 @php
-                                    echo $payment_item->qty;
-                                @endphp
-                                @php
                                     $grand_oti = $grand_oti + $payment_item->total_oti;
                                     $grand_itu = $grand_itu + $payment_item->total_itu;
                                     $grand_fee = $grand_fee + $payment_item->total_fee;

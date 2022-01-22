@@ -77,8 +77,21 @@
                         <div class="detailContent">
                             <div class="wishInfo">
                                 <a href="wish/{{ $wish->id }}"><p class="contentSemiNormal wishName">{{ $wish->name }}</p></a>
-
-                                <p class="contentSmall">Pesanan anda: {{ $wish->curr_qty }} item</p> {{-- Harusnya menampilkan jumlah pesanan sesuai transaksi--}}
+                                @if($wish->status_wish_id <= 2)
+                                    <p class="contentSmall">Pesanan anda: {{ $wish->curr_qty }} item</p> {{-- Harusnya menampilkan jumlah pesanan sesuai transaksi--}}
+                                @else
+                                    @php
+                                        $user_order = 0;
+                                    @endphp
+                                    @foreach($transactions as $transaction)
+                                        @php
+                                            if($transaction->wish_id == $wish->id){
+                                                $user_order += $transaction->qty;
+                                            }
+                                        @endphp
+                                    @endforeach
+                                    <p class="contentSmall">Pesanan anda: {{ $user_order }} item</p> {{-- Harusnya menampilkan jumlah pesanan sesuai transaksi--}}
+                                @endif
                             </div>
                             <div class="progressIndicator">
                                 <p class="contentSmall">Kontribusi Wish</p>
@@ -120,9 +133,6 @@
                                 {{ csrf_field() }}
                                 <input type="hidden" name="wish_id" value="{{$wish->id}}">
                                 <input type="hidden" name="qty" value="{{$wish->curr_qty}}">
-                                @php
-                                    echo $wish->curr_qty;
-                                @endphp
                                 <button type="submit" class="contentSemiNormal buttonOnEdit">Bayar</button>
                             </form>
                         @elseif($wish->status_wish_id == 3)
