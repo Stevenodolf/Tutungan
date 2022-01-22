@@ -50,7 +50,7 @@ class AuthController extends Controller
     public function postRegister(Request $request){
         $rules = [
             'username'          => "required|min:4|max:16|unique:user",
-            'email'             => "required|email",
+            'email'             => "required|email|unique:user",
             'pnumber'           => "required|numeric",
             'gender'            => "required",
             'password'          => "required|min:8|max:20",
@@ -61,7 +61,9 @@ class AuthController extends Controller
             'username.unique'   => "Username sudah digunakan.",
             'username.min'      => "Username harus terdiri dari 4-16 karakter.",
             'username.max'      => "Username harus terdiri dari 4-16 karakter.",
-            'email'             => "Masukkan alamat e-mail.",
+            'email.required'    => "Masukkan alamat e-mail.",
+            'email.email'       => "Masukkan alamat e-mail.",
+            'email.unique'      => "Email sudah terdaftar.",
             'pnumber'           => "Periksa kembali nomor telepon yang anda masukkan.",
             'gender.required'   => "Pilih gender anda.",
             'password.required' => "Masukkan password.",

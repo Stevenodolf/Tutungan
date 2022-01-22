@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2022 at 04:29 PM
+-- Generation Time: Jan 22, 2022 at 03:10 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -30,10 +30,13 @@ SET time_zone = "+00:00";
 CREATE TABLE `address` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `address_label` varchar(30) NOT NULL,
+  `primary_address` int(11) NOT NULL,
+  `address_label` varchar(45) NOT NULL,
   `address_desa_id` varchar(10) NOT NULL,
-  `address_detail` text NOT NULL,
-  `phone_number` varchar(20) NOT NULL
+  `address_detail` text DEFAULT NULL,
+  `phone_number` varchar(20) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -87333,7 +87336,7 @@ CREATE TABLE `cart_item` (
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
-  `image` varchar(200) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -87371,12 +87374,26 @@ INSERT INTO `category` (`id`, `name`, `image`, `created_at`, `updated_at`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notification`
+--
+
+CREATE TABLE `notification` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `notification` varchar(255) NOT NULL,
+  `is_read` int(11) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `origin`
 --
 
 CREATE TABLE `origin` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `name` varchar(45) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -87401,10 +87418,10 @@ INSERT INTO `origin` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Table structure for table `password_reset`
 --
 
-CREATE TABLE `password_resets` (
+CREATE TABLE `password_reset` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
@@ -87446,17 +87463,13 @@ CREATE TABLE `payment_item` (
   `payment_id` int(11) NOT NULL,
   `cart_item_id` int(11) DEFAULT NULL,
   `wish_id` int(11) NOT NULL,
-  `status_transaksi_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
   `total_price` int(20) NOT NULL,
   `total_oti` int(20) DEFAULT NULL,
   `total_itu` int(20) DEFAULT NULL,
   `total_fee` int(20) DEFAULT NULL,
   `total_payment` int(20) DEFAULT NULL,
-  `process_date` date DEFAULT NULL,
-  `shipping_date` date DEFAULT NULL,
-  `received_date` date DEFAULT NULL,
-  `finished_date` date DEFAULT NULL,
+  `payment_date` datetime DEFAULT NULL,
   `shipper_id` int(11) DEFAULT NULL,
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL
@@ -87466,8 +87479,8 @@ CREATE TABLE `payment_item` (
 -- Dumping data for table `payment_item`
 --
 
-INSERT INTO `payment_item` (`id`, `payment_id`, `cart_item_id`, `wish_id`, `status_transaksi_id`, `qty`, `total_price`, `total_oti`, `total_itu`, `total_fee`, `total_payment`, `process_date`, `shipping_date`, `received_date`, `finished_date`, `shipper_id`, `created_at`, `updated_at`) VALUES
-(114, 79, 41, 1, 1, 15, 150000, 40000, 25000, 10000, 225000, NULL, NULL, NULL, NULL, NULL, '2022-01-19', '2022-01-19');
+INSERT INTO `payment_item` (`id`, `payment_id`, `cart_item_id`, `wish_id`, `qty`, `total_price`, `total_oti`, `total_itu`, `total_fee`, `total_payment`, `payment_date`, `shipper_id`, `created_at`, `updated_at`) VALUES
+(114, 79, 41, 1, 15, 150000, 40000, 25000, 10000, 225000, NULL, NULL, '2022-01-19', '2022-01-19');
 
 -- --------------------------------------------------------
 
@@ -87574,6 +87587,7 @@ CREATE TABLE `status_transaksi` (
 --
 
 INSERT INTO `status_transaksi` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(0, 'Menunggu Verifikasi', '2022-01-21 11:30:55', '2022-01-21 11:30:55'),
 (1, 'Menunggu Pembayaran', '2021-12-14 22:47:31', NULL),
 (2, 'Menunggu Tenggat Waktu', '2021-12-14 22:47:31', NULL),
 (3, 'Sedang Diproses', '2021-12-14 22:47:31', NULL),
@@ -87652,6 +87666,7 @@ CREATE TABLE `transaction` (
   `total_payment` int(20) NOT NULL,
   `domestic_shipper_id` int(11) DEFAULT NULL,
   `inter_shipper_id` int(11) DEFAULT NULL,
+  `no_resi` varchar(45) DEFAULT NULL,
   `status_transaksi_id` int(11) NOT NULL,
   `sub_status_transaksi_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -87673,8 +87688,9 @@ CREATE TABLE `user` (
   `phone_number` varchar(45) NOT NULL,
   `bod` datetime NOT NULL,
   `gender` int(11) DEFAULT NULL,
-  `address` varchar(200) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
   `disable` int(11) NOT NULL DEFAULT 0,
+  `is_email_verified` timestamp NULL DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -87683,11 +87699,11 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `role_id`, `email`, `phone_number`, `bod`, `gender`, `address`, `disable`, `created_at`, `updated_at`) VALUES
-(1, 'test', 'test123', 2, 'test@gmail.com', '08123456789', '2021-12-24 07:50:43', 1, 'Jakarta Barat, Jakarta', 0, '2021-12-24 07:50:43', '2021-12-24 07:50:43'),
-(9, 'luwislim', '$2y$10$PEGhrfvJzoxKX8athY.98uLaqi9ds7klfk0xElqFHivJcMjqIhfdW', 2, 'luwislim@tutungan.com', '0811702338', '2000-10-13 00:00:00', 1, NULL, 0, '2022-01-18 16:22:36', '2022-01-18 16:22:36'),
-(17, 'limluwis', '$2y$10$LeHYSNkjJmpXB68v3Mgecu2j9y/.FNBZ6n0rE44WZXKk3BUhW7U/S', 2, 'limluwis@tutungan.com', '0811702338', '2000-10-13 00:00:00', 1, NULL, 0, '2022-01-18 17:07:56', '2022-01-18 17:07:56'),
-(42, 'stevenoy', '$2y$10$CKTPzhun0n28I/pHgrUZA.30em7gBAssrFkHli8cXgUf7jEJdzbtC', 2, 'stevenoy@tutungan.com', '0811702338', '2000-01-01 00:00:00', 1, NULL, 0, '2022-01-15 16:25:15', '2022-01-15 16:25:15');
+INSERT INTO `user` (`id`, `username`, `password`, `role_id`, `email`, `phone_number`, `bod`, `gender`, `photo`, `disable`, `is_email_verified`, `created_at`, `updated_at`) VALUES
+(1, 'test', 'test123', 2, 'test@gmail.com', '08123456789', '2021-12-24 07:50:43', 1, 'Jakarta Barat, Jakarta', 0, NULL, '2021-12-24 07:50:43', '2021-12-24 07:50:43'),
+(9, 'luwislim', '$2y$10$PEGhrfvJzoxKX8athY.98uLaqi9ds7klfk0xElqFHivJcMjqIhfdW', 2, 'luwislim@tutungan.com', '0811702338', '2000-10-13 00:00:00', 1, NULL, 0, NULL, '2022-01-18 16:22:36', '2022-01-18 16:22:36'),
+(17, 'limluwis', '$2y$10$LeHYSNkjJmpXB68v3Mgecu2j9y/.FNBZ6n0rE44WZXKk3BUhW7U/S', 2, 'limluwis@tutungan.com', '0811702338', '2000-10-13 00:00:00', 1, NULL, 0, NULL, '2022-01-18 17:07:56', '2022-01-18 17:07:56'),
+(42, 'stevenoy', '$2y$10$CKTPzhun0n28I/pHgrUZA.30em7gBAssrFkHli8cXgUf7jEJdzbtC', 2, 'stevenoy@tutungan.com', '0811702338', '2000-01-01 00:00:00', 1, NULL, 0, NULL, '2022-01-15 16:25:15', '2022-01-15 16:25:15');
 
 -- --------------------------------------------------------
 
@@ -87721,6 +87737,7 @@ CREATE TABLE `wish` (
   `web_link` varchar(200) DEFAULT NULL,
   `status_wish_id` int(11) NOT NULL,
   `approved_by` int(11) DEFAULT NULL,
+  `approved_at` datetime DEFAULT NULL,
   `reason_id` int(11) DEFAULT NULL,
   `deadline` datetime NOT NULL,
   `curr_qty` int(11) NOT NULL,
@@ -87735,8 +87752,8 @@ CREATE TABLE `wish` (
 -- Dumping data for table `wish`
 --
 
-INSERT INTO `wish` (`id`, `name`, `price`, `category_id`, `created_by`, `detail`, `image`, `origin_id`, `web_link`, `status_wish_id`, `approved_by`, `reason_id`, `deadline`, `curr_qty`, `target_qty`, `min_order`, `contributor`, `created_at`, `updated_at`) VALUES
-(642655020, 'Hand Sanitizer Saniter', 14900, 15, 9, '<p>Alat untuk membersihkan barang-barang disekitar anda dengan mudah.</p>', '[\"61e8ed2bbd3bb-1642655019\\/61e8ed2bbd3e3.png\"]', NULL, 'https://www.tokopedia.com/sakuravit/saniter-hand-sanitizer-spray-60ml?whid=0', 3, NULL, NULL, '2022-01-28 05:03:39', 0, 1000, 1, 0, '2022-01-20 05:03:39', '2022-01-20 05:03:39');
+INSERT INTO `wish` (`id`, `name`, `price`, `category_id`, `created_by`, `detail`, `image`, `origin_id`, `web_link`, `status_wish_id`, `approved_by`, `approved_at`, `reason_id`, `deadline`, `curr_qty`, `target_qty`, `min_order`, `contributor`, `created_at`, `updated_at`) VALUES
+(642655020, 'Hand Sanitizer Saniter', 14900, 15, 9, '<p>Alat untuk membersihkan barang-barang disekitar anda dengan mudah.</p>', '[\"61e8ed2bbd3bb-1642655019\\/61e8ed2bbd3e3.png\"]', NULL, 'https://www.tokopedia.com/sakuravit/saniter-hand-sanitizer-spray-60ml?whid=0', 3, NULL, NULL, NULL, '2022-01-28 05:03:39', 0, 1000, 1, 0, '2022-01-20 05:03:39', '2022-01-20 05:03:39');
 
 --
 -- Indexes for dumped tables
@@ -87799,15 +87816,21 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `notification`
+--
+ALTER TABLE `notification`
+  ADD KEY `fk_user_id_idx` (`user_id`) USING BTREE;
+
+--
 -- Indexes for table `origin`
 --
 ALTER TABLE `origin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `password_resets`
+-- Indexes for table `password_reset`
 --
-ALTER TABLE `password_resets`
+ALTER TABLE `password_reset`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
@@ -87824,8 +87847,7 @@ ALTER TABLE `payment_item`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_transaction_id_idx` (`payment_id`) USING BTREE,
   ADD KEY `fk_wish_id_idx` (`wish_id`) USING BTREE,
-  ADD KEY `fk_shipper_id_idx` (`shipper_id`) USING BTREE,
-  ADD KEY `fk_status_transaksi_id_idx` (`status_transaksi_id`) USING BTREE;
+  ADD KEY `fk_shipper_id_idx` (`shipper_id`) USING BTREE;
 
 --
 -- Indexes for table `reason`
@@ -88002,6 +88024,12 @@ ALTER TABLE `cart_item`
   ADD CONSTRAINT `fk_cart_items_wish_id` FOREIGN KEY (`wish_id`) REFERENCES `wish` (`id`);
 
 --
+-- Constraints for table `notification`
+--
+ALTER TABLE `notification`
+  ADD CONSTRAINT `fk_notification_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
 -- Constraints for table `payment`
 --
 ALTER TABLE `payment`
@@ -88012,7 +88040,6 @@ ALTER TABLE `payment`
 --
 ALTER TABLE `payment_item`
   ADD CONSTRAINT `fk_payment_item_shipper_id` FOREIGN KEY (`shipper_id`) REFERENCES `shipper` (`id`),
-  ADD CONSTRAINT `fk_payment_item_status_transaksi_id` FOREIGN KEY (`status_transaksi_id`) REFERENCES `status_transaksi` (`id`),
   ADD CONSTRAINT `fk_payment_item_transaction_id` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`id`);
 
 --
