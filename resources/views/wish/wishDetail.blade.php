@@ -9,6 +9,7 @@
 
 @section('content')
     <div class="contentContainer">
+        {{-- Wish Detail --}}
         <div class="wishDetail">
             <div class="leftSection">
                 <div class="upperSection">
@@ -145,9 +146,7 @@
         </div>
 
 
-
-
-
+        {{-- For You --}}
         <div class="forYou">
             <h1>For You</h1>
             @if($for_you == NULL)

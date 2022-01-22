@@ -42,9 +42,9 @@
                                     <div class="detail">
                                         <img src="{{asset('uploads/'.json_decode($payment_item->getWishRelation->image)[0])}}"/>
                                         <div>
-                                            <p class="contentSemiNormal">{{$payment_item->getWishRelation->name}}</p>
-                                            <p class="contentSmall">{{$payment_item->qty}}</p>
-                                            <p class="contentNormal">Rp {{number_format($payment_item->total_price, 0, ',', '.')}}</p>
+                                            <p class="contentSemiNormal wishName">{{$payment_item->getWishRelation->name}}</p>
+                                            <p class="contentSmall qty">{{$payment_item->qty}} item</p>
+                                            <p class="contentNormal totalPrice">Rp {{number_format($payment_item->total_price, 0, ',', '.')}}</p>
                                         </div>
                                     </div>
                                     <div class="shipmentDetail">
@@ -119,7 +119,7 @@
                                 <p class="contentSemiNormal" style="color: red">Rp {{number_format($total_payment, 0, ',', '.')}}</p>
                             </div>
 
-                            <a id="pilihPembayaran">Pilih Pembayaran</a>
+                            <a class="button buttonYellow" id="pilihPembayaran">Pilih Pembayaran</a>
                         </div>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
                                 <p class="contentSemiNormal" style="color: rgba(49, 53, 59, 0.5);">Total Pembayaran</p>
                                 <p class="contentSemiNormal" style="color: #FF0000;font-weight: bold;">Rp {{number_format($total_payment, 0, ',', '.')}}</p>
                             </div>
-                            <a id="bayar">Bayar</a>
+                            <a class="button buttonYellow" id="bayar">Bayar</a>
                         </div>
 
                     </div>

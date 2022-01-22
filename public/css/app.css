@@ -32,6 +32,57 @@ button {
   cursor: pointer;
 }
 
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 45px;
+  background: #FFFFFF;
+  border: 1px solid;
+  border-radius: 5px;
+  font-family: "latobold";
+  font-size: 14px;
+  line-height: 45px;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px lightskyblue;
+}
+
+.button img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.buttonBlack {
+  border-color: #bfbfbf;
+  color: #000000;
+}
+
+.buttonBlack:hover {
+  background: #D9D9D9;
+}
+
+.buttonBlack:active {
+  background: #bfbfbf;
+}
+
+.buttonYellow {
+  border-color: #DFCC60;
+  background: #FFD901;
+  margin-bottom: 10px;
+}
+
+.buttonYellow:hover {
+  background: #D5B81B;
+}
+
+.buttonYellow:active {
+  background: #DFCC60;
+}
+
 .barWithText .textProgress {
   display: flex;
   justify-content: flex-end;
@@ -1831,26 +1882,242 @@ button {
      object-fit: cover;
 }
 
-.keranjang .columnA {
-  float: left;
-  width: 70%;
+.keranjang {
+  display: flex;
+  justify-content: center;
 }
 
-.keranjang .columnB {
+.keranjang .keranjangContent {
+  display: flex;
+  flex-direction: row;
+  width: 1170px;
+}
+
+.keranjang .keranjangContent .leftSection {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  margin-right: 65px;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent {
+  width: 828px;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px 17px;
+  border-bottom: 2px solid #989A9D;
+  margin-bottom: 11px;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .header .title {
+  font-family: "latobold";
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .header .buttonHapusSemua {
+  color: #EA260D;
+  text-align: right;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems {
+  display: flex;
+  flex-direction: column;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px;
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .itemImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+  border: 1px solid #D9D9D9;
+  margin-right: 15px;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .itemInfo {
+  width: 516px;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .itemInfo .wishName {
+  color: #31353B;
+  margin-bottom: 8px;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .itemInfo .itemTotalPrice {
+  font-family: "latobold";
+  color: #31353B;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 30px;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .deleteSection {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #C1C2C4;
+  padding: 0 11px 0 0;
+  margin-right: 11px;
+  height: 25px;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .deleteSection .buttonImg {
+  width: 15px;
+  height: 15px;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection {
+  width: 128px;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection input[type=number] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection input[type=number]::-webkit-inner-spin-button,
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection .number-input {
+  border: 1px solid #D6D7D8;
+  border-radius: 5px;
+  display: inline-flex;
+  width: 100%;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection .number-input,
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection .number-input * {
+  box-sizing: border-box;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection .number-input button {
+  outline: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection .number-input button:hover {
+  background: #D9D9D9;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection .number-input button:active {
+  background: #bfbfbf;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection .number-input button:before,
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection .number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 2px;
+  background-color: #212121;
+  transform: translate(-50%, -50%);
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection .number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection .number-input input[type=number] {
+  width: 100%;
+  height: 30px;
+  padding: 0.5rem;
+  border: solid #D6D7D8;
+  border-width: 0 2px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.keranjang .keranjangContent .leftSection .sectionContent .cartItems .itemCell .editItem .editSection .itemQuantitySection .stock {
+  color: #747474;
+  margin-bottom: 25px;
+}
+
+.keranjang .keranjangContent .rightSection {
+  display: flex;
+  flex-direction: column;
+  height: 111px;
+  width: 275px;
+  background: #FFFFFF;
+  border: 1px solid rgba(49, 53, 59, 0.2);
+  box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.keranjang .keranjangContent .rightSection .title {
+  font-family: "latobold";
+  margin-bottom: 10px;
+}
+
+.keranjang .keranjangContent .rightSection .cartTotalPrice {
+  color: #F9A826;
+  margin-bottom: 20px;
+}
+
+.keranjang .keranjangContent .rightSection .buttonBeli {
+  margin-bottom: 0;
+}
+
+.keranjangXXX .columnA {
   float: left;
-  width: 30%;
+  width: 828px;
+  margin-right: 65px;
+}
+
+.keranjangXXX .columnB {
+  float: left;
+  width: 275px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
 }
 
-.keranjang .row:after {
+.keranjangXXX .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.keranjang .option {
+.keranjangXXX .option {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -1859,19 +2126,19 @@ button {
   margin-bottom: 15px;
 }
 
-.keranjang .option .pilihSemua {
+.keranjangXXX .option .pilihSemua {
   display: flex;
   align-items: center;
 }
 
-.keranjang .keranjangDetail {
+.keranjangXXX .keranjangDetail {
   display: flex;
   align-items: center;
   flex-direction: row;
   margin-bottom: 30px;
 }
 
-.keranjang .keranjangDetail .productDetail {
+.keranjangXXX .keranjangDetail .productDetail {
   width: 100%;
   background: #FFFFFF;
   margin-left: 25px;
@@ -1883,23 +2150,23 @@ button {
   padding: 0 15px;
 }
 
-.keranjang .keranjangDetail .productDetail .detail {
+.keranjangXXX .keranjangDetail .productDetail .detail {
   display: flex;
   align-items: center;
 }
 
-.keranjang .keranjangDetail .productDetail .detail img {
+.keranjangXXX .keranjangDetail .productDetail .detail img {
   width: 80px;
   height: 80px;
 }
 
-.keranjang .keranjangDetail .productDetail .deleteAdd {
+.keranjangXXX .keranjangDetail .productDetail .deleteAdd {
   display: flex;
   justify-content: flex-end;
   padding-bottom: 10px;
 }
 
-.keranjang .keranjangDetail .productDetail .deleteAdd button {
+.keranjangXXX .keranjangDetail .productDetail .deleteAdd button {
   background: transparent;
   border: none;
   display: flex;
@@ -1907,16 +2174,16 @@ button {
   border-right: 1px solid rgba(49, 53, 59, 0.3);
 }
 
-.keranjang .keranjangDetail .productDetail .deleteAdd button img {
+.keranjangXXX .keranjangDetail .productDetail .deleteAdd button img {
   width: 15px;
   height: 15px;
 }
 
-.keranjang .keranjangDetail .productDetail .deleteAdd input[type=number] {
+.keranjangXXX .keranjangDetail .productDetail .deleteAdd input[type=number] {
   margin-left: 10px;
 }
 
-.keranjang .total {
+.keranjangXXX .total {
   width: 275px;
   height: 157px;
   background: #FFFFFF;
@@ -1931,7 +2198,7 @@ button {
   flex-wrap: nowrap;
 }
 
-.keranjang .total button {
+.keranjangXXX .total button {
   color: #010101;
   height: 36px;
   background: #FFD901;
@@ -1965,11 +2232,16 @@ button {
   padding: 12px 0;
 }
 
+.checkout .itemDetail {
+  margin-top: 15px;
+}
+
 .checkout .itemDetail .productDetail {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
   justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 .checkout .itemDetail .productDetail img {
@@ -1977,12 +2249,27 @@ button {
   height: 80px;
   -o-object-fit: scale-down;
      object-fit: scale-down;
+  border-radius: 5px;
   border: 1px solid #D9D9D9;
+  margin-right: 15px;
 }
 
 .checkout .itemDetail .productDetail .detail {
   display: flex;
   align-items: center;
+  color: #31353B;
+}
+
+.checkout .itemDetail .productDetail .detail .wishName {
+  margin-bottom: 2px;
+}
+
+.checkout .itemDetail .productDetail .detail .qty {
+  margin-bottom: 10px;
+}
+
+.checkout .itemDetail .productDetail .detail .totalPrice {
+  font-family: "latobold";
 }
 
 .checkout .itemDetail .productDetail .shipmentDetail {
@@ -2046,6 +2333,7 @@ button {
   padding-top: 15px;
   border-top: 1px solid rgba(49, 53, 59, 0.3);
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .checkout .paymentPopup {
