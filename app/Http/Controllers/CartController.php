@@ -37,7 +37,8 @@ class CartController extends Controller
             $cart->total_price = $total_price;
             $cart->save();
 
-            return view('keranjang.keranjang', ['user' => $user, 'cart' => $cart, 'cart_items' => $cart_items]);
+//            return view('keranjang.keranjang', ['user' => $user, 'cart' => $cart, 'cart_items' => $cart_items]);
+            return view('keranjang.keranjangNew', ['user' => $user, 'cart' => $cart, 'cart_items' => $cart_items]);
         }
         return redirect('login');
     }
@@ -116,14 +117,12 @@ class CartController extends Controller
         // $auth = true;
 
         if($auth){
-            // $user = User::where('id', Auth::user()->id)->first();
             $user = User::where('id', Auth::user()->id)->first();
 
             $payment = new Payment;
             $payment->user_id = $user->id;
             $payment->total_price = $request->total_price;
             $payment->total_qty = $request->total_qty;
-            // $payment->wish_id = $wishes->implode('wish_id', ',');
             $payment->save();
 
             $cart = Cart::where('user_id', $user->id)->first();
@@ -142,7 +141,6 @@ class CartController extends Controller
                 $payment_item->save();
             }
 
-//            return redirect('checkout');
             return redirect()->route('getCheckout', ['id' => $payment->id]);
         }
 
