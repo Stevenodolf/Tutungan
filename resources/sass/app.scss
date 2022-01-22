@@ -166,6 +166,10 @@ button{
     .totalBarRed {
         background: #FBEBEF;
     }
+    .textProgress{
+        display: flex;
+        justify-content: flex-end;
+    }
 }
 //END OF GLOBAL
 
@@ -896,11 +900,12 @@ button{
     img {
         width: 220px;
         height: 220px;
+        object-fit: scale-down;
     }
 
     .content {
         width: 100%;
-        height: 100%;
+        height: 100px;
         display: flex;
         flex-direction: column;
         justify-content: space-around;

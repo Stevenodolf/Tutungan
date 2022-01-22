@@ -105,11 +105,11 @@ class WishController extends Controller
             }
 
             $wish->image = json_encode($data);//string
+            $wish->origin_id = $request->origin;
             $wish->web_link = $request->webLink;
             $wish->curr_qty = $request->purchaseQty; //int, total qty yg dibeli wish creator
 //             $wish->curr_qty = $request->currQty; //int, total qty yg dibeli wish creator
             $wish->status_wish_id = '3'; //int
-            $wish->origin_id = $request->origin_id;
             $wish->deadline = Carbon::now()->addDays(7);; //datetime
             $wish->min_order = 1;
             $wish->target_qty = $request->targetQty; //int

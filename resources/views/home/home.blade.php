@@ -315,9 +315,9 @@
                     </div>
                 </div>
             @else
-                @foreach($for_you as $wish)
+                @foreach($for_you as $for_you_item)
                     @php
-                        $deadline = strtotime($wish->deadline);
+                        $deadline = strtotime($for_you_item->deadline);
                         $diff = $deadline - time();
                         $time_left = Round($diff / 86400);
                     @endphp
@@ -331,20 +331,28 @@
                         @endif
                     @endif
                         <div class="column">
-                            <div class="wish" onclick="window.location='{{ url("/wish/".$wish->id)}}'">
+                            <div class="wish" onclick="window.location='{{ url("/wish/".$for_you_item->id)}}'">
 {{--                                <img src="{{asset($wish->image[0])}}"/>--}}
-                                <img src="{{asset('uploads/'.json_decode($wish->image)[0])}}"/>
+                                <img src="{{asset('uploads/'.json_decode($for_you_item->image)[0])}}"/>
                                 <div class="timeLeft">
                                     <p>Tersisa {{$time_left}} Hari Lagi</p>
                                 </div>
                                 <div class="content">
-                                    <p>{{Str::of($wish->name)->limit(40)}}</p>
-                                    <h3>Rp {{number_format($wish->price, 0, ',', '.')}}/pcs</h3>
-                                    <div class="barWithText">
+                                    <p>{{Str::of($for_you_item->name)->limit(40)}}</p>
+                                    <h3>Rp {{number_format($for_you_item->price, 0, ',', '.')}}/pcs</h3>
+                                    <div class="progressIndicator">
                                         <div class="textProgress">
-                                            <p>{{$wish->curr_qty}}/{{$wish->target_qty}}</p>
+                                            <p>{{$for_you_item->curr_qty}}/{{$for_you_item->target_qty}}</p>
                                         </div>
-                                        <div class="progressBar"></div>
+                                        @php
+                                            $currentPro = $for_you_item->curr_qty;
+                                            $targetPro = $for_you_item->target_qty;
+                                            $progress = ($currentPro/$targetPro)*100;
+                                        @endphp
+                                        <div class="barProgress totalBarYellow">
+                                            <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
+                                        </div>
+{{--                                        <div class="progressBar"></div>--}}
                                     </div>
                                 </div>
                             </div>
