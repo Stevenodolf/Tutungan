@@ -111,49 +111,20 @@
                                         <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
                                     </div>
                                 @endif
-
-{{--                                <div id="progressBarId{{ $idx }}" class="progressBar{{ $idx }}"></div>--}}
-{{--                                <script>--}}
-{{--                                    const proBar{{ $idx }} = new ProBar({--}}
-{{--                                        // bgColor: "#C4C4C4",--}}
-{{--                                        // color:"#DE3E16",--}}
-{{--                                        bgColor: "#FFF09E",--}}
-{{--                                        color: "#D5B81B",--}}
-{{--                                        speed:0.2,--}}
-{{--                                        wrapper:".progressBar{{ $idx }}",--}}
-{{--                                        height:10,--}}
-{{--                                        classNameBar : "timer",--}}
-{{--                                        wrapperId : "progressBarId{{ $idx }}",--}}
-{{--                                        finishAnimation : false,--}}
-{{--                                        rounded : { // use it to round Corners of Probar.--}}
-{{--                                            topLeft : 5,--}}
-{{--                                            topRight : 5,--}}
-{{--                                            bottomLeft : 5,--}}
-{{--                                            bottomRight : 5--}}
-{{--                                        },--}}
-{{--                                        roundedInternal : { // use it to round Corners of Probar (internal).--}}
-{{--                                            topLeft : 5,--}}
-{{--                                            topRight : 5,--}}
-{{--                                            bottomLeft : 5,--}}
-{{--                                            bottomRight : 5--}}
-{{--                                        }--}}
-{{--                                    });--}}
-
-{{--                                    var current = $("#currentPro{{ $idx }}").text();--}}
-{{--                                    var target = $("#targetPro{{ $idx }}").text()--}}
-{{--                                    var progress{{ $idx }} = (current/target)*100;--}}
-{{--                                    console.log("Current: " + current);--}}
-{{--                                    console.log("Target: " + target);--}}
-{{--                                    console.log("Progress: " + progress{{ $idx }} + "%");--}}
-
-{{--                                    proBar{{ $idx }}.goto(progress{{ $idx }});--}}
-{{--                                </script>--}}
                             </div>
                         </div>
                     </div>
                     <div class="edit">
                         @if($wish->status_wish_id == 2)
-                            <p class="contentSemiNormal buttonOnEdit">Bayar</p>
+                            <form method="post" action="{{ url("/buy/".$wish->id) }}">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="wish_id" value="{{$wish->id}}">
+                                <input type="hidden" name="qty" value="{{$wish->curr_qty}}">
+                                @php
+                                    echo $wish->curr_qty;
+                                @endphp
+                                <button type="submit" class="contentSemiNormal buttonOnEdit">Bayar</button>
+                            </form>
                         @elseif($wish->status_wish_id == 3)
                             <a href="/wish/{{ $wish->id }}" class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</a>
                         @endif

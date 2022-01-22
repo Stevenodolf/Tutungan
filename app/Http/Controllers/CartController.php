@@ -145,7 +145,7 @@ class CartController extends Controller
             }
 
 //            return redirect('checkout');
-            return redirect()->route('getCheckout');
+            return redirect()->route('getCheckout', ['id' => $payment->id]);
         }
 
         return redirect('login');
@@ -185,7 +185,7 @@ class CartController extends Controller
 //            $payment_item->cart_item_id = $cart_item->id;
             $payment_item->wish_id = $wish->id;
             $payment_item->status_transaksi_id = 1;
-            $payment_item->qty = $payment->total_qty;
+            $payment_item->qty = $request->qty;
             $payment_item->total_price = $payment->total_price;
             $payment_item->total_fee = 10000;
             $payment_item->created_at = Carbon::now()->format('Y-m-d H:i:s');
@@ -193,7 +193,7 @@ class CartController extends Controller
             $payment_item->save();
 
 //            return redirect('checkout');
-            return redirect()->route('getCheckout');
+            return redirect()->route('getCheckout', ['id' => $payment->id]);
         }
 
         return redirect('login');
