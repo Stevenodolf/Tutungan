@@ -6,11 +6,16 @@
             <h2>Profil</h2>
             <p class="contentSemiBig">Kelola data diri Anda yang akan digunakan dalam situs ini.</p>
         </div>
-        <form class="profil" >
+        <form class="profil" method="post" action="{{url('/akunSaya/editProfil')}}" enctype="multipart/form-data">
+            {{ csrf_field() }}
             <div style="display: flex">
                 <div class="profilPict">
-                    <img id="fotoProfil" src="{{asset('images/dummyUser2.png')}}">
-                    <input accept="image/*" type='file' id="inputProfil" onchange="inputChange()"/>
+                    @if($user->image)
+                        <img id="fotoProfil" src="{{asset('uploads/profile/'. $user->image)}}">
+                    @else
+                        <img id="fotoProfil" src="{{asset('images/dummyUser2.png')}}">
+                    @endif
+                    <input accept="image/*" type="file" id="inputProfil" name="inputProfil" onchange="inputChange()"/>
                     <input type="button" value="Pilih Gambar" onclick="document.getElementById('inputProfil').click();">
                     <p class="contentSemiNormal">Ukuran gambar: maks. 10 MB</p>
                     <p class="contentSemiNormal">Format gambar: .JPG, .JPEG, .PNG</p>
@@ -19,27 +24,28 @@
                     <h3>Biodata Diri</h3>
                     <div class="section">
                         <p class="contentSemiNormal" style="color: #747474;">Nama</p>
-                        <input type="text" value="Steven Yuwono">
+                        <input type="text" name="nama" value="{{$user->username}}">
                     </div>
                     <div class="section">
                         <p class="contentSemiNormal" style="color: #747474;">Tanggal Lahir</p>
-                        <p class="contentSemiNormal" style="font-weight: bold">26 Juni 2000</p>
+                        <p class="contentSemiNormal" style="font-weight: bold"><?php $date = date_create($user->bod); echo date_format($date,"d/m/Y");?></p>
                     </div>
                     <div class="section">
-                        <p class="contentSemiNormal" style="color: #747474;">Nama</p>
-                        <select>
-                            <option>Pria</option>
-                            <option>Wanita</option>
+                        <p class="contentSemiNormal" style="color: #747474;">Gender</p>
+                        <select name="gender" >
+                            <option value="1" <?php if($user->gender=="1") echo 'selected="selected"'; ?>>Pria</option>
+                            <option value="2" <?php if($user->gender=="2") echo 'selected="selected"'; ?>>Wanita</option>
                         </select>
                     </div>
                     <h3>Kontak</h3>
                     <div class="section">
                         <p class="contentSemiNormal" style="color: #747474;">Email</p>
-                        <p class="contentSemiNormal" style="font-weight: bold">stevenyuwono@gmail.com</p>
+                        <p class="contentSemiNormal" style="font-weight: bold">{{$user->email}}</p>
                     </div>
                     <div class="section">
                         <p class="contentSemiNormal" style="color: #747474;">Nomor HP</p>
-                        <p class="contentSemiNormal" style="font-weight: bold">08112345678</p>
+                        <input type="text" name="phoneNumber" value="{{$user->phone_number}}">
+{{--                        <p class="contentSemiNormal" style="font-weight: bold">08112345678</p>--}}
                     </div>
                 </div>
             </div>

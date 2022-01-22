@@ -18,18 +18,18 @@
                         <h3>Akun Saya</h3>
                     </div>
                     <div class="subList">
-                        <div class="list" onclick="bukaBagian(1)">
+                        <a class="list" href="{{url('/akunSaya/profil')}}" >
                             <p class="contentSemiBig">Profil</p>
-                        </div>
-                        <div class="list" onclick="bukaBagian(2)">
+                        </a>
+                        <a class="list" href="{{url('/akunSaya/alamatpengiriman')}}" >
                             <p class="contentSemiBig">Alamat Pengiriman</p>
-                        </div>
-                        <div class="list" onclick="bukaBagian(3)">
+                        </a>
+                        <a class="list" href="{{url('/akunSaya/kartukreditdebit')}}" >
                             <p class="contentSemiBig">Kartu Kredit/Debit</p>
-                        </div>
-                        <div class="list" onclick="bukaBagian(4)">
+                        </a>
+                        <a class="list" href="{{url('/akunSaya/ubahpassword')}}" >
                             <p class="contentSemiBig">Ubah Password</p>
-                        </div>
+                        </a>
                     </div>
                     <div class="list">
                         <img src="{{asset("images/wish.png")}}">

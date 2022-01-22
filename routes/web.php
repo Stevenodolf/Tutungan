@@ -55,18 +55,20 @@ Route::get('/checkout/{id}', 'PaymentController@checkout')->name('getCheckout');
 Route::post('/checkout/{id}', 'PaymentController@postCheckout');
 
 // DETAIL AKUN
-Route::get('/akunSaya/profil', function(){
-    return view('detailAkun.akunSaya.profil');
-});
-Route::get('/akunSaya/alamatpengiriman', function(){
-    return view('detailAkun.akunSaya.alamatPengiriman');
-});
-Route::get('/akunSaya/kartukreditdebit', function(){
-    return view('detailAkun.akunSaya.kartuKreditDebit');
-});
-Route::get('/akunSaya/ubahpassword', function(){
-    return view('detailAkun.akunSaya.ubahPassword');
-});
+
+Route::get('/akunSaya/profil','AccountDetailController@getProfil');
+Route::post('/akunSaya/editProfil','AccountDetailController@postProfil');
+
+Route::get('/akunSaya/alamatpengiriman', 'AccountDetailController@getAlamat');
+
+Route::get('/akunSaya/kartukreditdebit', 'AccountDetailController@getKreditDebit');
+Route::post('/akunSaya/postKartu', 'AccountDetailController@postKreditDebit');
+Route::post('/akunSaya/hapusKartu', 'AccountDetailController@postHapusKreditDebit');
+Route::post('/akunSaya/utamaKartu', 'AccountDetailController@postUtamaKreditDebit');
+
+Route::get('/akunSaya/ubahpassword', 'AccountDetailController@getUbahPassword');
+Route::post('/akunSaya/ubahpass', 'AccountDetailController@postUbahPassword');
+
 Route::get('/notifikasi', function(){
     return view('detailAkun.notifikasi.notifikasi');
 });
