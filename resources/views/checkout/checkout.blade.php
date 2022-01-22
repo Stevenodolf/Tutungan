@@ -148,7 +148,7 @@
                                 <p class="contentSemiNormal" style="color: rgba(49, 53, 59, 0.5);">Total Pembayaran</p>
                                 <p class="contentSemiNormal" style="color: #FF0000;font-weight: bold;">Rp {{number_format($total_payment, 0, ',', '.')}}</p>
                             </div>
-                            <a id="bayar">Bayar</a>
+                            <a class="button buttonYellow" id="bayar">Bayar</a>
                         </div>
 
                     </div>
