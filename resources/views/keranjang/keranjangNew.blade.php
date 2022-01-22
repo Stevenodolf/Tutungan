@@ -23,9 +23,12 @@
                                     <p class="contentSemiBig itemTotalPrice">Rp{{number_format($cart_item->total_price, 0, ',', '.')}}</p>
                                 </div>
                                 <div class="editItem">
-                                    <div class="editSection">
+                                    <form class="editSection" method="post">
+                                        {{ @csrf_field() }}
                                         <div class="deleteSection">
-                                            <img class="buttonImg" src="{{ asset('images/binRed.png') }}">
+                                            <button type="submit" class="buttonDelete" formaction="{{ url('/cart/delete/'.$cart_item->id) }}">
+                                                <img class="buttonImg" src="{{ asset('images/binRed.png') }}">
+                                            </button>
                                         </div>
                                         <div class="itemQuantitySection">
                                             <div class="number-input">
@@ -39,7 +42,7 @@
                                                 <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                             @endforeach

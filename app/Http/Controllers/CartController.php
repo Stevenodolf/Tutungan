@@ -68,46 +68,49 @@ class CartController extends Controller
             }
 
             $cart = Cart::where('user_id', $user->id)->first();
-            $cart_item = new Cart_Item();
-            $cart_item->cart_id = $cart->id;
-            $cart_item->wish_id = $request->wish_id;
-            $cart_item->qty = $request->qty;
             $wish_price = $wish->price;
-            $cart_item->total_price = $wish_price * $request->qty;
+            $total_price = $wish_price * $request->qty;
+
+            $cart_item = Cart_Item::where('cart_id', $cart->id)->where('wish_id', $wish->id)->first();
+            if($cart_item == null) {
+                $cart_item = new Cart_Item();
+                $cart_item->cart_id = $cart->id;
+                $cart_item->wish_id = $request->wish_id;
+            }
+
+            $cart_item->qty += $request->qty;
+            $cart_item->total_price += $total_price;
             $cart_item->created_at = Carbon::now()->format('Y-m-d H:i:s');
-//            $cart_item->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+            $cart_item->updated_at = Carbon::now()->format('Y-m-d H:i:s');
             $cart_item->save();
 
-            // $cart->total_qty = $cart->total_qty + $cart_item->qty;
-            // $cart->total_price = $cart->total_price + $cart_item->total_price;
-//            $cart->updated_at = Carbon::now()->format('Y-m-d H:i:s');
             $cart->save();
 
-//            return redirect('cart');
             return redirect()->back();
         }
 
         return redirect('login');
     }
 
-    public function deleteCart($cart_item_id){
+    public function deleteCartItem($id){
         $auth = Auth::check();
-        // $auth = true;
 
         if($auth){
-            // $user = User::where('id', Auth::user()->id)->first();
             $user = User::where('id', Auth::user()->id)->first();
 
             $cart = Cart::where('user_id', $user->id)->first();
-            $cart_item = Cart_Item::where('id', $cart_item_id)->first();
-            $cart_item->delete();
+            $cart_item = Cart_Item::where('cart_id', $cart->id)->where('id', $id)->first();
 
-            // $cart->total_qty = $cart->total_qty - $cart_item->qty;
-            // $cart->total_price = $cart->total_price - $cart_item->total_price;
+            if($cart_item == null) {
+                redirect('login');
+            }else{
+                $cart_item->delete();
+            }
+
             $cart->updated_at = Carbon::now()->format('Y-m-d H:i:s');
             $cart->save();
 
-            return redirect('cart');
+            return redirect()->back();
         }
         return redirect('login');
     }

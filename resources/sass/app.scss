@@ -1830,9 +1830,18 @@ button{
                                     padding: 0 11px 0 0;
                                     margin-right: 11px;
                                     height: 25px;
-                                    .buttonImg {
-                                        width: 15px;
-                                        height: 15px;
+                                    .buttonDelete {
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: center;
+                                        padding: 0;
+                                        text-decoration: none;
+                                        background: #FFFFFF;
+                                        border: none;
+                                        .buttonImg {
+                                            width: 15px;
+                                            height: 15px;
+                                        }
                                     }
                                 }
                                 .itemQuantitySection {
