@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Payment;
+use App\Payment_Item;
 use App\TemporaryFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -88,6 +90,7 @@ class WishController extends Controller
         if($auth){
             $user = User::where('id', Auth::user()->id)->first();
 
+            // Buat Object Wish
             $wish = new Wish();
             $wish->id = floor(time()-999999999);
             $wish->name = $request->wishName; //string
@@ -108,38 +111,12 @@ class WishController extends Controller
             $wish->origin_id = $request->origin;
             $wish->web_link = $request->webLink;
             $wish->curr_qty = $request->purchaseQty; //int, total qty yg dibeli wish creator
-//             $wish->curr_qty = $request->currQty; //int, total qty yg dibeli wish creator
-            $wish->status_wish_id = '3'; //int
+            $wish->status_wish_id = '2'; // jadikan status wish-nya 'Menunggu Pembayaran' -> harusnya 'Menunggu Verifikasi' dulu, tpi karna belum ada verif yaudah
             $wish->deadline = Carbon::now()->addDays(7);; //datetime
             $wish->min_order = 1;
             $wish->target_qty = $request->targetQty; //int
             $wish->created_at = Carbon::now();
             $wish->updated_at = Carbon::now();
-//            $wish->name = $request->wish_name; //string
-//            $wish->price = $request->wish_price; //int
-//            $wish->category_id = $request->wish_category_id; //int
-//            $wish->created_by = $user->id;
-//            $wish->detail = $request->detail; //string
-//            //picture
-//            if($request->hasFile('wishPicture')) {
-//                $file = $request->file('wishPicture');
-//                $folder = uniqid() . '-' . now()->timestamp;
-//                foreach ($file as $files){
-//                    $filename = $files->getClientOriginalName();
-//                    $files->storeAs('uploads/' . $folder, $filename);
-//                }
-//                $wish->image = 'uploads' .$folder;//string
-//            }
-//            else{
-//                $wish->image = '';
-//            }
-//            $wish->status_id = $request->status_id; //int
-//            $wish->approved_by = $request->approved_by; //int
-//            $wish->deadline = $request->deadline; //datetime
-//            $wish->curr_qty = $request->curr_qty; //int, total qty yg dibeli wish creator
-//            $wish->target_qty = $request->target_qty; //int
-//            $wish->created_at = Carbon::now();
-//            $wish->updated_at = Carbon::now();
             $wish->save();
 
             return redirect()->route('home');

@@ -51,8 +51,10 @@ Route::get('/wish/delete-cart/{cart_item_id}', 'CartController@deleteCart');
 Route::get('/cart', 'CartController@cart');
 Route::post('/cart', 'CartController@postCart');
 
-Route::get('/checkout', 'PaymentController@checkout')->name('getCheckout');
-Route::post('/checkout', 'PaymentController@postCheckout');
+//Route::get('/checkout', 'PaymentController@checkout')->name('getCheckout');
+//Route::post('/checkout', 'PaymentController@postCheckout');
+Route::get('/checkout/{id}', 'PaymentController@checkout')->name('getCheckout');
+Route::post('/checkout/{id}', 'PaymentController@postCheckout');
 
 // DETAIL AKUN
 Route::get('/akunSaya/profil', function(){

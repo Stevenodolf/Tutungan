@@ -7,7 +7,7 @@
 @section('content')
     <div class="contentContainer">
         <div class="checkout">
-            <form method="POST" action="/checkout" enctype="multipart/form-data">
+            <form method="POST" action="{{ url("/checkout/".$payment->id) }}" enctype="multipart/form-data">
                 @csrf
                 {{ csrf_field() }}
                 <div class="row">
@@ -40,7 +40,7 @@
                                 @endphp
                                 <div class="productDetail">
                                     <div class="detail">
-                                        <img src="{{asset('uploads/'.$payment_item.json_decode($payment_item->getWishRelation->image)[0])}}"/>
+                                        <img src="{{asset('uploads/'.json_decode($payment_item->getWishRelation->image)[0])}}"/>
                                         <div>
                                             <p class="contentSemiNormal">{{$payment_item->getWishRelation->name}}</p>
                                             <p class="contentSmall">{{$payment_item->qty}}</p>
@@ -157,7 +157,7 @@
                             <img src="{{asset('images/checkGreen.png')}}">
                             <h2>Pembayaran Terverifikasi</h2>
                         </div>
-                        <button id="kembaliBeranda" type="submit">Kembali Ke Beranda</button>
+                        <button type="submit" id="kembaliBeranda" type="submit">Kembali Ke Beranda</button>
                     </div>
                 </div>
             </form>
