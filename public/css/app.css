@@ -53,9 +53,8 @@ button {
 }
 
 .contentContainer {
-  margin: 0 100px;
-  padding: 0 0 30px 0;
-  min-height: calc(100vh - 140px);
+  padding: 0 100px 30px 100px;
+  min-height: calc(100vh - 120px);
 }
 
 .contentExtraSmall {
@@ -632,8 +631,7 @@ button {
   border-radius: 5px;
 }
 
-.navbar .dropdownProfil .dropdownList button {
-  width: 100%;
+.navbar .dropdownProfil .dropdownList a {
   display: flex;
   background: white;
   border: none;
@@ -3301,6 +3299,27 @@ button {
   width: 60%;
 }
 
+.popUpTambahCreditDebit .section .sectionInput .creditCardSelection {
+  margin-top: 5px;
+  /* IMAGE STYLES */
+  /* CHECKED STYLES */
+}
+
+.popUpTambahCreditDebit .section .sectionInput .creditCardSelection [type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.popUpTambahCreditDebit .section .sectionInput .creditCardSelection [type=radio] + img {
+  cursor: pointer;
+}
+
+.popUpTambahCreditDebit .section .sectionInput .creditCardSelection [type=radio]:checked + img {
+  outline: 2px solid #f00;
+}
+
 .popUpTambahCreditDebit .buttonSimpan {
   display: flex;
   align-items: center;
@@ -3515,7 +3534,7 @@ button {
 
 @media only screen and (min-width: 1280px) and (max-width: 1366px) {
   .contentContainer {
-    margin: 0 80px;
+    padding: 0 80px 30px 80px;
   }
 
   .forYou .row {
@@ -3551,7 +3570,7 @@ button {
 
 @media only screen and (min-width: 1600px) and (max-width: 1919px) {
   .contentContainer {
-    margin: 0 140px;
+    padding: 0 140px 30px 140px;
   }
 
   .forYou .row {
@@ -3571,7 +3590,7 @@ button {
 
 @media only screen and (min-width: 1920px) {
   .contentContainer {
-    margin: 0 270px;
+    padding: 0 270px 30px 270px;
   }
 }
 

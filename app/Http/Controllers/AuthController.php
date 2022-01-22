@@ -77,7 +77,7 @@ class AuthController extends Controller
         }
 
         $user = new User();
-        $id = rand(2,50);
+        $id = rand(1000,9000);
         $user->id = $id;
         $user->username = $request->username;
         $user->email = $request->email ;

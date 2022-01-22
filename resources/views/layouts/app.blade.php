@@ -64,13 +64,13 @@
                     </div>
                 </div>
             @else
-                <div class="locationSection">
+                <a href="{{url('/akunSaya/alamatpengiriman')}}" class="locationSection">
                     <img src="{{asset('images/location.png')}}">
                     <div class="locationText">
                         <p>Dikirim ke</p>
                         <p>Indonesia</p>
                     </div>
-                </div>
+                </a>
             @endguest
             <form class="searchbar">
                 <input type="text" placeholder="Search here...">
@@ -191,25 +191,27 @@
                 </form>
                 <div class="dropdownProfil">
                     <button class="buttonUser" onclick="openUserDropdown();">
-                        <img src="{{asset('images/dummyUser.png')}}">
+                        @if($user->image)
+                            <img src="{{asset('uploads/profile/'. $user->image)}}">
+                        @else
+                            <img src="{{asset('images/dummyUser.png')}}">
+                        @endif
                         <p class="contentNormal">{{$user->username}}</p>
                         <img id="arrowUser" src="{{asset('images/arrowDownBlack.png')}}">
                     </button>
                     <div class="dropdownList" id="dropdownList">
-                        <button>
+                        <a href="{{url('/akunSaya/profil')}}">
                             <p class="contentSemiNormal">Akun Saya</p>
-                        </button>
-                        <button href="wishsaya">
+                        </a>
+                        <a href="wishsaya">
                             <p class="contentSemiNormal">Wish Saya</p>
-                        </button>
-                        <button href="wishsaya" >
+                        </a>
+                        <a href="wishsaya" >
                             <p class="contentSemiNormal">Transaksi Saya</p>
-                        </button>
-                        <form method="GET" action="{{route('logout')}}">
-                            <button type="submit">
-                                <p class="contentSemiNormal">Logout</p>
-                            </button>
-                        </form>
+                        </a>
+                        <a href="{{'/logout'}}">
+                            <p class="contentSemiNormal">Logout</p>
+                        </a>
                     </div>
                 </div>
             @endguest

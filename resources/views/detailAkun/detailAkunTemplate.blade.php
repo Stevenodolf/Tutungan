@@ -18,18 +18,18 @@
                         <h3>Akun Saya</h3>
                     </div>
                     <div class="subList">
-                        <div class="list">
+                        <a class="list" href="{{url('/akunSaya/profil')}}" >
                             <p class="contentSemiBig">Profil</p>
-                        </div>
-                        <div class="list">
+                        </a>
+                        <a class="list" href="{{url('/akunSaya/alamatpengiriman')}}" >
                             <p class="contentSemiBig">Alamat Pengiriman</p>
-                        </div>
-                        <div class="list">
+                        </a>
+                        <a class="list" href="{{url('/akunSaya/kartukreditdebit')}}" >
                             <p class="contentSemiBig">Kartu Kredit/Debit</p>
-                        </div>
-                        <div class="list">
+                        </a>
+                        <a class="list" href="{{url('/akunSaya/ubahpassword')}}" >
                             <p class="contentSemiBig">Ubah Password</p>
-                        </div>
+                        </a>
                     </div>
                     <div class="list">
                         <img src="{{asset("images/wish.png")}}">
@@ -348,37 +348,4 @@
 
         </div>
     </div>
-
-    <div class="blackContainer" id="tambahCreditDebit">
-        <div class="popUpTambahCreditDebit">
-            <div class="title">
-                <h2>Tambah Kartu Kredit/Debit</h2>
-                <button id="closeTambahCreditDebit">
-                    <img src="{{asset('images/close.png')}}"/>
-                </button>
-            </div>
-            <form>
-                <div class="section">
-                    <div class="sectionInput">
-                        <p class="contentSemiNormal" style="color: #747474;width: 150px;">Nomor Kartu</p>
-                        <input type="text">
-                    </div>
-                    <div class="sectionInput">
-                        <p class="contentSemiNormal" style="color: #747474;width: 150px;">Masa Berlaku</p>
-                        <input style="width: 20%;" type="text">
-                        <p class="contentSemiNormal" style="color: #747474;margin: 0 5px">/</p>
-                        <input style="width: 20%;" type="text">
-                    </div>
-                    <div class="sectionInput">
-                        <p class="contentSemiNormal" style="color: #747474;width: 150px;">CVV</p>
-                        <input style="width: 20%;" type="text">
-                    </div>
-                </div>
-                <div class="buttonSimpan">
-                    <button type="submit">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
 @endsection
