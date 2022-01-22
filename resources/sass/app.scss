@@ -1708,13 +1708,16 @@ button{
 
 //Keranjang
 .keranjang{
+    //display: flex;
+    //flex-direction: row;
     .columnA {
         float: left;
-        width: 70%;
+        width: 828px;
+        margin-right: 65px;
     }
     .columnB {
         float: left;
-        width: 30%;
+        width: 275px;
         display: flex;
         flex-wrap: nowrap;
         justify-content: center;

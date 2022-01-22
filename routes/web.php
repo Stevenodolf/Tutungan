@@ -44,15 +44,13 @@ Route::get('/logout','AuthController@logout')->name('logout');
 
 Route::get('/createWish', 'WishController@getCreateWish');
 Route::post('/createWish', 'WishController@postCreateWish');
-Route::get('/wish/{id}', 'WishController@wishDetail');
-Route::post('/wish/{id}', 'CartController@addCart')->name('addToCart');
+Route::get('/wish/{id}', 'WishController@wishDetail')->name('getWishDetail');
+Route::post('/wish/{id}', 'CartController@addToCart')->name('addToCart');
 Route::post('/buy/{id}', 'CartController@buyWish')->name('buyWish');
 Route::get('/wish/delete-cart/{cart_item_id}', 'CartController@deleteCart');
-Route::get('/cart', 'CartController@cart');
+Route::get('/cart', 'CartController@getCart')->name('getCart');
 Route::post('/cart', 'CartController@postCart');
 
-//Route::get('/checkout', 'PaymentController@checkout')->name('getCheckout');
-//Route::post('/checkout', 'PaymentController@postCheckout');
 Route::get('/checkout/{id}', 'PaymentController@checkout')->name('getCheckout');
 Route::post('/checkout/{id}', 'PaymentController@postCheckout');
 
