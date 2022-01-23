@@ -167,22 +167,8 @@ class AccountDetailController extends Controller
         return redirect('login');
     }
 
-//    public function getWishSaya() {
-//        $auth = Auth::check();
-//
-//        if($auth) {
-//            $user = User::where('id', Auth::user()->id)->first();
-//            $wishes = Wish::where('created_by', $user->id)->get();
-//
-//            return view('detailAkun.wishSaya.wishSaya', ['user' => $user, 'wishes' => $wishes]);
-//        }
-//
-//        return redirect('login');
-//    }
-
     public function getWishSaya(Request $request) {
         $auth = Auth::check();
-//        echo $request->filter;
 
         if($auth) {
             $user = User::where('id', Auth::user()->id)->first();

@@ -47,10 +47,11 @@ Route::post('/createWish', 'WishController@postCreateWish');
 Route::get('/wish/{id}', 'WishController@wishDetail')->name('getWishDetail');
 Route::post('/wish/{id}', 'CartController@addToCart')->name('addToCart');
 Route::post('/buy/{id}', 'CartController@buyWish')->name('buyWish');
-//Route::get('/wish/delete-cart/{cart_item_id}', 'CartController@deleteCart');
+
 Route::get('/cart', 'CartController@getCart')->name('getCart');
 Route::post('/cart', 'CartController@postCart')->name('postCart');
-Route::post('/cart/delete/{$id}', 'CartController@deleteCartItem')->name('deleteCartItem');
+Route::post('/cart/delete', 'CartController@deleteCartItem')->name('deleteCartItem');
+Route::post('/cart/update', 'CartController@updateCartItem')->name('updateCartItem');
 
 Route::get('/checkout/{id}', 'PaymentController@checkout')->name('getCheckout');
 Route::post('/checkout/{id}', 'PaymentController@postCheckout');

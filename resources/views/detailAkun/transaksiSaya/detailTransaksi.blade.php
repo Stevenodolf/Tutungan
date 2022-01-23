@@ -128,8 +128,17 @@
                     <div class="contentAfterTitle2">
                         <div class="wishCellContent">
                             <div class="cellHeader">
-                                <p class="contentSmall textWishMaker">Oleh: {{ $wish->getCreatedByRelation->name }}</p>
-                                <p class="contentSmall">1 Jan 2021 - 7 Jan 2021</p>
+                                <p class="contentSmall textWishMaker">Oleh: {{ $wish->getCreatedByRelation->username }}</p>
+{{--                                <p class="contentSmall">1 Jan 2021 - {{ $wish->deadline }}</p>--}}
+                                <p class="contentSmall"><span id="created"></span> - <span id="deadline"></span></p>
+                                <script>
+                                    var createdDate = "{{ $wish->created_at }}";
+                                    createdDate = createdDate.replace(/\s/g, 'T');
+                                    var deadlineDate = "{{ $wish->deadline }}";
+                                    deadlineDate = deadlineDate.replace(/\s/g, 'T');
+                                    document.getElementById("created").innerHTML = moment(createdDate).format('DD MMM YYYY');
+                                    document.getElementById("deadline").innerHTML = moment(deadlineDate).format('DD MMM YYYY');
+                                </script>
                             </div>
                             <div class="detail">
                                 <img src="{{asset('uploads/'.json_decode($wish->image)[0])}}" />
