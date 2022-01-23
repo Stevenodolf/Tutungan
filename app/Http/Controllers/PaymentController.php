@@ -74,10 +74,10 @@ class PaymentController extends Controller
                     $transaction->total_itu = $payment_item->total_itu;
                     $transaction->total_fee = $payment_item->total_fee;
                     $transaction->total_payment = $payment_item->total_payment;
+                    $transaction->domestic_shipper_id = $request->domestic_shipper_id;
+                    $transaction->inter_shipper_id = mt_rand(5, 8);
                     $transaction->status_transaksi_id = 2;
                     $transaction->sub_status_transaksi_id = 1;
-                    $transaction->created_at = Carbon::now()->format('Y-m-d H:i:s');
-                    $transaction->updated_at = Carbon::now()->format('Y-m-d H:i:s');
                     $transaction->save();
 
                     $wish = Wish::where('id', $payment_item->wish_id)->first();
@@ -108,7 +108,7 @@ class PaymentController extends Controller
                         ]);
                     }
 
-                    if($payment_item->cart_item != NULL){
+                    if($payment_item->cart_item_id != NULL){
                         Cart_Item::where('id', $payment_item->cart_item_id)->delete();
                     }
 
