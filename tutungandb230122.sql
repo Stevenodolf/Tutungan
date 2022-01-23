@@ -26,13 +26,16 @@ CREATE TABLE `address` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `address_label` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `address_desa_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `address_provinsi_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `address_kabupaten_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `address_kecamatan_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `address_detail` text COLLATE utf8_unicode_ci NOT NULL,
   `phone_number` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `kode_pos` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `is_main` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `fk_user_id_idx` (`user_id`) USING BTREE,
-  KEY `fk_address_desa_id_idx` (`address_desa_id`) USING BTREE,
+  KEY `fk_address_desa_id_idx` (`address_kabupaten_id`) USING BTREE,
   CONSTRAINT `fk_address_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -766,4 +769,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-23 11:08:05
+-- Dump completed on 2022-01-23 14:37:36
