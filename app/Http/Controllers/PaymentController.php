@@ -13,6 +13,7 @@ use App\Shipper;
 use App\Wish;
 use App\Transaction;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class PaymentController extends Controller
 {
@@ -76,6 +77,7 @@ class PaymentController extends Controller
                     $transaction->total_payment = $payment_item->total_payment;
                     $transaction->domestic_shipper_id = $request->domestic_shipper_id;
                     $transaction->inter_shipper_id = mt_rand(5, 8);
+                    $transaction->no_resi = Str::random(3) . mt_rand(10000, 99999); // ABC12345
                     $transaction->status_transaksi_id = 2;
                     $transaction->sub_status_transaksi_id = 1;
                     $transaction->save();

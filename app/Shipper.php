@@ -8,7 +8,7 @@ class Shipper extends Model
 {
     protected $table = 'shipper';
 
-    public function getTransactionRelation(){
-        return $this->hasMany('App\Transaction', 'shipper_id', 'id');
-    }
+//    public function getTransactionRelation(){
+//        return $this->hasMany('App\Transaction', 'shipper_id', 'id');
+//    }
 }

@@ -11,7 +11,7 @@ class Transaction extends Model
     public function getUserRelation(){
         return $this->hasOne('App\User', 'id', 'user_id');
     }
-    
+
     public function getWishRelation(){
         return $this->hasOne('App\Wish', 'id', 'wish_id');
     }
@@ -22,5 +22,13 @@ class Transaction extends Model
 
     public function getTransactionItemRelation(){
         return $this->hasMany('App\Transaction_Item', 'transaction_id', 'id');
+    }
+
+    public function getDomesticShipperRelation(){
+        return $this->hasOne('App\Shipper', 'id', 'domestic_shipper_id');
+    }
+
+    public function getInterShipperRelation(){
+        return $this->hasOne('App\Shipper', 'id', 'inter_shipper_id');
     }
 }

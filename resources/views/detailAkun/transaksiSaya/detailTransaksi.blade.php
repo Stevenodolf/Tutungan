@@ -28,17 +28,17 @@
                         <div class="leftSection">
                             <div class="information">
                                 <p class="contentSmall infoType">Kurir</p>
-                                <p class="contentSmall infoDetail">JNE- Reguler</p>
+                                <p class="contentSmall infoDetail">{{ $transaction->getDomesticShipperRelation->name }}</p>
                             </div>
                             <div class="information">
                                 <p class="contentSmall infoType">No. Resi</p>
-                                <p class="contentSmall infoDetail">TJR1234567890123</p>
+                                <p class="contentSmall infoDetail">{{ $transaction->no_resi }}</p>
                             </div>
                             <div class="information">
                                 <p class="contentSmall infoType">Alamat</p>
                                 <div class="infoDetailAlamat">
                                     <p class="contentSmall infoDetail">{{ $transaction->getUserRelation->username }}</p>
-                                    <p class="contentSmall infoDetail">62812345678</p>
+                                    <p class="contentSmall infoDetail">{{ $transaction->getUserRelation->phone_number }}</p>
                                     <p class="contentSmall infoDetail">Jl. Ir. Soekarno No. 69, RT 04 RW 20</p>
                                     <p class="contentSmall infoDetail">Kota Surakarta - Pasar Kliwon</p>
                                     <p class="contentSmall infoDetail">Jawa Tengah</p>
@@ -61,7 +61,7 @@
                                     <div class="dot"></div>
                                     <div class="shipmentStatusDetail">
                                         <p class="contentSmall title">Pesanan sudah diterima</p>
-                                        <p class="contentSmall detail">Diterima oleh Steven Yuwono</p>
+                                        <p class="contentSmall detail">Diterima oleh pemesan</p>
                                     </div>
                                 </div>
                                 <div class="shipmentStatus">
@@ -129,7 +129,6 @@
                         <div class="wishCellContent">
                             <div class="cellHeader">
                                 <p class="contentSmall textWishMaker">Oleh: {{ $wish->getCreatedByRelation->username }}</p>
-{{--                                <p class="contentSmall">1 Jan 2021 - {{ $wish->deadline }}</p>--}}
                                 <p class="contentSmall"><span id="created"></span> - <span id="deadline"></span></p>
                                 <script>
                                     var createdDate = "{{ $wish->created_at }}";
