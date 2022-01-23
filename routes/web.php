@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 //      return view('email.forgotPassword');
 //  });
 
+//API
+
+
 Route::get('/', 'HomeController@home')->name('home');
 
 Route::get('/home', function(){
@@ -61,7 +64,18 @@ Route::post('/checkout/{id}', 'PaymentController@postCheckout');
 Route::get('/akunSaya/profil','AccountDetailController@getProfil');
 Route::post('/akunSaya/editProfil','AccountDetailController@postProfil');
 
+//API
+Route::post('/getDetail', 'AccountDetailController@getAlamatDetail');
+Route::get('/getProvinsi', 'AccountDetailController@getProvinsi');
+Route::post('/getKota', 'AccountDetailController@getKota');
+Route::post('/getKecamatan', 'AccountDetailController@getKecamatan');
+
 Route::get('/akunSaya/alamatpengiriman', 'AccountDetailController@getAlamat');
+Route::post('/akunSaya/postAlamatPengiriman', 'AccountDetailController@postAlamat');
+Route::post('/akunSaya/hapusAlamatPengiriman', 'AccountDetailController@postHapusAlamat');
+Route::post('/akunSaya/postUtamaAlamatPengiriman', 'AccountDetailController@postUtamaAlamat');
+Route::post('/akunSaya/postTempAlamatPengiriman', 'AccountDetailController@postTempAlamat');
+Route::post('/akunSaya/postUbahAlamatPengiriman', 'AccountDetailController@postUbahAlamat');
 
 Route::get('/akunSaya/kartukreditdebit', 'AccountDetailController@getKreditDebit');
 Route::post('/akunSaya/postKartu', 'AccountDetailController@postKreditDebit');
