@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="shipmentDetail">
                                         <p class="contentSemiNormal">Pilih Pengiriman</p>
-                                        <select id="pilihEkspedisi"`>
+                                        <select id="pilihEkspedisi" name="domestic_shipper_id">
                                             <option value="">Pengiriman</option>
                                             @foreach ($dshippers as $dshipper)
                                                 <option value="{{$dshipper->id}}">{{$dshipper->name}}</option>
@@ -128,7 +128,7 @@
                     <div class="paymentPopup" id="paymentPopup">
                         <div class="title">
                             <h1>Pembayaran</h1>
-                            <button id="closePopup">
+                            <button type="button" id="closePopup">
                                 <img src="{{asset('images/close.png')}}"/>
                             </button>
                         </div>
