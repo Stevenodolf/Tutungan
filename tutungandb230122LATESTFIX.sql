@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.27, for macos11 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.21, for macos10.15 (x86_64)
 --
 -- Host: localhost    Database: tutungandb
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	5.7.34
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,18 +23,24 @@ DROP TABLE IF EXISTS `address`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `address` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `address_label` varchar(30) NOT NULL,
-  `address_desa_id` varchar(10) NOT NULL,
-  `address_detail` text NOT NULL,
-  `phone_number` varchar(20) NOT NULL,
-  `is_main` tinyint NOT NULL DEFAULT '0',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `fullname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `phone_number` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `address_label` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `address_provinsi_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `address_kabupaten_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `address_kecamatan_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `kode_pos` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `address_detail` text COLLATE utf8_unicode_ci NOT NULL,
+  `note` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_main` tinyint(4) NOT NULL DEFAULT '0',
+  `is_temp` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `fk_user_id_idx` (`user_id`) USING BTREE,
-  KEY `fk_address_desa_id_idx` (`address_desa_id`) USING BTREE,
+  KEY `fk_address_desa_id_idx` (`address_kabupaten_id`) USING BTREE,
   CONSTRAINT `fk_address_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7871638 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +49,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
+INSERT INTO `address` VALUES (2281535,42,'Luwis Lim','08235678916','Kantor','31','3174','3174020','11530','Jl. Budi Raya No.21, RT.1/RW.5, Kb. Jeruk, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11530','rumah warna kuning',0,0),(7871637,42,'Steven Odolf','082137472650','Rumah','33','3311','3311090','557201','Jl. Budi Raya No.21, RT.1/RW.5, Kb. Jeruk, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11530','rumah warna ijo',1,0);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,6 +160,34 @@ INSERT INTO `address_provinsi` VALUES ('11','Aceh'),('12','Sumatera Utara'),('13
 UNLOCK TABLES;
 
 --
+-- Table structure for table `card_info`
+--
+
+DROP TABLE IF EXISTS `card_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `card_info` (
+  `id` varchar(45) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `card_type` varchar(45) NOT NULL,
+  `card_number` varchar(17) NOT NULL,
+  `card_valid_month` varchar(5) NOT NULL,
+  `card_valid_year` varchar(5) NOT NULL,
+  `is_utama` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `card_info`
+--
+
+LOCK TABLES `card_info` WRITE;
+/*!40000 ALTER TABLE `card_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `card_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cart`
 --
 
@@ -160,10 +195,10 @@ DROP TABLE IF EXISTS `cart`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cart` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `total_qty` int NOT NULL DEFAULT '0',
-  `total_price` int NOT NULL DEFAULT '0',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `total_qty` int(11) NOT NULL DEFAULT '0',
+  `total_price` int(11) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -190,11 +225,11 @@ DROP TABLE IF EXISTS `cart_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cart_item` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `cart_id` int NOT NULL,
-  `wish_id` int NOT NULL,
-  `qty` int NOT NULL,
-  `total_price` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cart_id` int(11) NOT NULL,
+  `wish_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL DEFAULT '0',
+  `total_price` int(11) NOT NULL DEFAULT '0',
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL,
   PRIMARY KEY (`id`),
@@ -202,7 +237,7 @@ CREATE TABLE `cart_item` (
   KEY `fk_wish_id_idx` (`wish_id`) USING BTREE,
   CONSTRAINT `fk_cart_items_cart_id` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`),
   CONSTRAINT `fk_cart_items_wish_id` FOREIGN KEY (`wish_id`) REFERENCES `wish` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,7 +258,7 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `category` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `image` varchar(200) DEFAULT NULL,
   `created_at` datetime NOT NULL,
@@ -250,12 +285,12 @@ DROP TABLE IF EXISTS `origin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `origin` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -276,11 +311,11 @@ DROP TABLE IF EXISTS `password_resets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `password_resets` (
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -300,13 +335,13 @@ DROP TABLE IF EXISTS `payment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `payment` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `payment_date` datetime DEFAULT NULL,
-  `total_price` int NOT NULL,
-  `total_qty` int NOT NULL,
-  `total_payment` int DEFAULT NULL,
-  `paid` int NOT NULL DEFAULT '0',
+  `total_price` int(11) NOT NULL,
+  `total_qty` int(11) NOT NULL,
+  `total_payment` int(11) DEFAULT NULL,
+  `paid` int(11) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -333,22 +368,22 @@ DROP TABLE IF EXISTS `payment_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `payment_item` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `payment_id` int NOT NULL,
-  `cart_item_id` int DEFAULT NULL,
-  `wish_id` int NOT NULL,
-  `status_transaksi_id` int NOT NULL,
-  `qty` int NOT NULL,
-  `total_price` int NOT NULL,
-  `total_oti` int DEFAULT NULL,
-  `total_itu` int DEFAULT NULL,
-  `total_fee` int DEFAULT NULL,
-  `total_payment` int DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `payment_id` int(11) NOT NULL,
+  `cart_item_id` int(11) DEFAULT NULL,
+  `wish_id` int(11) NOT NULL,
+  `status_transaksi_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `total_price` int(11) NOT NULL,
+  `total_oti` int(11) DEFAULT NULL,
+  `total_itu` int(11) DEFAULT NULL,
+  `total_fee` int(11) DEFAULT NULL,
+  `total_payment` int(11) DEFAULT NULL,
   `process_date` date DEFAULT NULL,
   `shipping_date` date DEFAULT NULL,
   `received_date` date DEFAULT NULL,
   `finished_date` date DEFAULT NULL,
-  `shipper_id` int DEFAULT NULL,
+  `shipper_id` int(11) DEFAULT NULL,
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL,
   PRIMARY KEY (`id`),
@@ -359,7 +394,7 @@ CREATE TABLE `payment_item` (
   CONSTRAINT `fk_payment_item_shipper_id` FOREIGN KEY (`shipper_id`) REFERENCES `shipper` (`id`),
   CONSTRAINT `fk_payment_item_status_transaksi_id` FOREIGN KEY (`status_transaksi_id`) REFERENCES `status_transaksi` (`id`),
   CONSTRAINT `fk_payment_item_transaction_id` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -380,7 +415,7 @@ DROP TABLE IF EXISTS `reason`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reason` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -406,9 +441,9 @@ DROP TABLE IF EXISTS `review`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `review` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `wish_id` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `wish_id` int(11) NOT NULL,
   `review` varchar(45) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -437,7 +472,7 @@ DROP TABLE IF EXISTS `role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `role` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -463,10 +498,10 @@ DROP TABLE IF EXISTS `shipper`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `shipper` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `type` varchar(45) NOT NULL,
-  `price` int DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -491,7 +526,7 @@ DROP TABLE IF EXISTS `status_transaksi`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `status_transaksi` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -517,7 +552,7 @@ DROP TABLE IF EXISTS `status_wish`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `status_wish` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `created_by` datetime NOT NULL,
   `updated_by` datetime DEFAULT NULL,
@@ -543,7 +578,7 @@ DROP TABLE IF EXISTS `sub_status_transaksi`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sub_status_transaksi` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -569,19 +604,20 @@ DROP TABLE IF EXISTS `transaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `transaction` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `wish_id` int NOT NULL,
-  `qty` int NOT NULL,
-  `total_price` int NOT NULL,
-  `total_oti` int NOT NULL,
-  `total_itu` int NOT NULL,
-  `total_fee` int NOT NULL,
-  `total_payment` int NOT NULL,
-  `domestic_shipper_id` int DEFAULT NULL,
-  `inter_shipper_id` int DEFAULT NULL,
-  `status_transaksi_id` int NOT NULL,
-  `sub_status_transaksi_id` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `wish_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `total_price` int(11) NOT NULL,
+  `total_oti` int(11) NOT NULL,
+  `total_itu` int(11) NOT NULL,
+  `total_fee` int(11) NOT NULL,
+  `total_payment` int(11) NOT NULL,
+  `domestic_shipper_id` int(11) DEFAULT NULL,
+  `inter_shipper_id` int(11) DEFAULT NULL,
+  `status_transaksi_id` int(11) NOT NULL,
+  `sub_status_transaksi_id` int(11) NOT NULL,
+  `no_resi` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -597,7 +633,7 @@ CREATE TABLE `transaction` (
   CONSTRAINT `fk_transaction_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
   CONSTRAINT `fk_transaction_wish_id` FOREIGN KEY (`wish_id`) REFERENCES `wish` (`id`),
   CONSTRAINT `fl_transaction_inter_shipper_id` FOREIGN KEY (`inter_shipper_id`) REFERENCES `shipper` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -606,7 +642,7 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
-INSERT INTO `transaction` VALUES (45,31,642866245,2,7500000,40000,25000,10000,7575000,NULL,NULL,2,1,'2022-01-22 15:46:52','2022-01-22 15:46:52'),(46,31,642866190,25,56250000,40000,25000,10000,56325000,NULL,NULL,2,1,'2022-01-22 15:47:25','2022-01-22 15:47:25'),(47,31,642866346,80,3600000,40000,25000,10000,3675000,NULL,NULL,2,1,'2022-01-22 15:47:38','2022-01-22 15:47:38'),(48,31,642866390,55,68750000,40000,25000,10000,68825000,NULL,NULL,2,1,'2022-01-22 15:48:37','2022-01-22 15:48:37'),(49,31,642866390,20,25000000,40000,25000,10000,25075000,NULL,NULL,2,1,'2022-01-22 15:49:22','2022-01-22 15:49:22');
+INSERT INTO `transaction` VALUES (45,31,642866245,2,7500000,40000,25000,10000,7575000,NULL,NULL,2,1,NULL,'2022-01-22 15:46:52','2022-01-22 15:46:52'),(46,31,642866190,25,56250000,40000,25000,10000,56325000,NULL,NULL,2,1,NULL,'2022-01-22 15:47:25','2022-01-22 15:47:25'),(47,31,642866346,80,3600000,40000,25000,10000,3675000,NULL,NULL,2,1,NULL,'2022-01-22 15:47:38','2022-01-22 15:47:38'),(48,31,642866390,55,68750000,40000,25000,10000,68825000,NULL,NULL,2,1,NULL,'2022-01-22 15:48:37','2022-01-22 15:48:37'),(49,31,642866390,20,25000000,40000,25000,10000,25075000,NULL,NULL,2,1,NULL,'2022-01-22 15:49:22','2022-01-22 15:49:22');
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -618,17 +654,18 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `username` varchar(45) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `role_id` int NOT NULL,
+  `role_id` int(11) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `is_email_verified` tinyint NOT NULL DEFAULT '0',
+  `is_email_verified` tinyint(4) NOT NULL DEFAULT '0',
   `phone_number` varchar(45) NOT NULL,
   `bod` datetime NOT NULL,
-  `gender` int DEFAULT NULL,
+  `gender` int(11) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
-  `disable` int NOT NULL DEFAULT '0',
+  `image` varchar(45) DEFAULT NULL,
+  `disable` int(11) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -643,7 +680,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'test','test123',2,'test@gmail.com',0,'08123456789','2021-12-24 07:50:43',1,'Jakarta Barat, Jakarta',0,'2021-12-24 07:50:43','2021-12-24 07:50:43'),(9,'luwislim','$2y$10$PEGhrfvJzoxKX8athY.98uLaqi9ds7klfk0xElqFHivJcMjqIhfdW',2,'luwislim@tutungan.com',0,'0811702338','2000-10-13 00:00:00',1,NULL,0,'2022-01-18 16:22:36','2022-01-18 16:22:36'),(17,'limluwis','$2y$10$LeHYSNkjJmpXB68v3Mgecu2j9y/.FNBZ6n0rE44WZXKk3BUhW7U/S',2,'limluwis@tutungan.com',0,'0811702338','2000-10-13 00:00:00',1,NULL,0,'2022-01-18 17:07:56','2022-01-18 17:07:56'),(31,'denaiels','$2y$10$PQrC5qx40zr7pHhCtWwvn.1cy7FOnvsW2C.K0HS91ceR5Vu1yOmbm',2,'denaiel204@gmail.com',1,'08112648418','2001-04-20 00:00:00',1,NULL,0,'2022-01-22 07:35:24','2022-01-22 07:35:24'),(42,'stevenoy','$2y$10$CKTPzhun0n28I/pHgrUZA.30em7gBAssrFkHli8cXgUf7jEJdzbtC',2,'stevenoy@tutungan.com',0,'0811702338','2000-01-01 00:00:00',1,NULL,0,'2022-01-15 16:25:15','2022-01-15 16:25:15');
+INSERT INTO `user` VALUES (1,'test','$2a$12$VfBDyvtKbunxcRI2Hf871OdbfsNsgKQIafungCKrt8j27RicBiCOK',2,'test@gmail.com',0,'08123456789','2021-12-24 07:50:43',1,'Jakarta Barat, Jakarta',NULL,0,'2021-12-24 07:50:43','2021-12-24 07:50:43'),(9,'luwislim','$2y$10$PEGhrfvJzoxKX8athY.98uLaqi9ds7klfk0xElqFHivJcMjqIhfdW',2,'luwislim@tutungan.com',0,'0811702338','2000-10-13 00:00:00',1,NULL,NULL,0,'2022-01-18 16:22:36','2022-01-18 16:22:36'),(17,'limluwis','$2y$10$LeHYSNkjJmpXB68v3Mgecu2j9y/.FNBZ6n0rE44WZXKk3BUhW7U/S',2,'limluwis@tutungan.com',0,'0811702338','2000-10-13 00:00:00',1,NULL,NULL,0,'2022-01-18 17:07:56','2022-01-18 17:07:56'),(31,'denaiels','$2y$10$PQrC5qx40zr7pHhCtWwvn.1cy7FOnvsW2C.K0HS91ceR5Vu1yOmbm',2,'denaiel204@gmail.com',1,'08112648418','2001-04-20 00:00:00',1,NULL,NULL,0,'2022-01-22 07:35:24','2022-01-22 07:35:24'),(42,'stevenoye','$2a$12$VfBDyvtKbunxcRI2Hf871OdbfsNsgKQIafungCKrt8j27RicBiCOK',2,'stevenoy@tutungan.com',0,'0811702338','2000-01-01 00:00:00',1,NULL,NULL,0,'2022-01-15 16:25:15','2022-01-15 16:25:15');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -655,13 +692,13 @@ DROP TABLE IF EXISTS `user_verify`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_verify` (
-  `user_id` int NOT NULL,
-  `token` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   KEY `fk_user_id_idx` (`user_id`) USING BTREE,
   CONSTRAINT `fk_user_verify_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -682,23 +719,24 @@ DROP TABLE IF EXISTS `wish`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `wish` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
-  `price` int NOT NULL,
-  `category_id` int NOT NULL,
-  `created_by` int NOT NULL,
+  `price` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `created_by` int(11) NOT NULL,
   `detail` text,
   `image` varchar(200) DEFAULT NULL,
-  `origin_id` int DEFAULT NULL,
+  `origin_id` int(11) DEFAULT NULL,
   `web_link` varchar(200) DEFAULT NULL,
-  `status_wish_id` int NOT NULL,
-  `approved_by` int DEFAULT NULL,
-  `reason_id` int DEFAULT NULL,
+  `status_wish_id` int(11) NOT NULL,
+  `approved_at` datetime DEFAULT NULL,
+  `approved_by` int(11) DEFAULT NULL,
+  `reason_id` int(11) DEFAULT NULL,
   `deadline` datetime NOT NULL,
-  `curr_qty` int NOT NULL,
-  `target_qty` int NOT NULL,
-  `min_order` int NOT NULL DEFAULT '1',
-  `contributor` int NOT NULL DEFAULT '0',
+  `curr_qty` int(11) NOT NULL,
+  `target_qty` int(11) NOT NULL,
+  `min_order` int(11) NOT NULL DEFAULT '1',
+  `contributor` int(11) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -723,7 +761,7 @@ CREATE TABLE `wish` (
 
 LOCK TABLES `wish` WRITE;
 /*!40000 ALTER TABLE `wish` DISABLE KEYS */;
-INSERT INTO `wish` VALUES (642866190,'GUTS Sparklence',2250000,10,31,'<p>Urutoraman Toriga!</p>','[\"61ec260d74b27-1642866189\\/61ec260d74b60.jpg\",\"61ec260d74b27-1642866189\\/61ec260d76218.png\"]',6,'https://www.youtube.com/watch?v=dQw4w9WgXcQ',3,NULL,NULL,'2022-01-29 15:43:09',25,250,1,0,'2022-01-22 15:43:09','2022-01-22 15:47:25'),(642866245,'Ultraman Dyna',3750000,9,31,'<p>Solgent Beam</p>','[\"61ec264472706-1642866244\\/61ec26447271e.jpg\"]',9,'https://www.youtube.com/watch?v=dQw4w9WgXcQ',3,NULL,NULL,'2022-01-29 15:44:04',2,80,1,0,'2022-01-22 15:44:04','2022-01-22 15:46:52'),(642866285,'Attack on Titan S4',750000,18,31,'<p>run! its eren!</p>','[\"61ec266c0dcaa-1642866284\\/61ec266c0dcc1.jpg\"]',3,'https://www.youtube.com/watch?v=dQw4w9WgXcQ',2,NULL,NULL,'2022-01-29 15:44:44',20,200,1,0,'2022-01-22 15:44:44','2022-01-22 15:44:44'),(642866346,'Meme Gokil Lucu',45000,1,31,'<p>awikwok</p>','[\"61ec26a968c1e-1642866345\\/61ec26a968c38.jpg\",\"61ec26a968c1e-1642866345\\/61ec26a968fce.jpg\"]',5,'https://www.youtube.com/watch?v=dQw4w9WgXcQ',3,NULL,NULL,'2022-01-29 15:45:45',80,1000,1,0,'2022-01-22 15:45:45','2022-01-22 15:47:38'),(642866390,'Alpha Male',1250000,1,31,'<p>SIUUUUUUUUU</p>','[\"61ec26d56b124-1642866389\\/61ec26d56b13e.jpg\"]',11,'https://www.youtube.com/watch?v=dQw4w9WgXcQ',3,NULL,NULL,'2022-01-29 15:46:29',75,500,1,0,'2022-01-22 15:46:29','2022-01-22 15:49:22');
+INSERT INTO `wish` VALUES (642866190,'GUTS Sparklence',2250000,10,31,'<p>Urutoraman Toriga!</p>','[\"61ec260d74b27-1642866189\\/61ec260d74b60.jpg\",\"61ec260d74b27-1642866189\\/61ec260d76218.png\"]',6,'https://www.youtube.com/watch?v=dQw4w9WgXcQ',3,NULL,NULL,NULL,'2022-01-29 15:43:09',25,250,1,0,'2022-01-22 15:43:09','2022-01-22 15:47:25'),(642866245,'Ultraman Dyna',3750000,9,31,'<p>Solgent Beam</p>','[\"61ec264472706-1642866244\\/61ec26447271e.jpg\"]',9,'https://www.youtube.com/watch?v=dQw4w9WgXcQ',3,NULL,NULL,NULL,'2022-01-29 15:44:04',2,80,1,0,'2022-01-22 15:44:04','2022-01-22 15:46:52'),(642866285,'Attack on Titan S4',750000,18,31,'<p>run! its eren!</p>','[\"61ec266c0dcaa-1642866284\\/61ec266c0dcc1.jpg\"]',3,'https://www.youtube.com/watch?v=dQw4w9WgXcQ',2,NULL,NULL,NULL,'2022-01-29 15:44:44',20,200,1,0,'2022-01-22 15:44:44','2022-01-22 15:44:44'),(642866346,'Meme Gokil Lucu',45000,1,31,'<p>awikwok</p>','[\"61ec26a968c1e-1642866345\\/61ec26a968c38.jpg\",\"61ec26a968c1e-1642866345\\/61ec26a968fce.jpg\"]',5,'https://www.youtube.com/watch?v=dQw4w9WgXcQ',3,NULL,NULL,NULL,'2022-01-29 15:45:45',80,1000,1,0,'2022-01-22 15:45:45','2022-01-22 15:47:38'),(642866390,'Alpha Male',1250000,1,31,'<p>SIUUUUUUUUU</p>','[\"61ec26d56b124-1642866389\\/61ec26d56b13e.jpg\"]',11,'https://www.youtube.com/watch?v=dQw4w9WgXcQ',3,NULL,NULL,NULL,'2022-01-29 15:46:29',75,500,1,0,'2022-01-22 15:46:29','2022-01-22 15:49:22');
 /*!40000 ALTER TABLE `wish` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -736,4 +774,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-22 22:51:16
+-- Dump completed on 2022-01-23 20:06:41
