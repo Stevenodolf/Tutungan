@@ -57,6 +57,7 @@ $(document).ready(function () {
     var wishDesc = document.getElementById("wishDescription");
     wishDesc.innerHTML = wishDetail.description;
     wishDesc.innerHTML = wishDesc.textContent;
+
 })
 
 function setupTickCountDown(tick) {
@@ -100,5 +101,6 @@ function setupTickCountDown(tick) {
     counter.onended = function() {
 
     };
+
 
 }

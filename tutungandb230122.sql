@@ -26,13 +26,16 @@ CREATE TABLE `address` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `address_label` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `address_desa_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `address_provinsi_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `address_kabupaten_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `address_kecamatan_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `address_detail` text COLLATE utf8_unicode_ci NOT NULL,
   `phone_number` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `kode_pos` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `is_main` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `fk_user_id_idx` (`user_id`) USING BTREE,
-  KEY `fk_address_desa_id_idx` (`address_desa_id`) USING BTREE,
+  KEY `fk_address_desa_id_idx` (`address_kabupaten_id`) USING BTREE,
   CONSTRAINT `fk_address_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -657,6 +660,7 @@ CREATE TABLE `user` (
   `bod` datetime NOT NULL,
   `gender` int(11) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
+  `image` varchar(45) DEFAULT NULL,
   `disable` int(11) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -672,7 +676,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'test','test123',2,'test@gmail.com',0,'08123456789','2021-12-24 07:50:43',1,'Jakarta Barat, Jakarta',0,'2021-12-24 07:50:43','2021-12-24 07:50:43'),(9,'luwislim','$2y$10$PEGhrfvJzoxKX8athY.98uLaqi9ds7klfk0xElqFHivJcMjqIhfdW',2,'luwislim@tutungan.com',0,'0811702338','2000-10-13 00:00:00',1,NULL,0,'2022-01-18 16:22:36','2022-01-18 16:22:36'),(17,'limluwis','$2y$10$LeHYSNkjJmpXB68v3Mgecu2j9y/.FNBZ6n0rE44WZXKk3BUhW7U/S',2,'limluwis@tutungan.com',0,'0811702338','2000-10-13 00:00:00',1,NULL,0,'2022-01-18 17:07:56','2022-01-18 17:07:56'),(31,'denaiels','$2y$10$PQrC5qx40zr7pHhCtWwvn.1cy7FOnvsW2C.K0HS91ceR5Vu1yOmbm',2,'denaiel204@gmail.com',1,'08112648418','2001-04-20 00:00:00',1,NULL,0,'2022-01-22 07:35:24','2022-01-22 07:35:24'),(42,'stevenoy','$2y$10$CKTPzhun0n28I/pHgrUZA.30em7gBAssrFkHli8cXgUf7jEJdzbtC',2,'stevenoy@tutungan.com',0,'0811702338','2000-01-01 00:00:00',1,NULL,0,'2022-01-15 16:25:15','2022-01-15 16:25:15');
+INSERT INTO `user` VALUES (1,'test','$2a$12$VfBDyvtKbunxcRI2Hf871OdbfsNsgKQIafungCKrt8j27RicBiCOK',2,'test@gmail.com',0,'08123456789','2021-12-24 07:50:43',1,'Jakarta Barat, Jakarta',NULL,0,'2021-12-24 07:50:43','2021-12-24 07:50:43'),(9,'luwislim','$2y$10$PEGhrfvJzoxKX8athY.98uLaqi9ds7klfk0xElqFHivJcMjqIhfdW',2,'luwislim@tutungan.com',0,'0811702338','2000-10-13 00:00:00',1,NULL,NULL,0,'2022-01-18 16:22:36','2022-01-18 16:22:36'),(17,'limluwis','$2y$10$LeHYSNkjJmpXB68v3Mgecu2j9y/.FNBZ6n0rE44WZXKk3BUhW7U/S',2,'limluwis@tutungan.com',0,'0811702338','2000-10-13 00:00:00',1,NULL,NULL,0,'2022-01-18 17:07:56','2022-01-18 17:07:56'),(31,'denaiels','$2y$10$PQrC5qx40zr7pHhCtWwvn.1cy7FOnvsW2C.K0HS91ceR5Vu1yOmbm',2,'denaiel204@gmail.com',1,'08112648418','2001-04-20 00:00:00',1,NULL,NULL,0,'2022-01-22 07:35:24','2022-01-22 07:35:24'),(42,'stevenoye','$2a$12$VfBDyvtKbunxcRI2Hf871OdbfsNsgKQIafungCKrt8j27RicBiCOK',2,'stevenoy@tutungan.com',0,'0811702338','2000-01-01 00:00:00',1,NULL,NULL,0,'2022-01-15 16:25:15','2022-01-15 16:25:15');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -766,4 +770,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-23 11:08:05
+-- Dump completed on 2022-01-23 14:48:28

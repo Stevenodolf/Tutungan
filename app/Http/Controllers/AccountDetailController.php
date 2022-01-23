@@ -14,6 +14,45 @@ use Illuminate\Support\Str;
 
 class AccountDetailController extends Controller
 {
+    //API
+    public function getAlamatDetail(Request $request){
+        $auth = Auth::check();
+        if($auth){
+            return response()->json(DB::table('address')
+                ->where('id', $request->id)
+                ->where('user_id', Auth::user()->id)
+                ->first());
+        }
+    }
+    public function getProvinsi(){
+        $auth = Auth::check();
+        if($auth){
+            return response()->json(DB::table('address_provinsi')
+                ->pluck('nama','id'));
+        }
+
+    }
+    public function getKota(Request $request){
+        $auth = Auth::check();
+        if($auth){
+            return response()->json(DB::table('address_kabupaten')
+                ->where('provinsi_id', $request->provinsi)
+                ->pluck('id','nama'));
+        }
+    }
+
+    public  function getKecamatan(Request $request){
+        $auth = Auth::check();
+        if($auth){
+            return response()->json(DB::table('address_kecamatan')
+                ->where('kabupaten_id', $request->kabupaten)
+                ->pluck('id','nama'));
+        }
+
+    }
+
+    //END OF API
+
     public function getProfil(){
         $auth = Auth::check();
         if ($auth){
@@ -48,10 +87,129 @@ class AccountDetailController extends Controller
         $auth = Auth::check();
         if ($auth){
             $user = User::where('id', Auth::user()->id)->first();
-            return view('detailAkun.akunSaya.alamatPengiriman',['user'=>$user]);
+            $provinsi = DB::table('address_provinsi')->get();
+            $alamat = DB::table('address')
+                ->where('user_id', Auth::user()->id)
+                ->groupBy('id')
+                ->groupBy('user_id')
+                ->orderBy('is_main', 'desc')
+                ->orderBy('is_temp', 'desc')
+                ->get();
+            return view('detailAkun.akunSaya.alamatPengiriman',['user'=>$user,'provinsi'=>$provinsi,'alamat'=>$alamat]);
         }
         return redirect('login');
     }
+
+    public function postAlamat(Request $request){
+        $auth = Auth::check();
+        if ($auth){
+            $checkAddress = DB::table('address')
+                ->where('user_id', Auth::user()->id)->exists();
+            if (!$checkAddress){
+                DB::table('address')
+                    ->insert(array('id' => mt_rand(1000000, 9999999), 'user_id'=>Auth::user()->id,
+                        'fullname'=> $request->fullname, 'phone_number'=>$request->phoneNumber,
+                        'address_label' => $request->labelAlamat, 'address_provinsi_id'=>$request->provinsi,
+                        'address_kabupaten_id' => $request->kota, 'address_kecamatan_id'=>$request->kecamatan,
+                        'kode_pos' => $request->kodePos, 'address_detail'=>$request->detilAlamat, 'note'=>$request->note,
+                        'is_main'=>'1','is_temp'=>'1'));
+            }else{
+                DB::table('address')
+                    ->insert(array('id' => mt_rand(1000000, 9999999), 'user_id'=>Auth::user()->id,
+                        'fullname'=> $request->fullname, 'phone_number'=>$request->phoneNumber,
+                        'address_label' => $request->labelAlamat, 'address_provinsi_id'=>$request->provinsi,
+                        'address_kabupaten_id' => $request->kota, 'address_kecamatan_id'=>$request->kecamatan,
+                        'kode_pos' => $request->kodePos, 'address_detail'=>$request->detilAlamat, 'note'=>$request->note));
+            }
+            return redirect('/akunSaya/alamatpengiriman');
+        }
+        return redirect('login');
+    }
+    public function postHapusAlamat(Request $request){
+        $auth = Auth::check();
+        if($auth){
+            $checkUtama = DB::table('address')
+                ->where('id',$request->id)
+                ->where('user_id', Auth::user()->id)
+                ->value('is_main');
+            $checkTemp = DB::table('address')
+                ->where('id',$request->id)
+                ->where('user_id', Auth::user()->id)
+                ->value('is_main');
+            if($checkUtama == 1){
+                $isNotUtamaFirst = DB::table('address')
+                    ->where('user_id', Auth::user()->id)
+                    ->where('is_main', '0')
+                    ->groupBy('id')
+                    ->groupBy('user_id')
+                    ->first();
+                if($checkTemp == 1){
+                    DB::table('address')
+                        ->where('id', $isNotUtamaFirst->id)
+                        ->where('user_id', Auth::user()->id)
+                        ->update(array('is_main'=>'1','is_temp'=>1));
+                }else{
+                    DB::table('address')
+                        ->where('id', $isNotUtamaFirst->id)
+                        ->where('user_id', Auth::user()->id)
+                        ->update(array('is_main'=>'1'));
+                }
+            }
+            DB::table('address')
+                ->where('id',$request->id)
+                ->where('user_id', Auth::user()->id)
+                ->delete();
+            return redirect('/akunSaya/alamatpengiriman');
+        }
+        return redirect('login');
+    }
+
+    public function postUtamaAlamat(Request $request){
+        $auth = Auth::check();
+        if($auth){
+            DB::table('address')
+                ->where('user_id', Auth::user()->id)
+                ->where('is_main','1')
+                ->update(array('is_main'=>'0'));
+
+            DB::table('address')
+                ->where('id', $request->id)
+                ->where('user_id', Auth::user()->id)
+                ->update(array('is_main'=>'1'));
+            return redirect('/akunSaya/alamatpengiriman');
+        }
+        return redirect('login');
+    }
+    public function postTempAlamat(Request $request){
+        $auth = Auth::check();
+        if($auth){
+            DB::table('address')
+                ->where('user_id', Auth::user()->id)
+                ->where('is_temp','1')
+                ->update(array('is_temp'=>'0'));
+
+            DB::table('address')
+                ->where('id', $request->id)
+                ->where('user_id', Auth::user()->id)
+                ->update(array('is_temp'=>'1'));
+            return redirect('/akunSaya/alamatpengiriman');
+        }
+        return redirect('login');
+    }
+    public function postUbahAlamat(Request $request){
+        $auth = Auth::check();
+        if ($auth){
+            DB::table('address')
+                ->where('id', $request->id)
+                ->where('user_id', Auth::user()->id)
+                ->update(array('fullname'=>$request->ubahFullname, 'phone_number'=>$request->ubahPhoneNumber,'address_label'=>$request->ubahLabelAlamat,
+                        'address_provinsi_id'=>$request->ubahProvinsi, 'address_kabupaten_id'=>$request->ubahKota,'address_kecamatan_id'=>$request->ubahKecamatan,
+                        'kode_pos'=>$request->ubahKodePos, 'address_detail'=>$request->ubahDetilAlamat, 'note'=>$request->ubahNote));
+            return redirect('/akunSaya/alamatpengiriman');
+        }
+        return redirect('login');
+    }
+
     public function getKreditDebit(){
         $auth = Auth::check();
         if ($auth){
