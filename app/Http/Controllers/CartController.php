@@ -92,14 +92,14 @@ class CartController extends Controller
         return redirect('login');
     }
 
-    public function deleteCartItem($id){
+    public function deleteCartItem(Request $request){
         $auth = Auth::check();
 
         if($auth){
             $user = User::where('id', Auth::user()->id)->first();
 
             $cart = Cart::where('user_id', $user->id)->first();
-            $cart_item = Cart_Item::where('cart_id', $cart->id)->where('id', $id)->first();
+            $cart_item = Cart_Item::where('cart_id', $cart->id)->where('id', $request->cart_item_id)->first();
 
             if($cart_item == null) {
                 redirect('login');
@@ -113,6 +113,33 @@ class CartController extends Controller
             return redirect()->back();
         }
         return redirect('login');
+    }
+
+    public function updateCartItem(Request $request){
+        $auth = Auth::check();
+
+        if($auth){
+            $user = User::where('id', Auth::user()->id)->first();
+
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_item = Cart_Item::where('cart_id', $cart->id)->where('id', $request->cart_item_id)->first();
+
+            if($cart_item == null) {
+                redirect('login');
+            }else{
+                $wish = Wish::where('id', $cart_item->getWishRelation->id)->first();
+                $wish_price = $wish->price;
+                $total_price = $wish_price * $request->qty;
+
+                $cart_item->qty = $request->qty;
+                $cart_item->total_price = $total_price;
+
+                $cart_item->save();
+            }
+
+            return redirect()->back();
+        }
+        return  redirect('login');
     }
 
     public function postCart(Request $request){
