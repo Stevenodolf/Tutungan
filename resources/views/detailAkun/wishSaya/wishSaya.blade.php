@@ -1,6 +1,12 @@
 @extends('detailAkun.detailAkunTemplate')
 
 @section('mainContent')
+    <script>
+        $("#wishSaya").css('color', '#d5b81b');
+        $("#transaksiSaya").css('color', '#000000');
+        $("#notifikasi").css('color', '#000000');
+    </script>
+
     <div class="contentV2">
         <div class="filterSection">
             <div class="upperSection">

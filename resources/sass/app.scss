@@ -2257,6 +2257,7 @@ button{
 .detailAkun{
     display: flex;
     justify-content: center;
+    padding: 50px 0 0 0;
     .sideMenu{
         width: 294px;
         height: 521px;
@@ -2266,6 +2267,7 @@ button{
         box-sizing: border-box;
         box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
         border-radius: 5px;
+        margin-right: 45px;
         .profile{
             display: flex;
             flex-direction: column;
@@ -2967,8 +2969,11 @@ button{
                                         border-style: dashed;
                                         border-width: 0 0 0 1px;
                                     }
-                                    &:last-of-type::before{
-                                        display: none;
+                                    &:last-of-type{
+                                        margin-bottom: 0;
+                                        &::before {
+                                            display: none;
+                                        }
                                     }
                                     &:first-of-type{
                                         .dot{
@@ -3169,15 +3174,16 @@ button{
         justify-content: flex-start;
         align-items: flex-start;
         width: 662px;
+        height: 100%;
         background: #FFFFFF;
-        margin-left: 45px;
         border: 1px solid rgba(49, 53, 59, 0.2);
         box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
-        padding: 20px;
+        padding-bottom: 20px;
+        //padding: 20px;
         border-radius: 5px;
         .title{
             font-family: "latobold";
-            margin-bottom: 20px;
+            margin: 20px 15px;
         }
         .notificationSection{
             width: 100%;
@@ -3187,23 +3193,36 @@ button{
             .notificationCell{
                 display: flex;
                 align-items: center;
-                height: 115px;
-                width: 100%;
-                //background: #c44e47;
+                padding: 15px;
+                border-top: 1px solid #D9D9D9;
+                cursor: pointer;
+                &:last-of-type {
+                    border-bottom: 1px solid #D9D9D9;
+                }
+                &:hover {
+                    background: #F6F6F6;
+                }
+                &:active {
+                    background: #D9D9D9;
+                }
                 img{
                     width: 75px;
                     height: 75px;
                     border-radius: 5px;
                     margin-right: 15px;
+                    //margin-left: 15px;
+                    object-fit: scale-down;
+                    background: #FFFFFF;
                 }
                 .detail{
                     display: flex;
                     flex-direction: column;
+                    margin-right: 15px;
                     .date{
                         color: #ababab;
                         margin-bottom: 10px;
                     }
-                    .title{
+                    .notificationTitle{
                         color: #636363;
                         font-family: "latobold";
                         margin-bottom: 1px;

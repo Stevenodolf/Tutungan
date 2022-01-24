@@ -1,11 +1,17 @@
 @extends('detailAkun.detailAkunTemplate')
 
 @section('mainContent')
+    <script>
+        $("#wishSaya").css('color', '#000000');
+        $("#transaksiSaya").css('color', '#d5b81b');
+        $("#notifikasi").css('color', '#000000');
+    </script>
+
     <div class="contentV2">
         <div class="transactionDetailSection">
             <div class="header">
                 <div class="headerContent">
-                    <div class="buttonKembali">
+                    <div class="buttonKembali" onclick="window.location='{{ url("/transaksisaya")}}'">
                         <img src="{{asset('images/arrowLeftBlack.png')}}">
                         <p class="contentSemiBig text">Kembali</p>
                     </div>
@@ -28,95 +34,108 @@
                         <div class="leftSection">
                             <div class="information">
                                 <p class="contentSmall infoType">Kurir</p>
-                                <p class="contentSmall infoDetail">JNE- Reguler</p>
+                                <p class="contentSmall infoDetail">{{ $transaction->getDomesticShipperRelation->name }}</p>
                             </div>
                             <div class="information">
                                 <p class="contentSmall infoType">No. Resi</p>
-                                <p class="contentSmall infoDetail">TJR1234567890123</p>
+                                <p class="contentSmall infoDetail">{{ $transaction->no_resi }}</p>
                             </div>
                             <div class="information">
                                 <p class="contentSmall infoType">Alamat</p>
                                 <div class="infoDetailAlamat">
-                                    <p class="contentSmall infoDetail">{{ $transaction->getUserRelation->username }}</p>
-                                    <p class="contentSmall infoDetail">62812345678</p>
-                                    <p class="contentSmall infoDetail">Jl. Ir. Soekarno No. 69, RT 04 RW 20</p>
-                                    <p class="contentSmall infoDetail">Kota Surakarta - Pasar Kliwon</p>
-                                    <p class="contentSmall infoDetail">Jawa Tengah</p>
-                                    <p class="contentSmall infoDetail">57752</p>
+                                    <p class="contentSmall infoDetail">{{ $address->fullname }}</p>
+                                    <p class="contentSmall infoDetail">{{ $address->phone_number }}</p>
+                                    <p class="contentSmall infoDetail">{{ $address->address_detail }}</p>
+                                    <p class="contentSmall infoDetail">{{ $kabupaten->nama }} - {{ $kecamatan->nama }}</p>
+                                    <p class="contentSmall infoDetail">{{ $provinsi->nama }}</p>
+                                    <p class="contentSmall infoDetail">{{ $address->kode_pos }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="rightSection">
                             <div class="rightSectionContent">
-                                <div class="shipmentStatus">
-                                    <p class="contentSmall date">4 Feb 2021, 14:45</p>
-                                    <div class="dot"></div>
-                                    <div class="shipmentStatusDetail">
-                                        <p class="contentSmall title">Transaksi Selesai</p>
-                                        <p class="contentSmall detail">Wish ditutup</p>
+                                @php
+                                    $idx = 1;
+                                @endphp
+                                @foreach($shipment_statuses as $shipment_status)
+                                    <div class="shipmentStatus">
+                                        <p id="created{{ $idx }}" class="contentSmall date"></p>
+                                        <script>
+                                            var createdDate = "{{ $shipment_status->created_at }}";
+                                            createdDate = createdDate.replace(/\s/g, 'T');
+                                            document.getElementById("created" + {{ $idx }}).innerHTML = moment(createdDate).format('D MMM YYYY, HH:mm');
+                                        </script>
+                                        <div class="dot"></div>
+                                        <div class="shipmentStatusDetail">
+                                            <p class="contentSmall title">{{ $shipment_status->getSubStatusTransaksiRelation->name }}</p>
+                                            <p class="contentSmall detail">{{ $shipment_status->getSubStatusTransaksiRelation->desc }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="shipmentStatus">
-                                    <p class="contentSmall date">4 Feb 2021, 14:45</p>
-                                    <div class="dot"></div>
-                                    <div class="shipmentStatusDetail">
-                                        <p class="contentSmall title">Pesanan sudah diterima</p>
-                                        <p class="contentSmall detail">Diterima oleh Steven Yuwono</p>
-                                    </div>
-                                </div>
-                                <div class="shipmentStatus">
-                                    <p class="contentSmall date">2 Feb 2021, 14:45</p>
-                                    <div class="dot"></div>
-                                    <div class="shipmentStatusDetail">
-                                        <p class="contentSmall title">Pesanan sudah dikirim</p>
-                                        <p class="contentSmall detail">Pesanan anda sedang dalam pengiriman oleh kurir</p>
-                                    </div>
-                                </div>
-                                <div class="shipmentStatus">
-                                    <p class="contentSmall date">2 Feb 2021, 14:45</p>
-                                    <div class="dot"></div>
-                                    <div class="shipmentStatusDetail">
-                                        <p class="contentSmall title">Pesanan menunggu pickup</p>
-                                        <p class="contentSmall detail">Pesanan anda sudah dibungkus dan sedang menunggu
-                                            pickup oleh kurir</p>
-                                    </div>
-                                </div>
-                                <div class="shipmentStatus">
-                                    <p class="contentSmall date">1 Feb 2021, 14:45</p>
-                                    <div class="dot"></div>
-                                    <div class="shipmentStatusDetail">
-                                        <p class="contentSmall title">Pesanan Wish sampai di gudang</p>
-                                        <p class="contentSmall detail">Pesanan Wish sudah sampai di gudang dan dalam proses
-                                            pembungkusan</p>
-                                    </div>
-                                </div>
-                                <div class="shipmentStatus">
-                                    <p class="contentSmall date">29 Jan 2021, 14:45</p>
-                                    <div class="dot"></div>
-                                    <div class="shipmentStatusDetail">
-                                        <p class="contentSmall title">Pesanan Wish sudah dikirim menuju ke gudang</p>
-                                        <p class="contentSmall detail">Pesanan Wish anda sedang dikirim dari sumber pembelian
-                                            produk Wish ke gudang</p>
-                                    </div>
-                                </div>
-                                <div class="shipmentStatus">
-                                    <p class="contentSmall date">27 Nov 2021, 14:45</p>
-                                    <div class="dot"></div>
-                                    <div class="shipmentStatusDetail">
-                                        <p class="contentSmall title">Wish sedang diproses oleh Admin</p>
-                                        <p class="contentSmall detail">Wish sedang diproses oleh Admin ke sumber pembelian
-                                            produk Wish</p>
-                                    </div>
-                                </div>
-                                <div class="shipmentStatus">
-                                    <p class="contentSmall date">25 Jan 2021, 14:45</p>
-                                    <div class="dot"></div>
-                                    <div class="shipmentStatusDetail">
-                                        <p class="contentSmall title">Pembayaran berhasil diverifikasi</p>
-                                        <p class="contentSmall detail">Pembayaran anda telah diterima Tutungan dan sedang
-                                            menunggu pemrosesan oleh Admin</p>
-                                    </div>
-                                </div>
+                                    @php
+                                        $idx += 1;
+                                    @endphp
+                                @endforeach
+{{--                                    <div class="shipmentStatus">--}}
+{{--                                        <p class="contentSmall date">4 Feb 2021, 14:45</p>--}}
+{{--                                        <div class="dot"></div>--}}
+{{--                                        <div class="shipmentStatusDetail">--}}
+{{--                                            <p class="contentSmall title">Pesanan sudah diterima</p>--}}
+{{--                                            <p class="contentSmall detail">Diterima oleh pemesan</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="shipmentStatus">--}}
+{{--                                        <p class="contentSmall date">2 Feb 2021, 14:45</p>--}}
+{{--                                        <div class="dot"></div>--}}
+{{--                                        <div class="shipmentStatusDetail">--}}
+{{--                                            <p class="contentSmall title">Pesanan sudah dikirim</p>--}}
+{{--                                            <p class="contentSmall detail">Pesanan anda sedang dalam pengiriman oleh kurir</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="shipmentStatus">--}}
+{{--                                        <p class="contentSmall date">2 Feb 2021, 14:45</p>--}}
+{{--                                        <div class="dot"></div>--}}
+{{--                                        <div class="shipmentStatusDetail">--}}
+{{--                                            <p class="contentSmall title">Pesanan menunggu pickup</p>--}}
+{{--                                            <p class="contentSmall detail">Pesanan anda sudah dibungkus dan sedang menunggu--}}
+{{--                                                pickup oleh kurir</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="shipmentStatus">--}}
+{{--                                        <p class="contentSmall date">1 Feb 2021, 14:45</p>--}}
+{{--                                        <div class="dot"></div>--}}
+{{--                                        <div class="shipmentStatusDetail">--}}
+{{--                                            <p class="contentSmall title">Pesanan Wish sampai di gudang</p>--}}
+{{--                                            <p class="contentSmall detail">Pesanan Wish sudah sampai di gudang dan dalam proses--}}
+{{--                                                pembungkusan</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="shipmentStatus">--}}
+{{--                                        <p class="contentSmall date">29 Jan 2021, 14:45</p>--}}
+{{--                                        <div class="dot"></div>--}}
+{{--                                        <div class="shipmentStatusDetail">--}}
+{{--                                            <p class="contentSmall title">Pesanan Wish sudah dikirim menuju ke gudang</p>--}}
+{{--                                            <p class="contentSmall detail">Pesanan Wish anda sedang dikirim dari sumber pembelian--}}
+{{--                                                produk Wish ke gudang</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="shipmentStatus">--}}
+{{--                                        <p class="contentSmall date">27 Nov 2021, 14:45</p>--}}
+{{--                                        <div class="dot"></div>--}}
+{{--                                        <div class="shipmentStatusDetail">--}}
+{{--                                            <p class="contentSmall title">Wish sedang diproses oleh Admin</p>--}}
+{{--                                            <p class="contentSmall detail">Wish sedang diproses oleh Admin ke sumber pembelian--}}
+{{--                                                produk Wish</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="shipmentStatus">--}}
+{{--                                        <p class="contentSmall date">25 Jan 2021, 14:45</p>--}}
+{{--                                        <div class="dot"></div>--}}
+{{--                                        <div class="shipmentStatusDetail">--}}
+{{--                                            <p class="contentSmall title">Pembayaran berhasil diverifikasi</p>--}}
+{{--                                            <p class="contentSmall detail">Pembayaran anda telah diterima Tutungan dan sedang--}}
+{{--                                                menunggu pemrosesan oleh Admin</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                             </div>
                         </div>
                     </div>
@@ -129,7 +148,6 @@
                         <div class="wishCellContent">
                             <div class="cellHeader">
                                 <p class="contentSmall textWishMaker">Oleh: {{ $wish->getCreatedByRelation->username }}</p>
-{{--                                <p class="contentSmall">1 Jan 2021 - {{ $wish->deadline }}</p>--}}
                                 <p class="contentSmall"><span id="created"></span> - <span id="deadline"></span></p>
                                 <script>
                                     var createdDate = "{{ $wish->created_at }}";
@@ -219,8 +237,8 @@
                         </div>
                         <div class="rightSection">
                             <button class="button buttonBlack">Lihat Invoice</button>
-                            @if($transaction->status_transaksi_id == 6)
-                                <button class="button buttonRed">Batalkan Transaksi</button>
+                            @if($transaction->status_transaksi_id != 6)
+                                <button class="button buttonRed" onclick="window.location='{{ url("/transaksisaya/batalkantransaksi/".$transaction->id)}}'">Batalkan Transaksi</button>
                             @endif
                         </div>
                     </div>

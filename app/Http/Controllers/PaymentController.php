@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
+use App\Notification_Wish;
+use App\Shipment_Status;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
@@ -13,6 +16,7 @@ use App\Shipper;
 use App\Wish;
 use App\Transaction;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class PaymentController extends Controller
 {
@@ -22,6 +26,12 @@ class PaymentController extends Controller
 
         if($auth){
             $user = User::where('id', Auth::user()->id)->first();
+
+            $address = Address::where('user_id', $user->id)->where('is_main', 1)->first();
+            $kecamatan = $address->getKecamatanRelation;
+            $kabupaten = $kecamatan->getKabupatenRelation;
+            $provinsi = $kabupaten->getProvinsiRelation;
+
             $payment = Payment::where('id', $id)->first();
 
             if($user->id == $payment->user_id){
@@ -45,7 +55,8 @@ class PaymentController extends Controller
                 $dshippers = Shipper::where('type', 'domestic')->get();
 
                 return view('checkout.checkout', ['auth' => $auth, 'user' => $user, 'payment_items' => $payment_items,
-                    'dshippers' => $dshippers, 'payment' => $payment, 'jumlah_wish' => $jumlah_wish]);
+                    'dshippers' => $dshippers, 'payment' => $payment, 'jumlah_wish' => $jumlah_wish,
+                    'address' => $address, 'kecamatan' => $kecamatan, 'kabupaten' => $kabupaten, 'provinsi' => $provinsi]);
             }
 
         }
@@ -54,12 +65,14 @@ class PaymentController extends Controller
     }
 
     public function postCheckout(Request $request, $id){
+//        dd($request->all());
         $auth = Auth::check();
         // $auth = true;
 
         if($auth){
             $user = User::where('id', Auth::user()->id)->first();
             $payment = Payment::where('id', $id)->first();
+            $address_id = $request->address_id;
 
             if($user->id == $payment->user_id){
                 $payment_items = Payment_Item::where('payment_id', $payment->id)->get();
@@ -67,6 +80,7 @@ class PaymentController extends Controller
                 foreach($payment_items as $payment_item){
                     $transaction = new Transaction;
                     $transaction->user_id = $user->id;
+                    $transaction->address_id = $address_id;
                     $transaction->wish_id = $payment_item->wish_id;
                     $transaction->qty = $payment_item->qty;
                     $transaction->total_price = $payment_item->total_price;
@@ -76,6 +90,7 @@ class PaymentController extends Controller
                     $transaction->total_payment = $payment_item->total_payment;
                     $transaction->domestic_shipper_id = $request->domestic_shipper_id;
                     $transaction->inter_shipper_id = mt_rand(5, 8);
+                    $transaction->no_resi = Str::random(3) . mt_rand(10000, 99999); // ABC12345
                     $transaction->status_transaksi_id = 2;
                     $transaction->sub_status_transaksi_id = 1;
                     $transaction->save();
@@ -112,6 +127,56 @@ class PaymentController extends Controller
                         Cart_Item::where('id', $payment_item->cart_item_id)->delete();
                     }
 
+                    // Buat Shipment_Status 1 (Pembayaran Diverifikasi)
+                    $shipment_status = new Shipment_Status;
+                    $shipment_status->transaction_id = $transaction->id;
+                    $shipment_status->sub_status_transaksi_id = 1;
+                    $shipment_status->save();
+
+                    $shipment_status = new Shipment_Status;
+                    $shipment_status->transaction_id = $transaction->id;
+                    $shipment_status->sub_status_transaksi_id = 2;
+                    $shipment_status->save();
+
+                    $shipment_status = new Shipment_Status;
+                    $shipment_status->transaction_id = $transaction->id;
+                    $shipment_status->sub_status_transaksi_id = 3;
+                    $shipment_status->save();
+
+                    $shipment_status = new Shipment_Status;
+                    $shipment_status->transaction_id = $transaction->id;
+                    $shipment_status->sub_status_transaksi_id = 4;
+                    $shipment_status->save();
+
+                    $shipment_status = new Shipment_Status;
+                    $shipment_status->transaction_id = $transaction->id;
+                    $shipment_status->sub_status_transaksi_id = 5;
+                    $shipment_status->save();
+
+                    $shipment_status = new Shipment_Status;
+                    $shipment_status->transaction_id = $transaction->id;
+                    $shipment_status->sub_status_transaksi_id = 6;
+                    $shipment_status->save();
+
+                    //Buat Notifikasi_Wish 2 (Pembayaran berhasil diverifikasi!)
+                    $notification_wish = new Notification_Wish;
+                    $notification_wish->user_id = $user->id;
+                    $notification_wish->wish_id = $payment_item->wish_id;
+                    $notification_wish->notification_id = 2;
+                    $notification_wish->save();
+
+                    $notification_wish = new Notification_Wish;
+                    $notification_wish->user_id = $user->id;
+                    $notification_wish->wish_id = $payment_item->wish_id;
+                    $notification_wish->notification_id = 3;
+                    $notification_wish->save();
+
+                    $notification_wish = new Notification_Wish;
+                    $notification_wish->user_id = $user->id;
+                    $notification_wish->wish_id = $payment_item->wish_id;
+                    $notification_wish->notification_id = 4;
+                    $notification_wish->save();
+
                 }
                 $payment->total_payment = $request->grand_total;
                 $payment->paid = 1;
@@ -120,6 +185,7 @@ class PaymentController extends Controller
                 return redirect('home');
             }
 
+            return redirect('login');
         }
 
         return redirect('login');
