@@ -3174,14 +3174,16 @@ button{
         justify-content: flex-start;
         align-items: flex-start;
         width: 662px;
+        height: 100%;
         background: #FFFFFF;
         border: 1px solid rgba(49, 53, 59, 0.2);
         box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
-        padding: 20px;
+        padding-bottom: 20px;
+        //padding: 20px;
         border-radius: 5px;
         .title{
             font-family: "latobold";
-            margin-bottom: 20px;
+            margin: 20px 15px;
         }
         .notificationSection{
             width: 100%;
@@ -3191,22 +3193,24 @@ button{
             .notificationCell{
                 display: flex;
                 align-items: center;
-                height: 115px;
-                width: 100%;
+                padding: 15px;
+                border-top: 1px solid #D9D9D9;
                 cursor: pointer;
+                &:last-of-type {
+                    border-bottom: 1px solid #D9D9D9;
+                }
                 &:hover {
-                    background: #F5F5F5;
+                    background: #F6F6F6;
                 }
                 &:active {
                     background: #D9D9D9;
                 }
-                //background: #c44e47;
                 img{
                     width: 75px;
                     height: 75px;
                     border-radius: 5px;
                     margin-right: 15px;
-                    margin-left: 15px;
+                    //margin-left: 15px;
                     object-fit: scale-down;
                     background: #FFFFFF;
                 }
@@ -3218,7 +3222,7 @@ button{
                         color: #ababab;
                         margin-bottom: 10px;
                     }
-                    .title{
+                    .notificationTitle{
                         color: #636363;
                         font-family: "latobold";
                         margin-bottom: 1px;

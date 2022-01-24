@@ -5,6 +5,39 @@
         $("#wishSaya").css('color', '#000000');
         $("#transaksiSaya").css('color', '#000000');
         $("#notifikasi").css('color', '#d5b81b');
+
+        // window.onbeforeunload = notificationSession;
+        // function notificationSession() {
+        //     $.ajax({
+        //         url: "/notifikasi",
+        //         async: false,
+        //         type: "POST",
+        //     });
+        //
+        //     return undefined;
+        // }
+        $(window).bind("beforeunload", function(){
+            let _token = $('meta[name="_token"]').attr('content');
+
+            $.ajax({
+                url: "/updateNotifikasi",
+                // async: false,
+                type: "POST",
+                data:{
+                    _token: _token
+                },
+
+                success:function(response){
+                    console.log(response);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+
+
+            return undefined;
+        });
     </script>
 
     <div class="contentV3">
@@ -15,11 +48,11 @@
             @endphp
             @foreach($notification_wishes as $notification_wish)
                 @if($notification_wish->notification_id == 1)
-                    <div class="notificationCell" onclick="window.location='{{ url("/wishsaya/")}}'">
+                    <div id="cell{{ $idx }}" class="notificationCell" onclick="window.location='{{ url("/wishsaya/")}}'">
                         <img src="{{asset('uploads/'.json_decode($notification_wish->getWishRelation->image)[0])}}">
                         <div class="detail">
                             <p id="created{{ $idx }}" class="contentSmall date"></p>
-                            <p class="contentSemiNormal title">{{ $notification_wish->getNotificationRelation->title }}</p>
+                            <p class="contentSemiNormal notificationTitle">{{ $notification_wish->getNotificationRelation->title }}</p>
                             <p class="contentSemiNormal subtitle">{{ $notification_wish->getNotificationRelation->subtitle }}</p>
                         </div>
                         <script>
@@ -29,11 +62,11 @@
                         </script>
                     </div>
                 @else
-                    <div class="notificationCell" onclick="window.location='{{ url("/transaksisaya/detailtransaksi/".$notification_wish->transaction_id)}}'">
+                    <div id="cell{{ $idx }}" class="notificationCell" onclick="window.location='{{ url("/transaksisaya/detailtransaksi/".$notification_wish->transaction_id)}}'">
                         <img src="{{asset('uploads/'.json_decode($notification_wish->getWishRelation->image)[0])}}">
                         <div class="detail">
                             <p id="created{{ $idx }}" class="contentSmall date"></p>
-                            <p class="contentSemiNormal title">{{ $notification_wish->getNotificationRelation->title }}</p>
+                            <p class="contentSemiNormal notificationTitle">{{ $notification_wish->getNotificationRelation->title }}</p>
                             <p class="contentSemiNormal subtitle">{{ $notification_wish->getNotificationRelation->subtitle }}</p>
                         </div>
                         <script>
@@ -43,6 +76,13 @@
                         </script>
                     </div>
                 @endif
+
+{{--                <script>--}}
+{{--                    var is_read = {{ $notification_wish->is_read }};--}}
+{{--                    if (is_read == 0) {--}}
+{{--                        $("#cell" + {{ $idx }}).css('background', '#f7f7f7');--}}
+{{--                    }--}}
+{{--                </script>--}}
                 @php
                     $idx += 1;
                 @endphp

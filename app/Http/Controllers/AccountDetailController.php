@@ -397,13 +397,48 @@ class AccountDetailController extends Controller
         return redirect('login');
     }
 
+    public function batalkanTransaksi($id) {
+        $auth = Auth::check();
+
+        if($auth) {
+            $user = User::where('id', Auth::user()->id)->first();
+
+            Transaction::where('id', $id)->update(['status_transaksi_id' => 6, 'sub_status_transaksi_id' => 9]);
+
+            $transaction = Transaction::where('id', $id)->first();
+            $wish = $transaction->getWishRelation;
+
+            $shipment_status = new Shipment_Status;
+            $shipment_status->transaction_id = $transaction->id;
+            $shipment_status->sub_status_transaksi_id = 9;
+            $shipment_status->save();
+
+            $notification_wish = new Notification_Wish;
+            $notification_wish->user_id = $user->id;
+            $notification_wish->wish_id = $wish->id;
+            $notification_wish->notification_id = 6;
+            $notification_wish->save();
+
+            $wish->curr_qty -= $transaction->qty;
+            $wish->save();
+
+            $transactions = Transaction::where('user_id', $user->id);
+
+            return redirect('transaksisaya');
+        }
+
+        return redirect('login');
+    }
+
     public function getNotification() {
         $auth = Auth::check();
 
         if($auth) {
             $user = User::where('id', Auth::user()->id)->first();
 
-            $notification_wishes = Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
+            $notification_wishes = Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(10);
+            Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')
+                ->update(['is_read' => 1]);
 
             return view('detailAkun.notifikasi.notifikasi', ['user' => $user, 'notification_wishes' => $notification_wishes]);
         }

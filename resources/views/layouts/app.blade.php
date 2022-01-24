@@ -200,19 +200,16 @@
                         <img id="arrowUser" src="{{asset('images/arrowDownBlack.png')}}">
                     </button>
                     <div class="dropdownList" id="dropdownList">
-                        <a href="{{url('/akunSaya/profil')}}">
+                        <a href="{{ url('/akunSaya/profil' )}}">
                             <p class="contentSemiNormal">Akun Saya</p>
                         </a>
-                        <a href="wishsaya">
+                        <a href="{{ url('/wishsaya') }}">
                             <p class="contentSemiNormal">Wish Saya</p>
                         </a>
-                        <button onclick="window.location='{{ url("/wishsaya")}}'">
-                            <p class="contentSemiNormal">Wish Saya</p>
-                        </button>
-                        <button onclick="window.location='{{ url("/transaksisaya")}}'" >
+                        <a href="{{ url('/transaksisaya') }}">
                             <p class="contentSemiNormal">Transaksi Saya</p>
-                        </button>
-                        <a href="{{'/logout'}}">
+                        </a>
+                        <a href="{{ url('/logout') }}">
                             <p class="contentSemiNormal">Logout</p>
                         </a>
                     </div>
