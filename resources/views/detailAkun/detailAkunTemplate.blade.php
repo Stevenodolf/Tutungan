@@ -31,15 +31,15 @@
                             <p class="contentSemiBig">Ubah Password</p>
                         </a>
                     </div>
-                    <div class="list" onclick="window.location='{{ url("/wishsaya")}}'">
+                    <div id="wishSaya" class="list" onclick="window.location='{{ url("/wishsaya")}}'">
                         <img src="{{asset("images/wish.png")}}">
                         <h3>Wish Saya</h3>
                     </div>
-                    <div class="list" onclick="window.location='{{ url("/transaksisaya")}}'">
+                    <div id="transaksiSaya" class="list" onclick="window.location='{{ url("/transaksisaya")}}'">
                         <img src="{{asset("images/transaksi.png")}}">
                         <h3>Transaksi Saya</h3>
                     </div>
-                    <div class="list">
+                    <div id="notifikasi" class="list">
                         <img src="{{asset("images/notification_outline.png")}}">
                         <h3>Notifikasi</h3>
                     </div>

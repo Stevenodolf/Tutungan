@@ -40,7 +40,7 @@ CREATE TABLE `address` (
   KEY `fk_user_id_idx` (`user_id`) USING BTREE,
   KEY `fk_address_desa_id_idx` (`address_kabupaten_id`) USING BTREE,
   CONSTRAINT `fk_address_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7871638 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8841132 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +49,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (2281535,42,'Luwis Lim','08235678916','Kantor','31','3174','3174020','11530','Jl. Budi Raya No.21, RT.1/RW.5, Kb. Jeruk, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11530','rumah warna kuning',0,0),(7871637,42,'Steven Odolf','082137472650','Rumah','33','3311','3311090','557201','Jl. Budi Raya No.21, RT.1/RW.5, Kb. Jeruk, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11530','rumah warna ijo',1,0);
+INSERT INTO `address` VALUES (8044461,42,'Luwis Lim','082137472650','Kantor','13','1302','1302020','11530','asdas','asd',0,0),(8841131,42,'Luwis Lim','082137472650','Kantor','12','1203','1203011','11530','Jl Budi raya 21','ndatau',1,1);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +174,9 @@ CREATE TABLE `card_info` (
   `card_valid_month` varchar(5) NOT NULL,
   `card_valid_year` varchar(5) NOT NULL,
   `is_utama` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `kf_card_info_user_id_idx` (`user_id`),
+  CONSTRAINT `fk_card_info_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -491,6 +493,33 @@ INSERT INTO `role` VALUES (1,'admin','2021-12-14 22:23:14',NULL),(2,'user','2021
 UNLOCK TABLES;
 
 --
+-- Table structure for table `shipment_status`
+--
+
+DROP TABLE IF EXISTS `shipment_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `shipment_status` (
+  `id` int(11) NOT NULL,
+  `sub_status_transaksi_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_sub_transaction_id_idx` (`sub_status_transaksi_id`),
+  CONSTRAINT `fk_sub_transaction_id` FOREIGN KEY (`sub_status_transaksi_id`) REFERENCES `sub_status_transaksi` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shipment_status`
+--
+
+LOCK TABLES `shipment_status` WRITE;
+/*!40000 ALTER TABLE `shipment_status` DISABLE KEYS */;
+/*!40000 ALTER TABLE `shipment_status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `shipper`
 --
 
@@ -580,10 +609,11 @@ DROP TABLE IF EXISTS `sub_status_transaksi`;
 CREATE TABLE `sub_status_transaksi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
+  `desc` varchar(200) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -592,7 +622,7 @@ CREATE TABLE `sub_status_transaksi` (
 
 LOCK TABLES `sub_status_transaksi` WRITE;
 /*!40000 ALTER TABLE `sub_status_transaksi` DISABLE KEYS */;
-INSERT INTO `sub_status_transaksi` VALUES (1,'Pembayaran Diverifikasi','2021-12-14 22:53:32',NULL),(2,'Sedang Diproses Admin','2021-12-14 22:53:32',NULL),(3,'Pemrosesan Gagal','2021-12-14 22:53:32',NULL),(4,'Sampai Gudang','2021-12-14 22:53:32',NULL),(5,'Menunggu Pickup','2021-12-14 22:53:32',NULL),(6,'Sudah Dikirim','2021-12-14 22:53:32',NULL),(7,'Sudah Diterima','2021-12-14 22:53:32',NULL),(8,'Transaksi Selesai','2021-12-14 22:53:32',NULL),(9,'Transaksi Dibatalkan','2021-12-14 22:53:33',NULL);
+INSERT INTO `sub_status_transaksi` VALUES (1,'Pembayaran Diverifikasi','Pembayaran anda telah diterima Tutungan dan sedang\nmenunggu pemrosesan oleh Admin','2021-12-14 22:53:32',NULL),(2,'Sedang Diproses Admin','Wish sedang diproses oleh Admin ke sumber pembelian\nproduk Wish','2021-12-14 22:53:32',NULL),(3,'Menuju Gudang','Pesanan Wish anda sedang dikirim dari sumber pembelian produk Wish ke gudang','2021-12-14 22:53:32',NULL),(4,'Sampai Gudang','Pesanan Wish sudah sampai di gudang dan dalam proses\npembungkusan','2021-12-14 22:53:32',NULL),(5,'Menunggu Pickup','Pesanan anda sudah dibungkus dan sedang menunggu\npickup oleh kurir','2021-12-14 22:53:32',NULL),(6,'Sudah Dikirim','Pesanan anda sedang dalam pengiriman oleh kurir','2021-12-14 22:53:32',NULL),(7,'Sudah Diterima','Diterima oleh pemesan','2021-12-14 22:53:32',NULL),(8,'Transaksi Selesai','Wish ditutup','2021-12-14 22:53:32',NULL),(9,'Transaksi Dibatalkan',NULL,'2021-12-14 22:53:33',NULL),(13,'Pesanan Gagal Diproses',NULL,'2021-12-14 22:53:33',NULL);
 /*!40000 ALTER TABLE `sub_status_transaksi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -663,7 +693,6 @@ CREATE TABLE `user` (
   `phone_number` varchar(45) NOT NULL,
   `bod` datetime NOT NULL,
   `gender` int(11) DEFAULT NULL,
-  `address` varchar(200) DEFAULT NULL,
   `image` varchar(45) DEFAULT NULL,
   `disable` int(11) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
@@ -680,7 +709,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'test','$2a$12$VfBDyvtKbunxcRI2Hf871OdbfsNsgKQIafungCKrt8j27RicBiCOK',2,'test@gmail.com',0,'08123456789','2021-12-24 07:50:43',1,'Jakarta Barat, Jakarta',NULL,0,'2021-12-24 07:50:43','2021-12-24 07:50:43'),(9,'luwislim','$2y$10$PEGhrfvJzoxKX8athY.98uLaqi9ds7klfk0xElqFHivJcMjqIhfdW',2,'luwislim@tutungan.com',0,'0811702338','2000-10-13 00:00:00',1,NULL,NULL,0,'2022-01-18 16:22:36','2022-01-18 16:22:36'),(17,'limluwis','$2y$10$LeHYSNkjJmpXB68v3Mgecu2j9y/.FNBZ6n0rE44WZXKk3BUhW7U/S',2,'limluwis@tutungan.com',0,'0811702338','2000-10-13 00:00:00',1,NULL,NULL,0,'2022-01-18 17:07:56','2022-01-18 17:07:56'),(31,'denaiels','$2y$10$PQrC5qx40zr7pHhCtWwvn.1cy7FOnvsW2C.K0HS91ceR5Vu1yOmbm',2,'denaiel204@gmail.com',1,'08112648418','2001-04-20 00:00:00',1,NULL,NULL,0,'2022-01-22 07:35:24','2022-01-22 07:35:24'),(42,'stevenoye','$2a$12$VfBDyvtKbunxcRI2Hf871OdbfsNsgKQIafungCKrt8j27RicBiCOK',2,'stevenoy@tutungan.com',0,'0811702338','2000-01-01 00:00:00',1,NULL,NULL,0,'2022-01-15 16:25:15','2022-01-15 16:25:15');
+INSERT INTO `user` VALUES (1,'test','$2a$12$VfBDyvtKbunxcRI2Hf871OdbfsNsgKQIafungCKrt8j27RicBiCOK',2,'test@gmail.com',0,'08123456789','2021-12-24 07:50:43',1,NULL,0,'2021-12-24 07:50:43','2021-12-24 07:50:43'),(9,'luwislim','$2y$10$PEGhrfvJzoxKX8athY.98uLaqi9ds7klfk0xElqFHivJcMjqIhfdW',2,'luwislim@tutungan.com',0,'0811702338','2000-10-13 00:00:00',1,NULL,0,'2022-01-18 16:22:36','2022-01-18 16:22:36'),(17,'limluwis','$2y$10$LeHYSNkjJmpXB68v3Mgecu2j9y/.FNBZ6n0rE44WZXKk3BUhW7U/S',2,'limluwis@tutungan.com',0,'0811702338','2000-10-13 00:00:00',1,NULL,0,'2022-01-18 17:07:56','2022-01-18 17:07:56'),(31,'denaiels','$2y$10$PQrC5qx40zr7pHhCtWwvn.1cy7FOnvsW2C.K0HS91ceR5Vu1yOmbm',2,'denaiel204@gmail.com',1,'08112648418','2001-04-20 00:00:00',1,NULL,0,'2022-01-22 07:35:24','2022-01-22 07:35:24'),(42,'stevenoye','$2a$12$VfBDyvtKbunxcRI2Hf871OdbfsNsgKQIafungCKrt8j27RicBiCOK',2,'stevenoy@tutungan.com',0,'0811702338','2000-01-01 00:00:00',1,NULL,0,'2022-01-15 16:25:15','2022-01-15 16:25:15');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -774,4 +803,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-23 20:06:41
+-- Dump completed on 2022-01-23 22:16:57
