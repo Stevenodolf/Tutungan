@@ -15,14 +15,15 @@
                         <p class="contentExtraBig">Checkout</p>
                         <p class="contentBig">Alamat Pengiriman</p>
                         <div class="information">
-                            <p class="contentSemiBig">{{$user->username}}</p>
-                            <p class="contentSemiBig">{{$user->phone_number}}</p>
-                            <p class="contentSemiBig">
-                                {{$user->address}}
-                                {{-- Jl. Budi Raya No.21, RT.1/RW.5, Kb. Jeruk,<br>
-                                Kec. Kb. Jeruk, Kota Jakarta Barat,<br>
-                                Daerah Khusus Ibukota Jakarta 11530 --}}
-                            </p>
+                            @php
+                                echo $address->id;
+                            @endphp
+                            <p class="contentSemiBig">{{ $address->id }}</p>
+                            <p class="contentSemiBig">{{ $address->fullname }}</p>
+                            <p class="contentSemiBig">{{ $address->phone_number }}</p>
+                            <p class="contentSemiBig">{{ $address->address_detail }}</p>
+                            <p class="contentSemiBig">{{ $kecamatan->nama }} - {{ $kabupaten->nama }}</p>
+                            <p class="contentSemiBig">{{ $provinsi->nama }} {{ $address->kode_pos }}</p>
                         </div>
                         <div class="itemDetail">
                             @php
@@ -157,6 +158,7 @@
                             <img src="{{asset('images/checkGreen.png')}}">
                             <h2>Pembayaran Terverifikasi</h2>
                         </div>
+                        <input type="hidden" name="address_id" value="{{ $address->id }}">
                         <button type="submit" id="kembaliBeranda" type="submit">Kembali Ke Beranda</button>
                     </div>
                 </div>

@@ -2435,6 +2435,7 @@ button {
 .detailAkun {
   display: flex;
   justify-content: center;
+  padding: 50px 0 0 0;
 }
 
 .detailAkun .sideMenu {
@@ -2446,6 +2447,7 @@ button {
   box-sizing: border-box;
   box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
   border-radius: 5px;
+  margin-right: 45px;
 }
 
 .detailAkun .sideMenu .profile {
@@ -3232,6 +3234,10 @@ button {
   border-width: 0 0 0 1px;
 }
 
+.detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection .rightSectionContent .shipmentStatus:last-of-type {
+  margin-bottom: 0;
+}
+
 .detailAkun .contentV2 .transactionDetailSection .sectionAfterHeader .sectionContent .contentAfterTitle1 .rightSection .rightSectionContent .shipmentStatus:last-of-type::before {
   display: none;
 }
@@ -3449,7 +3455,6 @@ button {
   align-items: flex-start;
   width: 662px;
   background: #FFFFFF;
-  margin-left: 45px;
   border: 1px solid rgba(49, 53, 59, 0.2);
   box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
   padding: 20px;
@@ -3473,6 +3478,15 @@ button {
   align-items: center;
   height: 115px;
   width: 100%;
+  cursor: pointer;
+}
+
+.detailAkun .contentV3 .notificationSection .notificationCell:hover {
+  background: #F5F5F5;
+}
+
+.detailAkun .contentV3 .notificationSection .notificationCell:active {
+  background: #D9D9D9;
 }
 
 .detailAkun .contentV3 .notificationSection .notificationCell img {
@@ -3480,11 +3494,16 @@ button {
   height: 75px;
   border-radius: 5px;
   margin-right: 15px;
+  margin-left: 15px;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+  background: #FFFFFF;
 }
 
 .detailAkun .contentV3 .notificationSection .notificationCell .detail {
   display: flex;
   flex-direction: column;
+  margin-right: 15px;
 }
 
 .detailAkun .contentV3 .notificationSection .notificationCell .detail .date {

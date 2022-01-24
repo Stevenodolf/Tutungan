@@ -85,9 +85,10 @@ Route::post('/akunSaya/utamaKartu', 'AccountDetailController@postUtamaKreditDebi
 Route::get('/akunSaya/ubahpassword', 'AccountDetailController@getUbahPassword');
 Route::post('/akunSaya/ubahpass', 'AccountDetailController@postUbahPassword');
 
-Route::get('/notifikasi', function(){
-    return view('detailAkun.notifikasi.notifikasi');
-});
+Route::get('/notifikasi', 'AccountDetailController@getNotification')->name('getNotification');
+//Route::get('/notifikasi', function(){
+//    return view('detailAkun.notifikasi.notifikasi');
+//});
 //Route::get('/wishsaya', 'AccountDetailController@getWishSaya')->name('getWishSaya');
 Route::get('/wishsaya', 'AccountDetailController@getWishSaya')->name('getWishSaya');
 //Route::get('/wishsaya', function(){

@@ -39,7 +39,7 @@
                         <img src="{{asset("images/transaksi.png")}}">
                         <h3>Transaksi Saya</h3>
                     </div>
-                    <div id="notifikasi" class="list">
+                    <div id="notifikasi" class="list" onclick="window.location='{{ url("/notifikasi")}}'">
                         <img src="{{asset("images/notification_outline.png")}}">
                         <h3>Notifikasi</h3>
                     </div>

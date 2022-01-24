@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
+use App\Notification_Wish;
+use App\Shipment_Status;
 use App\Transaction;
 use App\User;
 use App\Wish;
@@ -377,7 +380,32 @@ class AccountDetailController extends Controller
             $transaction = Transaction::where('id', $id)->first();
             $wish = $transaction->getWishRelation;
 
-            return view('detailAkun.transaksiSaya.detailTransaksi', ['user' => $user, 'transaction' => $transaction, 'wish' => $wish]);
+            $address = $transaction->getAddressRelation;
+            $kecamatan = $address->getKecamatanRelation;
+            $kabupaten = $kecamatan->getKabupatenRelation;
+            $provinsi = $kabupaten->getProvinsiRelation;
+
+            $shipment_statuses = Shipment_Status::where('transaction_id', $transaction->id)
+                ->orderBy('created_at', 'DESC')
+                ->orderBy('sub_status_transaksi_id', 'DESC')->get();
+
+            return view('detailAkun.transaksiSaya.detailTransaksi',
+                ['user' => $user, 'transaction' => $transaction, 'wish' => $wish,
+                    'address' => $address, 'kecamatan' => $kecamatan, 'kabupaten' => $kabupaten, 'provinsi' => $provinsi, 'shipment_statuses' => $shipment_statuses]);
+        }
+
+        return redirect('login');
+    }
+
+    public function getNotification() {
+        $auth = Auth::check();
+
+        if($auth) {
+            $user = User::where('id', Auth::user()->id)->first();
+
+            $notification_wishes = Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
+
+            return view('detailAkun.notifikasi.notifikasi', ['user' => $user, 'notification_wishes' => $notification_wishes]);
         }
 
         return redirect('login');

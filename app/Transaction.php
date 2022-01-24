@@ -31,4 +31,8 @@ class Transaction extends Model
     public function getInterShipperRelation(){
         return $this->hasOne('App\Shipper', 'id', 'inter_shipper_id');
     }
+
+    public function getAddressRelation(){
+        return $this->hasOne('App\Address', 'id', 'address_id');
+    }
 }

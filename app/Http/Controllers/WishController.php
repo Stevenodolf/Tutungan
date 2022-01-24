@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notification_Wish;
 use App\Payment;
 use App\Payment_Item;
 use App\TemporaryFile;
@@ -93,6 +94,7 @@ class WishController extends Controller
             // Buat Object Wish
             $wish = new Wish();
             $wish->id = floor(time()-999999999);
+            $wish_id = $wish->id;
             $wish->name = $request->wishName; //string
             $wish->price = $request->price; //int
             $wish->category_id = $request->categoryId; //int
@@ -118,6 +120,13 @@ class WishController extends Controller
             $wish->created_at = Carbon::now();
             $wish->updated_at = Carbon::now();
             $wish->save();
+
+            // Buat Notification_Wish 1 (Transaksi menunggu pembayaran nihh)
+            $notification_wish = new Notification_Wish;
+            $notification_wish->user_id = $user->id;
+            $notification_wish->wish_id = $wish_id;
+            $notification_wish->notification_id = 1;
+            $notification_wish->save();
 
             return redirect()->route('home');
         }
