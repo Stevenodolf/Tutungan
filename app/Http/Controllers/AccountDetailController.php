@@ -75,10 +75,12 @@ class AccountDetailController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
+            $addressNavbar = Address::where('is_temp','1')->first();
+
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
-            return view('detailAkun.akunSaya.profil',['user'=>$user, 'cart_items' => $cart_items, 'notifs' => $notifs]);
+            return view('detailAkun.akunSaya.profil',['user'=>$user, 'cart_items' => $cart_items, 'notifs' => $notifs, 'addressNavbar'=>$addressNavbar]);
         }
         return redirect('login');
     }
@@ -137,11 +139,13 @@ class AccountDetailController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
+            $addressNavbar = Address::where('is_temp','1')->first();
+
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
             return view('detailAkun.akunSaya.alamatPengiriman',['user'=>$user,'provinsi'=>$provinsi,'alamat'=>$alamat, 'cart_items' => $cart_items,
-                                                                'notifs' => $notifs]);
+                                                                'notifs' => $notifs, 'addressNavbar'=>$addressNavbar]);
         }
         return redirect('login');
     }
@@ -279,11 +283,13 @@ class AccountDetailController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
+            $addressNavbar = Address::where('is_temp','1')->first();
+
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
             return view('detailAkun.akunSaya.kartuKreditDebit',['user'=>$user,'creditDebitList'=>$creditDebitList, 'cart_items' => $cart_items,
-                                                                'notifs' => $notifs]);
+                                                                'notifs' => $notifs, 'addressNavbar'=>$addressNavbar]);
         }
         return redirect('login');
     }
@@ -345,7 +351,7 @@ class AccountDetailController extends Controller
                 ->where('user_id', Auth::user()->id)
                 ->where('is_utama','1')
                 ->update(array('is_utama'=>'0'));
-                
+
             DB::table('card_info')
                 ->where('id', $request->id)
                 ->where('user_id', Auth::user()->id)
@@ -373,10 +379,12 @@ class AccountDetailController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
+            $addressNavbar = Address::where('is_temp','1')->first();
+
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
-            return view('detailAkun.akunSaya.ubahPassword',['user'=>$user, 'cart_items' => $cart_items, 'notifs' => $notifs]);
+            return view('detailAkun.akunSaya.ubahPassword',['user'=>$user, 'cart_items' => $cart_items, 'notifs' => $notifs, 'addressNavbar'=>$addressNavbar]);
         }
         return redirect('login');
     }
@@ -424,6 +432,8 @@ class AccountDetailController extends Controller
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
+            $addressNavbar = Address::where('is_temp','1')->first();
+
             if($request->filter == 0 or $request->filter == null) {
                 $wishes = Wish::where('created_by', $user->id)->orderBy('created_at', 'DESC')->get();
                 $filter = 0;
@@ -434,7 +444,7 @@ class AccountDetailController extends Controller
             $transactions = Transaction::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
 
             return view('detailAkun.wishSaya.wishSaya', ['user' => $user, 'wishes' => $wishes, 'filter' => $filter, 'transactions' => $transactions,
-                                                        'cart' => $cart, 'cart_items' => $cart_items, 'notifs' => $notifs]);
+                                                        'cart' => $cart, 'cart_items' => $cart_items, 'notifs' => $notifs, 'addressNavbar'=>$addressNavbar]);
         }
 
         return redirect('login');
@@ -460,6 +470,8 @@ class AccountDetailController extends Controller
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
+            $addressNavbar = Address::where('is_temp','1')->first();
+
             if($request->filter == 7 or $request->filter == null) {
                 $transactions = Transaction::where('user_id', $user->id)->where('status_transaksi_id', '!=', 0)->orderBy('created_at', 'DESC')->get();
                 $filter = 7;
@@ -469,7 +481,7 @@ class AccountDetailController extends Controller
             }
 
             return view('detailAkun.transaksiSaya.transaksiSaya', ['user' => $user, 'transactions' => $transactions, 'filter' => $filter,
-                                                                    'cart' => $cart, 'cart_items' => $cart_items, 'notifs' => $notifs]);
+                                                                    'cart' => $cart, 'cart_items' => $cart_items, 'notifs' => $notifs, 'addressNavbar'=>$addressNavbar]);
         }
 
         return redirect('login');
@@ -490,13 +502,15 @@ class AccountDetailController extends Controller
             $kabupaten = $kecamatan->getKabupatenRelation;
             $provinsi = $kabupaten->getProvinsiRelation;
 
+            $addressNavbar = Address::where('is_temp','1')->first();
+
             $shipment_statuses = Shipment_Status::where('transaction_id', $transaction->id)
                 ->orderBy('created_at', 'DESC')
                 ->orderBy('sub_status_transaksi_id', 'DESC')->get();
 
             return view('detailAkun.transaksiSaya.detailTransaksi',
                 ['user' => $user, 'transaction' => $transaction, 'wish' => $wish,
-                    'address' => $address, 'kecamatan' => $kecamatan, 'kabupaten' => $kabupaten, 'provinsi' => $provinsi, 'shipment_statuses' => $shipment_statuses]);
+                    'address' => $address, 'kecamatan' => $kecamatan, 'kabupaten' => $kabupaten, 'provinsi' => $provinsi, 'shipment_statuses' => $shipment_statuses, 'addressNavbar'=>$addressNavbar]);
         }
 
         return redirect('login');
@@ -555,12 +569,14 @@ class AccountDetailController extends Controller
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
+            $addressNavbar = Address::where('is_temp','1')->first();
+
             $notification_wishes = Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(10);
             Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')
                 ->update(['is_read' => 1]);
 
             return view('detailAkun.notifikasi.notifikasi', ['user' => $user, 'notifs' => $notifs, 'notification_wishes' => $notification_wishes,
-                                                             'cart' => $cart, 'cart_items' => $cart_items]);
+                                                             'cart' => $cart, 'cart_items' => $cart_items, 'addressNavbar'=>$addressNavbar]);
         }
 
         return redirect('login');

@@ -64,11 +64,18 @@
                     </div>
                 </div>
             @else
+                @php
+                    $name = $addressNavbar->fullname;
+                    $name = explode(' ', $name);
+
+                    $firstName = $name[0];
+                    $lastName = (isset($name[count($name)-1])) ? $name[count($name)-1] : '';
+                @endphp
                 <a href="{{url('/akunSaya/alamatpengiriman')}}" class="locationSection">
                     <img src="{{asset('images/location.png')}}">
                     <div class="contentSemiNormal locationText">
-                        <p>Dikirim ke</p>
-                        <p>Indonesia</p>
+                        <p style="color: grey">Dikirim ke</p>
+                        <p>{{$firstName}} {{$lastName}}</p>
                     </div>
                 </a>
             @endguest
@@ -135,8 +142,8 @@
                     </form>
                 </div>
             @else
-                <div class="dropdownKeranjang">
-                    <button class="buttonWithImage" onclick="openKeranjangDropdown()"><img src="{{asset('images/shopping-cart.png')}}"></button>
+                <div class="dropdownKeranjang" id="parentDropdownKeranjang">
+                    <button class="buttonWithImage" id="buttonDropdownKeranjang" onclick="openKeranjangDropdown()"><img src="{{asset('images/shopping-cart.png')}}"></button>
                     <div class="dropdownList" id="dropdownKeranjang">
                         <div class="title">
                             <p class="contentSemiNormal">Keranjang Anda</p>
@@ -166,8 +173,8 @@
                         @endif
                     </div>
                 </div>
-                <div class="dropdownNotifikasi">
-                    <button class="buttonWithImage" onclick="openNotifDropdown()"><img src="{{asset('images/bell.png')}}"></button>
+                <div class="dropdownNotifikasi" id="parentDropdownNotifikasi">
+                    <button class="buttonWithImage" id="buttonDropdownNotif" onclick="openNotifDropdown()"><img src="{{asset('images/bell.png')}}"></button>
                     <div class="dropdownList" id="dropdownNotif">
                         <div class="title">
                             <p class="contentSemiNormal">Notifikasi</p>
@@ -210,8 +217,8 @@
                         Wish
                     </button>
                 </form>
-                <div class="dropdownProfil">
-                    <button class="buttonUser" onclick="openUserDropdown();">
+                <div class="dropdownProfil" id="parentDropdownProfil">
+                    <button class="buttonUser" id="buttonDropdownUser" onclick="openUserDropdown();">
                         @if($user->image)
                             <img src="{{asset('uploads/profile/'. $user->image)}}">
                         @else

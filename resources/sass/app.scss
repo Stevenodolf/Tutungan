@@ -601,8 +601,8 @@ button{
             display: none;
             position: absolute;
             min-width: 160px;
-            margin-top: 5px;
-            z-index: 2;
+            //margin-top: 5px;
+            z-index: 5;
             //display: flex;
             flex-direction: column;
             background: #FFFFFF;
@@ -626,8 +626,8 @@ button{
             display: none;
             position: absolute;
             width: 300px;
-            margin-top: 5px;
-            z-index: 2;
+            //margin-top: 5px;
+            z-index: 5;
             //display: flex;
             flex-direction: column;
             background: #FFFFFF;
@@ -674,9 +674,9 @@ button{
         .dropdownList{
             display: none;
             position: absolute;
-            margin-top: 5px;
+            //margin-top: 5px;
             width: 420px;
-            z-index: 2;
+            z-index: 5;
             //display: flex;
             flex-direction: column;
             background: #FFFFFF;
@@ -2435,9 +2435,12 @@ button{
                         .contentSemiNormal{
                             width: 110px;
                         }
-                        input, select{
+                        input{
                             height: 35px;
-                            width: 100%;
+                            width: 75%;
+                        }
+                        select{
+                            height: 35px;
                         }
                         &:last-of-type {
                             margin-bottom: 0;
@@ -3311,6 +3314,7 @@ button{
                 border-radius: 5px;
                 height: 35px;
                 width: 100%;
+                padding: 8px;
             }
             select{
                 border: 1px solid rgba(0, 0, 0, 0.25);
@@ -3318,14 +3322,16 @@ button{
                 border-radius: 5px;
                 height: 35px;
                 width: 100%;
+                padding: 8px;
             }
             textarea{
                 resize: none;
                 width: 100%;
-                height: 45px;
+                height: 75px;
                 border: 1px solid rgba(0, 0, 0, 0.25);
                 box-sizing: border-box;
                 border-radius: 5px;
+                padding: 8px;
             }
         }
     }
