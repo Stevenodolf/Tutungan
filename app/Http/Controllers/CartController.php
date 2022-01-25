@@ -113,7 +113,7 @@ class CartController extends Controller
             $cart->updated_at = Carbon::now()->format('Y-m-d H:i:s');
             $cart->save();
 
-            return redirect()->back();
+            return redirect('cart');
         }
         return redirect('login');
     }
@@ -140,7 +140,7 @@ class CartController extends Controller
                 $cart_item->save();
             }
 
-            return redirect()->back();
+            return redirect('cart');
         }
         return  redirect('login');
     }

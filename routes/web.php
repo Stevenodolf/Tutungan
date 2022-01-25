@@ -89,20 +89,7 @@ Route::post('/akunSaya/ubahpass', 'AccountDetailController@postUbahPassword');
 
 Route::get('/notifikasi', 'AccountDetailController@getNotification')->name('getNotification');
 Route::post('/updateNotifikasi', 'AccountDetailController@updateNotification')->name('updateNotification');
-//Route::get('/notifikasi', function(){
-//    return view('detailAkun.notifikasi.notifikasi');
-//});
-//Route::get('/wishsaya', 'AccountDetailController@getWishSaya')->name('getWishSaya');
 Route::get('/wishsaya', 'AccountDetailController@getWishSaya')->name('getWishSaya');
-//Route::get('/wishsaya', function(){
-//    return view('detailAkun.wishSaya.wishSaya');
-//});
 Route::get('/transaksisaya', 'AccountDetailController@getTransaksiSaya')->name('getTransaksiSaya');
-//Route::get('/transaksisaya', function(){
-//    return view('detailAkun.transaksiSaya.transaksiSaya');
-//});
 Route::get('/transaksisaya/detailtransaksi/{id}', 'AccountDetailController@getDetailTransaksi')->name('getDetailTransaksi');
 Route::get('/transaksisaya/batalkantransaksi/{id}', 'AccountDetailController@batalkanTransaksi')->name('batalkanTransaksi');
-//Route::get('/transaksisaya/detailtransaksi', function(){
-//    return view('detailAkun.transaksiSaya.detailTransaksi');
-//});
