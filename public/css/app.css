@@ -107,6 +107,22 @@ button {
   background: #DFCC60;
 }
 
+.buttonWhiteGreen {
+  border-color: #57B793;
+  background: #FFFFFF;
+  margin-bottom: 10px;
+  font-family: "latobold";
+  color: #57B793;
+}
+
+.buttonWhiteGreen:hover {
+  background: #D9D9D9;
+}
+
+.buttonWhiteGreen:active {
+  background: #DEFDE0;
+}
+
 .barWithText .textProgress {
   display: flex;
   justify-content: flex-end;
@@ -3009,6 +3025,13 @@ button {
   flex-direction: row;
   justify-content: right;
   width: 100%;
+}
+
+.detailAkun .contentV2 .wishSection .wishCell .wishCellContent .edit #buttonBayar {
+  font-family: "latobold";
+  margin-right: 11px;
+  margin-top: -12px;
+  height: 36px;
 }
 
 .detailAkun .contentV2 .wishSection .wishCell .wishCellContent .edit .buttonOnEdit {

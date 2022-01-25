@@ -237,7 +237,7 @@
                         </div>
                         <div class="rightSection">
                             <button class="button buttonBlack">Lihat Invoice</button>
-                            @if($transaction->status_transaksi_id != 6)
+                            @if($transaction->status_transaksi_id != 6 and $wish->status_wish_id == 2)
                                 <button class="button buttonRed" onclick="window.location='{{ url("/transaksisaya/batalkantransaksi/".$transaction->id)}}'">Batalkan Transaksi</button>
                             @endif
                         </div>

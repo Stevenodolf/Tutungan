@@ -143,7 +143,7 @@
                                 {{ csrf_field() }}
                                 <input type="hidden" name="wish_id" value="{{$wish->id}}">
                                 <input type="hidden" name="qty" value="{{$wish->curr_qty}}">
-                                <button type="submit" class="contentSemiNormal buttonOnEdit">Bayar</button>
+                                <button type="submit" id="buttonBayar" class="button buttonWhiteGreen">Bayar</button>
                             </form>
                         @elseif($wish->status_wish_id == 3)
                             <a href="/wish/{{ $wish->id }}" class="contentSemiNormal buttonOnEdit">Tambah Kontribusi</a>

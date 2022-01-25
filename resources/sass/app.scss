@@ -93,6 +93,19 @@ button{
         background: #DFCC60;
     }
 }
+.buttonWhiteGreen{
+    border-color: #57B793;
+    background: #FFFFFF;
+    margin-bottom: 10px;
+    font-family: "latobold";
+    color: #57B793;
+    &:hover{
+        background: #D9D9D9;
+    }
+    &:active{
+        background: #DEFDE0;
+    }
+}
 .barWithText{
     .textProgress{
         display: flex;
@@ -2780,6 +2793,17 @@ button{
                         justify-content: right;
                         width: 100%;
                         //background: blueviolet;
+                        #buttonBayar {
+                            font-family: "latobold";
+                            //color: #57B793;
+                            margin-right: 11px;
+                            margin-top: -12px;
+                            height: 36px;
+                            //cursor: pointer;
+                            //text-decoration: none;
+                            //background: inherit;
+                            //border: none;
+                        }
                         .buttonOnEdit{
                             font-family: "latobold";
                             color: #57B793;
