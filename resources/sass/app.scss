@@ -217,11 +217,11 @@ button{
 
 //Register
 .firstRegister{
-    min-height: 100vh;
+    //height: 100vh;
     width: 100%;
     //margin: 25px 120px;
-    background-size: cover;
-    background-repeat: no-repeat;
+    //background-size: cover;
+    //background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -232,6 +232,7 @@ button{
         box-shadow: 1px 6px 4px rgba(49, 53, 75, 0.25);
         border-radius: 5px;
         padding: 25px;
+        margin: 90px 0 20px 0;
         .section{
             margin-top: 35px;
             a{
@@ -420,10 +421,9 @@ button{
 
 //Login
 .login{
-    min-height: 100vh;
+    height: 100vh;
     width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
+
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -508,7 +508,7 @@ button{
 .loginPopUp{
     background-color: white;
     width: 490px;
-    margin-right: 8%;
+    //margin-right: 8%;
     padding: 40px;
     border-radius: 9px;
     .title{
@@ -987,7 +987,7 @@ button{
             display: flex;
             align-items: center;
             .swiper-wrapper{
-                height: 43vh;
+                height: 380px;
             }
             .swiper-slide {
                 display: flex;
