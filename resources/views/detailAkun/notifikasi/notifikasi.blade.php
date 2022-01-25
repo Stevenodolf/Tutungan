@@ -62,7 +62,7 @@
                         </script>
                     </div>
                 @else
-                    <div id="cell{{ $idx }}" class="notificationCell" onclick="window.location='{{ url("/transaksisaya/detailtransaksi/".$notification_wish->transaction_id)}}'">
+                    <div id="cell{{ $idx }}" class="notificationCell" onclick="window.location='{{ url('/transaksisaya/detailtransaksi/'.$notification_wish->transaction_id)}}'">
                         <img src="{{asset('uploads/'.json_decode($notification_wish->getWishRelation->image)[0])}}">
                         <div class="detail">
                             <p id="created{{ $idx }}" class="contentSmall date"></p>

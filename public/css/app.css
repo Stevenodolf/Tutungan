@@ -2453,16 +2453,6 @@ button {
   margin-bottom: 20px;
 }
 
-.checkout .pembayaranVerifikasi button {
-  color: #010101;
-  height: 36px;
-  background: #FFD901;
-  border-radius: 5px;
-  border: none;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
 .detailAkun {
   display: flex;
   justify-content: center;

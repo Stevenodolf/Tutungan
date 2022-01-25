@@ -16,7 +16,7 @@
                         <p class="contentSemiBig text">Kembali</p>
                     </div>
                     <div class="indicator">
-                        <p class="noTransaksi">No. Transaksi: {{ $transaction->id }}</p>
+                        <p class="contentSemiNormal noTransaksi">No. Transaksi: {{ $transaction->id }}</p>
                         @if($transaction->status_transaksi_id == 5)
                             <p class="statusGreen">{{ $transaction->getTransactionStatusRelation->name }}</p>
                         @elseif($transaction->status_transaksi_id == 6)
@@ -211,28 +211,28 @@
                     <div class="contentAfterTitle3">
                         <div class="leftSection">
                             <div class="paymentInfo">
-                                <p class="infoType">Metode Pembayaran</p>
-                                <p class="infoDetail">BCA Virtual Account</p>
+                                <p class="contentSmall infoType">Metode Pembayaran</p>
+                                <p class="contentSmall infoDetail">BCA Virtual Account</p>
                             </div>
                             <div class="paymentInfo">
-                                <p class="infoType">Total Harga</p>
-                                <p class="infoDetail">Rp{{number_format($transaction->total_price, 0, ',', '.')}}</p>
+                                <p class="contentSmall infoType">Total Harga</p>
+                                <p class="contentSmall infoDetail">Rp{{number_format($transaction->total_price, 0, ',', '.')}}</p>
                             </div>
                             <div class="paymentInfo">
-                                <p class="infoType">Biaya Pengiriman Origin ke Gudang</p>
-                                <p class="infoDetail">Rp{{number_format($transaction->total_oti, 0, ',', '.')}}</p>
+                                <p class="contentSmall infoType">Biaya Pengiriman Origin ke Gudang</p>
+                                <p class="contentSmall infoDetail">Rp{{number_format($transaction->total_oti, 0, ',', '.')}}</p>
                             </div>
                             <div class="paymentInfo">
-                                <p class="infoType">Biaya Pengiriman Gudang ke Anda</p>
-                                <p class="infoDetail">Rp{{number_format($transaction->total_itu, 0, ',', '.')}}</p>
+                                <p class="contentSmall infoType">Biaya Pengiriman Gudang ke Anda</p>
+                                <p class="contentSmall infoDetail">Rp{{number_format($transaction->total_itu, 0, ',', '.')}}</p>
                             </div>
                             <div class="paymentInfo">
-                                <p class="infoType">Biaya Administrasi</p>
-                                <p class="infoDetail">Rp{{number_format($transaction->total_fee, 0, ',', '.')}}</p>
+                                <p class="contentSmall infoType">Biaya Administrasi</p>
+                                <p class="contentSmall infoDetail">Rp{{number_format($transaction->total_fee, 0, ',', '.')}}</p>
                             </div>
                             <div class="totalPayment">
-                                <p class="title">Total Pembayaran</p>
-                                <p class="totalPaymentDetail">Rp{{number_format($transaction->total_payment, 0, ',', '.')}}</p>
+                                <p class="contentSemiNormal title">Total Pembayaran</p>
+                                <p class="contentSemiNormal totalPaymentDetail">Rp{{number_format($transaction->total_payment, 0, ',', '.')}}</p>
                             </div>
                         </div>
                         <div class="rightSection">

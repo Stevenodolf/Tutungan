@@ -155,7 +155,7 @@
                             <h2 class="contentSemiExtraBig">Pembayaran Terverifikasi</h2>
                         </div>
                         <input type="hidden" name="address_id" value="{{ $address->id }}">
-                        <button class="contentSemiNormal" type="submit" id="kembaliBeranda" type="submit">Kembali Ke Beranda</button>
+                        <button class="button buttonYellow" type="submit" id="kembaliBeranda" type="submit">Kembali Ke Beranda</button>
                     </div>
                 </div>
             </form>

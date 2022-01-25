@@ -162,18 +162,21 @@ class PaymentController extends Controller
                     $notification_wish = new Notification_Wish;
                     $notification_wish->user_id = $user->id;
                     $notification_wish->wish_id = $payment_item->wish_id;
+                    $notification_wish->transaction_id = $transaction->id;
                     $notification_wish->notification_id = 2;
                     $notification_wish->save();
 
                     $notification_wish = new Notification_Wish;
                     $notification_wish->user_id = $user->id;
                     $notification_wish->wish_id = $payment_item->wish_id;
+                    $notification_wish->transaction_id = $transaction->id;
                     $notification_wish->notification_id = 3;
                     $notification_wish->save();
 
                     $notification_wish = new Notification_Wish;
                     $notification_wish->user_id = $user->id;
                     $notification_wish->wish_id = $payment_item->wish_id;
+                    $notification_wish->transaction_id = $transaction->id;
                     $notification_wish->notification_id = 4;
                     $notification_wish->save();
 
