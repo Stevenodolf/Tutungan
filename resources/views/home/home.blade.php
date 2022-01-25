@@ -326,9 +326,7 @@
                     @endif
                     @if(($loop->iteration-1) % 5 == 0 && $loop->index != 0)
                         </div>
-                        @if(($loop->iteration-1) != ($loop->count-1))
-                            <div class="row">
-                        @endif
+                        <div class="row">
                     @endif
                         <div class="column">
                             <div class="wish" onclick="window.location='{{ url("/wish/".$for_you_item->id)}}'">
