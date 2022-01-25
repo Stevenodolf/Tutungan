@@ -831,10 +831,10 @@ button {
 }
 
 .navbar .locationSection img {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 30px;
   height: 30px;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
 }
 
 .navbar .locationSection .locationText {

@@ -740,8 +740,9 @@ button{
         width: fit-content;
         cursor: pointer;
         img{
-            width: fit-content;
+            width: 30px;
             height: 30px;
+            object-fit: scale-down;
         }
         .locationText{
             width: fit-content;
