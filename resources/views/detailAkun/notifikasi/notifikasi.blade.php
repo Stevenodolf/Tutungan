@@ -46,31 +46,31 @@
             @php
                 $idx = 1;
             @endphp
-            @foreach($notification_wishes as $notification_wish)
-                @if($notification_wish->notification_id == 1)
+            @foreach($notifs as $notif)
+                @if($notif->notification_id == 1)
                     <div id="cell{{ $idx }}" class="notificationCell" onclick="window.location='{{ url("/wishsaya/")}}'">
-                        <img src="{{asset('uploads/'.json_decode($notification_wish->getWishRelation->image)[0])}}">
+                        <img src="{{asset('uploads/'.json_decode($notif->getWishRelation->image)[0])}}">
                         <div class="detail">
                             <p id="created{{ $idx }}" class="contentSmall date"></p>
-                            <p class="contentSemiNormal notificationTitle">{{ $notification_wish->getNotificationRelation->title }}</p>
-                            <p class="contentSemiNormal subtitle">{{ $notification_wish->getNotificationRelation->subtitle }}</p>
+                            <p class="contentSemiNormal notificationTitle">{{ $notif->getNotificationRelation->title }}</p>
+                            <p class="contentSemiNormal subtitle">{{ $notif->getNotificationRelation->subtitle }}</p>
                         </div>
                         <script>
-                            var createdDate = "{{ $notification_wish->created_at }}";
+                            var createdDate = "{{ $notif->created_at }}";
                             createdDate = createdDate.replace(/\s/g, 'T');
                             document.getElementById("created" + {{ $idx }}).innerHTML = moment(createdDate).format('DD MMMM YYYY');
                         </script>
                     </div>
                 @else
-                    <div id="cell{{ $idx }}" class="notificationCell" onclick="window.location='{{ url("/transaksisaya/detailtransaksi/".$notification_wish->transaction_id)}}'">
-                        <img src="{{asset('uploads/'.json_decode($notification_wish->getWishRelation->image)[0])}}">
+                    <div id="cell{{ $idx }}" class="notificationCell" onclick="window.location='{{ url("/transaksisaya/detailtransaksi/".$notif->transaction_id)}}'">
+                        <img src="{{asset('uploads/'.json_decode($notif->getWishRelation->image)[0])}}">
                         <div class="detail">
                             <p id="created{{ $idx }}" class="contentSmall date"></p>
-                            <p class="contentSemiNormal notificationTitle">{{ $notification_wish->getNotificationRelation->title }}</p>
-                            <p class="contentSemiNormal subtitle">{{ $notification_wish->getNotificationRelation->subtitle }}</p>
+                            <p class="contentSemiNormal notificationTitle">{{ $notif->getNotificationRelation->title }}</p>
+                            <p class="contentSemiNormal subtitle">{{ $notif->getNotificationRelation->subtitle }}</p>
                         </div>
                         <script>
-                            var createdDate = "{{ $notification_wish->created_at }}";
+                            var createdDate = "{{ $notif->created_at }}";
                             createdDate = createdDate.replace(/\s/g, 'T');
                             document.getElementById("created" + {{ $idx }}).innerHTML = moment(createdDate).format('DD MMMM YYYY');
                         </script>
@@ -78,7 +78,7 @@
                 @endif
 
 {{--                <script>--}}
-{{--                    var is_read = {{ $notification_wish->is_read }};--}}
+{{--                    var is_read = {{ $notif->is_read }};--}}
 {{--                    if (is_read == 0) {--}}
 {{--                        $("#cell" + {{ $idx }}).css('background', '#f7f7f7');--}}
 {{--                    }--}}

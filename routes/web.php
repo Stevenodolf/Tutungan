@@ -31,6 +31,8 @@ Route::get('/tick', function(){
     return view('wish.tick');
 });
 
+Route::post('/search', 'WishController@wishSearch');
+
 //Forgot Password
 Route::get('/forgotPassword', 'ForgotPasswordController@showForgotPassword');
 Route::post('/forgotPassword', 'ForgotPasswordController@submitForgotPassword');

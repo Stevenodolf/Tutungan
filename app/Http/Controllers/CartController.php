@@ -8,6 +8,7 @@ use App\User;
 use App\Wish;
 use App\Cart;
 use App\Cart_Item;
+use App\Notification_Wish;
 use App\Payment;
 use App\Payment_Item;
 use App\Shipper;
@@ -23,6 +24,9 @@ class CartController extends Controller
         if($auth){
             $user = User::where('id', Auth::user()->id)->first();
 
+            //notif
+            $notifs = Notification_Wish::where('user_id', $user->id)->get();
+
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
@@ -37,7 +41,7 @@ class CartController extends Controller
             $cart->total_price = $total_price;
             $cart->save();
 
-            return view('keranjang.keranjang', ['user' => $user, 'cart' => $cart, 'cart_items' => $cart_items]);
+            return view('keranjang.keranjang', ['user' => $user, 'cart' => $cart, 'cart_items' => $cart_items, 'notifs' => $notifs]);
         }
         return redirect('login');
     }

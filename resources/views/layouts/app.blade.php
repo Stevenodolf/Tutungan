@@ -72,7 +72,7 @@
                     </div>
                 </a>
             @endguest
-            <form class="searchbar">
+            <form method="POST" class="searchbar" action="search">
                 <input type="text" placeholder="Search here...">
                 <button><img src="{{asset('images/search.png')}}"></button>
             </form>
@@ -171,7 +171,7 @@
                     <div class="dropdownList" id="dropdownNotif">
                         <div class="title">
                             <p class="contentSemiNormal">Notifikasi</p>
-                            <button>
+                            <button onclick="window.location='{{ url("/notifikasi")}}'">
                                 <p class="contentSemiNormal">Lihat Semua</p>
                             </button>
                         </div>

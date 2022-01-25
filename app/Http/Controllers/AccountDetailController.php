@@ -10,7 +10,6 @@ use App\User;
 use App\Wish;
 use App\Cart;
 use App\Cart_Item;
-use App\Notification_Wish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -465,14 +464,23 @@ class AccountDetailController extends Controller
     public function getNotification() {
         $auth = Auth::check();
 
+        //cart dropdown
+        $cart = NULL;
+        $cart_items = NULL;
+
         if($auth) {
             $user = User::where('id', Auth::user()->id)->first();
 
-            $notification_wishes = Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(10);
+            //cart dropdown
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+
+            $notifs = Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(10);
             Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')
                 ->update(['is_read' => 1]);
 
-            return view('detailAkun.notifikasi.notifikasi', ['user' => $user, 'notification_wishes' => $notification_wishes]);
+            return view('detailAkun.notifikasi.notifikasi', ['user' => $user, 'notifs' => $notifs,
+                                                             'cart' => $cart, 'cart_items' => $cart_items]);
         }
 
         return redirect('login');

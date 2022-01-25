@@ -162,7 +162,7 @@ class WishController extends Controller
             $wish = Wish::where('id', $id)->first();
 
 
-            return view('edit-wish',['$auth' => $auth, 'user' => $user, 'wish' => $wish]);
+            return view('edit-wish',['auth' => $auth, 'user' => $user, 'wish' => $wish]);
         }
         return redirect('login');
     }
@@ -173,5 +173,38 @@ class WishController extends Controller
         if($auth){
 
         }
+    }
+
+    public function wishSearch(Request $request){
+        $auth = Auth::check();
+        
+        //search
+        $search = $request->search;
+
+        //cart dropdown
+        $cart = NULL;
+        $cart_items = NULL;
+
+        //notif dropdown
+        $notifs = NULL;
+
+        //search
+        $wishes = Wish::where('name', 'like', "%".$search."%")->get();
+
+        if($auth){
+            $user = User::where('id', Auth::user()->id)->first();
+
+            //cart dropdown
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+
+            //notif dropdown
+            $notifs = Notification_Wish::where('user_id', $user->id)->get();
+
+            return view('wish.searchWish', ['auth' => $auth, 'user' => $user,'wishes', $wishes, 'cart' => $cart,
+                                            'cart_items' => $cart_items]);
+        }
+        return view('wish.searchWish', ['auth' => $auth, 'wishes', $wishes, 'cart' => $cart,
+                                        'cart_items' => $cart_items]);
     }
 }
