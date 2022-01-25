@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 
 class AccountDetailController extends Controller
 {
-    //API
+    //API AMBIL DATA
     public function getAlamatDetail(Request $request){
         $auth = Auth::check();
         if($auth){
@@ -56,7 +56,7 @@ class AccountDetailController extends Controller
 
     }
 
-    //END OF API
+    //END OF API AMBIL DATA
 
     public function getProfil(){
         $auth = Auth::check();
@@ -95,12 +95,20 @@ class AccountDetailController extends Controller
             }
             //picture
             $file = $request->file('inputProfil');
-            $folder = uniqid() . '-' . now()->timestamp;
-            $filename = uniqid(). '.' .$file->getClientOriginalExtension();
-            $file->storeAs('uploads/profile/' . $folder, $filename);
-            DB::table('user')
-                -> where('id', Auth::user()->id)
-                -> update(array('username'=> $request->nama,'gender'=>$request->gender,'phone_number' => $request->phoneNumber, 'image'=> $folder .'/'. $filename));
+            if($file){
+                $folder = uniqid() . '-' . now()->timestamp;
+                $filename = uniqid(). '.' .$file->getClientOriginalExtension();
+                $file->storeAs('uploads/profile/' . $folder, $filename);
+
+                DB::table('user')
+                    -> where('id', Auth::user()->id)
+                    -> update(array('username'=> $request->nama,'gender'=>$request->gender,'phone_number' => $request->phoneNumber, 'image'=> $folder .'/'. $filename));
+            }else{
+                DB::table('user')
+                    -> where('id', Auth::user()->id)
+                    -> update(array('username'=> $request->nama,'gender'=>$request->gender,'phone_number' => $request->phoneNumber));
+            }
+
         }
         return redirect('/akunSaya/profil');
     }
@@ -358,7 +366,7 @@ class AccountDetailController extends Controller
 
         if($auth) {
             $user = User::where('id', Auth::user()->id)->first();
-            
+
             //cart dropdown
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
@@ -384,7 +392,7 @@ class AccountDetailController extends Controller
 
     public function getTransaksiSaya(Request $request) {
         $auth = Auth::check();
-        
+
         //cart dropdown
         $cart = NULL;
         $cart_items = NULL;
@@ -394,7 +402,7 @@ class AccountDetailController extends Controller
 
         if($auth) {
             $user = User::where('id', Auth::user()->id)->first();
-            
+
             //cart dropdown
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
