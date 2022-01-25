@@ -106,6 +106,14 @@ class AccountDetailController extends Controller
     }
     public function getAlamat(){
         $auth = Auth::check();
+
+        //cart dropdown
+        $cart = NULL;
+        $cart_items = NULL;
+
+        //notif dropdown
+        $notifs = NULL;
+
         if ($auth){
             $user = User::where('id', Auth::user()->id)->first();
             $provinsi = DB::table('address_provinsi')->get();
@@ -116,7 +124,16 @@ class AccountDetailController extends Controller
                 ->orderBy('is_main', 'desc')
                 ->orderBy('is_temp', 'desc')
                 ->get();
-            return view('detailAkun.akunSaya.alamatPengiriman',['user'=>$user,'provinsi'=>$provinsi,'alamat'=>$alamat]);
+
+            //cart dropdown
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+
+            //notif dropdown
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
+
+            return view('detailAkun.akunSaya.alamatPengiriman',['user'=>$user,'provinsi'=>$provinsi,'alamat'=>$alamat, 'cart_items' => $cart_items,
+                                                                'notifs' => $notifs]);
         }
         return redirect('login');
     }
@@ -233,6 +250,14 @@ class AccountDetailController extends Controller
 
     public function getKreditDebit(){
         $auth = Auth::check();
+
+        //cart dropdown
+        $cart = NULL;
+        $cart_items = NULL;
+
+        //notif dropdown
+        $notifs = NULL;
+
         if ($auth){
             $user = User::where('id', Auth::user()->id)->first();
             $creditDebitList = DB::table('card_info')
@@ -241,7 +266,16 @@ class AccountDetailController extends Controller
                 ->groupBy('user_id')
                 ->orderBy('is_utama', 'desc')
                 ->get();
-            return view('detailAkun.akunSaya.kartuKreditDebit',['user'=>$user,'creditDebitList'=>$creditDebitList]);
+
+            //cart dropdown
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+
+            //notif dropdown
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
+
+            return view('detailAkun.akunSaya.kartuKreditDebit',['user'=>$user,'creditDebitList'=>$creditDebitList, 'cart_items' => $cart_items,
+                                                                'notifs' => $notifs]);
         }
         return redirect('login');
     }
@@ -303,7 +337,7 @@ class AccountDetailController extends Controller
                 ->where('user_id', Auth::user()->id)
                 ->where('is_utama','1')
                 ->update(array('is_utama'=>'0'));
-
+                
             DB::table('card_info')
                 ->where('id', $request->id)
                 ->where('user_id', Auth::user()->id)
@@ -316,9 +350,25 @@ class AccountDetailController extends Controller
 
     public function getUbahPassword(){
         $auth = Auth::check();
+
+        //cart dropdown
+        $cart = NULL;
+        $cart_items = NULL;
+
+        //notif dropdown
+        $notifs = NULL;
+
         if ($auth){
             $user = User::where('id', Auth::user()->id)->first();
-            return view('detailAkun.akunSaya.ubahPassword',['user'=>$user]);
+
+            //cart dropdown
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+
+            //notif dropdown
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
+
+            return view('detailAkun.akunSaya.ubahPassword',['user'=>$user, 'cart_items' => $cart_items, 'notifs' => $notifs]);
         }
         return redirect('login');
     }
