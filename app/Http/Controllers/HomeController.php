@@ -60,7 +60,7 @@ class HomeController extends Controller
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
             //notif dropdown
-            $notifs = Notification_Wish::where('user_id', $user->id)->get();
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
             return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'user' => $user, 'cart' => $cart,
                              'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items,

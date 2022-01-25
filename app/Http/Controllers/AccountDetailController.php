@@ -60,9 +60,25 @@ class AccountDetailController extends Controller
 
     public function getProfil(){
         $auth = Auth::check();
+
+        //cart dropdown
+        $cart = NULL;
+        $cart_items = NULL;
+
+        //notif dropdown
+        $notifs = NULL;
+
         if ($auth){
             $user = User::where('id', Auth::user()->id)->first();
-            return view('detailAkun.akunSaya.profil',['user'=>$user]);
+
+            //cart dropdown
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+
+            //notif dropdown
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
+
+            return view('detailAkun.akunSaya.profil',['user'=>$user, 'cart_items' => $cart_items, 'notifs' => $notifs]);
         }
         return redirect('login');
     }
@@ -348,7 +364,7 @@ class AccountDetailController extends Controller
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
             //notif dropdown
-            $notifs = Notification_Wish::where('user_id', $user->id)->get();
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
             if($request->filter == 0 or $request->filter == null) {
                 $wishes = Wish::where('created_by', $user->id)->orderBy('created_at', 'DESC')->get();
@@ -384,7 +400,7 @@ class AccountDetailController extends Controller
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
             //notif dropdown
-            $notifs = Notification_Wish::where('user_id', $user->id)->get();
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
             if($request->filter == 7 or $request->filter == null) {
                 $transactions = Transaction::where('user_id', $user->id)->where('status_transaksi_id', '!=', 0)->orderBy('created_at', 'DESC')->get();
@@ -468,6 +484,9 @@ class AccountDetailController extends Controller
         $cart = NULL;
         $cart_items = NULL;
 
+        //notif dropdown
+        $notifs = NULL;
+
         if($auth) {
             $user = User::where('id', Auth::user()->id)->first();
 
@@ -475,11 +494,14 @@ class AccountDetailController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
-            $notifs = Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(10);
+            //notif dropdown
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
+
+            $notification_wishes = Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(10);
             Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')
                 ->update(['is_read' => 1]);
 
-            return view('detailAkun.notifikasi.notifikasi', ['user' => $user, 'notifs' => $notifs,
+            return view('detailAkun.notifikasi.notifikasi', ['user' => $user, 'notifs' => $notifs, 'notification_wishes' => $notification_wishes,
                                                              'cart' => $cart, 'cart_items' => $cart_items]);
         }
 

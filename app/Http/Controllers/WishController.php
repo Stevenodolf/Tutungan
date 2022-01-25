@@ -68,7 +68,7 @@ class WishController extends Controller
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
             //notif dropdown
-            $notifs = Notification_Wish::where('user_id', $user->id)->get();
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
             // return view('wishDetail', compact('wish'));
             return view('wish.wishDetail', ['auth' => $auth, 'user' => $user, 'wish' => $wish, 'wish_name' => $wish_name, 'wish_price' => $wish_price,
@@ -91,12 +91,27 @@ class WishController extends Controller
     public function getCreateWish(){
         $auth = Auth::check();
 
+        //cart dropdown
+        $cart = NULL;
+        $cart_items = NULL;
+
+        //notif dropdown
+        $notifs = NULL;
+
         if($auth){
             $user = User::where('id', Auth::user()->id)->first();
             $categories = Category::all();
             $origins = Origin::all();
 
-            return view('wish.createWish', ['auth' => $auth, 'user' => $user, 'categories' => $categories, 'origins' => $origins]);
+            //cart dropdown
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+
+            //notif dropdown
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
+
+            return view('wish.createWish', ['auth' => $auth, 'user' => $user, 'categories' => $categories, 'origins' => $origins, 'cart_items' => $cart_items,
+                                            'notifs' => $notifs]);
         }
         return redirect('login');
     }
@@ -199,7 +214,7 @@ class WishController extends Controller
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
             //notif dropdown
-            $notifs = Notification_Wish::where('user_id', $user->id)->get();
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
             return view('wish.searchWish', ['auth' => $auth, 'user' => $user,'wishes', $wishes, 'cart' => $cart,
                                             'cart_items' => $cart_items]);

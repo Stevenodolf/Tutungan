@@ -25,7 +25,7 @@ class CartController extends Controller
             $user = User::where('id', Auth::user()->id)->first();
 
             //notif
-            $notifs = Notification_Wish::where('user_id', $user->id)->get();
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
