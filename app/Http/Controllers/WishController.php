@@ -203,11 +203,13 @@ class WishController extends Controller
         //notif dropdown
         $notifs = NULL;
 
-        //category
-        $categories = Category::all();
-
         //search
-        $wishes = Wish::where('name', 'like', "%".$search."%")->get();
+        $wishes = Wish::where('name', 'like', "%".$search."%")
+                        ->where('category_id', $request->category)->get();
+        $wishes_category_id = Wish::where('name', 'like', "%".$search."%")->pluck('category_id');
+
+        //categories
+        $categories = Category::whereIn('id', $wishes_category_id)->get();
 
         if($auth){
             $user = User::where('id', Auth::user()->id)->first();
