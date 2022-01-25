@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -59,12 +60,14 @@ class HomeController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
+            $addressNavbar = Address::where('is_temp','1')->first();
+
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
             return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'user' => $user, 'cart' => $cart,
                              'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items,
-                             'notifs' => $notifs]);
+                             'notifs' => $notifs, 'addressNavbar'=>$addressNavbar]);
         }
         return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'cart' => $cart, 'notifs' => $notifs,
                              'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items]);
