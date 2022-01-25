@@ -491,8 +491,22 @@ class AccountDetailController extends Controller
     public function getDetailTransaksi($id) {
         $auth = Auth::check();
 
+        //cart dropdown
+        $cart = NULL;
+        $cart_items = NULL;
+
+        //notif dropdown
+        $notifs = NULL;
+
         if($auth) {
             $user = User::where('id', Auth::user()->id)->first();
+
+            //cart dropdown
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+
+            //notif dropdown
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
             $transaction = Transaction::where('id', $id)->first();
             $wish = $transaction->getWishRelation;
@@ -509,7 +523,7 @@ class AccountDetailController extends Controller
                 ->orderBy('sub_status_transaksi_id', 'DESC')->get();
 
             return view('detailAkun.transaksiSaya.detailTransaksi',
-                ['user' => $user, 'transaction' => $transaction, 'wish' => $wish,
+                ['user' => $user, 'transaction' => $transaction, 'wish' => $wish,'cart_items' => $cart_items, 'notifs' => $notifs,
                     'address' => $address, 'kecamatan' => $kecamatan, 'kabupaten' => $kabupaten, 'provinsi' => $provinsi, 'shipment_statuses' => $shipment_statuses, 'addressNavbar'=>$addressNavbar]);
         }
 

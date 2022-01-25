@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="hasil">
-                    @if($wishes == NULL)
+                    @if($wishes == NULL OR $wishes->isEmpty())
                         <div class="row">
                             <div class="column">
                                 No Wish.
