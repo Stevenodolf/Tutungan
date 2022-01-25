@@ -215,7 +215,7 @@
                         @if($user->image)
                             <img src="{{asset('uploads/profile/'. $user->image)}}">
                         @else
-                            <img src="{{asset('images/dummyUser.png')}}">
+                            <img src="{{asset('images/dummyUser2.png')}}">
                         @endif
                         <p class="contentNormal">{{$user->username}}</p>
                         <img id="arrowUser" src="{{asset('images/arrowDownBlack.png')}}">

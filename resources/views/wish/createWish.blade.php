@@ -50,7 +50,7 @@
                             <p class="contentSemiNormal" style="color: #747474;">Ukuran gambar: maks. 10 MB</p>
                         </div>
                         <div style="margin-left: 30px;width: 100%">
-                            <input type="file" name="wishPicture[]" id="wishPicture"/>
+                            <input type="file" name="wishPicture[]" id="wishPicture" required/>
                         </div>
                     </div>
                 </div>
@@ -98,14 +98,14 @@
                             <p class="contentSemiNormal" style="color: #747474;">Harga satuan yaitu harga per item apabila
                                 minimal pembelian tercapai.</p>
                         </div>
-                        <input placeholder="" type="text" name="price">
+                        <input placeholder="" type="text" name="price" required>
                     </div>
                     <div class="sectionInputSelect">
                         <div class="doubleText">
                             <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Target *</p>
                             <p class="contentSemiNormal" style="color: #747474;">Target yaitu jumlah barang yang ingin dicapai di wish yang akan anda buat.</p>
                         </div>
-                        <input placeholder="" type="text" name="targetQty">
+                        <input placeholder="" type="text" name="targetQty" required>
                     </div>
                     <div class="sectionInputSelect">
                         <div class="doubleText">

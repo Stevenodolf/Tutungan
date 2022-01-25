@@ -45,51 +45,61 @@ Route::post('/login', 'AuthController@postLogin')->name('postLogin');
 Route::get('/register', 'AuthController@showRegisterPage')->name('getRegister');
 Route::post('/register', 'AuthController@postRegister') ->name('postRegister');
 Route::get('/account/verify/{token}', 'AuthController@verifyAccount') ->name('userVerify');
-Route::get('/logout','AuthController@logout')->name('logout');
+Route::middleware('auth')->group(function (){
+    Route::get('/logout','AuthController@logout')->name('logout');
 
-Route::get('/createWish', 'WishController@getCreateWish');
-Route::post('/createWish', 'WishController@postCreateWish');
-Route::get('/wish/{id}', 'WishController@wishDetail')->name('getWishDetail');
-Route::post('/wish/{id}', 'CartController@addToCart')->name('addToCart');
-Route::post('/buy/{id}', 'CartController@buyWish')->name('buyWish');
+    Route::get('/createWish', 'WishController@getCreateWish');
+    Route::post('/createWish', 'WishController@postCreateWish');
+    Route::get('/wish/{id}', 'WishController@wishDetail')->name('getWishDetail');
+    Route::post('/wish/{id}', 'CartController@addToCart')->name('addToCart');
+    Route::post('/buy/{id}', 'CartController@buyWish')->name('buyWish');
 
-Route::get('/cart', 'CartController@getCart')->name('getCart');
-Route::post('/cart', 'CartController@postCart')->name('postCart');
-Route::post('/cart/delete', 'CartController@deleteCartItem')->name('deleteCartItem');
-Route::post('/cart/update', 'CartController@updateCartItem')->name('updateCartItem');
+    Route::get('/cart', 'CartController@getCart')->name('getCart');
+    Route::post('/cart', 'CartController@postCart')->name('postCart');
+    Route::post('/cart/delete', 'CartController@deleteCartItem')->name('deleteCartItem');
+    Route::post('/cart/update', 'CartController@updateCartItem')->name('updateCartItem');
 
-Route::get('/checkout/{id}', 'PaymentController@checkout')->name('getCheckout');
-Route::post('/checkout/{id}', 'PaymentController@postCheckout');
+    Route::get('/checkout/{id}', 'PaymentController@checkout')->name('getCheckout')->middleware('alamat');
+    Route::post('/checkout/{id}', 'PaymentController@postCheckout')->middleware('alamat');
 
-// DETAIL AKUN
+    // DETAIL AKUN
 
-Route::get('/akunSaya/profil','AccountDetailController@getProfil');
-Route::post('/akunSaya/editProfil','AccountDetailController@postProfil');
+    Route::get('/akunSaya/profil','AccountDetailController@getProfil');
+    Route::post('/akunSaya/editProfil','AccountDetailController@postProfil');
 
-//API
-Route::post('/getDetail', 'AccountDetailController@getAlamatDetail');
-Route::get('/getProvinsi', 'AccountDetailController@getProvinsi');
-Route::post('/getKota', 'AccountDetailController@getKota');
-Route::post('/getKecamatan', 'AccountDetailController@getKecamatan');
+    //API
+    Route::post('/getDetail', 'AccountDetailController@getAlamatDetail');
+    Route::get('/getProvinsi', 'AccountDetailController@getProvinsi');
+    Route::post('/getKota', 'AccountDetailController@getKota');
+    Route::post('/getKecamatan', 'AccountDetailController@getKecamatan');
 
-Route::get('/akunSaya/alamatpengiriman', 'AccountDetailController@getAlamat');
-Route::post('/akunSaya/postAlamatPengiriman', 'AccountDetailController@postAlamat');
-Route::post('/akunSaya/hapusAlamatPengiriman', 'AccountDetailController@postHapusAlamat');
-Route::post('/akunSaya/postUtamaAlamatPengiriman', 'AccountDetailController@postUtamaAlamat');
-Route::post('/akunSaya/postTempAlamatPengiriman', 'AccountDetailController@postTempAlamat');
-Route::post('/akunSaya/postUbahAlamatPengiriman', 'AccountDetailController@postUbahAlamat');
+    Route::get('/akunSaya/alamatpengiriman', 'AccountDetailController@getAlamat');
+    Route::post('/akunSaya/postAlamatPengiriman', 'AccountDetailController@postAlamat');
+    Route::post('/akunSaya/hapusAlamatPengiriman', 'AccountDetailController@postHapusAlamat');
+    Route::post('/akunSaya/postUtamaAlamatPengiriman', 'AccountDetailController@postUtamaAlamat');
+    Route::post('/akunSaya/postTempAlamatPengiriman', 'AccountDetailController@postTempAlamat');
+    Route::post('/akunSaya/postUbahAlamatPengiriman', 'AccountDetailController@postUbahAlamat');
 
-Route::get('/akunSaya/kartukreditdebit', 'AccountDetailController@getKreditDebit');
-Route::post('/akunSaya/postKartu', 'AccountDetailController@postKreditDebit');
-Route::post('/akunSaya/hapusKartu', 'AccountDetailController@postHapusKreditDebit');
-Route::post('/akunSaya/utamaKartu', 'AccountDetailController@postUtamaKreditDebit');
+    Route::get('/akunSaya/kartukreditdebit', 'AccountDetailController@getKreditDebit');
+    Route::post('/akunSaya/postKartu', 'AccountDetailController@postKreditDebit');
+    Route::post('/akunSaya/hapusKartu', 'AccountDetailController@postHapusKreditDebit');
+    Route::post('/akunSaya/utamaKartu', 'AccountDetailController@postUtamaKreditDebit');
 
-Route::get('/akunSaya/ubahpassword', 'AccountDetailController@getUbahPassword');
-Route::post('/akunSaya/ubahpass', 'AccountDetailController@postUbahPassword');
+    Route::get('/akunSaya/ubahpassword', 'AccountDetailController@getUbahPassword');
+    Route::post('/akunSaya/ubahpass', 'AccountDetailController@postUbahPassword');
 
-Route::get('/notifikasi', 'AccountDetailController@getNotification')->name('getNotification');
-Route::post('/updateNotifikasi', 'AccountDetailController@updateNotification')->name('updateNotification');
-Route::get('/wishsaya', 'AccountDetailController@getWishSaya')->name('getWishSaya');
-Route::get('/transaksisaya', 'AccountDetailController@getTransaksiSaya')->name('getTransaksiSaya');
-Route::get('/transaksisaya/detailtransaksi/{id}', 'AccountDetailController@getDetailTransaksi')->name('getDetailTransaksi');
-Route::get('/transaksisaya/batalkantransaksi/{id}', 'AccountDetailController@batalkanTransaksi')->name('batalkanTransaksi');
+    Route::get('/notifikasi', 'AccountDetailController@getNotification')->name('getNotification');
+    Route::post('/updateNotifikasi', 'AccountDetailController@updateNotification')->name('updateNotification');
+    Route::get('/wishsaya', 'AccountDetailController@getWishSaya')->name('getWishSaya');
+    Route::get('/transaksisaya', 'AccountDetailController@getTransaksiSaya')->name('getTransaksiSaya');
+    Route::get('/transaksisaya/detailtransaksi/{id}', 'AccountDetailController@getDetailTransaksi')->name('getDetailTransaksi');
+    Route::get('/transaksisaya/batalkantransaksi/{id}', 'AccountDetailController@batalkanTransaksi')->name('batalkanTransaksi');
+});
+
+
+
+
+
+
+
+

@@ -9,7 +9,11 @@
         <div class="detailAkun">
             <div class="sideMenu">
                 <div class="profile">
-                    <img src="{{asset("images/dummyUser.png")}}"/>
+                    @if($user->image)
+                        <img src="{{asset('uploads/profile/'. $user->image)}}">
+                    @else
+                        <img src="{{asset('images/dummyUser2.png')}}">
+                    @endif
                     <h3>Steven Yuwono</h3>
                 </div>
                 <div class="menu">
