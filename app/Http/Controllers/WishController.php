@@ -203,6 +203,9 @@ class WishController extends Controller
         //notif dropdown
         $notifs = NULL;
 
+        //category
+        $categories = Category::all();
+
         //search
         $wishes = Wish::where('name', 'like', "%".$search."%")->get();
 
@@ -216,10 +219,10 @@ class WishController extends Controller
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
-            return view('wish.searchWish', ['auth' => $auth, 'user' => $user,'wishes', $wishes, 'cart' => $cart,
-                                            'cart_items' => $cart_items]);
+            return view('wish.searchWish', ['auth' => $auth, 'user' => $user, 'wishes' => $wishes, 'cart' => $cart, 'categories' => $categories,
+                                            'cart_items' => $cart_items, 'notifs' => $notifs, 'search' => $search]);
         }
-        return view('wish.searchWish', ['auth' => $auth, 'wishes', $wishes, 'cart' => $cart,
-                                        'cart_items' => $cart_items]);
+        return view('wish.searchWish', ['auth' => $auth, 'wishes'=> $wishes, 'cart' => $cart, 'categories' => $categories,
+                                        'cart_items' => $cart_items, 'notifs' => $notifs, 'search' => $search]);
     }
 }

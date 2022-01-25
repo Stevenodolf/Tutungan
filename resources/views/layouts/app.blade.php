@@ -72,9 +72,9 @@
                     </div>
                 </a>
             @endguest
-            <form method="POST" class="searchbar" action="search">
-                <input type="text" placeholder="Search here...">
-                <button><img src="{{asset('images/search.png')}}"></button>
+            <form method="GET" class="searchbar" action="/search">
+                <input type="text" name="search" value="{{old('search')}}" placeholder="Search here...">
+                <button type="submit"><img src="{{asset('images/search.png')}}"></button>
             </form>
 {{--            <div class="dropdownKeranjang">--}}
 {{--                <button class="buttonWithImage" onclick="window.location='{{ url("/cart")}}'"><img src="{{asset('images/shopping-cart.png')}}"></button>--}}
