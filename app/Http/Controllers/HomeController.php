@@ -8,6 +8,9 @@ use Carbon\Carbon;
 use App\User;
 use App\Wish;
 use App\Category;
+use App\Cart;
+use App\Cart_Item;
+use App\Notification_Wish;
 
 class HomeController extends Controller
 {
@@ -28,25 +31,6 @@ class HomeController extends Controller
      */
     public function home(){
         $auth = Auth::check();
-        if($auth) {
-            //header user info
-            $user = User::where('id', Auth::user()->id)->first();
-
-            $wishes = Wish::all();
-
-            //last minute
-            $curr_date = Carbon::now();
-            // $lastminute = Wish::whereRaw('DATEDIFF(deadline, curr_date) < 7')->get();
-
-            //category
-            $categories = Category::all();
-
-            //for you
-            $for_you = Wish::where('deadline', '>', Carbon::now())->where('status_wish_id', 3)->inRandomOrder()->get();
-
-            return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'user' => $user,
-                             'categories' => $categories, 'for_you' => $for_you]);
-        }
 
         $wishes = Wish::all();
 
@@ -58,9 +42,31 @@ class HomeController extends Controller
         $categories = Category::all();
 
         //for you
-        $for_you = Wish::where('deadline', '>', Carbon::now())->inRandomOrder()->get();
+        $for_you = Wish::where('deadline', '>', Carbon::now())->where('status_wish_id', 3)->inRandomOrder()->get();
 
-        return view('home.home', ['auth' => $auth, 'wishes' => $wishes,
-                             'categories' => $categories, 'for_you' => $for_you]);
+        //cart dropdown
+        $cart = NULL;
+        $cart_items = NULL;
+
+        //notif dropdown
+        $notifs = NULL;
+
+        if($auth) {
+            //header user info
+            $user = User::where('id', Auth::user()->id)->first();
+
+            //cart dropdown
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+
+            //notif dropdown
+            $notifs = Notification_Wish::where('user_id', $user->id)->get();
+
+            return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'user' => $user, 'cart' => $cart,
+                             'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items,
+                             'notifs' => $notifs]);
+        }
+        return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'cart' => $cart, 'notifs' => $notifs,
+                             'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items]);
     }
 }

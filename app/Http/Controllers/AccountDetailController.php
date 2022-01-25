@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Transaction;
 use App\User;
 use App\Wish;
+use App\Cart;
+use App\Cart_Item;
+use App\Notification_Wish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -328,8 +331,22 @@ class AccountDetailController extends Controller
     public function getWishSaya(Request $request) {
         $auth = Auth::check();
 
+        //cart dropdown
+        $cart = NULL;
+        $cart_items = NULL;
+
+        //notif dropdown
+        $notifs = NULL;
+
         if($auth) {
             $user = User::where('id', Auth::user()->id)->first();
+            
+            //cart dropdown
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+
+            //notif dropdown
+            $notifs = Notification_Wish::where('user_id', $user->id)->get();
 
             if($request->filter == 0 or $request->filter == null) {
                 $wishes = Wish::where('created_by', $user->id)->orderBy('created_at', 'DESC')->get();
@@ -340,7 +357,8 @@ class AccountDetailController extends Controller
             }
             $transactions = Transaction::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
 
-            return view('detailAkun.wishSaya.wishSaya', ['user' => $user, 'wishes' => $wishes, 'filter' => $filter, 'transactions' => $transactions]);
+            return view('detailAkun.wishSaya.wishSaya', ['user' => $user, 'wishes' => $wishes, 'filter' => $filter, 'transactions' => $transactions,
+                                                        'cart' => $cart, 'cart_items' => $cart_items, 'notifs' => $notifs]);
         }
 
         return redirect('login');
@@ -348,9 +366,23 @@ class AccountDetailController extends Controller
 
     public function getTransaksiSaya(Request $request) {
         $auth = Auth::check();
+        
+        //cart dropdown
+        $cart = NULL;
+        $cart_items = NULL;
+
+        //notif dropdown
+        $notifs = NULL;
 
         if($auth) {
             $user = User::where('id', Auth::user()->id)->first();
+            
+            //cart dropdown
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+
+            //notif dropdown
+            $notifs = Notification_Wish::where('user_id', $user->id)->get();
 
             if($request->filter == 7 or $request->filter == null) {
                 $transactions = Transaction::where('user_id', $user->id)->where('status_transaksi_id', '!=', 0)->orderBy('created_at', 'DESC')->get();
@@ -360,8 +392,8 @@ class AccountDetailController extends Controller
                 $transactions = Transaction::where('user_id', $user->id)->where('status_transaksi_id', '!=', 0)->where('status_transaksi_id', $filter)->orderBy('created_at', 'DESC')->get();
             }
 
-            return view('detailAkun.transaksiSaya.transaksiSaya', ['user' => $user, 'transactions' => $transactions, 'filter' => $filter]);
-
+            return view('detailAkun.transaksiSaya.transaksiSaya', ['user' => $user, 'transactions' => $transactions, 'filter' => $filter,
+                                                                    'cart' => $cart, 'cart_items' => $cart_items, 'notifs' => $notifs]);
         }
 
         return redirect('login');

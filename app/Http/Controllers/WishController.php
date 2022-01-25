@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Wish;
 use App\Category;
+use App\Cart;
+use App\Cart_Item;
 use App\Origin;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -48,10 +50,24 @@ class WishController extends Controller
         $wish_updated_at = $wish->updated_at;
         $for_you = Wish::where('deadline', '>', Carbon::now())->inRandomOrder()->get();
 
+        //cart dropdown
+        $cart = NULL;
+        $cart_items = NULL;
+
+        //notif dropdown
+        $notifs = NULL;
+
         if($auth) {
             //header user info
             // $user = User::where('id', Auth::user()->id)->first();
             $user = User::where('id', Auth::user()->id)->first();
+
+            //cart dropdown
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+
+            //notif dropdown
+            $notifs = Notification_Wish::where('user_id', $user->id)->get();
 
             // return view('wishDetail', compact('wish'));
             return view('wish.wishDetail', ['auth' => $auth, 'user' => $user, 'wish' => $wish, 'wish_name' => $wish_name, 'wish_price' => $wish_price,
@@ -59,7 +75,7 @@ class WishController extends Controller
                                         'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status_wish_name' => $wish_status_wish_name, 'wish_approved_by' => $wish_approved_by,
                                         'wish_deadline' => $wish_deadline, 'wish_curr_qty' => $wish_curr_qty, 'wish_target_qty' => $wish_target_qty, 'wish_stock' => $wish_stock,
                                         'wish_updated_at' => $wish_updated_at, 'wish_origin' => $wish_origin, 'wish_web_link' => $wish_web_link, 'for_you' => $for_you,
-                                        'wish_min_order' => $wish_min_order]);
+                                        'wish_min_order' => $wish_min_order, 'cart' => $cart, 'cart_items' => $cart_items, 'notifs' => $notifs]);
         }
 
         return view('wish.wishDetail', ['auth' => $auth, 'wish' => $wish, 'wish_name' => $wish_name, 'wish_price' => $wish_price,
@@ -67,7 +83,7 @@ class WishController extends Controller
                                     'wish_detail' => $wish_detail, 'wish_image' => $wish_image, 'wish_status_wish_name' => $wish_status_wish_name, 'wish_approved_by' => $wish_approved_by,
                                     'wish_deadline' => $wish_deadline, 'wish_curr_qty' => $wish_curr_qty, 'wish_target_qty' => $wish_target_qty,  'wish_stock' => $wish_stock,
                                     'wish_updated_at' => $wish_updated_at, 'wish_origin' => $wish_origin, 'wish_web_link' => $wish_web_link, 'for_you' => $for_you,
-                                    'wish_min_order' => $wish_min_order]);
+                                    'wish_min_order' => $wish_min_order, 'cart' => $cart, 'cart_items' => $cart_items, 'notifs' => $notifs]);
 
     }
 
