@@ -19,16 +19,16 @@
                     </div>
                     <div class="subList">
                         <a class="list" href="{{url('/akunSaya/profil')}}" >
-                            <p class="contentSemiBig">Profil</p>
+                            <p id="profil" class="contentSemiBig">Profil</p>
                         </a>
                         <a class="list" href="{{url('/akunSaya/alamatpengiriman')}}" >
-                            <p class="contentSemiBig">Alamat Pengiriman</p>
+                            <p id="alamat" class="contentSemiBig">Alamat Pengiriman</p>
                         </a>
                         <a class="list" href="{{url('/akunSaya/kartukreditdebit')}}" >
-                            <p class="contentSemiBig">Kartu Kredit/Debit</p>
+                            <p id="kartu" class="contentSemiBig">Kartu Kredit/Debit</p>
                         </a>
                         <a class="list" href="{{url('/akunSaya/ubahpassword')}}" >
-                            <p class="contentSemiBig">Ubah Password</p>
+                            <p id="ubahPass" class="contentSemiBig">Ubah Password</p>
                         </a>
                     </div>
                     <div id="wishSaya" class="list" onclick="window.location='{{ url("/wishsaya")}}'">

@@ -1,6 +1,15 @@
 @extends('detailAkun.detailAkunTemplate')
 
 @section('mainContent')
+    <script>
+        $("#wishSaya").css('color', '#000000');
+        $("#transaksiSaya").css('color', '#000000');
+        $("#notifikasi").css('color', '#000000');
+        $("#profil").css('color', '#636363');
+        $("#alamat").css('color', '#636363');
+        $("#kartu").css('color', '#d5b81b');
+        $("#ubahPass").css('color', '#636363');
+    </script>
     <div class="content" id="content3">
         <div class="titleWithButton">
             <div class="titleInButton">

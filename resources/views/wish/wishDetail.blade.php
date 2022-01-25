@@ -606,7 +606,7 @@
                             </div>
         </div>
     </div>
-    @php
-        echo $wish->name;
-    @endphp
+{{--    @php--}}
+{{--        echo $wish->name;--}}
+{{--    @endphp--}}
 @endsection

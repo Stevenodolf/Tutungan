@@ -1,6 +1,15 @@
 @extends('detailAkun.detailAkunTemplate')
 
 @section('mainContent')
+    <script>
+        $("#wishSaya").css('color', '#000000');
+        $("#transaksiSaya").css('color', '#000000');
+        $("#notifikasi").css('color', '#000000');
+        $("#profil").css('color', '#636363');
+        $("#alamat").css('color', '#636363');
+        $("#kartu").css('color', '#636363');
+        $("#ubahPass").css('color', '#d5b81b');
+    </script>
     <div class="content" id="content4">
         <div class="title">
             <h2>Ubah Password</h2>

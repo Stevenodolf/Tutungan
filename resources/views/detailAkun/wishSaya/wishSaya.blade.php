@@ -5,6 +5,10 @@
         $("#wishSaya").css('color', '#d5b81b');
         $("#transaksiSaya").css('color', '#000000');
         $("#notifikasi").css('color', '#000000');
+        $("#profil").css('color', '#636363');
+        $("#alamat").css('color', '#636363');
+        $("#kartu").css('color', '#636363');
+        $("#ubahPass").css('color', '#636363');
     </script>
 
     <div class="contentV2">
