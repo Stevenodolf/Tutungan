@@ -2439,7 +2439,7 @@ button {
 
 .detailAkun .sideMenu {
   width: 294px;
-  height: 521px;
+  height: 100%;
   padding: 30px;
   background: #FFFFFF;
   border: 1px solid rgba(49, 53, 59, 0.2);
@@ -2462,7 +2462,7 @@ button {
 }
 
 .detailAkun .sideMenu .menu {
-  padding: 20px 0;
+  padding: 20px 0 0 0;
 }
 
 .detailAkun .sideMenu .menu .list {
