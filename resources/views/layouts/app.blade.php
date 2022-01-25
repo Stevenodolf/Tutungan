@@ -144,18 +144,26 @@
                                 <p class="contentSemiNormal">Lihat Semua</p>
                             </button>
                         </div>
-                        <div class="content">
-                            <div class="sectionPicture">
-                                <img src="{{asset('images/dummyProduct.jpeg')}}">
-                                <div class="sectionText">
-                                    <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgic...</p>
-                                    <p class="contentSmall">5 pcs</p>
-                                </div>
+                        @if ($cart_items->isEmpty())
+                            <div class="content">
+                                <p class="contentSemiNormal">Keranjang kosong.</p>
                             </div>
-                            <div class="section">
-                                <p class="contentSemiNormal">Rp50.000</p>
-                            </div>
-                        </div>
+                        @else
+                            @foreach ($cart_items as $cart_item)
+                                <a class="content" href="{{ url('/wish/'.$cart_item->wish_id)}}">
+                                    <div class="sectionPicture">
+                                        <img src="{{asset('uploads/'.json_decode($cart_item->getWishRelation->image)[0])}}"/>
+                                        <div class="sectionText">
+                                            <p class="contentSemiNormal">{{$cart_item->getWishRelation->name}}</p>
+                                            <p class="contentSmall">{{$cart_item->qty}} pcs</p>
+                                        </div>
+                                    </div>
+                                    <div class="section">
+                                        <p class="contentSemiNormal">Rp {{number_format($cart_item->total_price, 0, ',', '.')}}</p>
+                                    </div>
+                                </a>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
                 <div class="dropdownNotifikasi">
@@ -167,20 +175,33 @@
                                 <p class="contentSemiNormal">Lihat Semua</p>
                             </button>
                         </div>
-                        <div class="content">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}">
-                            <div class="sectionText">
-                                <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">Transaksi Dibatalkan</p>
-                                <p class="contentSemiNormal">Transaksi anda telah dibatalkan, ketuk untuk lihat lebih lanjut.</p>
+                        @if ($notifs->isEmpty())
+                            <div class="content">
+                                <p class="contentSemiNormal">Tidak ada notifikasi.</p>
                             </div>
-                        </div>
-                        <div class="content">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}">
-                            <div class="sectionText">
-                                <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">Pesanan sudah sampai tujuan!</p>
-                                <p class="contentSemiNormal">Terima kasih sudah menggunakan layanan Tutungan!</p>
-                            </div>
-                        </div>
+                        @else
+                            @foreach ($notifs as $notif)
+                                @if ($notif->is_read == 0)
+                                    <div class="content">
+                                        <img src="{{asset('images/dummyProduct.jpeg')}}">
+                                        <div class="sectionText">
+                                            <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">{{$notif->getNotificationRelation->title}}</p>
+                                            <p class="contentSemiNormal">{{$notif->getNotificationRelation->subtitle}}</p>
+                                            {{-- waktu notifikasi --}}
+                                        </div>
+                                    </div>
+                                @else {{-- kalau notifikasi belum di baca --}}
+                                    <div class="content">
+                                        <img src="{{asset('images/dummyProduct.jpeg')}}">
+                                        <div class="sectionText">
+                                            <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">{{$notif->getNotificationRelation->title}}</p>
+                                            <p class="contentSemiNormal">{{$notif->getNotificationRelation->subtitle}}</p>
+                                            {{-- waktu notifikasi --}}
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
                     </div>
                 </div>
                 <form action="{{url('/createWish')}}">
