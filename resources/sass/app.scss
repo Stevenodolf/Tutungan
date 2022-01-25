@@ -722,8 +722,11 @@ button{
     }
 
     .logo{
-        width: fit-content;
-        height: 6vh;
+        //width: fit-content;
+        //height: 6vh;
+        //width: 156px;
+        height: 45px;
+        object-fit: scale-down;
         display: flex;
         flex-wrap: nowrap;
         flex-direction: row;
@@ -784,8 +787,10 @@ button{
         border: none;
         cursor: pointer;
         img{
-            width: fit-content;
+            //width: fit-content;
+            width: 30px;
             height: 30px;
+            object-fit: scale-down;
         }
     }
     .buttonLoginRegister{

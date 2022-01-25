@@ -37,8 +37,7 @@ class CartController extends Controller
             $cart->total_price = $total_price;
             $cart->save();
 
-//            return view('keranjang.keranjang', ['user' => $user, 'cart' => $cart, 'cart_items' => $cart_items]);
-            return view('keranjang.keranjangNew', ['user' => $user, 'cart' => $cart, 'cart_items' => $cart_items]);
+            return view('keranjang.keranjang', ['user' => $user, 'cart' => $cart, 'cart_items' => $cart_items]);
         }
         return redirect('login');
     }

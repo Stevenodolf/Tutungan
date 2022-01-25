@@ -7,494 +7,57 @@
 @section('content')
     <div class="contentContainer">
         <div class="keranjang">
-            <h1>Keranjang</h1>
-            <div class="row">
-                <form method="POST" action="/cart" enctype="multipart/form-data">
-                    @csrf
+            <div class="keranjangContent">
+                <div class="leftSection">
+                    <div class="sectionContent">
+                        <div class="header">
+                            <p class="contentExtraBig title">Keranjang</p>
+                            <p class="contentSemiNormal buttonHapusSemua">Hapus Semua</p>
+                        </div>
+                        <div class="cartItems">
+                            @foreach($cart_items as $cart_item)
+                                <div class="itemCell">
+                                    <img class="itemImg" src="{{ asset('uploads/'.json_decode($cart_item->getWishRelation->image)[0]) }}" onclick="window.location='{{ url('/wish/'.$cart_item->getWishRelation->id) }}'">
+                                    <div class="itemInfo">
+                                        <p class="contentSemiBig wishName">{{ $cart_item->getWishRelation->name }}</p>
+                                        <p class="contentSemiBig itemTotalPrice">Rp{{number_format($cart_item->total_price, 0, ',', '.')}}</p>
+                                    </div>
+                                    <div class="editItem">
+                                        <form class="editSection" method="post">
+                                            {{ @csrf_field() }}
+                                            <input type="hidden" name="cart_item_id" value="{{$cart_item->id}}">
+                                            <div class="deleteSection">
+                                                <button type="submit" class="buttonDelete" formaction="{{ url('/cart/delete') }}">
+                                                    <img class="buttonImg" src="{{ asset('images/binRed.png') }}">
+                                                </button>
+                                            </div>
+                                            <div class="itemQuantitySection">
+                                                <div class="number-input">
+                                                    <button type="submit" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" formaction="{{ url('/cart/update') }}"></button>
+                                                    @php
+                                                        $curr_qty = $cart_item->getWishRelation->curr_qty;
+                                                        $target_qty = $cart_item->getWishRelation->target_qty;
+                                                        $stock = $target_qty - $curr_qty;
+                                                    @endphp
+                                                    <input class="quantity" min="1" max="{{ $stock }}" name="qty" value="{{ $cart_item->qty }}" type="number">
+                                                    <button type="submit" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus" formaction="{{ url('/cart/update') }}"></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <form class="rightSection" method="post" action="{{ url('/cart') }}">
                     {{ csrf_field() }}
-                    <div class="columnA">
-                        <div class="option">
-                            <div class="pilihSemua">
-                                <input type="checkbox" id="selectAll">
-                                <p class="">Pilih Semua</p>
-                            </div>
-                            <p class="">Hapus</p>
-                        </div>
-                      @foreach ($cart_items as $cart_item)
-                          <div class="keranjangDetail">
-                          <input type="checkbox">
-                          <div class="productDetail">
-                              <div class="detail">
-                                  <img src="{{asset($cart_item->getWishRelation->image)}}"/>
-                                  <div class="section">
-                                      <p class="">{{$cart_item->getWishRelation->name}} x {{$cart_item->qty}}</p>
-                                      <p class="">Rp {{number_format($cart_item->total_price, 0, ',', '.')}}</p>
-                                  </div>
-                              </div>
-                              <div class="deleteAdd">
-                                  <a onclick="window.location='{{ url("/wish/delete-cart/".$cart_item->id)}}'">
-                                      <img src="{{asset('images/binRed.png')}}">
-                                  </a>
-                                  <input type="number">
-                              </div>
-                          </div>
-                      </div>
-                      @endforeach
-                      {{-- <div class="keranjangDetail">
-                          <input type="checkbox">
-                          <div class="productDetail">
-                              <div class="detail">
-                                  <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                                  <div class="section">
-                                      <p class="">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>
-                                      <p class="">Rp250.000</p>
-                                    </div>
-                                </div>
-                                <div class="deleteAdd">
-                                    <button>
-                                        <img src="{{asset('images/binRed.png')}}">
-                                    </button>
-                                    <input type="number">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="keranjangDetail">
-                            <input type="checkbox">
-                            <div class="productDetail">
-                                <div class="detail">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                                    <div class="section">
-                                        <p class="">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>
-                                        <p class="">Rp250.000</p>
-                                    </div>
-                                </div>
-                                <div class="deleteAdd">
-                                    <button>
-                                        <img src="{{asset('images/binRed.png')}}">
-                                    </button>
-                                    <input type="number">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="keranjangDetail">
-                            <input type="checkbox">
-                            <div class="productDetail">
-                                <div class="detail">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                                    <div class="section">
-                                        <p class="">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>
-                                        <p class="">Rp250.000</p>
-                                    </div>
-                                </div>
-                                <div class="deleteAdd">
-                                    <button>
-                                        <img src="{{asset('images/binRed.png')}}">
-                                    </button>
-                                    <input type="number">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="keranjangDetail">
-                            <input type="checkbox">
-                            <div class="productDetail">
-                                <div class="detail">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                                    <div class="section">
-                                        <p class="">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>
-                                        <p class="">Rp250.000</p>
-                                    </div>
-                                </div>
-                                <div class="deleteAdd">
-                                    <button>
-                                        <img src="{{asset('images/binRed.png')}}">
-                                    </button>
-                                    <input type="number">
-                                </div>
-                            </div>
-                        </div> --}}
-                    </div>
-                    <div class="columnB">
-                        <div class="total">
-                            <h2>Total</h2>
-                            <p class="">Rp {{number_format($cart->total_price, 0, ',', '.')}}</p>
-                            <input type="hidden" name="total_price" value="{{$cart->total_price}}">
-                            <input type="hidden" name="total_qty" value="{{$cart->total_qty}}">
-                            <button type="submit">Checkout</button>
-                        </div>
-                    </div>
+                    <input type="hidden" name="total_price" value="{{$cart->total_price}}">
+                    <input type="hidden" name="total_qty" value="{{$cart->total_qty}}">
+                    <p class="contentSemiNormal title">Total</p>
+                    <p class="contentSemiBig cartTotalPrice">Rp{{number_format($cart->total_price, 0, ',', '.')}} ({{ $cart->total_qty }} pcs)</p>
+                    <button type="submit" class="button buttonYellow buttonBeli">Checkout</button>
                 </form>
-            </div>
-
-            <div class="forYou">
-                <h1>Terakhir Dilihat</h1>
-                <div class="row">
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="wish">
-                            <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                            <div class="timeLeft">
-                                <p>Tersisa 5 Hari Lagi</p>
-                            </div>
-                            <div class="content">
-                                <p>Laci lapis 3 warna biru merk lion star</p>
-                                <h3>Rp 15.000/pcs</h3>
-                                <div class="barWithText">
-                                    <div class="textProgress">
-                                        <p>7500/15000</p>
-                                    </div>
-                                    <div class="progressBar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
