@@ -31,7 +31,7 @@
 <div id="app">
     <div style="margin: 0 120px;">
         <div class="navbar">
-            <div class="logo">
+            <div class="logo" onclick="window.location='{{ url('/') }}'">
                 <img src="{{asset('images/tutunganLogo.png')}}">
             </div>
         </div>

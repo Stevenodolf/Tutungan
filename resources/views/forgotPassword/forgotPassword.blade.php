@@ -15,13 +15,13 @@
         <div class="login">
             <div class="loginContainer">
                 <div class="title" style="flex-direction: column;align-items: normal;">
-                    <h1>Lupa Password</h1>
-                    <p class="">Masukan email yang terdaftar untuk lupa password.</p>
+                    <h1 class="contentSemiExtraBig">Lupa Password</h1>
+                    <p class="contentSemiBig secondaryText">Masukan email yang terdaftar untuk lupa password.</p>
                 </div>
                 <form class="section" method="POST">
                     {{ csrf_field() }}
                     <div class="field"style="margin-bottom: 50px;">
-                        <p class="">Email</p>
+                        <p class="contentSemiBig secondaryText">Email</p>
                         <input name="email" type="text" id="email" placeholder="ex:youremail@tutungan.com" required>
                     </div>
                     <button class="buttonMasuk" type="submit">

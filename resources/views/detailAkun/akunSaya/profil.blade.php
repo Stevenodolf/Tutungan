@@ -59,7 +59,10 @@
                 </div>
             </div>
             <div class="buttonSimpan">
-                <button type="submit">Simpan</button>
+                <button class="button buttonYellow" type="submit">
+                    <img src="{{ asset('images/checkBlack.png') }}">
+                    <p>Simpan</p>
+                </button>
             </div>
         </form>
     </div>

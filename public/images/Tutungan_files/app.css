@@ -45,9 +45,9 @@ button {
   background: #FFFFFF;
   border: 1px solid;
   border-radius: 5px;
+  font-family: "latobold";
   font-size: 14px;
   line-height: 45px;
-  cursor: pointer;
 }
 
 .button:focus {
@@ -58,11 +58,6 @@ button {
 .button img {
   width: 20px;
   margin-right: 5px;
-}
-
-.button p {
-  font-family: "latobold";
-  font-size: 1.4rem;
 }
 
 .buttonBlack {
@@ -705,7 +700,8 @@ button {
   display: none;
   position: absolute;
   min-width: 160px;
-  z-index: 5;
+  margin-top: 5px;
+  z-index: 2;
   flex-direction: column;
   background: #FFFFFF;
   border: 1px solid rgba(49, 53, 59, 0.2);
@@ -730,7 +726,8 @@ button {
   display: none;
   position: absolute;
   width: 300px;
-  z-index: 5;
+  margin-top: 5px;
+  z-index: 2;
   flex-direction: column;
   background: #FFFFFF;
   border: 1px solid rgba(49, 53, 59, 0.2);
@@ -784,8 +781,9 @@ button {
 .navbar .dropdownKeranjang .dropdownList {
   display: none;
   position: absolute;
+  margin-top: 5px;
   width: 420px;
-  z-index: 5;
+  z-index: 2;
   flex-direction: column;
   background: #FFFFFF;
   border: 1px solid rgba(49, 53, 59, 0.2);
@@ -948,7 +946,8 @@ button {
 .navbar .buttonAddWish {
   width: 70px;
   height: 36px;
-  margin-bottom: 0px;
+  background-color: #FFD901;
+  border: none;
 }
 
 .navbar .buttonAddWish img {
@@ -2322,6 +2321,11 @@ button {
 
 .checkout .itemDetail .productDetail .shipmentDetail select {
   width: 300px;
+  height: 36px;
+  outline: none;
+  background: #FFD901;
+  border: none;
+  border-radius: 5px;
   padding: 0 10px;
   margin-top: 5px;
 }
@@ -2349,6 +2353,7 @@ button {
   background: #FFD901;
   border-radius: 5px;
   border: none;
+  width: 100%;
   margin-top: 25px;
 }
 
@@ -2571,6 +2576,10 @@ button {
 .detailAkun .content .titleWithButton .buttonContainer button {
   display: flex;
   align-items: center;
+  background: #FFD901;
+  border-radius: 5px;
+  padding: 14px;
+  border: none;
 }
 
 .detailAkun .content .titleWithButton .buttonContainer button img {
@@ -2586,7 +2595,10 @@ button {
 }
 
 .detailAkun .content .buttonSimpan button {
-  width: 125px;
+  padding: 12px 25px;
+  background: #FFD901;
+  border: none;
+  border-radius: 5px;
 }
 
 .detailAkun .content .profil {
@@ -2657,13 +2669,10 @@ button {
   width: 110px;
 }
 
-.detailAkun .content .profil .profilContent .biodata .section input {
-  height: 35px;
-  width: 75%;
-}
-
+.detailAkun .content .profil .profilContent .biodata .section input,
 .detailAkun .content .profil .profilContent .biodata .section select {
   height: 35px;
+  width: 100%;
 }
 
 .detailAkun .content .profil .profilContent .biodata .section:last-of-type {
@@ -2708,7 +2717,10 @@ button {
 }
 
 .detailAkun .content .alamatPengiriman .keterangan .section button {
+  background: #FFD901;
+  border-radius: 5px;
   padding: 9px 15px;
+  border: none;
 }
 
 .detailAkun .content .alamatPengiriman .buttonBawah {
@@ -2735,18 +2747,18 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 36px 0;
 }
 
 .detailAkun .content .creditDebit .listCreditDebit {
+  margin: 15px 0;
   display: flex;
   align-items: center;
 }
 
 .detailAkun .content .creditDebit .listCreditDebit img {
-  margin: 0 20px;
+  margin-right: 20px;
   width: 95px;
-  height: 53px;
+  height: 73px;
   -o-object-fit: contain;
      object-fit: contain;
 }
@@ -2754,7 +2766,7 @@ button {
 .detailAkun .content .creditDebit .listCreditDebit .titleWithEmblem {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .detailAkun .content .creditDebit .listCreditDebit .titleWithEmblem .emblem {
@@ -2765,7 +2777,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 20px;
+  margin-left: 5px;
 }
 
 .detailAkun .content .creditDebit .listCreditDebit .keterangan {
@@ -2798,6 +2810,10 @@ button {
   border-right: none;
 }
 
+.detailAkun .content .creditDebit:last-child {
+  border-bottom: none;
+}
+
 .detailAkun .content .changePassword {
   margin: 30px 0;
 }
@@ -2816,12 +2832,15 @@ button {
   width: 270px;
   outline: none;
   padding: 0 5px;
-  margin-right: 15px;
 }
 
 .detailAkun .content .changePassword button {
   margin-left: 150px;
-  width: 148px;
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  background: #FFD901;
+  border-radius: 5px;
 }
 
 .detailAkun .contentV2 {
@@ -3618,7 +3637,6 @@ button {
   border-radius: 5px;
   height: 35px;
   width: 100%;
-  padding: 8px;
 }
 
 .popUpTambahAlamat .section .sectionInputSelect select {
@@ -3627,17 +3645,15 @@ button {
   border-radius: 5px;
   height: 35px;
   width: 100%;
-  padding: 8px;
 }
 
 .popUpTambahAlamat .section .sectionInputSelect textarea {
   resize: none;
   width: 100%;
-  height: 75px;
+  height: 45px;
   border: 1px solid rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
   border-radius: 5px;
-  padding: 8px;
 }
 
 .popUpTambahAlamat .buttonSimpan {
@@ -3694,13 +3710,6 @@ button {
   margin-top: 5px;
   /* IMAGE STYLES */
   /* CHECKED STYLES */
-}
-
-.popUpTambahCreditDebit .section .sectionInput .creditCardSelection img {
-  width: 34px;
-  height: 26px;
-  -o-object-fit: contain;
-     object-fit: contain;
 }
 
 .popUpTambahCreditDebit .section .sectionInput .creditCardSelection [type=radio] {

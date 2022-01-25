@@ -7,7 +7,7 @@
     font-family: 'lato','latoregular','latoblack','latoblackitalic','latobold','latobolditalic','latoitalic','latolightitalic','latolight';
 }
 html {
-    font-size: 10px;
+    font-size: 0.625em; //10px
 }
 body{
     padding: 0;
@@ -43,9 +43,10 @@ button{
     background: #FFFFFF;
     border: 1px solid;
     border-radius: 5px;
-    font-family: "latobold";
     font-size: 14px;
     line-height: 45px;
+    //padding: 15px 20px;
+    cursor: pointer;
     &:focus{
         outline: none;
         box-shadow: 0 0 0 3px lightskyblue;
@@ -53,6 +54,10 @@ button{
     img {
         width: 20px;
         margin-right: 5px;
+    }
+    p {
+        font-family: "latobold";
+        font-size: 1.4rem;
     }
 }
 .buttonBlack{
@@ -239,8 +244,20 @@ button{
         border-radius: 5px;
         padding: 25px;
         margin: 90px 0 20px 0;
+        .pageTitle {
+            font-family: "latobold";
+        }
+        .textBelowTitle {
+            color: #5A5D62;
+            .masuk {
+                color: #D5B81B;
+            }
+        }
         .section{
             margin-top: 35px;
+            .question {
+                color: #5A5D62;
+            }
             a{
                 color: rgba(49, 53, 59, 0.8);
                 .contentSemiBig{
@@ -454,6 +471,9 @@ button{
 
                 }
             }
+        }
+        .secondaryText {
+            color: #5A5D62;
         }
         .section{
             .field{
@@ -732,7 +752,7 @@ button{
         //height: 6vh;
         //width: 156px;
         height: 45px;
-        object-fit: scale-down;
+        object-fit: contain;
         display: flex;
         flex-wrap: nowrap;
         flex-direction: row;
@@ -748,7 +768,7 @@ button{
         img{
             width: 30px;
             height: 30px;
-            object-fit: scale-down;
+            object-fit: contain;
         }
         .locationText{
             width: fit-content;
@@ -797,7 +817,7 @@ button{
             //width: fit-content;
             width: 30px;
             height: 30px;
-            object-fit: scale-down;
+            object-fit: contain;
         }
     }
     .buttonLoginRegister{
@@ -827,15 +847,14 @@ button{
         }
         width: 70px;
         height: 36px;
-        //padding: 5px 15px;
-        background-color: #FFD901;
-        border: none;
+        margin-bottom: 0px;
     }
     .buttonUser{
         img{
             width: 30px;
             height: 30px;
             border-radius: 50%;
+            object-fit: cover;
         }
         #arrowUser{
             width: 10px;
@@ -955,7 +974,7 @@ button{
     img {
         width: 220px;
         height: 220px;
-        object-fit: scale-down;
+        object-fit: contain;
     }
 
     .content {
@@ -1118,7 +1137,7 @@ button{
         .imgFilter{
             width: 62px;
             height: 62px;
-            object-fit: scale-down;
+            object-fit: contain;
         }
         p{
             margin: 0;
@@ -1817,7 +1836,7 @@ button{
                             width: 60px;
                             height: 60px;
                             border-radius: 5px;
-                            object-fit: scale-down;
+                            object-fit: contain;
                             border: 1px solid #D9D9D9;
                             margin-right: 15px;
                             cursor: pointer;
@@ -2110,7 +2129,7 @@ button{
             img{
                 width: 80px;
                 height: 80px;
-                object-fit: scale-down;
+                object-fit: contain;
                 border-radius: 5px;
                 border: 1px solid #D9D9D9;
                 margin-right: 15px;
@@ -2135,11 +2154,6 @@ button{
                 //align-items: center;
                 select{
                     width: 300px;
-                    height: 36px;
-                    outline: none;
-                    background: #FFD901;
-                    border: none;
-                    border-radius: 5px;
                     padding: 0 10px;
                     margin-top: 5px;
                 }
@@ -2166,7 +2180,6 @@ button{
             background: #FFD901;
             border-radius: 5px;
             border: none;
-            width: 100%;
             margin-top: 25px;
         }
         .ringkasanHarga{
@@ -2295,11 +2308,13 @@ button{
             align-items: center;
             padding-bottom: 25px;
             border-bottom: 1px solid #000000;
+            font-family: "latobold";
             img{
                 width: 85px;
                 height: 85px;
                 border-radius: 50%;
                 margin-bottom: 10px;
+                object-fit: cover;
             }
         }
         .menu{
@@ -2353,18 +2368,23 @@ button{
             align-items: center;
             justify-content: space-between;
             .titleInButton{
+                h2 {
+                    font-family: "latobold";
+                }
                 .contentSemiBig{
                     margin-top: 10px;
                 }
             }
             .buttonContainer{
                 button{
+                    //height: border-box;
+                    //height: 100%;
                     display: flex;
                     align-items: center;
-                    background: #FFD901;
-                    border-radius: 5px;
-                    padding: 14px;
-                    border: none;
+                    //background: #FFD901;
+                    //border-radius: 5px;
+                    //padding: 14px;
+                    //border: none;
                     img{
                         width: 12px;
                         height: 12px;
@@ -2378,10 +2398,7 @@ button{
             align-items: center;
             justify-content: center;
             button{
-                padding: 12px 25px;
-                background: #FFD901;
-                border: none;
-                border-radius: 5px;
+                width: 125px;
             }
         }
         .profil{
@@ -2407,6 +2424,7 @@ button{
                         height: 218px;
                         border-radius: 50%;
                         margin-bottom: 20px;
+                        object-fit: cover;
                     }
                     input[type=button]{
                         width: 213px;
@@ -2466,7 +2484,7 @@ button{
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        margin-left: 5px;
+                        margin-left: 20px;
                     }
                 }
             }
@@ -2481,10 +2499,7 @@ button{
                         margin-bottom: 10px;
                     }
                     button{
-                        background: #FFD901;
-                        border-radius: 5px;
                         padding: 9px 15px;
-                        border: none;
                     }
                 }
             }
@@ -2510,17 +2525,20 @@ button{
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding: 36px 0;
             .listCreditDebit{
-                margin: 15px 0;
                 display: flex;
                 align-items: center;
                 img{
-                    margin-right: 20px;
+                    margin: 0 20px;
+                    width: 95px;
+                    height: 53px;
+                    object-fit: contain;
                 }
                 .titleWithEmblem{
                     display: flex;
                     align-items: center;
-                    margin-bottom: 10px;
+                    margin-bottom: 8px;
                     .emblem{
                         width: 58px;
                         height: 32px;
@@ -2529,7 +2547,7 @@ button{
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        margin-left: 5px;
+                        margin-left: 20px;
                     }
                 }
 
@@ -2567,9 +2585,6 @@ button{
                 }
             }
         }
-        .creditDebit:last-child{
-            border-bottom: none;
-        }
 
         .changePassword{
             margin: 30px 0;
@@ -2586,16 +2601,13 @@ button{
                         width: 270px;
                         outline: none;
                         padding: 0 5px;
+                        margin-right: 15px;
                     }
                 }
             }
             button{
                 margin-left: 150px;
-                margin-top: 20px;
-                padding: 12px 25px;
-                border: none;
-                background: #FFD901;
-                border-radius: 5px;
+                width: 148px;
             }
         }
     }
@@ -2725,7 +2737,7 @@ button{
                             width: 118px;
                             height: 118px;
                             border-radius: 5px;
-                            object-fit: scale-down;
+                            object-fit: contain;
                             border: 1px solid #D9D9D9;
                         }
                         .detailContent{
@@ -2854,7 +2866,7 @@ button{
                                 height: 75px;
                                 border-radius: 5px;
                                 margin-right: 22px;
-                                object-fit: scale-down;
+                                object-fit: contain;
                                 border: 1px solid #D9D9D9;
                             }
                             .wishInfo{
@@ -3094,7 +3106,7 @@ button{
                                     width: 118px;
                                     height: 118px;
                                     border-radius: 5px;
-                                    object-fit: scale-down;
+                                    object-fit: contain;
                                 }
                                 .detailContent{
                                     display: flex;
@@ -3252,7 +3264,7 @@ button{
                     border-radius: 5px;
                     margin-right: 15px;
                     //margin-left: 15px;
-                    object-fit: scale-down;
+                    object-fit: contain;
                     background: #FFFFFF;
                     border: 1px solid #D9D9D9;
                 }
@@ -3382,6 +3394,12 @@ button{
             }
             .creditCardSelection{
                 margin-top: 5px;
+                img {
+                    width: 34px;
+                    height: 26px;
+                    object-fit: contain;
+                }
+
                 [type=radio] {
                     position: absolute;
                     opacity: 0;

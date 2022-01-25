@@ -12,13 +12,13 @@
     </script>
     <div class="content" id="content4">
         <div class="title">
-            <h2>Ubah Password</h2>
+            <h2 class="contentBig">Ubah Password</h2>
             <p class="contentSemiBig">Demi keamanan akun Anda, mohon tidak menyebarkan password Anda ke orang lain.</p>
         </div>
         <form class="changePassword" method="post" action="{{url('/akunSaya/ubahpass')}}">
             {{ csrf_field() }}
             <div class="section">
-                <div class="sectionInput" style="align-items: flex-start;">
+                <div class="sectionInput">
                     <p class="contentSemiNormal" style="color: #747474;width: 150px;">Password Sekarang</p>
                     <div>
                         <input type="password" name="oldPassword">
@@ -34,7 +34,7 @@
                     <input type="password" name="confirmPassword">
                 </div>
             </div>
-            <button type="submit">Ubah Password</button>
+            <button class="button buttonYellow" type="submit">Ubah Password</button>
         </form>
     </div>
 @endsection

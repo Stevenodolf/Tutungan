@@ -583,9 +583,10 @@ class AccountDetailController extends Controller
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
+            $notification_wishes = Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')->take(10)->get();
+
             $addressNavbar = Address::where('is_temp','1')->first();
 
-            $notification_wishes = Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(10);
             Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')
                 ->update(['is_read' => 1]);
 

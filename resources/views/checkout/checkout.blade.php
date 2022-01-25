@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="shipmentDetail">
                                         <p class="contentSemiNormal">Pilih Pengiriman</p>
-                                        <select id="pilihEkspedisi" name="domestic_shipper_id">
+                                        <select class="button buttonYellow" id="pilihEkspedisi" name="domestic_shipper_id">
                                             <option value="">Pengiriman</option>
                                             @foreach ($dshippers as $dshipper)
                                                 <option value="{{$dshipper->id}}">{{$dshipper->name}}</option>

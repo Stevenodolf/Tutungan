@@ -1,6 +1,8 @@
 var Days = [31,28,31,30,31,30,31,31,30,31,30,31];// index => month [0-11]
 var Month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
 $(document).ready(function () {
+
     var option = '<option value=""">Day</option>';
     var selectedDay="";
     for (var i=1;i <= Days[0];i++){ //add option days
@@ -25,6 +27,30 @@ $(document).ready(function () {
     }
     $('#year').append(option);
     $('#year').val(selectedYear);
+
+    $("#username, #email, #pnumber, #day, #month, #year, #gender, #password, #password2").on("input", function () {
+        canChangeColor();
+    });
+
+    function canChangeColor(){
+
+        let can = true;
+
+        $("#username, #email, #pnumber, #day, #month, #year, #gender, #password, #password2").each(function(){
+            if($(this).val()==''){
+                can = false;
+            }
+        });
+
+        if(can){
+            $('#buttonSubmit').css({background:'#FFD901'})
+            $('#buttonSubmit').css({color:'black'})
+        }else{
+            $('#buttonSubmit').css({background:'rgba(49, 53, 59, 0.15)'})
+            $('#buttonSubmit').css({color:'rgba(49, 53, 59, 0.6)'})
+        }
+    }
+
 });
 function isLeapYear(year) {
     year = parseInt(year);
