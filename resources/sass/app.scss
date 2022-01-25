@@ -6,6 +6,9 @@
 *{
     font-family: 'lato','latoregular','latoblack','latoblackitalic','latobold','latobolditalic','latoitalic','latolightitalic','latolight';
 }
+html {
+    font-size: 10px;
+}
 body{
     padding: 0;
     margin: 0;
@@ -100,28 +103,28 @@ button{
 
 //Font
 .contentExtraSmall{
-    font-size: 10px;
+    font-size: 1rem;
 }
 .contentSmall{
-    font-size: 12px;
+    font-size: 1.2rem;
 }
 .contentSemiNormal{
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 .contentNormal{
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 .contentSemiBig{
-    font-size: 18px;
+    font-size: 1.8rem;
 }
 .contentBig{
-    font-size: 24px;
+    font-size: 2.4rem;
 }
 .contentSemiExtraBig{
-    font-size: 30px;
+    font-size: 3rem;
 }
 .contentExtraBig{
-    font-size: 36px;
+    font-size: 3.6rem;
 }
 
 //Status
@@ -211,6 +214,9 @@ button{
     .textProgress{
         display: flex;
         justify-content: flex-end;
+        .quantityTarget {
+            color: #31353B;
+        }
     }
 }
 //END OF GLOBAL
@@ -1111,9 +1117,11 @@ button{
         .imgFilter{
             width: 62px;
             height: 62px;
+            object-fit: scale-down;
         }
         p{
             margin: 0;
+            text-align: center;
         }
     }
 }
@@ -2241,14 +2249,16 @@ button{
         height: 319px;
         display: none;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
         .section{
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-top: 40px;
             img{
                 width: 120px;
                 height: 120px;
+                margin-bottom: 20px;
             }
         }
         button{
@@ -2258,6 +2268,7 @@ button{
             border-radius: 5px;
             border: none;
             width: 100%;
+            margin-bottom: 15px;
         }
     }
 }
@@ -2289,6 +2300,9 @@ button{
         }
         .menu{
             padding: 20px 0 0 0;
+            #akunSaya {
+                cursor: default;
+            }
             .list{
                 display: flex;
                 align-items: center;
@@ -2370,48 +2384,60 @@ button{
             display: flex;
             flex-direction: column;
             flex-wrap: nowrap;
-            .profilPict{
-                display: flex;
-                flex-direction: column;
-                padding-right: 15px;
-                margin-top: 15px;
-                border-right: 1px solid rgba(0, 0, 0, 0.25);
-                img{
-                    width: 218px;
-                    height: 218px;
-                    border-radius: 50%;
-                    margin-bottom: 20px;
-                }
-                input[type=button]{
-                    width: 213px;
-                    height: 35px;
-                    background: white;
-                    border: 1px solid rgba(0, 0, 0, 0.25);
-                    box-sizing: border-box;
-                    border-radius: 5px;
-                    margin-bottom: 20px;
-                }
-                input[type=file]{
-                    display: none;
-                }
+            h3 {
+                font-family: "latobold";
+                font-weight: 1000;
             }
-            .biodata{
-                padding: 0 40px 0 40px;
-                margin-top: 15px;
-                width: 100%;
-                h3{
-                    margin-bottom: 30px;
-                }
-                .section{
+            .profilContent {
+                display: flex;
+                margin: 15px 0 30px 0;
+                padding: 0 30px;
+                .profilPict{
                     display: flex;
-                    align-items: center;
-                    margin-bottom: 30px;
-                    .contentSemiNormal{
-                        width: 110px;
+                    flex-direction: column;
+                    padding: 20px 30px 0 0;
+                    margin-top: 15px;
+                    border-right: 1px solid rgba(0, 0, 0, 0.25);
+                    img{
+                        width: 218px;
+                        height: 218px;
+                        border-radius: 50%;
+                        margin-bottom: 20px;
                     }
-                    input, select{
+                    input[type=button]{
+                        width: 213px;
                         height: 35px;
-                        width: 100%;
+                        background: white;
+                        border: 1px solid rgba(0, 0, 0, 0.25);
+                        box-sizing: border-box;
+                        border-radius: 5px;
+                        margin-bottom: 20px;
+                    }
+                    input[type=file]{
+                        display: none;
+                    }
+                }
+                .biodata{
+                    padding: 15px 40px;
+                    margin-top: 15px;
+                    width: 100%;
+                    h3{
+                        margin-bottom: 30px;
+                    }
+                    .section{
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 30px;
+                        .contentSemiNormal{
+                            width: 110px;
+                        }
+                        input, select{
+                            height: 35px;
+                            width: 100%;
+                        }
+                        &:last-of-type {
+                            margin-bottom: 0;
+                        }
                     }
                 }
             }

@@ -58,7 +58,7 @@
             @guest
                 <div class="locationSection" onclick="openLoginPopup();">
                     <img src="{{asset('images/location.png')}}">
-                    <div class="locationText">
+                    <div class="contentSemiNormal locationText">
                         <p>Dikirim ke</p>
                         <p>Indonesia</p>
                     </div>
@@ -66,7 +66,7 @@
             @else
                 <a href="{{url('/akunSaya/alamatpengiriman')}}" class="locationSection">
                     <img src="{{asset('images/location.png')}}">
-                    <div class="locationText">
+                    <div class="contentSemiNormal locationText">
                         <p>Dikirim ke</p>
                         <p>Indonesia</p>
                     </div>
@@ -205,7 +205,7 @@
                     </div>
                 </div>
                 <form action="{{url('/createWish')}}">
-                    <button type="submit" class="buttonAddWish">
+                    <button type="submit" class="contentSemiNormal buttonAddWish">
                         <img src="{{asset('images/plusBlack.png')}}">
                         Wish
                     </button>

@@ -12,12 +12,12 @@
     </script>
     <div class="content" id="content1" >
         <div class="title">
-            <h2>Profil</h2>
+            <h2 class="contentBig">Profil</h2>
             <p class="contentSemiBig">Kelola data diri Anda yang akan digunakan dalam situs ini.</p>
         </div>
         <form class="profil" method="post" action="{{url('/akunSaya/editProfil')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
-            <div style="display: flex">
+            <div class="profilContent" style="display: flex">
                 <div class="profilPict">
                     @if($user->image)
                         <img id="fotoProfil" src="{{asset('uploads/profile/'. $user->image)}}">
@@ -30,7 +30,7 @@
                     <p class="contentSemiNormal">Format gambar: .JPG, .JPEG, .PNG</p>
                 </div>
                 <div class="biodata">
-                    <h3>Biodata Diri</h3>
+                    <h3 class="contentSemiNormal">Biodata Diri</h3>
                     <div class="section">
                         <p class="contentSemiNormal" style="color: #747474;">Nama</p>
                         <input type="text" name="nama" value="{{$user->username}}">
@@ -46,7 +46,7 @@
                             <option value="2" <?php if($user->gender=="2") echo 'selected="selected"'; ?>>Wanita</option>
                         </select>
                     </div>
-                    <h3>Kontak</h3>
+                    <h3 class="contentSemiNormal">Kontak</h3>
                     <div class="section">
                         <p class="contentSemiNormal" style="color: #747474;">Email</p>
                         <p class="contentSemiNormal" style="font-weight: bold">{{$user->email}}</p>

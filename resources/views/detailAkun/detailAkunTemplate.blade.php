@@ -13,9 +13,9 @@
                     <h3>Steven Yuwono</h3>
                 </div>
                 <div class="menu">
-                    <div class="list">
+                    <div id="akunSaya" class="list">
                         <img src="{{asset("images/user.png")}}">
-                        <h3>Akun Saya</h3>
+                        <h3 class="contentSemiBig">Akun Saya</h3>
                     </div>
                     <div class="subList">
                         <a class="list" href="{{url('/akunSaya/profil')}}" >
@@ -33,15 +33,15 @@
                     </div>
                     <div id="wishSaya" class="list" onclick="window.location='{{ url("/wishsaya")}}'">
                         <img src="{{asset("images/wish.png")}}">
-                        <h3>Wish Saya</h3>
+                        <h3 class="contentSemiBig">Wish Saya</h3>
                     </div>
                     <div id="transaksiSaya" class="list" onclick="window.location='{{ url("/transaksisaya")}}'">
                         <img src="{{asset("images/transaksi.png")}}">
-                        <h3>Transaksi Saya</h3>
+                        <h3 class="contentSemiBig">Transaksi Saya</h3>
                     </div>
                     <div id="notifikasi" class="list" onclick="window.location='{{ url("/notifikasi")}}'">
                         <img src="{{asset("images/notification_outline.png")}}">
-                        <h3>Notifikasi</h3>
+                        <h3 class="contentSemiBig">Notifikasi</h3>
                     </div>
                 </div>
             </div>

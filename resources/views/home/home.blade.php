@@ -212,7 +212,7 @@
                         <div class="swiper-slide">
                             <div class="filter">
                                 <img class="imgFilter" src="{{asset($category->image)}}" alt="">
-                                <p>{{$category->name}}</p>
+                                <p class="contentNormal">{{$category->name}}</p>
                             </div>
                         </div>
                     @endforeach
@@ -331,15 +331,15 @@
                         <div class="column">
                             <div class="wish" onclick="window.location='{{ url("/wish/".$for_you_item->id)}}'">
                                 <img src="{{asset('uploads/'.json_decode($for_you_item->image)[0])}}"/>
-                                <div class="timeLeft">
+                                <div class="contentNormal timeLeft">
                                     <p>Tersisa {{$time_left}} Hari Lagi</p>
                                 </div>
                                 <div class="content">
-                                    <p>{{Str::of($for_you_item->name)->limit(40)}}</p>
-                                    <h3>Rp {{number_format($for_you_item->price, 0, ',', '.')}}/pcs</h3>
+                                    <p class="contentSemiNormal">{{Str::of($for_you_item->name)->limit(40)}}</p>
+                                    <h3 class="contentNormal">Rp {{number_format($for_you_item->price, 0, ',', '.')}}/pcs</h3>
                                     <div class="progressIndicator">
                                         <div class="textProgress">
-                                            <p>{{$for_you_item->curr_qty}}/{{$for_you_item->target_qty}}</p>
+                                            <p class="contentSmall quantityTarget">{{$for_you_item->curr_qty}}/{{$for_you_item->target_qty}}</p>
                                         </div>
                                         @php
                                             $currentPro = $for_you_item->curr_qty;

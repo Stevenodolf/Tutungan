@@ -7,11 +7,11 @@
 @section('content')
     <div class="contentContainer">
         <div class="buatWish">
-            <h2>Buat Wish</h2>
+            <h2 class="contentBig">Buat Wish</h2>
             <form method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="section">
-                    <h4>Informasi Produk Wish</h4>
+                    <h4 class="contentSemiBig">Informasi Produk Wish</h4>
                     <div class="sectionInputSelect">
                         <div class="doubleText">
                             <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Nama Produk *</p>
@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="section">
-                    <h4>Detail Pembelian Produk Wish</h4>
+                    <h4 class="contentSemiBig">Detail Pembelian Produk Wish</h4>
 {{--                    <div class="sectionInputSelect">--}}
 {{--                        <div class="doubleText">--}}
 {{--                            <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Jenis Sumber Pembelian Produk *</p>--}}
@@ -118,7 +118,12 @@
 
                 <div class="notice">
                     <img src="{{asset('images/notice.png')}}">
-                    <h5>Wish anda akan ditampilkan di website ini selama 7 hari (168 jam). Apabila setelah 7 hari target kontribusi Wish anda tercapai, maka Wish anda akan diproses sesuai prosedur.
+                    <h5 class="contentSemiNormal">Proses verifikasi wish akan dilakukan maksimal 1x24 jam setelah Anda mengajukan pembuatan Wish.</h5>
+                </div>
+
+                <div class="notice">
+                    <img src="{{asset('images/notice.png')}}">
+                    <h5 class="contentSemiNormal">Wish anda akan ditampilkan di website ini selama 7 hari (168 jam). Apabila setelah 7 hari target kontribusi Wish anda tercapai, maka Wish anda akan diproses sesuai prosedur.
                         Apabila tidak tercapai, maka Wish akan dibatalkan.</h5>
                 </div>
 

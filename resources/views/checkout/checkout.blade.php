@@ -15,10 +15,6 @@
                         <p class="contentExtraBig">Checkout</p>
                         <p class="contentBig">Alamat Pengiriman</p>
                         <div class="information">
-                            @php
-                                echo $address->id;
-                            @endphp
-                            <p class="contentSemiBig">{{ $address->id }}</p>
                             <p class="contentSemiBig">{{ $address->fullname }}</p>
                             <p class="contentSemiBig">{{ $address->phone_number }}</p>
                             <p class="contentSemiBig">{{ $address->address_detail }}</p>
@@ -156,10 +152,10 @@
                     <div class="pembayaranVerifikasi" id="pembayaranVerifikasi">
                         <div class="section">
                             <img src="{{asset('images/checkGreen.png')}}">
-                            <h2>Pembayaran Terverifikasi</h2>
+                            <h2 class="contentSemiExtraBig">Pembayaran Terverifikasi</h2>
                         </div>
                         <input type="hidden" name="address_id" value="{{ $address->id }}">
-                        <button type="submit" id="kembaliBeranda" type="submit">Kembali Ke Beranda</button>
+                        <button class="contentSemiNormal" type="submit" id="kembaliBeranda" type="submit">Kembali Ke Beranda</button>
                     </div>
                 </div>
             </form>
