@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -37,11 +38,13 @@ class CartController extends Controller
                 $total_price += $cart_item->total_price;
             }
 
+            $addressNavbar = Address::where('is_temp','1')->first();
+
             $cart->total_qty = $total_qty;
             $cart->total_price = $total_price;
             $cart->save();
 
-            return view('keranjang.keranjang', ['user' => $user, 'cart' => $cart, 'cart_items' => $cart_items, 'notifs' => $notifs]);
+            return view('keranjang.keranjang', ['user' => $user, 'cart' => $cart, 'cart_items' => $cart_items, 'notifs' => $notifs, 'addressNavbar'=>$addressNavbar]);
         }
         return redirect('login');
     }
