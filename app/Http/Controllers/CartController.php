@@ -84,6 +84,7 @@ class CartController extends Controller
                 $cart_item->wish_id = $request->wish_id;
             }
 
+
             $cart_item->qty += $request->qty;
             $cart_item->total_price += $total_price;
             $cart_item->created_at = Carbon::now()->format('Y-m-d H:i:s');
@@ -111,6 +112,30 @@ class CartController extends Controller
                 redirect('login');
             }else{
                 $cart_item->delete();
+            }
+
+            $cart->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+            $cart->save();
+
+            return redirect('cart');
+        }
+        return redirect('login');
+    }
+
+    public function deleteAllCartItem(){
+        $auth = Auth::check();
+
+        if($auth){
+            $user = User::where('id', Auth::user()->id)->first();
+
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_item = Cart_Item::where('cart_id', $cart->id)->get();
+            if($cart_item == null) {
+                redirect('login');
+            }else{
+               foreach ($cart_item as $cartItem){
+                   $cartItem->delete();
+               }
             }
 
             $cart->updated_at = Carbon::now()->format('Y-m-d H:i:s');

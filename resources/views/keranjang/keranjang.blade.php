@@ -12,7 +12,9 @@
                     <div class="sectionContent">
                         <div class="header">
                             <p class="contentExtraBig title">Keranjang</p>
-                            <p class="contentSemiNormal buttonHapusSemua">Hapus Semua</p>
+                            @if(sizeof($cart_items) != 0)
+                                <a href="/cart/deleteAll" class="contentSemiNormal buttonHapusSemua">Hapus Semua</a>
+                            @endif
                         </div>
                         <div class="cartItems">
                             @foreach($cart_items as $cart_item)
@@ -56,7 +58,12 @@
                     <input type="hidden" name="total_qty" value="{{$cart->total_qty}}">
                     <p class="contentSemiNormal title">Total</p>
                     <p class="contentSemiBig cartTotalPrice">Rp{{number_format($cart->total_price, 0, ',', '.')}} ({{ $cart->total_qty }} pcs)</p>
-                    <button type="submit" class="button buttonYellow buttonBeli">Checkout</button>
+                    @if(sizeof($cart_items) != 0)
+                        <button type="submit" class="button buttonYellow buttonBeli">Checkout</button>
+                    @else
+                        <button type="submit" class="button buttonGrey buttonBeli" disabled>Checkout</button>
+                    @endif
+
                 </form>
             </div>
         </div>

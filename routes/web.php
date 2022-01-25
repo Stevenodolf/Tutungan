@@ -57,10 +57,14 @@ Route::middleware('auth')->group(function (){
     Route::get('/cart', 'CartController@getCart')->name('getCart');
     Route::post('/cart', 'CartController@postCart')->name('postCart');
     Route::post('/cart/delete', 'CartController@deleteCartItem')->name('deleteCartItem');
+    Route::get('/cart/deleteAll', 'CartController@deleteAllCartItem')->name('deleteAllCartItem');
     Route::post('/cart/update', 'CartController@updateCartItem')->name('updateCartItem');
 
-    Route::get('/checkout/{id}', 'PaymentController@checkout')->name('getCheckout')->middleware('alamat');
-    Route::post('/checkout/{id}', 'PaymentController@postCheckout')->middleware('alamat');
+    Route::middleware(['payment','alamat'])->group(function (){
+        Route::get('/checkout/{id}', 'PaymentController@checkout')->name('getCheckout');
+        Route::post('/checkout/{id}', 'PaymentController@postCheckout');
+    });
+
 
     // DETAIL AKUN
 

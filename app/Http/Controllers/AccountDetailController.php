@@ -186,7 +186,10 @@ class AccountDetailController extends Controller
                 ->where('id',$request->id)
                 ->where('user_id', Auth::user()->id)
                 ->value('is_main');
-            if($checkUtama == 1){
+            $checkBanyak = DB::table('address')
+                ->where('user_id', Auth::user()->id)
+                ->count();
+            if($checkUtama == 1 && $checkBanyak > 1){
                 $isNotUtamaFirst = DB::table('address')
                     ->where('user_id', Auth::user()->id)
                     ->where('is_main', '0')
@@ -324,7 +327,10 @@ class AccountDetailController extends Controller
                 ->where('id',$request->id)
                 ->where('user_id', Auth::user()->id)
                 ->value('is_utama');
-            if($check == '1'){
+            $checkCount = DB::table('card_info')
+                ->where('user_id', Auth::user()->id)
+                ->count();
+            if($check == '1' && $checkCount > 1){
                 $isNotUtamaFirst = DB::table('card_info')
                     ->where('user_id', Auth::user()->id)
                     ->where('is_utama', '0')

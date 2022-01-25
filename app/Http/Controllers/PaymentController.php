@@ -16,6 +16,7 @@ use App\Shipper;
 use App\Wish;
 use App\Transaction;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class PaymentController extends Controller
@@ -37,6 +38,11 @@ class PaymentController extends Controller
             if($user->id == $payment->user_id){
                 $payment_items = Payment_Item::where('payment_id', $payment->id)->get();
 
+                $card = DB::table('card_info')
+                    ->where('user_id', Auth::user()->id)
+                    ->where('is_utama','1')
+                    ->first();
+
                 foreach($payment_items as $pi){
                     // $total_oti = $request->total_oti;
                     // $total_itu = $request->total_itu;
@@ -56,7 +62,7 @@ class PaymentController extends Controller
 
                 return view('checkout.checkout', ['auth' => $auth, 'user' => $user, 'payment_items' => $payment_items,
                     'dshippers' => $dshippers, 'payment' => $payment, 'jumlah_wish' => $jumlah_wish,
-                    'address' => $address, 'kecamatan' => $kecamatan, 'kabupaten' => $kabupaten, 'provinsi' => $provinsi]);
+                    'address' => $address, 'kecamatan' => $kecamatan, 'kabupaten' => $kabupaten, 'provinsi' => $provinsi,'card'=>$card]);
             }
 
         }

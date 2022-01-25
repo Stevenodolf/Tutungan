@@ -78,6 +78,21 @@ button {
   background: #bfbfbf;
 }
 
+.buttonGrey {
+  border-color: #bfbfbf;
+  background: #bfbfbf;
+  color: #787878;
+  margin-bottom: 10px;
+}
+
+.buttonGrey:hover {
+  background: #bfbfbf;
+}
+
+.buttonGrey:active {
+  background: #bfbfbf;
+}
+
 .buttonYellow {
   border-color: #DFCC60;
   background: #FFD901;
@@ -814,6 +829,7 @@ button {
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  justify-content: space-between;
   padding: 10px;
 }
 

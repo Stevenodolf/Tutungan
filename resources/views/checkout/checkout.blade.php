@@ -132,11 +132,11 @@
                         <div class="section">
                             <div class="subSection">
                                 <p class="contentSemiBig">Metode Pembayaran</p>
-                                <p class="contentSemiNormal" style="color: rgba(49, 53, 59, 0.5);cursor: pointer">Lihat Semua</p>
+                                <a class="contentSemiNormal" style="color: rgba(49, 53, 59, 0.5);cursor: pointer" href="{{url('/akunSaya/kartukreditdebit')}}">Lihat Semua</a>
                             </div>
                             <div class="subSection2">
-                                <img src="{{asset('images/bca.png')}}">
-                                <p class="contentSemiBig">BCA Virtual Account</p>
+                                <img src="{{asset('images/'. $card->card_type .'.png')}}">
+                                <p class="contentSemiBig">{{ucfirst($card->card_type)}} ({{$card->card_number}})</p>
                             </div>
                         </div>
                         <div class="section" style="padding-top: 15px;border-top: 2px solid rgba(49, 53, 59, 0.3);">
