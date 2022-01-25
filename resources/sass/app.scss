@@ -1231,6 +1231,7 @@ button{
                             .infoDetail {
                                 cursor: pointer;
                                 font-family: "latobold";
+                                width: fit-content;
                                 color: #D5B81B;
                             }
                         }
@@ -1243,6 +1244,8 @@ button{
                             display: flex;
                             width: 67%;
                             color: #31353B;
+                            background: #FFFFFF;
+                            border: none;
                             //white-space: wrap;
                         }
                         .shipping {

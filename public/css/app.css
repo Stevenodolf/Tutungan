@@ -1352,6 +1352,9 @@ button {
 .wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow:last-of-type .infoDetail {
   cursor: pointer;
   font-family: "latobold";
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   color: #D5B81B;
 }
 
@@ -1365,6 +1368,8 @@ button {
   display: flex;
   width: 67%;
   color: #31353B;
+  background: #FFFFFF;
+  border: none;
 }
 
 .wishDetail .leftSection .upperSection .generalInfo .lowerInfo .infoRow .shipping {
