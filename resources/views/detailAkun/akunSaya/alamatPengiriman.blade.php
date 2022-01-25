@@ -14,11 +14,11 @@
     <div class="content" id="content2">
         <div class="titleWithButton">
             <div class="titleInButton">
-                <h2>Alamat Pengiriman</h2>
+                <h2 class="contentBig">Alamat Pengiriman</h2>
                 <p class="contentSemiBig">Kelola daftar alamat untuk pengiriman barang pesanan Anda.</p>
             </div>
             <div class="buttonContainer">
-                <button onclick="popupTambahAlamat();">
+                <button class="button buttonYellow" onclick="popupTambahAlamat();">
                     <img src="{{asset("images/plusBlack.png")}}">
                     <p class="contentNormal">Alamat</p>
                 </button>
@@ -28,7 +28,7 @@
             <div class="alamatPengiriman">
                 <div class="listAlamat">
                     <div class="titleWithEmblem">
-                        <h3>{{$alamats->address_label}}</h3>
+                        <h3 class="contentSemiBig">{{$alamats->address_label}}</h3>
                         @if($alamats->is_main == '1')
                             <div class="emblem">
                                 <p class="contentSemiNormal" style="color: white;">Utama</p>
@@ -58,7 +58,7 @@
                             <form class="section" method="POST" action="{{url('/akunSaya/postTempAlamatPengiriman')}}">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="id" value="{{$alamats->id}}">
-                                <button type="submit">Pilih</button>
+                                <button class="button buttonYellow" type="submit">Pilih</button>
                             </form>
                         @endif
 
@@ -76,38 +76,6 @@
                 </div>
             </div>
         @endforeach
-
-{{--        <div class="alamatPengiriman">--}}
-{{--            <div class="listAlamat">--}}
-{{--                <div class="titleWithEmblem">--}}
-{{--                    <h3>Dormitory</h3>--}}
-{{--                </div>--}}
-{{--                <div class="keterangan">--}}
-{{--                    <div class="section">--}}
-{{--                        <div class="sectionText">--}}
-{{--                            <p class="contentNormal" style="color: #636363;width: 150px">Nama Lengkap</p>--}}
-{{--                            <p class="contentNormal">Steven Yuwono</p>--}}
-{{--                        </div>--}}
-{{--                        <div class="sectionText">--}}
-{{--                            <p class="contentNormal" style="color: #636363;width: 150px">Telepon</p>--}}
-{{--                            <p class="contentNormal" >62812345678</p>--}}
-{{--                        </div>--}}
-{{--                        <div class="sectionText">--}}
-{{--                            <p class="contentNormal" style="color: #636363;width: 150px">Alamat</p>--}}
-{{--                            <p class="contentNormal" style="width: 250px">Jl. Ir. Soekarno No. 69, RT 04 RW 20 Kota Surakarta - Pasar Kliwon Jawa Tengah 57752</p>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="section">--}}
-{{--                        <button>Pilih</button>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="buttonBawah">--}}
-{{--                    <button>Ubah</button>--}}
-{{--                    <button>Hapus</button>--}}
-{{--                    <button>Atur Sebagai Alamat Utama</button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </div>
     <div class="blackContainer" id="tambahAlamat">
         <div class="popUpTambahAlamat">

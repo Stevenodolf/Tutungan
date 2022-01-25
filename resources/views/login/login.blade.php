@@ -15,19 +15,19 @@
         <div class="login">
             <div class="loginContainer">
                 <div class="title">
-                    <h1>Masuk</h1>
+                    <h1 class="contentSemiExtraBig">Masuk</h1>
                 </div>
                 <form class="section" method="POST">
                     {{ csrf_field() }}
                     <div class="field">
-                        <p class="">Email</p>
+                        <p class="contentSemiBig">Email</p>
                         <input name="email" type="text" id="email" placeholder="ex:youremail@tutungan.com" required>
                     </div>
                     <div class="field">
-                        <p class="">Password</p>
+                        <p class="contentSemiBig">Password</p>
                         <input name="password" type="password" id="password" required>
                         <div class="lupaPass">
-                            <a href="{{url('/forgotPassword')}}" class="contentSemiBig">Lupa password?</a>
+                            <a href="{{url('/forgotPassword')}}" class="contentSemiNormal">Lupa password?</a>
                         </div>
                     </div>
                     @if($errors->any())

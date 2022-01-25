@@ -15,23 +15,23 @@
         <div class="login">
             <div class="loginContainer">
                 <div class="title" style="flex-direction: column;align-items: normal;">
-                    <h1>Lupa Password</h1>
-                    <p class="">Masukan email yang terdaftar untuk lupa password.</p>
+                    <h1 class="contentSemiExtraBig">Lupa Password</h1>
+                    <p class="contentSemiBig secondaryText">Masukan email yang terdaftar untuk lupa password.</p>
                 </div>
                 <form class="section" method="POST" action="{{url('/resetPassword')}}">
                     {{ csrf_field() }}
                     <input type="hidden" name="token" value="{{ $token }}">
 
                     <div class="field">
-                        <p class="">Email</p>
+                        <p class="contentSemiBig secondaryText">Email</p>
                         <input name="email" type="email" id="email" required>
                     </div>
                     <div class="field">
-                        <p class="">Password</p>
+                        <p class="contentSemiBig secondaryText">Password</p>
                         <input name="password" type="password" id="password" required>
                     </div>
                     <div class="field">
-                        <p class="">Confirm Password</p>
+                        <p class="contentSemiBig secondaryText">Confirm Password</p>
                         <input name="password_confirmation" type="password" id="password_confirmation" required>
                     </div>
                     @if($errors->any())

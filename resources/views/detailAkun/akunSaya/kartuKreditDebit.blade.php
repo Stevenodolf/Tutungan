@@ -13,13 +13,13 @@
     <div class="content" id="content3">
         <div class="titleWithButton">
             <div class="titleInButton">
-                <h2>Kartu Kredit/Debit</h2>
+                <h2 class="contentBig">Kartu Kredit/Debit</h2>
                 <p class="contentSemiBig">Kelola informasi kartu kredit/debit untuk memproses pembayaran.</p>
             </div>
             <div class="buttonContainer">
-                <button onclick="popupTambahCreditDebit();">
+                <button class="button buttonYellow" onclick="popupTambahCreditDebit();">
                     <img src="{{asset("images/plusBlack.png")}}">
-                    <p class="contentNormal">Kartu Kredit/Debit</p>
+                    <p class="contentNormal">Kredit/Debit</p>
                 </button>
             </div>
         </div>
@@ -29,7 +29,7 @@
                     <img src="{{asset('images/' .$list->card_type .'.png')}}"/>
                     <div>
                         <div class="titleWithEmblem">
-                            <h3>{{$list->card_number}}</h3>
+                            <h3 class="contentBig">{{$list->card_number}}</h3>
                             @if($list->is_utama == 1)
                                 <div class="emblem">
                                     <p class="contentSemiNormal" style="color: white;">Utama</p>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="keterangan">
                             <div class="section">
-                                <p class="contentNormal">{{$list->card_valid_month}} / {{$list->card_valid_year}} </p>
+                                <p class="contentSemiNormal">{{$list->card_valid_month}} / {{$list->card_valid_year}} </p>
                             </div>
                         </div>
                     </div>

@@ -345,7 +345,7 @@ class AccountDetailController extends Controller
                 ->where('user_id', Auth::user()->id)
                 ->where('is_utama','1')
                 ->update(array('is_utama'=>'0'));
-                
+
             DB::table('card_info')
                 ->where('id', $request->id)
                 ->where('user_id', Auth::user()->id)
@@ -555,7 +555,7 @@ class AccountDetailController extends Controller
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
-            $notification_wishes = Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(10);
+            $notification_wishes = Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')->take(10)->get();
             Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')
                 ->update(['is_read' => 1]);
 

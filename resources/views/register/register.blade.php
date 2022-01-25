@@ -17,22 +17,22 @@
                 <form method="POST" action="{{route('postRegister')}}" enctype="multipart/form-data">
                     @csrf
                     {{ csrf_field() }}
-                    <h1>Daftar</h1>
-                    <p class="contentSemiBig">Sudah punya akun? <a href="{{route('getLogin')}}" style="color: #D5B81B;cursor: pointer">Masuk</a></p>
+                    <h1 class="contentSemiExtraBig">Daftar</h1>
+                    <p class="contentSemiBig textBelowTitle">Sudah punya akun? <a class="masuk" href="{{route('getLogin')}}" style="color: #D5B81B;cursor: pointer">Masuk</a></p>
                     <div class="section">
-                        <p class="contentSemiBig">Username</p>
+                        <p class="contentSemiBig question">Username</p>
                         <input type="text" id="username" name="username" required/>
                     </div>
                     <div class="section">
-                        <p class="contentSemiBig">Email</p>
+                        <p class="contentSemiBig question">Email</p>
                         <input type="text" id="email" name="email" required/>
                     </div>
                     <div class="section">
-                        <p class="contentSemiBig">Phone Number</p>
+                        <p class="contentSemiBig question">Phone Number</p>
                         <input type="text" id="pnumber" name="pnumber" required/>
                     </div>
                     <div class="section">
-                        <p class="contentSemiBig">Date of Birth</p>
+                        <p class="contentSemiBig question">Date of Birth</p>
                         <div style="display: flex;justify-content: space-between;">
                             <select id ="day" name = "day" >
                             </select>
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="section">
-                        <p class="contentSemiBig">Gender</p>
+                        <p class="contentSemiBig question">Gender</p>
                         <select id="gender" name="gender" required>
                             <option value="" disabled selected>Choose Gender</option>
                             <option value="1">Pria</option>
@@ -51,11 +51,11 @@
                         </select>
                     </div>
                     <div class="section">
-                        <p class="contentSemiBig">Password</p>
+                        <p class="contentSemiBig question">Password</p>
                         <input type="password" id="password" name="password" required/>
                     </div>
                     <div class="section">
-                        <p class="contentSemiBig">Re-enter Password</p>
+                        <p class="contentSemiBig question">Re-enter Password</p>
                         <input type="password" id="password2" name="password2" required/>
                     </div>
                     <div class="section">
@@ -64,7 +64,7 @@
                                 <strong> {{$errors->first()}}</strong>
                             </div>
                         @endif
-                        <button type="submit">
+                        <button id="buttonSubmit" type="submit">
                             <p class="contentNormal">Daftar</p>
                         </button>
                     </div>

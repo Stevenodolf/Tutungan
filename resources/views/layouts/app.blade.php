@@ -205,7 +205,7 @@
                     </div>
                 </div>
                 <form action="{{url('/createWish')}}">
-                    <button type="submit" class="contentSemiNormal buttonAddWish">
+                    <button type="submit" class="contentSemiNormal buttonAddWish button buttonYellow">
                         <img src="{{asset('images/plusBlack.png')}}">
                         Wish
                     </button>
@@ -300,7 +300,7 @@
 <div class="blackContainer" id="blackContainer">
     <div class="loginPopUp">
         <div class="title">
-            <h1>Masuk</h1>
+            <h1 class="contentSemiExtraBig">Masuk</h1>
             <button id="closeLogin">
                 <img src="{{asset('images/close.png')}}"/>
             </button>
@@ -308,22 +308,22 @@
         <form class="loginSection" method="POST" action="{{route('postLogin')}}">
             {{ csrf_field() }}
             <div class="field">
-                <p class="">Email</p>
+                <p class="contentSemiBig">Email</p>
                 <input name="email" type="text" id="email" placeholder="ex:youremail@tutungan.com" required>
             </div>
             <div class="field">
-                <p class="">Password</p>
+                <p class="contentSemiBig">Password</p>
                 <input name="password" type="password" id="password" required>
                 <div class="lupaPass">
-                    <a href="{{url('/forgotPassword')}}"><p class="">Lupa password?</p></a>
+                    <a href="{{url('/forgotPassword')}}"><p class="contentSemiNormal">Lupa password?</p></a>
                 </div>
             </div>
             <button class="buttonMasuk" type="submit">
-                <p class="">Masuk</p>
+                <p class="contentBig">Masuk</p>
             </button>
         </form>
         <div class="daftarSection">
-            <p class="">Baru di Tutungan?</p>
+            <p class="contentSemiBig">Baru di Tutungan?</p>
             <a href="{{url('/register')}}">
                 <p class="contentSemiBig">Daftar</p>
             </a>
