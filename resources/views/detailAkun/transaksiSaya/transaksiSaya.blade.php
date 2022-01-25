@@ -60,11 +60,14 @@
                         <div class="header">
                             <div class="dateSection">
                                 <p class="contentSmall">Transaksi dibuat: <span id="created{{ $idx }}"></span></p>
-{{--                                <p id="processed{{ $idx }}" class="contentSmall textWishProcessed">Wish diproses: 7 Jan 2022</p>--}}
+                                <p id="processed{{ $idx }}" class="contentSmall textWishProcessed">Tenggat waktu Wish: <span id="deadline{{ $idx }}" class="textWishProcessed"></span></p>
                                 <script>
                                     var createdDate = "{{ $transaction->created_at }}";
                                     createdDate = createdDate.replace(/\s/g, 'T');
+                                    var deadlineDate = "{{ $transaction->getWishRelation->deadline }}";
+                                    deadlineDate = deadlineDate.replace(/\s/g, 'T');
                                     document.getElementById("created" + {{ $idx }}).innerHTML = moment(createdDate).format('DD MMM YYYY');
+                                    document.getElementById("deadline" + {{ $idx }}).innerHTML = moment(deadlineDate).format('DD MMM YYYY');
                                 </script>
                             </div>
                             <div class="statusSection">
