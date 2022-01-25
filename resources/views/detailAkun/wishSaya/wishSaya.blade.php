@@ -60,13 +60,13 @@
                     <div class="header">
                         <p class="contentSmall textWishMaker">Oleh: {{ $wish->getCreatedByRelation->username }}</p>
                         @if($wish->status_wish_id >= 3)
-                            <p class="contentSmall"><span id="created{{ $idx }}"></span> - <span id="deadline{{ $idx }}"></span></p>
+                            <p class="contentSmall"><span id="approved{{ $idx }}"></span> - <span id="deadline{{ $idx }}"></span></p>
                             <script>
-                                var createdDate = "{{ $wish->created_at }}";
-                                createdDate = createdDate.replace(/\s/g, 'T');
+                                var approvedDate = "{{ $wish->approved_at }}";
+                                approvedDate = approvedDate.replace(/\s/g, 'T');
                                 var deadlineDate = "{{ $wish->deadline }}";
                                 deadlineDate = deadlineDate.replace(/\s/g, 'T');
-                                document.getElementById("created" + {{ $idx }}).innerHTML = moment(createdDate).format('DD MMM YYYY');
+                                document.getElementById("approved" + {{ $idx }}).innerHTML = moment(approvedDate).format('DD MMM YYYY');
                                 document.getElementById("deadline" + {{ $idx }}).innerHTML = moment(deadlineDate).format('DD MMM YYYY');
                             </script>
                         @endif

@@ -2775,7 +2775,6 @@ button {
 .detailAkun .contentV2 {
   display: flex;
   width: 910px;
-  margin-left: 45px;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -3502,6 +3501,7 @@ button {
   -o-object-fit: scale-down;
      object-fit: scale-down;
   background: #FFFFFF;
+  border: 1px solid #D9D9D9;
 }
 
 .detailAkun .contentV3 .notificationSection .notificationCell .detail {

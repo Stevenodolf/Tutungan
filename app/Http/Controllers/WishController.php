@@ -109,6 +109,10 @@ class WishController extends Controller
                 $data[] = $folder .'/'. $filename;
             }
 
+            // Otomatis Verifikasi Wish (utk testing aja)
+            $wish->approved_by = 1;
+            $wish->approved_at = Carbon::now();
+
             $wish->image = json_encode($data);//string
             $wish->origin_id = $request->origin;
             $wish->web_link = $request->webLink;
@@ -117,6 +121,7 @@ class WishController extends Controller
             $wish->deadline = Carbon::now()->addDays(7);; //datetime
             $wish->min_order = 1;
             $wish->target_qty = $request->targetQty; //int
+            $wish->contributor = 1;
             $wish->created_at = Carbon::now();
             $wish->updated_at = Carbon::now();
             $wish->save();

@@ -2560,7 +2560,6 @@ button{
     .contentV2{
         display: flex;
         width: 910px;
-        margin-left: 45px;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
@@ -3213,6 +3212,7 @@ button{
                     //margin-left: 15px;
                     object-fit: scale-down;
                     background: #FFFFFF;
+                    border: 1px solid #D9D9D9;
                 }
                 .detail{
                     display: flex;
