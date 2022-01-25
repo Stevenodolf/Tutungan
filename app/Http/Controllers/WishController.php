@@ -204,8 +204,7 @@ class WishController extends Controller
         $notifs = NULL;
 
         //search
-        $wishes = Wish::where('name', 'like', "%".$search."%")
-                        ->where('category_id', $request->category)->get();
+        $wishes = Wish::where('name', 'like', "%".$search."%")->get();
         $wishes_category_id = Wish::where('name', 'like', "%".$search."%")->pluck('category_id');
 
         //categories
