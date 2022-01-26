@@ -46,8 +46,6 @@ Route::get('/register', 'AuthController@showRegisterPage')->name('getRegister');
 Route::post('/register', 'AuthController@postRegister') ->name('postRegister');
 Route::get('/account/verify/{token}', 'AuthController@verifyAccount') ->name('userVerify');
 
-Route::post('/deletepayment/{id}', 'PaymentController@deletePayment')->name('deletePayment');
-
 Route::middleware('auth')->group(function (){
     Route::get('/logout','AuthController@logout')->name('logout');
 
@@ -66,6 +64,8 @@ Route::middleware('auth')->group(function (){
     Route::middleware(['payment','alamat'])->group(function (){
         Route::get('/checkout/{id}', 'PaymentController@checkout')->name('getCheckout');
         Route::post('/checkout/{id}', 'PaymentController@postCheckout');
+        Route::post('/deletepayment', 'PaymentController@deletePayment')->name('deletePayment');
+        Route::post('/undeletepayment', 'PaymentController@undeletePayment')->name('undeletePayment');
     });
 
 
