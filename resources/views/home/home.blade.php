@@ -46,11 +46,18 @@
                                             <div class="content">
                                                 <p>{{$lm->name}}</p>
                                                 <h3>Rp {{number_format($lm->price, 0, ',', '.')}}/pcs</h3>
-                                                <div class="barWithText">
+                                                <div class="progressIndicator">
                                                     <div class="textProgress">
-                                                        <p>{{$lm->curr_qty}}/{{$lm->target_qty}}</p>
+                                                        <p class="contentSmall quantityTarget">{{$lm->curr_qty}}/{{$lm->target_qty}}</p>
                                                     </div>
-                                                    <div class="progressBar"></div>
+                                                    @php
+                                                        $currentPro = $lm->curr_qty;
+                                                        $targetPro = $lm->target_qty;
+                                                        $progress = ($currentPro/$targetPro)*100;
+                                                    @endphp
+                                                    <div class="barProgress totalBarYellow">
+                                                        <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
