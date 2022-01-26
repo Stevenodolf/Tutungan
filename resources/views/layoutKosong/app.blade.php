@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Tutungan</title>
-
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logoWithoutText.ico')}}" />
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/script/jquery/jquery.js') }}"></script>

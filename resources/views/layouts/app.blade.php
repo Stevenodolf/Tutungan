@@ -7,7 +7,10 @@
     <!-- CSRF Token -->
     <meta name="_token" content="{{ csrf_token() }}">
 
+
+
     <title>Tutungan</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logoWithoutText.ico')}}" />
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('font/stylesheet.css') }}" rel="stylesheet">
