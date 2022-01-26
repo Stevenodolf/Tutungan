@@ -210,11 +210,11 @@ class WishController extends Controller
         $notifs = NULL;
 
         //search
-        $curr_min = NULL; $curr_maks = NULL; $active_cat = NULL;
+        $curr_min = NULL; $curr_maks = NULL; $active_cat = NULL; $is_min = NULL;
 
         // $wishes = Wish::where('name', 'like', "%".$search."%")->get();
         $query = Wish::where('name', 'like', "%".$search."%");
-        $query->where('name', 'like', "%".$request->search."%");
+        $query->where('name', 'like', "%".$search."%");
 
         if($request->filled('category')){
             $query->whereIn('category_id',$request->category)->get();
@@ -227,6 +227,33 @@ class WishController extends Controller
         if($request->filled('maks')){
             $query->where('price', '<', $request->maks);
             $curr_maks = $request->maks;
+        }
+        if($request->filled('deadline')){
+            if($request->deadline == 1){
+                $deadline = Carbon::now('Asia/Jakarta')->addDays(1);
+                $query->where('deadline', '<', $deadline)->get();
+            }elseif($request->deadline == 2){
+                $deadline = Carbon::now('Asia/Jakarta')->addDays(1);
+                $deadline2 = Carbon::now('Asia/Jakarta')->addDays(3);
+                $query->where('deadline', '>', $deadline)->where('deadline', '<', $deadline2)->get();
+            }elseif($request->deadline == 3){
+                $deadline = Carbon::now('Asia/Jakarta')->addDays(4);
+                $deadline2 = Carbon::now('Asia/Jakarta')->addDays(7);
+                $query->where('deadline', '>', $deadline)->where('deadline', '<', $deadline2)->get();
+            }elseif($request->deadline == 4){
+                $deadline = Carbon::now('Asia/Jakarta')->addDays(7);
+                $query->where('deadline', '>', $deadline)->get();
+            }
+        }
+
+        if($request->filled('sort')){
+            if($request->sort == 1){
+                $query->orderBy('price', 'asc');
+                $is_min = 1;
+            }elseif($request->sort == 2){
+                $query->orderBy('price', 'desc');
+                $is_min = 0;
+            }
         }
 //        if($request->filled('deadline')){
 //            if ($request->deadline == '1'){
@@ -256,11 +283,11 @@ class WishController extends Controller
 
             return view('wish.searchWish', ['auth' => $auth, 'user' => $user, 'wishes' => $wishes, 'cart' => $cart, 'categories' => $categories,
                                             'cart_items' => $cart_items, 'notifs' => $notifs, 'search' => $search, 'addressNavbar'=>$addressNavbar,
-                                            'curr_min' => $curr_min, 'curr_maks' => $curr_maks, 'active_cat' => $active_cat]);
+                                            'curr_min' => $curr_min, 'curr_maks' => $curr_maks, 'active_cat' => $active_cat, 'is_min' => $is_min]);
         }
         return view('wish.searchWish', ['auth' => $auth, 'wishes'=> $wishes, 'cart' => $cart, 'categories' => $categories,
                                         'cart_items' => $cart_items, 'notifs' => $notifs, 'search' => $search, 'curr_min' => $curr_min, 'curr_maks' => $curr_maks,
-                                        'active_cat' => $active_cat]);
+                                        'active_cat' => $active_cat, 'is_min' => $is_min]);
     }
 }
 

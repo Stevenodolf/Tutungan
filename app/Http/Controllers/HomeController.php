@@ -36,8 +36,8 @@ class HomeController extends Controller
         $wishes = Wish::all();
 
         //last minute
-        $curr_date = Carbon::now();
-        // $lastminute = Wish::whereRaw('DATEDIFF(deadline, curr_date) < 7')->get();
+        $deadline = Carbon::now('Asia/Jakarta')->addDays(1);
+        $lastminute = Wish::where('deadline', '<', $deadline)->get();
 
         //category
         $categories = Category::all();
@@ -67,9 +67,10 @@ class HomeController extends Controller
 
             return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'user' => $user, 'cart' => $cart,
                              'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items,
-                             'notifs' => $notifs, 'addressNavbar'=>$addressNavbar]);
+                             'notifs' => $notifs, 'addressNavbar'=>$addressNavbar, 'lastminute' => $lastminute]);
         }
         return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'cart' => $cart, 'notifs' => $notifs,
-                             'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items]);
+                             'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items,
+                             'lastminute' => $lastminute]);
     }
 }

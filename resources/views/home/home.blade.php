@@ -34,25 +34,32 @@
                 <div class="listWish">
                     <div class="swiper lastMinuteSwipe">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="wish">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}">
-                                    <div class="timeLeft">
-                                        <p>Tersisa 5 Hari Lagi</p>
-                                    </div>
-                                    <div class="content">
-                                        <p>Laci lapis 3 warna biru merk lion star</p>
-                                        <h3>Rp 15.000/pcs</h3>
-                                        <div class="barWithText">
-                                            <div class="textProgress">
-                                                <p>7500/15000</p>
+                            @foreach ($lastminute as $lm)
+                                @php
+                                    $deadline = strtotime($lm->deadline);
+                                    $diff = $deadline - time();
+                                    $time_left = Round($diff / 86400);
+                                @endphp
+                                <div class="swiper-slide">
+                                    <div class="wish">
+                                        <img src="{{asset('images/dummyProduct.jpeg')}}">
+                                        <div class="timeLeft">
+                                            <p>Tersisa {{$time_left}} Hari Lagi</p>
+                                        </div>
+                                        <div class="content">
+                                            <p>{{$lm->name}}</p>
+                                            <h3>Rp {{number_format($lm->price, 0, ',', '.')}}/pcs</h3>
+                                            <div class="barWithText">
+                                                <div class="textProgress">
+                                                    <p>{{$lm->curr_qty}}/{{$lm->target_qty}}</p>
+                                                </div>
+                                                <div class="progressBar"></div>
                                             </div>
-                                            <div class="progressBar"></div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide">
+                            @endforeach
+                            {{-- <div class="swiper-slide">
                                 <div class="wish">
                                     <img src="{{asset('images/dummyProduct.jpeg')}}">
                                     <div class="timeLeft">
@@ -196,7 +203,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>

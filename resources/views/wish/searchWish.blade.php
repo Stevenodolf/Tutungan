@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="section">
+                        {{-- <div class="section">
                             <h4>Kekurangan Kontribusi</h4>
                             <div class="subSection">
                                 <div class="textInput">
@@ -62,24 +62,24 @@
                                     <input type="number" name="kurang_maks" placeholder="Maksimal Kontribusi">
                                 </div>
                             </div>
-                        </div>
-{{--                        <div class="section">--}}
-{{--                            <h4>Tenggat Waktu</h4>--}}
-{{--                            <div class="subSection">--}}
-{{--                                <div class="checkboxText">--}}
-{{--                                    <input type="radio" name="deadline" value="1">--}}
-{{--                                    <p class="contentNormal">< 1 hari</p>--}}
-{{--                                </div>--}}
-{{--                                <div class="checkboxText">--}}
-{{--                                    <input type="radio" name="deadline" value="2">--}}
-{{--                                    <p class="contentNormal">1-3 hari</p>--}}
-{{--                                </div>--}}
-{{--                                <div class="checkboxText">--}}
-{{--                                    <input type="radio" name="deadline" value="3">--}}
-{{--                                    <p class="contentNormal">4-7 hari</p>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        </div> --}}
+                        <div class="section">
+                           <h4>Tenggat Waktu</h4>
+                           <div class="subSection">
+                               <div class="checkboxText">
+                                   <input type="radio" name="deadline" value="1">
+                                   <p class="contentNormal">< 1 hari</p>
+                               </div>
+                               <div class="checkboxText">
+                                   <input type="radio" name="deadline" value="2">
+                                   <p class="contentNormal">1-3 hari</p>
+                               </div>
+                               <div class="checkboxText">
+                                   <input type="radio" name="deadline" value="3">
+                                   <p class="contentNormal">4-7 hari</p>
+                               </div>
+                           </div>
+                       </div>
                         <input type="hidden" value="{{$search}}" name="search">
                     </div>
                     <button type="submit" class="button buttonYellow">Apply</button>
@@ -87,19 +87,28 @@
             </form>
 
             <div class="hasilPencarian">
-                <div class="topTab">
-                    <div class="section">
-                        <img src="{{asset("images/explore.png")}}">
-                        <p class="contentNormal">Hasil pencarian untuk "<strong>{{$search}}</strong>"</p>
+                <form method="GET" action="" id="sort">
+                    <div class="topTab">
+                        <div class="section">
+                            <img src="{{asset("images/explore.png")}}">
+                            <p class="contentNormal">Hasil pencarian untuk "<strong>{{$search}}</strong>"</p>
+                        </div>
+                        <div class="section">
+                            <p class="contentNormal">Urutkan berdasarkan: </p>
+                            <select name="sort" onchange="document.getElementById('sort').submit();">
+                                @if ($is_min == 0)
+                                    <option value="2">Harga Tertinggi</option>
+                                    <option value="1">Harga Terendah</option>
+                                @else
+                                    <option value="1">Harga Terendah</option>
+                                    <option value="2">Harga Tertinggi</option>
+                                @endif
+                            </select>
+                        </div>
                     </div>
-                    <div class="section">
-                        <p class="contentNormal">Urutkan berdasarkan: </p>
-                        <select>
-                            <option>Harga Terendah</option>
-                            <option>Harga Tertinggi</option>
-                        </select>
-                    </div>
-                </div>
+                    <input type="hidden" name="search" value="{{$search}}">
+                    <input type="submit" style="display: none">
+                </form>
                 <div class="hasil">
                     @if($wishes == NULL OR $wishes->isEmpty())
                         <div class="row">
