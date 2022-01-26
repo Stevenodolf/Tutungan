@@ -77,10 +77,10 @@
                 <div class="swiper-wrapper">
                     @foreach($categories as $category)
                         <div class="swiper-slide">
-                            <div class="filter">
+                            <a href="/search?category%5B%5D={{$category->id}}&min=&maks=&search=" class="filter">
                                 <img class="imgFilter" src="{{asset($category->image)}}" alt="">
                                 <p class="contentNormal">{{$category->name}}</p>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>
