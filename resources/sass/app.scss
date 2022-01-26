@@ -133,28 +133,28 @@ button{
 
 //Font
 .contentExtraSmall{
-    font-size: 1rem;
+    font-size: 1rem; // 10px
 }
 .contentSmall{
-    font-size: 1.2rem;
+    font-size: 1.2rem; // 12px
 }
 .contentSemiNormal{
-    font-size: 1.4rem;
+    font-size: 1.4rem; // 14px
 }
 .contentNormal{
-    font-size: 1.6rem;
+    font-size: 1.6rem; // 16px
 }
 .contentSemiBig{
-    font-size: 1.8rem;
+    font-size: 1.8rem; // 18px
 }
 .contentBig{
-    font-size: 2.4rem;
+    font-size: 2.4rem; // 24px
 }
 .contentSemiExtraBig{
-    font-size: 3rem;
+    font-size: 3rem; // 30px
 }
 .contentExtraBig{
-    font-size: 3.6rem;
+    font-size: 3.6rem; // 36px
 }
 
 .filepond--root *:not(text){
@@ -1182,6 +1182,9 @@ button{
 //For You/Looks like for you Section
 .forYou{
     margin-top: 30px;
+    .forYouTitle {
+        font-size: 3.6rem;
+    }
     .row{
         margin-top: 30px;
         display: flex;

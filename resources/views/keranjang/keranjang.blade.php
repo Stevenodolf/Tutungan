@@ -17,8 +17,11 @@
                             @endif
                         </div>
                         <div class="cartItems">
+                            @php
+                                $idx = 1;
+                            @endphp
                             @foreach($cart_items as $cart_item)
-                                <div class="itemCell">
+                                <div id="{{ $cart_item->id }}" class="itemCell">
                                     <img class="itemImg" src="{{ asset('uploads/'.json_decode($cart_item->getWishRelation->image)[0]) }}" onclick="window.location='{{ url('/wish/'.$cart_item->getWishRelation->id) }}'">
                                     <div class="itemInfo">
                                         <p class="contentSemiBig wishName">{{ $cart_item->getWishRelation->name }}</p>
@@ -29,7 +32,10 @@
                                             {{ @csrf_field() }}
                                             <input type="hidden" name="cart_item_id" value="{{$cart_item->id}}">
                                             <div class="deleteSection">
-                                                <button type="submit" class="buttonDelete" formaction="{{ url('/cart/delete') }}">
+{{--                                                <button type="submit" class="buttonDelete" formaction="{{ url('/cart/delete') }}">--}}
+{{--                                                    <img class="buttonImg" src="{{ asset('images/binRed.png') }}">--}}
+{{--                                                </button>--}}
+                                                <button data-role="delete" data-id="{{ $cart_item->id }}" type="button" class="buttonDelete">
                                                     <img class="buttonImg" src="{{ asset('images/binRed.png') }}">
                                                 </button>
                                             </div>
@@ -48,6 +54,9 @@
                                         </form>
                                     </div>
                                 </div>
+                                @php
+                                    $idx += 1;
+                                @endphp
                             @endforeach
                         </div>
                     </div>

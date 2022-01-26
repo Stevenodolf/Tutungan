@@ -307,7 +307,7 @@
         </div>
 
         <div class="forYou">
-            <h1>For You</h1>
+            <h1 class="forYouTitle">For You</h1>
             @if($for_you == NULL)
                 <div class="row">
                     <div class="column">
