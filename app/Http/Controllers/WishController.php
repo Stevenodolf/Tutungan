@@ -198,7 +198,7 @@ class WishController extends Controller
 
     public function wishSearch(Request $request){
         $auth = Auth::check();
-
+//        dd($request->category);
         //search
         $search = $request->search;
 
@@ -217,7 +217,7 @@ class WishController extends Controller
         $query->where('name', 'like', "%".$request->search."%");
 
         if($request->filled('category')){
-            $query->where('category_id', $request->category);
+            $query->whereIn('category_id',$request->category)->get();
             $active_cat = $request->category;
         }
         if($request->filled('min')){
@@ -228,13 +228,19 @@ class WishController extends Controller
             $query->where('price', '<', $request->maks);
             $curr_maks = $request->maks;
         }
+//        if($request->filled('deadline')){
+//            if ($request->deadline == '1'){
+//                $deadline = $query->get();
+//                $query->where($request->deadline , '<', Carbon::yesterday('deadline'));
+//            }
+//            $curr_tenggat = $request->deadline;
+//        }
         $wishes = $query->get();
 
         $wishes_category_id = Wish::where('name', 'like', "%".$search."%")->pluck('category_id');
 
-
         //categories
-        $categories = Category::whereIn('id', $wishes_category_id)->get();
+        $categories = Category::all();
 
         if($auth){
             $user = User::where('id', Auth::user()->id)->first();

@@ -15,17 +15,25 @@
                             <h4>Kategori</h4>
                             <div class="subSection">
                                 @foreach ($categories as $category)
-                                    @if ($category->id == $active_cat)
-                                        <div class="checkboxText">
-                                            <input type="hidden" name="category" value="{{$category->id}}">
-                                            <p class="contentNormal" onclick="document.getElementById('filter').submit();" style="font-weight: bold;">{{$category->name}}</p>
-                                        </div>
-                                    @else
-                                        <div class="checkboxText">
-                                            <input type="hidden" name="category" value="{{$category->id}}">
-                                            <p class="contentNormal"  onclick="document.getElementById('filter').submit();">{{$category->name}}</p>
-                                        </div>
-                                    @endif
+                                    <div class="checkboxText">
+                                        @if(!empty($active_cat))
+                                            <input type="checkbox" name="category[]" value="{{$category->id}}" <?php if(in_array($category->id, $active_cat)) echo 'checked="checked"'; ?>>
+                                        @else
+                                            <input type="checkbox" name="category[]" value="{{$category->id}}">
+                                        @endif
+                                        <p class="contentNormal">{{$category->name}}</p>
+                                    </div>
+{{--                                    @if ($category->id == $active_cat)--}}
+{{--                                        <div class="checkboxText">--}}
+{{--                                            <input type="hidden" name="category" value="{{$category->id}}">--}}
+{{--                                            <p class="contentNormal" onclick="document.getElementById('filter').submit();" style="font-weight: bold;">{{$category->name}}</p>--}}
+{{--                                        </div>--}}
+{{--                                    @else--}}
+{{--                                        <div class="checkboxText">--}}
+{{--                                            <input type="hidden" name="category" value="{{$category->id}}">--}}
+{{--                                            <p class="contentNormal"  onclick="document.getElementById('filter').submit();">{{$category->name}}</p>--}}
+{{--                                        </div>--}}
+{{--                                    @endif--}}
                                 @endforeach
                             </div>
                         </div>
@@ -47,34 +55,34 @@
                             <div class="subSection">
                                 <div class="textInput">
                                     <p class="contentNormal">Min</p>
-                                    <input type="number" name="kurang_min" placeholder="Rp Harga Minimum">
+                                    <input type="number" name="kurang_min" placeholder="Minimal Kontribusi">
                                 </div>
                                 <div class="textInput">
                                     <p class="contentNormal">Maks</p>
-                                    <input type="number" name="kurang_maks" placeholder="Rp Harga Maksimum">
+                                    <input type="number" name="kurang_maks" placeholder="Maksimal Kontribusi">
                                 </div>
                             </div>
                         </div>
-                        <div class="section">
-                            <h4>Tenggat Waktu</h4>
-                            <div class="subSection">
-                                <div class="checkboxText">
-                                    <input type="checkbox" name="deadline" value="1">
-                                    <p class="contentNormal">< 1 hari</p>
-                                </div>
-                                <div class="checkboxText">
-                                    <input type="checkbox" name="deadline" value="2">
-                                    <p class="contentNormal">1-3 hari</p>
-                                </div>
-                                <div class="checkboxText">
-                                    <input type="checkbox" name="deadline" value="3">
-                                    <p class="contentNormal">4-7 hari</p>
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="section">--}}
+{{--                            <h4>Tenggat Waktu</h4>--}}
+{{--                            <div class="subSection">--}}
+{{--                                <div class="checkboxText">--}}
+{{--                                    <input type="radio" name="deadline" value="1">--}}
+{{--                                    <p class="contentNormal">< 1 hari</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="checkboxText">--}}
+{{--                                    <input type="radio" name="deadline" value="2">--}}
+{{--                                    <p class="contentNormal">1-3 hari</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="checkboxText">--}}
+{{--                                    <input type="radio" name="deadline" value="3">--}}
+{{--                                    <p class="contentNormal">4-7 hari</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <input type="hidden" value="{{$search}}" name="search">
                     </div>
-                    <button type="submit" style="display: none;">Apply</button>
+                    <button type="submit" class="button buttonYellow">Apply</button>
                 </div>
             </form>
 
