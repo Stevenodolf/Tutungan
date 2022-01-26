@@ -2,7 +2,7 @@
 
 @section('head')
     <script>
-        var wishDetail = {deadline: "{{$wish_deadline}}", description: "{{$wish_detail}}"}
+        var wishDetail = {deadline: "{{$wish_deadline}}", description: "{{$wish_detail}}"};
     </script>
     <script src="{{ asset('js/src/wish/wishDetail.js') }}"></script>
 @endsection
@@ -148,7 +148,7 @@
 
         {{-- For You --}}
         <div class="forYou">
-            <h1 class="contentBig">For You</h1>
+            <h1 class="forYouTitle">For You</h1>
             @if($for_you == NULL)
                 <div class="row">
                     <div class="column">
@@ -185,7 +185,6 @@
                                                 <div class="textProgress">
                                                     <p class="contentSmall quantityTarget">{{$for_you_item->curr_qty}}/{{$for_you_item->target_qty}}</p>
                                                 </div>
-{{--                                                <div class="progressBar"></div>--}}
                                                 @php
                                                     $currentPro = $for_you_item->curr_qty;
                                                     $targetPro = $for_you_item->target_qty;

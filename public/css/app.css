@@ -1314,6 +1314,10 @@ button {
   /* Clear floats after the columns */
 }
 
+.forYou .forYouTitle {
+  font-size: 3.6rem;
+}
+
 .forYou .row {
   margin-top: 30px;
   display: flex;

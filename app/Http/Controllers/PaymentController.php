@@ -70,6 +70,36 @@ class PaymentController extends Controller
         return redirect('login');
     }
 
+    public function deletePayment(Request $request) {
+        $auth = Auth::check();
+
+        if($auth) {
+            $user = User::where('id', Auth::user()->id)->first();
+            $payment_id = $request->id;
+            $payment = Payment::where('id', $payment_id)
+                ->update(['is_deleted' => '1']);
+
+            if($payment) {
+                return 'payment deleted';
+            }
+        }
+    }
+
+    public function undeletePayment(Request $request) {
+        $auth = Auth::check();
+
+        if($auth) {
+            $user = User::where('id', Auth::user()->id)->first();
+            $payment_id = $request->id;
+            $payment = Payment::where('id', $payment_id)
+                ->update(['is_deleted' => '0']);
+
+            if($payment) {
+                return 'payment undeleted';
+            }
+        }
+    }
+
     public function postCheckout(Request $request, $id){
 //        dd($request->all());
         $auth = Auth::check();
