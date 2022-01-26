@@ -126,7 +126,7 @@
                             @if($loop->index == 0)
                                 <div class="row">
                             @endif
-                            @if(($loop->iteration-1) % 5 == 0 && $loop->index != 0)
+                            @if(($loop->iteration-1) % 4 == 0 && $loop->index != 0)
                                 </div>
                                 <div class="row">
                             @endif

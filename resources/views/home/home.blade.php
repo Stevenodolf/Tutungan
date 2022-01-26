@@ -25,191 +25,44 @@
             </div>
         </div>
 
-        <div class="lastMinuteSection">
-{{--            <div class="banner">--}}
-{{--                <img src="{{asset('images/lastMinute.png')}}"/>--}}
-{{--            </div>--}}
-
-            <div class="lastMinute" style="background-image: url({{asset('images/lastMinute.png')}})">
-                <div class="listWish">
-                    <div class="swiper lastMinuteSwipe">
-                        <div class="swiper-wrapper">
-                            @foreach ($lastminute as $lm)
-                                @php
-                                    $deadline = strtotime($lm->deadline);
-                                    $diff = $deadline - time();
-                                    $time_left = Round($diff / 86400);
-                                @endphp
-                                <div class="swiper-slide">
-                                    <div class="wish">
-                                        <img src="{{asset('images/dummyProduct.jpeg')}}">
-                                        <div class="timeLeft">
-                                            <p>Tersisa {{$time_left}} Hari Lagi</p>
-                                        </div>
-                                        <div class="content">
-                                            <p>{{$lm->name}}</p>
-                                            <h3>Rp {{number_format($lm->price, 0, ',', '.')}}/pcs</h3>
-                                            <div class="barWithText">
-                                                <div class="textProgress">
-                                                    <p>{{$lm->curr_qty}}/{{$lm->target_qty}}</p>
+        @if(!$lastminute->isEmpty())
+            <div class="lastMinuteSection">
+                <div class="lastMinute" style="background-image: url({{asset('images/lastMinute.png')}})">
+                    <div class="listWish">
+                        <div class="swiper lastMinuteSwipe">
+                            <div class="swiper-wrapper">
+                                @foreach ($lastminute as $lm)
+                                    @php
+                                        $deadline = strtotime($lm->deadline);
+                                        $diff = $deadline - time();
+                                        $time_left = Round($diff / 86400);
+                                    @endphp
+                                    <div class="swiper-slide">
+                                        <div class="wish">
+                                            <img src="{{asset('uploads/'.json_decode($lm->image)[0])}}">
+                                            <div class="timeLeft">
+                                                <p>Tersisa {{$time_left}} Hari Lagi</p>
+                                            </div>
+                                            <div class="content">
+                                                <p>{{$lm->name}}</p>
+                                                <h3>Rp {{number_format($lm->price, 0, ',', '.')}}/pcs</h3>
+                                                <div class="barWithText">
+                                                    <div class="textProgress">
+                                                        <p>{{$lm->curr_qty}}/{{$lm->target_qty}}</p>
+                                                    </div>
+                                                    <div class="progressBar"></div>
                                                 </div>
-                                                <div class="progressBar"></div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
-                            {{-- <div class="swiper-slide">
-                                <div class="wish">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}">
-                                    <div class="timeLeft">
-                                        <p>Tersisa 5 Hari Lagi</p>
-                                    </div>
-                                    <div class="content">
-                                        <p>Laci lapis 3 warna biru merk lion star</p>
-                                        <h3>Rp 15.000/pcs</h3>
-                                        <div class="barWithText">
-                                            <div class="textProgress">
-                                                <p>7500/15000</p>
-                                            </div>
-                                            <div class="progressBar"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="wish">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}">
-                                    <div class="timeLeft">
-                                        <p>Tersisa 5 Hari Lagi</p>
-                                    </div>
-                                    <div class="content">
-                                        <p>Laci lapis 3 warna biru merk lion star</p>
-                                        <h3>Rp 15.000/pcs</h3>
-                                        <div class="barWithText">
-                                            <div class="textProgress">
-                                                <p>7500/15000</p>
-                                            </div>
-                                            <div class="progressBar"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="wish">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}">
-                                    <div class="timeLeft">
-                                        <p>Tersisa 5 Hari Lagi</p>
-                                    </div>
-                                    <div class="content">
-                                        <p>Laci lapis 3 warna biru merk lion star</p>
-                                        <h3>Rp 15.000/pcs</h3>
-                                        <div class="barWithText">
-                                            <div class="textProgress">
-                                                <p>7500/15000</p>
-                                            </div>
-                                            <div class="progressBar"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="wish">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}">
-                                    <div class="timeLeft">
-                                        <p>Tersisa 5 Hari Lagi</p>
-                                    </div>
-                                    <div class="content">
-                                        <p>Laci lapis 3 warna biru merk lion star</p>
-                                        <h3>Rp 15.000/pcs</h3>
-                                        <div class="barWithText">
-                                            <div class="textProgress">
-                                                <p>7500/15000</p>
-                                            </div>
-                                            <div class="progressBar"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="wish">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}">
-                                    <div class="timeLeft">
-                                        <p>Tersisa 5 Hari Lagi</p>
-                                    </div>
-                                    <div class="content">
-                                        <p>Laci lapis 3 warna biru merk lion star</p>
-                                        <h3>Rp 15.000/pcs</h3>
-                                        <div class="barWithText">
-                                            <div class="textProgress">
-                                                <p>7500/15000</p>
-                                            </div>
-                                            <div class="progressBar"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="wish">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}">
-                                    <div class="timeLeft">
-                                        <p>Tersisa 5 Hari Lagi</p>
-                                    </div>
-                                    <div class="content">
-                                        <p>Laci lapis 3 warna biru merk lion star</p>
-                                        <h3>Rp 15.000/pcs</h3>
-                                        <div class="barWithText">
-                                            <div class="textProgress">
-                                                <p>7500/15000</p>
-                                            </div>
-                                            <div class="progressBar"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="wish">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                                    <div class="timeLeft">
-                                        <p>Tersisa 5 Hari Lagi</p>
-                                    </div>
-                                    <div class="content">
-                                        <p>Laci lapis 3 warna biru merk lion star</p>
-                                        <h3>Rp 15.000/pcs</h3>
-                                        <div class="barWithText">
-                                            <div class="textProgress">
-                                                <p>7500/15000</p>
-                                            </div>
-                                            <div class="progressBar"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="wish">
-                                    <img src="{{asset('images/dummyProduct.jpeg')}}"/>
-                                    <div class="timeLeft">
-                                        <p>Tersisa 5 Hari Lagi</p>
-                                    </div>
-                                    <div class="content">
-                                        <p>Laci lapis 3 warna biru merk lion star</p>
-                                        <h3>Rp 15.000/pcs</h3>
-                                        <div class="barWithText">
-                                            <div class="textProgress">
-                                                <p>7500/15000</p>
-                                            </div>
-                                            <div class="progressBar"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+        @endif
 
         <div class="category">
 
@@ -223,90 +76,6 @@
                             </div>
                         </div>
                     @endforeach
-                    {{-- <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/fashion.png')}}"/>
-                            <p>Fashion</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/appliance.png')}}"/>
-                            <p>Appliance</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/beauty.png')}}"/>
-                            <p>Beauty</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/toysgame.png')}}"/>
-                            <p>Toys & Games</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/healthcare.png')}}"/>
-                            <p>Health & Personal Care</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/computer.png')}}"/>
-                            <p>Computer & Video Games</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/book.png')}}"/>
-                            <p>Books</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/fashion.png')}}"/>
-                            <p>Fashion</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/appliance.png')}}"/>
-                            <p>Appliance</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/beauty.png')}}"/>
-                            <p>Beauty</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/toysgame.png')}}"/>
-                            <p>Toys & Games</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/healthcare.png')}}"/>
-                            <p>Health & Personal Care</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/computer.png')}}"/>
-                            <p>Computer & Video Games</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="filter">
-                            <img class="imgFilter" src="{{asset('images/book.png')}}"/>
-                            <p>Books</p>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
             <div class="swiper-button-prev prevCategory"></div>
