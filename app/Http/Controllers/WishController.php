@@ -210,7 +210,7 @@ class WishController extends Controller
         $notifs = NULL;
 
         //search
-        $curr_min = NULL; $curr_maks = NULL; $active_cat = NULL; $is_min = NULL;
+        $curr_min = NULL; $curr_maks = NULL; $active_cat = NULL; $is_min = 2;
 
         // $wishes = Wish::where('name', 'like', "%".$search."%")->get();
         $query = Wish::where('name', 'like', "%".$search."%");

@@ -96,7 +96,11 @@
                         <div class="section">
                             <p class="contentNormal">Urutkan berdasarkan: </p>
                             <select name="sort" onchange="document.getElementById('sort').submit();">
-                                @if ($is_min == 0)
+                                @if($is_min == 2)
+                                    <option value="" default>Sort</option>
+                                    <option value="1">Harga Terendah</option>
+                                    <option value="2">Harga Tertinggi</option>
+                                @elseif ($is_min == 0)
                                     <option value="2">Harga Tertinggi</option>
                                     <option value="1">Harga Terendah</option>
                                 @else
