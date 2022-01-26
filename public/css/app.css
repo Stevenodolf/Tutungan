@@ -180,6 +180,10 @@ button {
   font-size: 3.6rem;
 }
 
+.filepond--root *:not(text) {
+  font-size: 1.4rem !important;
+}
+
 .statusGreen {
   font-size: 14px;
   font-weight: 800;
@@ -392,6 +396,10 @@ button {
 
 .firstRegister .registerContainer .section textarea:focus {
   border-color: #D5B81B;
+}
+
+.firstRegister .registerContainer .section .alert {
+  margin-bottom: 15px;
 }
 
 .firstRegister .registerContainer .section2 {
@@ -2447,7 +2455,9 @@ button {
 .checkout .paymentPopup .section .subSection2 img {
   width: 46px;
   height: 40px;
-  margin-right: 5px;
+  margin: 0 15px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .checkout .paymentPopup .section button {

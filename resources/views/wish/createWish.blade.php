@@ -57,17 +57,6 @@
 
                 <div class="section">
                     <h4 class="contentSemiBig">Detail Pembelian Produk Wish</h4>
-{{--                    <div class="sectionInputSelect">--}}
-{{--                        <div class="doubleText">--}}
-{{--                            <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Jenis Sumber Pembelian Produk *</p>--}}
-{{--                            --}}{{--                        <p class="contentSemiNormal" style="color: #747474;">Nama min. 5 kata yang terdiri dari jenis produk, merek, warna, dan keterangan lainnya.</p>--}}
-{{--                        </div>--}}
-{{--                        <select>--}}
-{{--                            <option>1</option>--}}
-{{--                            <option>2</option>--}}
-{{--                            <option>3</option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
                     <div class="sectionInputSelect">
                         <div class="doubleText">
                             <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Asal Negara Produk*</p>

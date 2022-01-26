@@ -60,8 +60,8 @@
                     </div>
                     <div class="section">
                         @if($errors->any())
-                            <div style="color:red" role="alert">
-                                <strong> {{$errors->first()}}</strong>
+                            <div class="alert" style="color:red" role="alert">
+                                <strong class="contentNormal"> {{$errors->first()}}</strong>
                             </div>
                         @endif
                         <button id="buttonSubmit" type="submit">

@@ -157,6 +157,10 @@ button{
     font-size: 3.6rem;
 }
 
+.filepond--root *:not(text){
+    font-size: 1.4rem!important;
+}
+
 //Status
 .statusGreen{
     font-size: 14px;
@@ -340,6 +344,9 @@ button{
             }
             textarea:focus{
                 border-color: #D5B81B;
+            }
+            .alert {
+                margin-bottom: 15px;
             }
         }
         .section2{
@@ -2265,7 +2272,8 @@ button{
                 img{
                     width: 46px;
                     height: 40px;
-                    margin-right: 5px;
+                    margin: 0 15px;
+                    object-fit: contain;
                 }
             }
             button{
