@@ -210,8 +210,28 @@ class WishController extends Controller
         $notifs = NULL;
 
         //search
-        $wishes = Wish::where('name', 'like', "%".$search."%")->get();
+        $curr_min = NULL; $curr_maks = NULL; $active_cat = NULL;
+
+        // $wishes = Wish::where('name', 'like', "%".$search."%")->get();
+        $query = Wish::where('name', 'like', "%".$search."%");
+        $query->where('name', 'like', "%".$request->search."%");
+
+        if($request->filled('category')){
+            $query->where('category_id', $request->category);
+            $active_cat = $request->category;
+        }
+        if($request->filled('min')){
+            $query->where('price', '>', $request->min);
+            $curr_min = $request->min;
+        }
+        if($request->filled('maks')){
+            $query->where('price', '<', $request->maks);
+            $curr_maks = $request->maks;
+        }
+        $wishes = $query->get();
+
         $wishes_category_id = Wish::where('name', 'like', "%".$search."%")->pluck('category_id');
+
 
         //categories
         $categories = Category::whereIn('id', $wishes_category_id)->get();
@@ -229,9 +249,12 @@ class WishController extends Controller
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
             return view('wish.searchWish', ['auth' => $auth, 'user' => $user, 'wishes' => $wishes, 'cart' => $cart, 'categories' => $categories,
-                                            'cart_items' => $cart_items, 'notifs' => $notifs, 'search' => $search, 'addressNavbar'=>$addressNavbar]);
+                                            'cart_items' => $cart_items, 'notifs' => $notifs, 'search' => $search, 'addressNavbar'=>$addressNavbar,
+                                            'curr_min' => $curr_min, 'curr_maks' => $curr_maks, 'active_cat' => $active_cat]);
         }
         return view('wish.searchWish', ['auth' => $auth, 'wishes'=> $wishes, 'cart' => $cart, 'categories' => $categories,
-                                        'cart_items' => $cart_items, 'notifs' => $notifs, 'search' => $search]);
+                                        'cart_items' => $cart_items, 'notifs' => $notifs, 'search' => $search, 'curr_min' => $curr_min, 'curr_maks' => $curr_maks,
+                                        'active_cat' => $active_cat]);
     }
 }
+

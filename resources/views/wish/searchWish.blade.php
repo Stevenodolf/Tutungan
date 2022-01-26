@@ -7,7 +7,7 @@
 @section('content')
     <div class="contentContainer" style="background: #F2F2F2;">
         <div class="cariWish">
-            <form method="GET" action="">
+            <form method="GET" action="" id="filter">
                 <div class="filter">
                     <h3>Filter</h3>
                     <div class="content">
@@ -15,10 +15,17 @@
                             <h4>Kategori</h4>
                             <div class="subSection">
                                 @foreach ($categories as $category)
-                                    <div class="checkboxText">
-                                        <input type="checkbox" name="category" value="{{$category->id}}">
-                                        <p class="contentNormal">{{$category->name}}</p>
-                                    </div>
+                                    @if ($category->id == $active_cat)
+                                        <div class="checkboxText">
+                                            <input type="hidden" name="category" value="{{$category->id}}">
+                                            <p class="contentNormal" onclick="document.getElementById('filter').submit();" style="font-weight: bold;">{{$category->name}}</p>
+                                        </div>
+                                    @else
+                                        <div class="checkboxText">
+                                            <input type="hidden" name="category" value="{{$category->id}}">
+                                            <p class="contentNormal"  onclick="document.getElementById('filter').submit();">{{$category->name}}</p>
+                                        </div>
+                                    @endif
                                 @endforeach
                             </div>
                         </div>
@@ -27,11 +34,11 @@
                             <div class="subSection">
                                 <div class="textInput">
                                     <p class="contentNormal">Min</p>
-                                    <input type="text" name="min" placeholder="Rp Harga Minimum">
+                                    <input type="number" name="min" placeholder="Rp Harga Minimum" value="{{$curr_min}}">
                                 </div>
                                 <div class="textInput">
                                     <p class="contentNormal">Maks</p>
-                                    <input type="text" name="maks" placeholder="Rp Harga Maksimum">
+                                    <input type="number" name="maks" placeholder="Rp Harga Maksimum" value="{{$curr_maks}}">
                                 </div>
                             </div>
                         </div>
@@ -40,11 +47,11 @@
                             <div class="subSection">
                                 <div class="textInput">
                                     <p class="contentNormal">Min</p>
-                                    <input type="text" name="kurang_min" placeholder="Rp Harga Minimum">
+                                    <input type="number" name="kurang_min" placeholder="Rp Harga Minimum">
                                 </div>
                                 <div class="textInput">
                                     <p class="contentNormal">Maks</p>
-                                    <input type="text" name="kurang_maks" placeholder="Rp Harga Maksimum">
+                                    <input type="number" name="kurang_maks" placeholder="Rp Harga Maksimum">
                                 </div>
                             </div>
                         </div>
@@ -65,8 +72,9 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" value="{{$search}}" name="search">
                     </div>
-                    <button type="submit">Apply</button>
+                    <button type="submit" style="display: none;">Apply</button>
                 </div>
             </form>
 
