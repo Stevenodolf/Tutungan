@@ -211,7 +211,8 @@ class AccountDetailController extends Controller
             DB::table('address')
                 ->where('id',$request->id)
                 ->where('user_id', Auth::user()->id)
-                ->delete();
+                ->update(array('is_deleted'=>'1', 'is_main' => '0', 'is_temp' => '0'));
+
             return redirect('/akunSaya/alamatpengiriman');
         }
         return redirect('login');

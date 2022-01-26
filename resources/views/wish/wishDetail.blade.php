@@ -2,7 +2,7 @@
 
 @section('head')
     <script>
-        var wishDetail = {deadline: "{{$wish_deadline}}", description: "{{$wish_detail}}"}
+        var wishDetail = {deadline: "{{$wish_deadline}}", description: "{{$wish_detail}}"};
     </script>
     <script src="{{ asset('js/src/wish/wishDetail.js') }}"></script>
 @endsection

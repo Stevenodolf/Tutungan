@@ -70,6 +70,18 @@ class PaymentController extends Controller
         return redirect('login');
     }
 
+    public function deletePayment($id) {
+        dd($id);
+        $auth = Auth::check();
+
+        if($auth) {
+            $user = User::where('id', Auth::user()->id)->first();
+
+
+            return redirect('/');
+        }
+    }
+
     public function postCheckout(Request $request, $id){
 //        dd($request->all());
         $auth = Auth::check();

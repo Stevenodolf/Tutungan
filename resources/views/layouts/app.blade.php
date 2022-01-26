@@ -190,7 +190,7 @@
                             @foreach ($notifs as $notif)
                                 @if ($notif->is_read == 0)
                                     <div class="content">
-                                        <img src="{{asset('images/dummyProduct.jpeg')}}">
+                                        <img src="{{asset('uploads/'.json_decode($notif->getWishRelation->image)[0])}}">
                                         <div class="sectionText">
                                             <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">{{$notif->getNotificationRelation->title}}</p>
                                             <p class="contentSemiNormal">{{$notif->getNotificationRelation->subtitle}}</p>
@@ -199,7 +199,7 @@
                                     </div>
                                 @else {{-- kalau notifikasi belum di baca --}}
                                     <div class="content">
-                                        <img src="{{asset('images/dummyProduct.jpeg')}}">
+                                        <img src="{{asset('uploads/'.json_decode($notif->getWishRelation->image)[0])}}">
                                         <div class="sectionText">
                                             <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">{{$notif->getNotificationRelation->title}}</p>
                                             <p class="contentSemiNormal">{{$notif->getNotificationRelation->subtitle}}</p>

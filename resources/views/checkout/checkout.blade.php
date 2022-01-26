@@ -1,6 +1,9 @@
 @extends('layoutPolos.app')
 
 @section('head')
+    <script>
+        var payment = {id: "{{$payment->id}}", total_price: "{{$payment->total_price}}"};
+    </script>
     <script src="{{ asset('js/src/checkout/checkout.js') }}"></script>
 @endsection
 

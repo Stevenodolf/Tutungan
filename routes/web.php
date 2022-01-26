@@ -45,6 +45,9 @@ Route::post('/login', 'AuthController@postLogin')->name('postLogin');
 Route::get('/register', 'AuthController@showRegisterPage')->name('getRegister');
 Route::post('/register', 'AuthController@postRegister') ->name('postRegister');
 Route::get('/account/verify/{token}', 'AuthController@verifyAccount') ->name('userVerify');
+
+Route::post('/deletepayment/{id}', 'PaymentController@deletePayment')->name('deletePayment');
+
 Route::middleware('auth')->group(function (){
     Route::get('/logout','AuthController@logout')->name('logout');
 
