@@ -67,20 +67,30 @@
                     </div>
                 </div>
             @else
-                @php
-                    $name = $addressNavbar->fullname;
-                    $name = explode(' ', $name);
+                @if(!$addressNavbar->isEmpty())
+                    @php
+                        $name = $addressNavbar->fullname;
+                        $name = explode(' ', $name);
 
-                    $firstName = $name[0];
-                    $lastName = (isset($name[count($name)-1])) ? $name[count($name)-1] : '';
-                @endphp
-                <a href="{{secure_url('/akunSaya/alamatpengiriman')}}" class="locationSection">
-                    <img src="{{secure_asset('images/location.png')}}">
-                    <div class="contentSemiNormal locationText">
-                        <p style="color: grey">Dikirim ke</p>
-                        <p>{{$firstName}} {{$lastName}}</p>
-                    </div>
-                </a>
+                        $firstName = $name[0];
+                        $lastName = (isset($name[count($name)-1])) ? $name[count($name)-1] : '';
+                    @endphp
+                    <a href="{{secure_url('/akunSaya/alamatpengiriman')}}" class="locationSection">
+                        <img src="{{secure_asset('images/location.png')}}">
+                        <div class="contentSemiNormal locationText">
+                            <p style="color: grey">Dikirim ke</p>
+                            <p>{{$firstName}} {{$lastName}}</p>
+                        </div>
+                    </a>
+                @else
+                    <a href="{{secure_url('/akunSaya/alamatpengiriman')}}" class="locationSection">
+                        <img src="{{secure_asset('images/location.png')}}">
+                        <div class="contentSemiNormal locationText">
+                            <p style="color: grey">Dikirim ke</p>
+                            <p>Indonesia</p>
+                        </div>
+                    </a>
+                @endif
             @endguest
             <form method="GET" class="searchbar" action="/search">
                 <input type="text" name="search" value="{{old('search')}}" placeholder="Search here...">
