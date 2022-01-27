@@ -46,12 +46,14 @@ Route::get('/register', 'AuthController@showRegisterPage')->name('getRegister');
 Route::post('/register', 'AuthController@postRegister') ->name('postRegister');
 Route::get('/account/verify/{token}', 'AuthController@verifyAccount') ->name('userVerify');
 
+//Wish
+Route::get('/wish/{id}', 'WishController@wishDetail')->name('getWishDetail');
+
 Route::middleware('auth')->group(function (){
     Route::get('/logout','AuthController@logout')->name('logout');
 
     Route::get('/createWish', 'WishController@getCreateWish');
     Route::post('/createWish', 'WishController@postCreateWish');
-    Route::get('/wish/{id}', 'WishController@wishDetail')->name('getWishDetail');
     Route::post('/wish/{id}', 'CartController@addToCart')->name('addToCart');
     Route::post('/buy/{id}', 'CartController@buyWish')->name('buyWish');
 

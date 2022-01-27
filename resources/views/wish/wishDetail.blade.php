@@ -88,7 +88,7 @@
                             </div>
                             <div class="infoRow">
                                 <p class="contentSemiNormal infoType">Website Origin:</p>
-                                <a href="{{ $wish->web_link }}" class="contentSemiNormal infoDetail">Open Link</a>
+                                <a href="{{ $wish->web_link }}" target="_blank" rel="noopener noreferrer" class="contentSemiNormal infoDetail">Open Link</a>
                             </div>
                         </div>
                     </div>
