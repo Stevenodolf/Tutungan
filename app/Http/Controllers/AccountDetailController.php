@@ -99,12 +99,12 @@ class AccountDetailController extends Controller
             $file = $request->file('inputProfil');
             if($file){
                 $folder = uniqid() . '-' . now()->timestamp;
-                $filename = uniqid(). '.' .$file->getClientOriginalExtension();
-                $file->storeAs('uploads/profile/' . $folder, $filename);
+                $path = Storage::disk('s3')->put('uploads/profile/' .$folder , $file);
+                $path = Storage::disk('s3')->url($path);
 
                 DB::table('user')
                     -> where('id', Auth::user()->id)
-                    -> update(array('username'=> $request->nama,'gender'=>$request->gender,'phone_number' => $request->phoneNumber, 'image'=> $folder .'/'. $filename));
+                    -> update(array('username'=> $request->nama,'gender'=>$request->gender,'phone_number' => $request->phoneNumber, 'image'=> $path));
             }else{
                 DB::table('user')
                     -> where('id', Auth::user()->id)
