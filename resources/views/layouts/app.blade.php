@@ -31,7 +31,7 @@
     <!-- Swiper	-->
     <script src="{{secure_asset('js/script/swiper/swiper-bundle.min.js')}}"></script>
     <!-- Probar	-->
-    <script src="{{secure_asset('js/script/proBar/proBar.js')}}"></script>
+{{--    <script src="{{secure_asset('js/script/proBar/proBar.js')}}"></script>--}}
     <!-- Quill	-->
     <script src="{{secure_asset('js/script/quill/quill.js')}}"></script>
     <script src="{{secure_asset('js/script/quill/image-resize.min.js')}}"></script>
@@ -56,11 +56,11 @@
     <div style="margin: 0 8%">
         <div class="navbar">
             <div class="logo" onclick="window.location='{{ url("/")}}'">
-                <img src="{{asset('images/tutunganLogo.png')}}">
+                <img src="{{secure_asset('images/tutunganLogo.png')}}">
             </div>
             @guest
                 <div class="locationSection" onclick="openLoginPopup();">
-                    <img src="{{asset('images/location.png')}}">
+                    <img src="{{secure_asset('images/location.png')}}">
                     <div class="contentSemiNormal locationText">
                         <p>Dikirim ke</p>
                         <p>Indonesia</p>
@@ -75,7 +75,7 @@
                     $lastName = (isset($name[count($name)-1])) ? $name[count($name)-1] : '';
                 @endphp
                 <a href="{{url('/akunSaya/alamatpengiriman')}}" class="locationSection">
-                    <img src="{{asset('images/location.png')}}">
+                    <img src="{{secure_asset('images/location.png')}}">
                     <div class="contentSemiNormal locationText">
                         <p style="color: grey">Dikirim ke</p>
                         <p>{{$firstName}} {{$lastName}}</p>
@@ -84,10 +84,10 @@
             @endguest
             <form method="GET" class="searchbar" action="/search">
                 <input type="text" name="search" value="{{old('search')}}" placeholder="Search here...">
-                <button type="submit"><img src="{{asset('images/search.png')}}"></button>
+                <button type="submit"><img src="{{secure_asset('images/search.png')}}"></button>
             </form>
 {{--            <div class="dropdownKeranjang">--}}
-{{--                <button class="buttonWithImage" onclick="window.location='{{ url("/cart")}}'"><img src="{{asset('images/shopping-cart.png')}}"></button>--}}
+{{--                <button class="buttonWithImage" onclick="window.location='{{ url("/cart")}}'"><img src="{{secure_asset('images/shopping-cart.png')}}"></button>--}}
 {{--                <div class="dropdownList">--}}
 {{--                    <div class="title">--}}
 {{--                        <p class="contentSemiNormal">Keranjang Anda</p>--}}
@@ -97,7 +97,7 @@
 {{--                    </div>--}}
 {{--                    <div class="content">--}}
 {{--                        <div class="sectionPicture">--}}
-{{--                            <img src="{{asset('images/dummyProduct.jpeg')}}">--}}
+{{--                            <img src="{{secure_asset('images/dummyProduct.jpeg')}}">--}}
 {{--                            <div class="sectionText">--}}
 {{--                                <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgic...</p>--}}
 {{--                                <p class="contentSmall">5 pcs</p>--}}
@@ -110,7 +110,7 @@
 {{--                </div>--}}
 {{--            </div>--}}
 {{--            <div class="dropdownNotifikasi">--}}
-{{--                <button class="buttonWithImage"><img src="{{asset('images/bell.png')}}"></button>--}}
+{{--                <button class="buttonWithImage"><img src="{{secure_asset('images/bell.png')}}"></button>--}}
 {{--                <div class="dropdownList">--}}
 {{--                    <div class="title">--}}
 {{--                        <p class="contentSemiNormal">Notifikasi</p>--}}
@@ -119,14 +119,14 @@
 {{--                        </button>--}}
 {{--                    </div>--}}
 {{--                    <div class="content">--}}
-{{--                        <img src="{{asset('images/dummyProduct.jpeg')}}">--}}
+{{--                        <img src="{{secure_asset('images/dummyProduct.jpeg')}}">--}}
 {{--                        <div class="sectionText">--}}
 {{--                            <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">Transaksi Dibatalkan</p>--}}
 {{--                            <p class="contentSemiNormal">Transaksi anda telah dibatalkan, ketuk untuk lihat lebih lanjut.</p>--}}
 {{--                        </div>--}}
 {{--                    </div>--}}
 {{--                    <div class="content">--}}
-{{--                        <img src="{{asset('images/dummyProduct.jpeg')}}">--}}
+{{--                        <img src="{{secure_asset('images/dummyProduct.jpeg')}}">--}}
 {{--                        <div class="sectionText">--}}
 {{--                            <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">Pesanan sudah sampai tujuan!</p>--}}
 {{--                            <p class="contentSemiNormal">Terima kasih sudah menggunakan layanan Tutungan!</p>--}}
@@ -136,8 +136,8 @@
 {{--            </div>--}}
 
             @guest
-                <button class="buttonWithImage" onclick="openLoginPopup();"><img src="{{asset('images/shopping-cart.png')}}"></button>
-                <button class="buttonWithImage" onclick="openLoginPopup();"><img src="{{asset('images/bell.png')}}"></button>
+                <button class="buttonWithImage" onclick="openLoginPopup();"><img src="{{secure_asset('images/shopping-cart.png')}}"></button>
+                <button class="buttonWithImage" onclick="openLoginPopup();"><img src="{{secure_asset('images/bell.png')}}"></button>
                 <div class="buttonLoginRegister">
                     <button class="buttonLogin" onclick="openLoginPopup();">Masuk</button>
                     <form method="GET" action="{{url('/register')}}">
@@ -146,7 +146,7 @@
                 </div>
             @else
                 <div class="dropdownKeranjang" id="parentDropdownKeranjang">
-                    <button class="buttonWithImage" id="buttonDropdownKeranjang" onclick="openKeranjangDropdown()"><img src="{{asset('images/shopping-cart.png')}}"></button>
+                    <button class="buttonWithImage" id="buttonDropdownKeranjang" onclick="openKeranjangDropdown()"><img src="{{secure_asset('images/shopping-cart.png')}}"></button>
                     <div class="dropdownList" id="dropdownKeranjang">
                         <div class="title">
                             <p class="contentSemiNormal">Keranjang Anda</p>
@@ -162,7 +162,7 @@
                             @foreach ($cart_items as $cart_item)
                                 <a class="content" href="{{ url('/wish/'.$cart_item->wish_id)}}">
                                     <div class="sectionPicture">
-                                        <img src="{{asset('uploads/'.json_decode($cart_item->getWishRelation->image)[0])}}"/>
+                                        <img src="{{secure_asset('uploads/'.json_decode($cart_item->getWishRelation->image)[0])}}"/>
                                         <div class="sectionText">
                                             <p class="contentSemiNormal">{{$cart_item->getWishRelation->name}}</p>
                                             <p class="contentSmall">{{$cart_item->qty}} pcs</p>
@@ -177,7 +177,7 @@
                     </div>
                 </div>
                 <div class="dropdownNotifikasi" id="parentDropdownNotifikasi">
-                    <button class="buttonWithImage" id="buttonDropdownNotif" onclick="openNotifDropdown()"><img src="{{asset('images/bell.png')}}"></button>
+                    <button class="buttonWithImage" id="buttonDropdownNotif" onclick="openNotifDropdown()"><img src="{{secure_asset('images/bell.png')}}"></button>
                     <div class="dropdownList" id="dropdownNotif">
                         <div class="title">
                             <p class="contentSemiNormal">Notifikasi</p>
@@ -193,7 +193,7 @@
                             @foreach ($notifs as $notif)
                                 @if ($notif->is_read == 0)
                                     <div class="content">
-                                        <img src="{{asset('uploads/'.json_decode($notif->getWishRelation->image)[0])}}">
+                                        <img src="{{secure_asset('uploads/'.json_decode($notif->getWishRelation->image)[0])}}">
                                         <div class="sectionText">
                                             <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">{{$notif->getNotificationRelation->title}}</p>
                                             <p class="contentSemiNormal">{{$notif->getNotificationRelation->subtitle}}</p>
@@ -202,7 +202,7 @@
                                     </div>
                                 @else {{-- kalau notifikasi belum di baca --}}
                                     <div class="content">
-                                        <img src="{{asset('uploads/'.json_decode($notif->getWishRelation->image)[0])}}">
+                                        <img src="{{secure_asset('uploads/'.json_decode($notif->getWishRelation->image)[0])}}">
                                         <div class="sectionText">
                                             <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">{{$notif->getNotificationRelation->title}}</p>
                                             <p class="contentSemiNormal">{{$notif->getNotificationRelation->subtitle}}</p>
@@ -216,19 +216,19 @@
                 </div>
                 <form action="{{url('/createWish')}}">
                     <button type="submit" class="contentSemiNormal buttonAddWish button buttonYellow">
-                        <img src="{{asset('images/plusBlack.png')}}">
+                        <img src="{{secure_asset('images/plusBlack.png')}}">
                         Wish
                     </button>
                 </form>
                 <div class="dropdownProfil" id="parentDropdownProfil">
                     <button class="buttonUser" id="buttonDropdownUser" onclick="openUserDropdown();">
                         @if($user->image)
-                            <img src="{{asset('uploads/profile/'. $user->image)}}">
+                            <img src="{{secure_asset('uploads/profile/'. $user->image)}}">
                         @else
-                            <img src="{{asset('images/dummyUser2.png')}}">
+                            <img src="{{secure_asset('images/dummyUser2.png')}}">
                         @endif
                         <p class="contentNormal">{{$user->username}}</p>
-                        <img id="arrowUser" src="{{asset('images/arrowDownBlack.png')}}">
+                        <img id="arrowUser" src="{{secure_asset('images/arrowDownBlack.png')}}">
                     </button>
                     <div class="dropdownList" id="dropdownList">
                         <a href="{{ url('/akunSaya/profil' )}}">
@@ -312,7 +312,7 @@
         <div class="title">
             <h1 class="contentSemiExtraBig">Masuk</h1>
             <button id="closeLogin">
-                <img src="{{asset('images/close.png')}}"/>
+                <img src="{{secure_asset('images/close.png')}}"/>
             </button>
         </div>
         <form class="loginSection" method="POST" action="{{route('postLogin')}}">

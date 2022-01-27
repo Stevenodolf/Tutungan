@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-    <script src="{{ asset('js/src/wish/createWish.js') }}"></script>
+    <script src="{{ secure_asset('js/src/wish/createWish.js') }}"></script>
 @endsection
 
 @section('content')
@@ -106,23 +106,23 @@
                 </div>
 
                 <div class="notice">
-                    <img src="{{asset('images/notice.png')}}">
+                    <img src="{{secure_asset('images/notice.png')}}">
                     <h5 class="contentSemiNormal">Proses verifikasi wish akan dilakukan maksimal 1x24 jam setelah Anda mengajukan pembuatan Wish.</h5>
                 </div>
 
                 <div class="notice">
-                    <img src="{{asset('images/notice.png')}}">
+                    <img src="{{secure_asset('images/notice.png')}}">
                     <h5 class="contentSemiNormal">Wish anda akan ditampilkan di website ini selama 7 hari (168 jam). Apabila setelah 7 hari target kontribusi Wish anda tercapai, maka Wish anda akan diproses sesuai prosedur.
                         Apabila tidak tercapai, maka Wish akan dibatalkan.</h5>
                 </div>
 
                 <div class="buttonKanan">
                     <a href="{{url('/')}}" class="batal">
-                        <img src="{{asset('images/closeSmall.png')}}">
+                        <img src="{{secure_asset('images/closeSmall.png')}}">
                         <p class="contentSemiBig">Batalkan</p>
                     </a>
                     <button class="simpan" type="submit">
-                        <img src="{{asset('images/checkBlack.png')}}">
+                        <img src="{{secure_asset('images/checkBlack.png')}}">
                         <p class="contentSemiBig">Simpan</p>
                     </button>
                 </div>

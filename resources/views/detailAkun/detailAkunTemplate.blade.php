@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-    <script src="{{ asset('js/src/detailAkun/detailAkun.js') }}"></script>
+    <script src="{{ secure_asset('js/src/detailAkun/detailAkun.js') }}"></script>
 @endsection
 
 @section('content')
@@ -10,15 +10,15 @@
             <div class="sideMenu">
                 <div class="profile">
                     @if($user->image)
-                        <img src="{{asset('uploads/profile/'. $user->image)}}">
+                        <img src="{{secure_asset('uploads/profile/'. $user->image)}}">
                     @else
-                        <img src="{{asset('images/dummyUser2.png')}}">
+                        <img src="{{secure_asset('images/dummyUser2.png')}}">
                     @endif
                     <h3 class="contentNormal">Steven Yuwono</h3>
                 </div>
                 <div class="menu">
                     <div id="akunSaya" class="list">
-                        <img src="{{asset("images/user.png")}}">
+                        <img src="{{secure_asset("images/user.png")}}">
                         <h3 class="contentSemiBig">Akun Saya</h3>
                     </div>
                     <div class="subList">
@@ -36,15 +36,15 @@
                         </a>
                     </div>
                     <div id="wishSaya" class="list" onclick="window.location='{{ url("/wishsaya")}}'">
-                        <img src="{{asset("images/wish.png")}}">
+                        <img src="{{secure_asset("images/wish.png")}}">
                         <h3 class="contentSemiBig">Wish Saya</h3>
                     </div>
                     <div id="transaksiSaya" class="list" onclick="window.location='{{ url("/transaksisaya")}}'">
-                        <img src="{{asset("images/transaksi.png")}}">
+                        <img src="{{secure_asset("images/transaksi.png")}}">
                         <h3 class="contentSemiBig">Transaksi Saya</h3>
                     </div>
                     <div id="notifikasi" class="list" onclick="window.location='{{ url("/notifikasi")}}'">
-                        <img src="{{asset("images/notification_outline.png")}}">
+                        <img src="{{secure_asset("images/notification_outline.png")}}">
                         <h3 class="contentSemiBig">Notifikasi</h3>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
 {{--                <form class="profil" >--}}
 {{--                    <div style="display: flex">--}}
 {{--                        <div class="profilPict">--}}
-{{--                            <img id="fotoProfil" src="{{asset('images/dummyUser2.png')}}">--}}
+{{--                            <img id="fotoProfil" src="{{secure_asset('images/dummyUser2.png')}}">--}}
 {{--                            <input accept="image/*" type='file' id="inputProfil" onchange="inputChange()"/>--}}
 {{--                            <input type="button" value="Pilih Gambar" onclick="document.getElementById('inputProfil').click();">--}}
 {{--                            <p class="contentSemiNormal">Ukuran gambar: maks. 10 MB</p>--}}
@@ -107,7 +107,7 @@
 {{--                    </div>--}}
 {{--                    <div class="buttonContainer">--}}
 {{--                        <button onclick="popupTambahAlamat();">--}}
-{{--                            <img src="{{asset("images/plusBlack.png")}}">--}}
+{{--                            <img src="{{secure_asset("images/plusBlack.png")}}">--}}
 {{--                            <p class="contentNormal">Alamat</p>--}}
 {{--                        </button>--}}
 {{--                    </div>--}}
@@ -136,7 +136,7 @@
 {{--                                </div>--}}
 {{--                            </div>--}}
 {{--                            <div class="section">--}}
-{{--                                <img src="{{asset('images/checkmarkYellow.png')}}"/>--}}
+{{--                                <img src="{{secure_asset('images/checkmarkYellow.png')}}"/>--}}
 {{--                            </div>--}}
 {{--                        </div>--}}
 {{--                        <div class="buttonBawah">--}}
@@ -186,7 +186,7 @@
 {{--                    </div>--}}
 {{--                    <div class="buttonContainer">--}}
 {{--                        <button onclick="popupTambahCreditDebit();">--}}
-{{--                            <img src="{{asset("images/plusBlack.png")}}">--}}
+{{--                            <img src="{{secure_asset("images/plusBlack.png")}}">--}}
 {{--                            <p class="contentNormal">Kartu Kredit/Debit</p>--}}
 {{--                        </button>--}}
 {{--                    </div>--}}
@@ -194,7 +194,7 @@
 
 {{--                <div class="creditDebit">--}}
 {{--                    <div class="listCreditDebit">--}}
-{{--                        <img src="{{asset('images/dummyCreditCard.png')}}"/>--}}
+{{--                        <img src="{{secure_asset('images/dummyCreditCard.png')}}"/>--}}
 {{--                        <div>--}}
 {{--                            <div class="titleWithEmblem">--}}
 {{--                                <h3>**** **** **** 7890</h3>--}}
@@ -217,7 +217,7 @@
 
 {{--                <div class="creditDebit">--}}
 {{--                    <div class="listCreditDebit">--}}
-{{--                        <img src="{{asset('images/dummyCreditCard.png')}}"/>--}}
+{{--                        <img src="{{secure_asset('images/dummyCreditCard.png')}}"/>--}}
 {{--                        <div>--}}
 {{--                            <div class="titleWithEmblem">--}}
 {{--                                <h3>**** **** **** 1234</h3>--}}

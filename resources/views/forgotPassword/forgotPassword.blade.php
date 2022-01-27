@@ -1,14 +1,14 @@
 @extends('layoutKosong.app')
 
 @section('head')
-    <script src="{{ asset('js/src/forgotPassword/forgotPassword.js') }}"></script>
+    <script src="{{ secure_asset('js/src/forgotPassword/forgotPassword.js') }}"></script>
 @endsection
 
 @section('content')
-    <body style="background-image: url({{asset('images/forgotPassEmail.png')}});background-size: cover;background-repeat: no-repeat; ">
+    <body style="background-image: url({{secure_asset('images/forgotPassEmail.png')}});background-size: cover;background-repeat: no-repeat; ">
     <nav class="navbar" style="justify-content: center;position: absolute">
         <a href="{{url("/")}}" style="cursor: pointer;" class="logo">
-            <img src="{{asset('images/tutunganLogo.png')}}">
+            <img src="{{secure_asset('images/tutunganLogo.png')}}">
         </a>
     </nav>
     <main style="min-height: 100vh;">

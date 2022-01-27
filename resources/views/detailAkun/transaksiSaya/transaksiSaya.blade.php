@@ -46,7 +46,7 @@
             <div class="lowerSection">
                 <form class="searchbar">
                     <input type="text" placeholder="Cari transaksi kamu di sini">
-                    <button><img src="{{asset('images/search.png')}}"></button>
+                    <button><img src="{{secure_asset('images/search.png')}}"></button>
                 </form>
             </div>
         </div>
@@ -94,7 +94,7 @@
                         </div>
                         <div class="detail">
                             <div class="leftSection">
-                                <img src="{{asset('uploads/'.json_decode($transaction->getWishRelation->image)[0])}}">
+                                <img src="{{secure_asset('uploads/'.json_decode($transaction->getWishRelation->image)[0])}}">
                                 <div class="wishInfo">
                                     <p class="contentSemiNormal wishName">{{ $transaction->getWishRelation->name }}</p>
                                     <p class="contentSmall contribution">{{ $transaction->qty }} item x Rp{{number_format($transaction->getWishRelation->price, 0, ',', '.')}}</p>

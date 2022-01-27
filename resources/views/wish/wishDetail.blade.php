@@ -4,7 +4,7 @@
     <script>
         var wishDetail = {deadline: "{{$wish_deadline}}", description: "{{$wish_detail}}"};
     </script>
-    <script src="{{ asset('js/src/wish/wishDetail.js') }}"></script>
+    <script src="{{ secure_asset('js/src/wish/wishDetail.js') }}"></script>
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@
                             <div class="swiper-wrapper">
                                 @foreach(json_decode($wish_image) as $image)
                                     <div class="swiper-slide">
-                                        <img src="{{asset('uploads/'.$image)}}"/>
+                                        <img src="{{secure_asset('uploads/'.$image)}}"/>
                                     </div>
                                 @endforeach
                             </div>
@@ -27,7 +27,7 @@
                             <div class="swiper-wrapper">
                                 @foreach(json_decode($wish_image) as $image)
                                     <div class="swiper-slide">
-                                        <img src="{{asset('uploads/'.$image)}}" />
+                                        <img src="{{secure_asset('uploads/'.$image)}}" />
                                     </div>
                                 @endforeach
                             </div>
@@ -68,9 +68,9 @@
                             <div class="infoRow">
                                 <p class="contentSemiNormal infoType">Shipping to user:</p>
                                 <div class="infoDetail shipping">
-                                    <img class="imgShipping" src="{{asset('images/jne.png')}}">
-                                    <img class="imgShipping" src="{{asset('images/posIndo.png')}}">
-                                    <img class="imgShipping" src="{{asset('images/j&t.png')}}">
+                                    <img class="imgShipping" src="{{secure_asset('images/jne.png')}}">
+                                    <img class="imgShipping" src="{{secure_asset('images/posIndo.png')}}">
+                                    <img class="imgShipping" src="{{secure_asset('images/j&t.png')}}">
                                 </div>
                             </div>
                             <div class="infoRow">
@@ -78,11 +78,11 @@
                                 <div class="contentSemiNormal infoDetail protection">
                                     <div class="protectionItem">
                                         <p class="protectionName">Trade Assurance</p>
-                                        <img class="imgProtection" src="{{asset('images/informationYellow.png')}}">
+                                        <img class="imgProtection" src="{{secure_asset('images/informationYellow.png')}}">
                                     </div>
                                     <div class="protectionItem">
                                         <p class="protectionName">Refund Policy</p>
-                                        <img class="imgProtection" src="{{asset('images/informationYellow.png')}}">
+                                        <img class="imgProtection" src="{{secure_asset('images/informationYellow.png')}}">
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                         </div>
                         <p class="contentSmall stock">Stok: {{ $wish_stock }}</p>
                         <button class="button buttonYellow" type="submit" formaction="{{ url('/wish/'.$wish->id) }}">
-                            <img src="{{ asset('images/shopping-cart-add.png' )}}">
+                            <img src="{{ secure_asset('images/shopping-cart-add.png' )}}">
                             Tambah ke Keranjang
                         </button>
                         <button class="button buttonBlack" type="submit" formaction="{{ url('/buy/'.$wish->id) }}">Beli Langsung</button>
@@ -174,7 +174,7 @@
                     @endif
                                 <div class="column">
                                     <div class="wish" onclick="window.location='{{ url("/wish/".$for_you_item->id)}}'">
-                                        <img src="{{asset('uploads/'.json_decode($for_you_item->image)[0])}}"/>
+                                        <img src="{{secure_asset('uploads/'.json_decode($for_you_item->image)[0])}}"/>
                                         <div class="contentNormal timeLeft">
                                             <p>Tersisa {{$time_left}} Hari Lagi</p>
                                         </div>

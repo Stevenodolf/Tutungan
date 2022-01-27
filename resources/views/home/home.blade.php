@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-    <script src="{{ asset('js/src/home/home.js') }}"></script>
+    <script src="{{ secure_asset('js/src/home/home.js') }}"></script>
 @endsection
 
 @section('content')
@@ -12,11 +12,11 @@
                 <!-- swiper slides -->
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="{{asset('images/dummySlide1.png')}}"/>
+                        <img src="{{secure_asset('images/dummySlide1.png')}}"/>
                     </div>
 
                     <div class="swiper-slide">
-                        <img src="{{asset('images/dummySlide2.png')}}"/>
+                        <img src="{{secure_asset('images/dummySlide2.png')}}"/>
                     </div>
                 </div>
                 <div class="swiper-button-next"></div>
@@ -27,7 +27,7 @@
 
         @if(!$lastminute->isEmpty())
             <div class="lastMinuteSection">
-                <div class="lastMinute" style="background-image: url({{asset('images/lastMinute.png')}})">
+                <div class="lastMinute" style="background-image: url({{secure_asset('images/lastMinute.png')}})">
                     <div class="listWish">
                         <div class="swiper lastMinuteSwipe">
                             <div class="swiper-wrapper">
@@ -39,7 +39,7 @@
                                     @endphp
                                     <div class="swiper-slide">
                                         <div class="wish">
-                                            <img src="{{asset('uploads/'.json_decode($lm->image)[0])}}">
+                                            <img src="{{secure_asset('uploads/'.json_decode($lm->image)[0])}}">
                                             <div class="timeLeft">
                                                 <p>Tersisa {{$time_left}} Hari Lagi</p>
                                             </div>
@@ -78,7 +78,7 @@
                     @foreach($categories as $category)
                         <div class="swiper-slide">
                             <a href="/search?category%5B%5D={{$category->id}}&min=&maks=&search=" class="filter">
-                                <img class="imgFilter" src="{{asset($category->image)}}" alt="">
+                                <img class="imgFilter" src="{{secure_asset($category->image)}}" alt="">
                                 <p class="contentNormal">{{$category->name}}</p>
                             </a>
                         </div>
@@ -113,7 +113,7 @@
                     @endif
                         <div class="column">
                             <div class="wish" onclick="window.location='{{ url("/wish/".$for_you_item->id)}}'">
-                                <img src="{{asset('uploads/'.json_decode($for_you_item->image)[0])}}"/>
+                                <img src="{{secure_asset('uploads/'.json_decode($for_you_item->image)[0])}}"/>
                                 <div class="contentNormal timeLeft">
                                     <p>Tersisa {{$time_left}} Hari Lagi</p>
                                 </div>

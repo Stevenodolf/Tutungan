@@ -4,7 +4,7 @@
     <script>
         var payment = {id: "{{$payment->id}}", total_price: "{{$payment->total_price}}"};
     </script>
-    <script src="{{ asset('js/src/checkout/checkout.js') }}"></script>
+    <script src="{{ secure_asset('js/src/checkout/checkout.js') }}"></script>
 @endsection
 
 @section('content')
@@ -40,7 +40,7 @@
                                 @endphp
                                 <div class="productDetail">
                                     <div class="detail">
-                                        <img src="{{asset('uploads/'.json_decode($payment_item->getWishRelation->image)[0])}}"/>
+                                        <img src="{{secure_asset('uploads/'.json_decode($payment_item->getWishRelation->image)[0])}}"/>
                                         <div>
                                             <p class="contentSemiNormal wishName">{{$payment_item->getWishRelation->name}}</p>
                                             <p class="contentSmall qty">{{$payment_item->qty}} item</p>
@@ -61,7 +61,7 @@
                             @endforeach
     {{--                        <div class="productDetail">--}}
     {{--                            <div class="detail">--}}
-    {{--                                <img src="{{asset('images/dummyProduct.jpeg')}}"/>--}}
+    {{--                                <img src="{{secure_asset('images/dummyProduct.jpeg')}}"/>--}}
     {{--                                <div>--}}
     {{--                                    <p class="contentSemiNormal">Masker Medis Earloop Putih M+ 4Ply - Surgical Mask Isi 50 Pcs</p>--}}
     {{--                                    <p class="contentSmall">5 Box</p>--}}
@@ -129,7 +129,7 @@
                         <div class="title">
                             <h1>Pembayaran</h1>
                             <button type="button" id="closePopup">
-                                <img src="{{asset('images/close.png')}}"/>
+                                <img src="{{secure_asset('images/close.png')}}"/>
                             </button>
                         </div>
                         <div class="section">
@@ -138,7 +138,7 @@
                                 <a class="contentSemiNormal" style="color: rgba(49, 53, 59, 0.5);cursor: pointer" href="{{url('/akunSaya/kartukreditdebit')}}">Lihat Semua</a>
                             </div>
                             <div class="subSection2">
-                                <img src="{{asset('images/'. $card->card_type .'.png')}}">
+                                <img src="{{secure_asset('images/'. $card->card_type .'.png')}}">
                                 <p class="contentSemiBig">{{ucfirst($card->card_type)}} ({{$card->card_number}})</p>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                     </div>
                     <div class="pembayaranVerifikasi" id="pembayaranVerifikasi">
                         <div class="section">
-                            <img src="{{asset('images/checkGreen.png')}}">
+                            <img src="{{secure_asset('images/checkGreen.png')}}">
                             <h2 class="contentSemiExtraBig">Pembayaran Terverifikasi</h2>
                         </div>
                         <input type="hidden" name="address_id" value="{{ $address->id }}">

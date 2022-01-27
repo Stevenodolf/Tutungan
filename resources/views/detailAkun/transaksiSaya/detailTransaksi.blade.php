@@ -12,7 +12,7 @@
             <div class="header">
                 <div class="headerContent">
                     <div class="buttonKembali" onclick="window.location='{{ url("/transaksisaya")}}'">
-                        <img src="{{asset('images/arrowLeftBlack.png')}}">
+                        <img src="{{secure_asset('images/arrowLeftBlack.png')}}">
                         <p class="contentSemiBig text">Kembali</p>
                     </div>
                     <div class="indicator">
@@ -159,7 +159,7 @@
                                 </script>
                             </div>
                             <div class="detail">
-                                <img src="{{asset('uploads/'.json_decode($wish->image)[0])}}" />
+                                <img src="{{secure_asset('uploads/'.json_decode($wish->image)[0])}}" />
                                 <div class="detailContent">
                                     <div class="wishInfo">
                                         <p class="contentSemiNormal">{{ $wish->name }}</p>

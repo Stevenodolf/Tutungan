@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-    <script src="{{ asset('js/src/wish/searchWish.js') }}"></script>
+    <script src="{{ secure_asset('js/src/wish/searchWish.js') }}"></script>
 @endsection
 
 @section('content')
@@ -90,7 +90,7 @@
                 <form method="GET" action="" id="sort">
                     <div class="topTab">
                         <div class="section">
-                            <img src="{{asset("images/explore.png")}}">
+                            <img src="{{secure_asset("images/explore.png")}}">
                             <p class="contentNormal">Hasil pencarian untuk "<strong>{{$search}}</strong>"</p>
                         </div>
                         <div class="section">
@@ -136,7 +136,7 @@
                             @endif
                             <div class="column">
                                 <div class="wish" onclick="window.location='{{ url("/wish/".$wish->id)}}'">
-                                    <img src="{{asset('uploads/'.json_decode($wish->image)[0])}}"/>
+                                    <img src="{{secure_asset('uploads/'.json_decode($wish->image)[0])}}"/>
                                     <div class="timeLeft">
                                         <p>Tersisa {{$time_left}} Hari Lagi</p>
                                     </div>
@@ -164,7 +164,7 @@
                     {{-- <div class="row">
                         <div class="column">
                             <div class="wish">
-                                <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                                <img src="{{secure_asset('images/dummyProduct.jpeg')}}"/>
                                 <div class="timeLeft">
                                     <p>Tersisa 5 Hari Lagi</p>
                                 </div>
@@ -182,7 +182,7 @@
                         </div>
                         <div class="column">
                             <div class="wish">
-                                <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                                <img src="{{secure_asset('images/dummyProduct.jpeg')}}"/>
                                 <div class="timeLeft">
                                     <p>Tersisa 5 Hari Lagi</p>
                                 </div>
@@ -200,7 +200,7 @@
                         </div>
                         <div class="column">
                             <div class="wish">
-                                <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                                <img src="{{secure_asset('images/dummyProduct.jpeg')}}"/>
                                 <div class="timeLeft">
                                     <p>Tersisa 5 Hari Lagi</p>
                                 </div>
@@ -218,7 +218,7 @@
                         </div>
                         <div class="column">
                             <div class="wish">
-                                <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                                <img src="{{secure_asset('images/dummyProduct.jpeg')}}"/>
                                 <div class="timeLeft">
                                     <p>Tersisa 5 Hari Lagi</p>
                                 </div>
@@ -238,7 +238,7 @@
                     <div class="row">
                         <div class="column">
                             <div class="wish">
-                                <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                                <img src="{{secure_asset('images/dummyProduct.jpeg')}}"/>
                                 <div class="timeLeft">
                                     <p>Tersisa 5 Hari Lagi</p>
                                 </div>
@@ -256,7 +256,7 @@
                         </div>
                         <div class="column">
                             <div class="wish">
-                                <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                                <img src="{{secure_asset('images/dummyProduct.jpeg')}}"/>
                                 <div class="timeLeft">
                                     <p>Tersisa 5 Hari Lagi</p>
                                 </div>
@@ -274,7 +274,7 @@
                         </div>
                         <div class="column">
                             <div class="wish">
-                                <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                                <img src="{{secure_asset('images/dummyProduct.jpeg')}}"/>
                                 <div class="timeLeft">
                                     <p>Tersisa 5 Hari Lagi</p>
                                 </div>
@@ -292,7 +292,7 @@
                         </div>
                         <div class="column">
                             <div class="wish">
-                                <img src="{{asset('images/dummyProduct.jpeg')}}"/>
+                                <img src="{{secure_asset('images/dummyProduct.jpeg')}}"/>
                                 <div class="timeLeft">
                                     <p>Tersisa 5 Hari Lagi</p>
                                 </div>

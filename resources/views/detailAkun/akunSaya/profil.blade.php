@@ -20,9 +20,9 @@
             <div class="profilContent" style="display: flex">
                 <div class="profilPict">
                     @if($user->image)
-                        <img id="fotoProfil" src="{{asset('uploads/profile/'. $user->image)}}">
+                        <img id="fotoProfil" src="{{secure_asset('uploads/profile/'. $user->image)}}">
                     @else
-                        <img id="fotoProfil" src="{{asset('images/dummyUser2.png')}}">
+                        <img id="fotoProfil" src="{{secure_asset('images/dummyUser2.png')}}">
                     @endif
                     <input accept="image/*" type="file" id="inputProfil" name="inputProfil" onchange="inputChange()"/>
                     <input type="button" value="Pilih Gambar" onclick="document.getElementById('inputProfil').click();">
@@ -60,7 +60,7 @@
             </div>
             <div class="buttonSimpan">
                 <button class="button buttonYellow" type="submit">
-                    <img src="{{ asset('images/checkBlack.png') }}">
+                    <img src="{{ secure_asset('images/checkBlack.png') }}">
                     <p>Simpan</p>
                 </button>
             </div>

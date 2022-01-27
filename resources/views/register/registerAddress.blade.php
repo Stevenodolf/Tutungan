@@ -1,11 +1,11 @@
 @extends('layoutKosong.app')
 
 @section('head')
-    <script src="{{ asset('js/src/register/registerAddress.js') }}"></script>
+    <script src="{{ secure_asset('js/src/register/registerAddress.js') }}"></script>
 @endsection
 
 @section('content')
-    <div class="secondRegister" style="background-image: url({{asset('images/daftar2.png')}})">
+    <div class="secondRegister" style="background-image: url({{secure_asset('images/daftar2.png')}})">
         <div class="registerContainer">
             <h1>Daftar Alamat</h1>
             <div class="section">

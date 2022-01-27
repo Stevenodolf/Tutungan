@@ -8,21 +8,21 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Tutungan</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logoWithoutText.ico')}}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{secure_asset('images/logoWithoutText.ico')}}" />
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/script/jquery/jquery.js') }}"></script>
-    <script src="{{ asset('js/script/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('js/script/proBar/proBar.js') }}"></script>
-    <script src="{{ asset('js/src/main.js') }}"></script>
+    <script src="{{ secure_asset('js/app.js') }}"></script>
+    <script src="{{ secure_asset('js/script/jquery/jquery.js') }}"></script>
+    <script src="{{ secure_asset('js/script/swiper/swiper-bundle.min.js') }}"></script>
+{{--    <script src="{{ secure_asset('js/script/proBar/proBar.js') }}"></script>--}}
+    <script src="{{ secure_asset('js/src/main.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('font/stylesheet.css') }}" rel="stylesheet">
-    <link href="{{ asset('js/script/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('font/stylesheet.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('js/script/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
     <!-- Content -->
     @yield('head')

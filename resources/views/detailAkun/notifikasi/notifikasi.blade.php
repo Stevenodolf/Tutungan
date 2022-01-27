@@ -49,7 +49,7 @@
             @foreach($notification_wishes as $notification_wish)
                 @if($notification_wish->notification_id == 1)
                     <div id="cell{{ $idx }}" class="notificationCell" onclick="window.location='{{ url("/wishsaya/")}}'">
-                        <img src="{{asset('uploads/'.json_decode($notification_wish->getWishRelation->image)[0])}}">
+                        <img src="{{secure_asset('uploads/'.json_decode($notification_wish->getWishRelation->image)[0])}}">
                         <div class="detail">
                             <p id="created{{ $idx }}" class="contentSmall date"></p>
                             <p class="contentSemiNormal notificationTitle">{{ $notification_wish->getNotificationRelation->title }}</p>
@@ -63,7 +63,7 @@
                     </div>
                 @else
                     <div id="cell{{ $idx }}" class="notificationCell" onclick="window.location='{{ url('/transaksisaya/detailtransaksi/'.$notification_wish->transaction_id)}}'">
-                        <img src="{{asset('uploads/'.json_decode($notification_wish->getWishRelation->image)[0])}}">
+                        <img src="{{secure_asset('uploads/'.json_decode($notification_wish->getWishRelation->image)[0])}}">
                         <div class="detail">
                             <p id="created{{ $idx }}" class="contentSmall date"></p>
                             <p class="contentSemiNormal notificationTitle">{{ $notification_wish->getNotificationRelation->title }}</p>
@@ -88,7 +88,7 @@
                 @endphp
             @endforeach
 {{--                <div class="notificationCell">--}}
-{{--                    <img src="{{asset('images/wish/wish3.jpg')}}">--}}
+{{--                    <img src="{{secure_asset('images/wish/wish3.jpg')}}">--}}
 {{--                    <div class="detail">--}}
 {{--                        <p class="contentSmall date">4 Februari 2021</p>--}}
 {{--                        <p class="contentSemiNormal title">Pesanan sudah sampai tujuan!</p>--}}
@@ -96,7 +96,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--                <div class="notificationCell">--}}
-{{--                    <img src="{{asset('images/wish/wish3.jpg')}}">--}}
+{{--                    <img src="{{secure_asset('images/wish/wish3.jpg')}}">--}}
 {{--                    <div class="detail">--}}
 {{--                        <p class="contentSmall date">2 Februari 2021</p>--}}
 {{--                        <p class="contentSemiNormal title">Pesanan sedang dikirim ke alamatmu!</p>--}}
@@ -104,7 +104,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--                <div class="notificationCell">--}}
-{{--                    <img src="{{asset('images/wish/wish3.jpg')}}">--}}
+{{--                    <img src="{{secure_asset('images/wish/wish3.jpg')}}">--}}
 {{--                    <div class="detail">--}}
 {{--                        <p class="contentSmall date">27 Januari 2021</p>--}}
 {{--                        <p class="contentSemiNormal title">Pesananmu sedang diproses oleh Admin</p>--}}
@@ -112,7 +112,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--                <div class="notificationCell">--}}
-{{--                    <img src="{{asset('images/wish/wish3.jpg')}}">--}}
+{{--                    <img src="{{secure_asset('images/wish/wish3.jpg')}}">--}}
 {{--                    <div class="detail">--}}
 {{--                        <p class="contentSmall date">25 Januari 2021</p>--}}
 {{--                        <p class="contentSemiNormal title">Pembayaran berhasil diverifikasi!</p>--}}
@@ -120,7 +120,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--                <div class="notificationCell">--}}
-{{--                    <img src="{{asset('images/wish/wish3.jpg')}}">--}}
+{{--                    <img src="{{secure_asset('images/wish/wish3.jpg')}}">--}}
 {{--                    <div class="detail">--}}
 {{--                        <p class="contentSmall date">25 Januari 2021</p>--}}
 {{--                        <p class="contentSemiNormal title">Transaksi menunggu pembayaran nihh</p>--}}
