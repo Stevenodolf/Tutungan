@@ -67,7 +67,7 @@
                     </div>
                 </div>
             @else
-                @if(!$addressNavbar->isEmpty())
+                @if(!empty($addressNavbar))
                     @php
                         $name = $addressNavbar->fullname;
                         $name = explode(' ', $name);
