@@ -38,7 +38,7 @@ class CartController extends Controller
                 $total_price += $cart_item->total_price;
             }
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             $cart->total_qty = $total_qty;
             $cart->total_price = $total_price;

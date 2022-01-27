@@ -68,7 +68,7 @@ class WishController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
@@ -110,7 +110,7 @@ class WishController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
@@ -181,7 +181,7 @@ class WishController extends Controller
             $user = User::where('id', Auth::user()->id)->first();
             $wish = Wish::where('id', $id)->first();
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             return view('edit-wish',['auth' => $auth, 'user' => $user, 'wish' => $wish , 'addressNavbar'=>$addressNavbar]);
         }
@@ -276,7 +276,7 @@ class WishController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();

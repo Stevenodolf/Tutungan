@@ -60,7 +60,7 @@ class HomeController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();

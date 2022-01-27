@@ -75,7 +75,7 @@ class AccountDetailController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
@@ -137,7 +137,7 @@ class AccountDetailController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
@@ -285,7 +285,7 @@ class AccountDetailController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
@@ -384,7 +384,7 @@ class AccountDetailController extends Controller
             $cart = Cart::where('user_id', $user->id)->first();
             $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
@@ -437,7 +437,7 @@ class AccountDetailController extends Controller
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             if($request->filter == 0 or $request->filter == null) {
                 $wishes = Wish::where('created_by', $user->id)
@@ -481,7 +481,7 @@ class AccountDetailController extends Controller
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             if($request->filter == 7 or $request->filter == null) {
                 $transactions = Transaction::where('user_id', $user->id)->where('status_transaksi_id', '!=', 0)
@@ -531,7 +531,7 @@ class AccountDetailController extends Controller
             $kabupaten = $kecamatan->getKabupatenRelation;
             $provinsi = $kabupaten->getProvinsiRelation;
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             $shipment_statuses = Shipment_Status::where('transaction_id', $transaction->id)
                 ->orderBy('created_at', 'DESC')
@@ -604,7 +604,7 @@ class AccountDetailController extends Controller
                                                 ->orderBy('notification_id', 'DESC')
                                                 ->take(10)->get();
 
-            $addressNavbar = Address::where('is_temp','1')->first();
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
 
             Notification_Wish::where('user_id', $user->id)
                             ->orderBy('created_at', 'DESC')
