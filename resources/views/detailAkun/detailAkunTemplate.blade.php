@@ -14,7 +14,7 @@
                     @else
                         <img src="{{secure_asset('images/dummyUser2.png')}}">
                     @endif
-                    <h3 class="contentNormal">Steven Yuwono</h3>
+                    <h3 class="contentNormal">{{$user->username}}</h3>
                 </div>
                 <div class="menu">
                     <div id="akunSaya" class="list">

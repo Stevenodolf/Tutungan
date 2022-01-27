@@ -127,10 +127,10 @@ class AccountDetailController extends Controller
             $provinsi = DB::table('address_provinsi')->get();
             $alamat = DB::table('address')
                 ->where('user_id', Auth::user()->id)
-                ->groupBy('id')
-                ->groupBy('user_id')
-                ->orderBy('is_main', 'desc')
-                ->orderBy('is_temp', 'desc')
+                // ->groupBy('id')
+                // ->groupBy('user_id')
+                // ->orderBy('is_main', 'desc')
+                // ->orderBy('is_temp', 'desc')
                 ->get();
 
             //cart dropdown
@@ -276,9 +276,9 @@ class AccountDetailController extends Controller
             $user = User::where('id', Auth::user()->id)->first();
             $creditDebitList = DB::table('card_info')
                 ->where('user_id', Auth::user()->id)
-                ->groupBy('id')
-                ->groupBy('user_id')
-                ->orderBy('is_utama', 'desc')
+                // ->groupBy('id')
+                // ->groupBy('user_id')
+                // ->orderBy('is_utama', 'desc')
                 ->get();
 
             //cart dropdown
@@ -440,13 +440,19 @@ class AccountDetailController extends Controller
             $addressNavbar = Address::where('is_temp','1')->first();
 
             if($request->filter == 0 or $request->filter == null) {
-                $wishes = Wish::where('created_by', $user->id)->orderBy('created_at', 'DESC')->get();
+                $wishes = Wish::where('created_by', $user->id)
+                            // ->orderBy('created_at', 'DESC')
+                            ->get();
                 $filter = 0;
             }else{
                 $filter = $request->filter;
-                $wishes = Wish::where('created_by', $user->id)->where('status_wish_id', $filter)->orderBy('created_at', 'DESC')->get();
+                $wishes = Wish::where('created_by', $user->id)->where('status_wish_id', $filter)
+                            // ->orderBy('created_at', 'DESC')
+                            ->get();
             }
-            $transactions = Transaction::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
+            $transactions = Transaction::where('user_id', $user->id)
+                                        // ->orderBy('created_at', 'DESC')
+                                        ->get();
 
             return view('detailAkun.wishSaya.wishSaya', ['user' => $user, 'wishes' => $wishes, 'filter' => $filter, 'transactions' => $transactions,
                                                         'cart' => $cart, 'cart_items' => $cart_items, 'notifs' => $notifs, 'addressNavbar'=>$addressNavbar]);
@@ -478,11 +484,15 @@ class AccountDetailController extends Controller
             $addressNavbar = Address::where('is_temp','1')->first();
 
             if($request->filter == 7 or $request->filter == null) {
-                $transactions = Transaction::where('user_id', $user->id)->where('status_transaksi_id', '!=', 0)->orderBy('created_at', 'DESC')->get();
+                $transactions = Transaction::where('user_id', $user->id)->where('status_transaksi_id', '!=', 0)
+                                        ->orderBy('created_at', 'DESC')
+                                        ->get();
                 $filter = 7;
             }else{
                 $filter = $request->filter;
-                $transactions = Transaction::where('user_id', $user->id)->where('status_transaksi_id', '!=', 0)->where('status_transaksi_id', $filter)->orderBy('created_at', 'DESC')->get();
+                $transactions = Transaction::where('user_id', $user->id)->where('status_transaksi_id', '!=', 0)->where('status_transaksi_id', $filter)
+                                            ->orderBy('created_at', 'DESC')
+                                            ->get();
             }
 
             return view('detailAkun.transaksiSaya.transaksiSaya', ['user' => $user, 'transactions' => $transactions, 'filter' => $filter,
@@ -525,7 +535,8 @@ class AccountDetailController extends Controller
 
             $shipment_statuses = Shipment_Status::where('transaction_id', $transaction->id)
                 ->orderBy('created_at', 'DESC')
-                ->orderBy('sub_status_transaksi_id', 'DESC')->get();
+                ->orderBy('sub_status_transaksi_id', 'DESC')
+                ->get();
 
             return view('detailAkun.transaksiSaya.detailTransaksi',
                 ['user' => $user, 'transaction' => $transaction, 'wish' => $wish,'cart_items' => $cart_items, 'notifs' => $notifs,
@@ -588,12 +599,16 @@ class AccountDetailController extends Controller
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
-            $notification_wishes = Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')->orderBy('notification_id', 'DESC')->take(10)->get();
+            $notification_wishes = Notification_Wish::where('user_id', $user->id)
+                                                ->orderBy('created_at', 'DESC')
+                                                ->orderBy('notification_id', 'DESC')
+                                                ->take(10)->get();
 
             $addressNavbar = Address::where('is_temp','1')->first();
 
-            Notification_Wish::where('user_id', $user->id)->orderBy('created_at', 'DESC')
-                ->update(['is_read' => 1]);
+            Notification_Wish::where('user_id', $user->id)
+                            ->orderBy('created_at', 'DESC')
+                            ->update(['is_read' => 1]);
 
             return view('detailAkun.notifikasi.notifikasi', ['user' => $user, 'notifs' => $notifs, 'notification_wishes' => $notification_wishes,
                                                              'cart' => $cart, 'cart_items' => $cart_items, 'addressNavbar'=>$addressNavbar]);
