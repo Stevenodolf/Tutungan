@@ -12,41 +12,41 @@
     <title>Tutungan</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logoWithoutText.ico')}}" />
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('font/stylesheet.css') }}" rel="stylesheet">
-    <link href="{{ asset('js/script/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('js/script/quill/quill.snow.css') }}" rel="stylesheet">
-    <link href="{{ asset('js/script/quill/quill.bubble.css') }}" rel="stylesheet">
-    <link href="{{ asset('js/script/filepond/filepond.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('js/script/filepond/filepond-plugin-image-preview.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('js/script/flip/flip.min.css' ) }}" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="font/stylesheet.css" rel="stylesheet">
+    <link href="js/script/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="js/script/quill/quill.snow.css" rel="stylesheet">
+    <link href="js/script/quill/quill.bubble.css" rel="stylesheet">
+    <link href="js/script/filepond/filepond.min.css" rel="stylesheet">
+    <link href="js/script/filepond/filepond-plugin-image-preview.min.css" rel="stylesheet">
+    <link href="js/script/flip/flip.min.css" rel="stylesheet">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/script/jquery/jquery.js')}}"></script>
-    <script src="{{ asset('js/src/main.js') }}"></script>
+    <script src="js/app.js"></script>
+    <script src="js/script/jquery/jquery.js"></script>
+    <script src="js/src/main.js"></script>
     <!-- Swiper	-->
-    <script src="{{ asset('js/script/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="js/script/swiper/swiper-bundle.min.js"></script>
     <!-- Probar	-->
-    <script src="{{ asset('js/script/proBar/proBar.js') }}"></script>
+    <script src="js/script/proBar/proBar.js"></script>
     <!-- Quill	-->
-    <script src="{{ asset('js/script/quill/quill.js') }}"></script>
-    <script src="{{ asset('js/script/quill/image-resize.min.js') }}"></script>
-    <script src="{{ asset('js/script/quill/image-drop.min.js') }}"></script>
+    <script src="js/script/quill/quill.js"></script>
+    <script src="js/script/quill/image-resize.min.js"></script>
+    <script src="js/script/quill/image-drop.min.js"></script>
     <!-- Filepond	-->
-    <script src="{{ asset('js/script/filepond/filepond.min.js') }}"></script>
-    <script src="{{ asset('js/script/filepond/filepond.jquery.js') }}"></script>
-    <script src="{{ asset('js/script/filepond/filepond-plugin-file-validate-size.js') }}"></script>
-    <script src="{{ asset('js/script/filepond/filepond-plugin-file-encode.js') }}"></script>
-    <script src="{{ asset('js/script/filepond/filepond-plugin-image-preview.min.js') }}"></script>
-    <script src="{{ asset('js/script/filepond/filepond-plugin-file-validate-type.min.js') }}"></script>
+    <script src="js/script/filepond/filepond.min.js"></script>
+    <script src="js/script/filepond/filepond.jquery.js"></script>
+    <script src="js/script/filepond/filepond-plugin-file-validate-size.js"></script>
+    <script src="js/script/filepond/filepond-plugin-file-encode.js"></script>
+    <script src="js/script/filepond/filepond-plugin-image-preview.min.js"></script>
+    <script src="js/script/filepond/filepond-plugin-file-validate-type.min.js"></script>
     <!-- Flip	-->
-    <script src="{{ asset('js/script/flip/flip.min.js') }}"></script>
+    <script src="js/script/flip/flip.min.js"></script>
     <!-- Moment	-->
-    <script src="{{ asset('js/script/moment/moment-with-locales.min.js') }}"></script>
+    <script src="js/script/moment/moment-with-locales.min.js"></script>
     <!-- Content -->
     @yield('head')
 
