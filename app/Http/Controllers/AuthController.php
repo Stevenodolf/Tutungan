@@ -93,7 +93,7 @@ class AuthController extends Controller
         $user->save();
 
         $cart = new Cart();
-        $cart->user_id = $user->id;
+        $cart->user_id = $id;
         $cart->total_qty = 0;
         $cart->total_price = 0;
         $cart->created_at = Carbon::now();
