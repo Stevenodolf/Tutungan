@@ -18,7 +18,7 @@
                             <div class="swiper-wrapper">
                                 @foreach(json_decode($wish_image) as $image)
                                     <div class="swiper-slide">
-                                        <img src="{{secure_asset('uploads/'.$image)}}"/>
+                                        <img src="{{Storage::disk('s3')->url('uploads/'.$image)}}"/>
                                     </div>
                                 @endforeach
                             </div>
@@ -27,7 +27,7 @@
                             <div class="swiper-wrapper">
                                 @foreach(json_decode($wish_image) as $image)
                                     <div class="swiper-slide">
-                                        <img src="{{secure_asset('uploads/'.$image)}}" />
+                                        <img src="{{Storage::disk('s3')->url('uploads/'.$image)}}" />
                                     </div>
                                 @endforeach
                             </div>
@@ -174,7 +174,7 @@
                     @endif
                                 <div class="column">
                                     <div class="wish" onclick="window.location='{{ secure_url("/wish/".$for_you_item->id)}}'">
-                                        <img src="{{secure_asset('uploads/'.json_decode($for_you_item->image)[0])}}"/>
+                                        <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($for_you_item->image)[0]}}"/>
                                         <div class="contentNormal timeLeft">
                                             <p>Tersisa {{$time_left}} Hari Lagi</p>
                                         </div>

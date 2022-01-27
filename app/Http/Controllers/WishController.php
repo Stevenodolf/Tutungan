@@ -138,11 +138,11 @@ class WishController extends Controller
             $wish->detail = $request->description; //string
             //picture
             $file = $request->file('wishPicture');
-            $folder = uniqid() . '-' . now()->timestamp;
-            foreach ($file as $files){
-                $path = Storage::disk('s3')->put('uploads/' .$folder , $files);
-                $path = Storage::disk('s3')->url($path);
-                $data[] = $path;
+            if($file){
+                foreach ($file as $files){
+                    $path = Storage::disk('s3')->put('uploads/', $files);
+                    $data[] = basename($path);
+                }
             }
 
             // Otomatis Verifikasi Wish (utk testing aja)

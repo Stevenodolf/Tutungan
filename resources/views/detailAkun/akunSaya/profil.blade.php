@@ -20,7 +20,7 @@
             <div class="profilContent" style="display: flex">
                 <div class="profilPict">
                     @if($user->image)
-                        <img id="fotoProfil" src="{{Storage::disk('s3')->url($user->image)}}">
+                        <img id="fotoProfil" src="{{Storage::disk('s3')->url('uploads/'.$user->image)}}">
                     @else
                         <img id="fotoProfil" src="{{secure_asset('images/dummyUser2.png')}}">
                     @endif

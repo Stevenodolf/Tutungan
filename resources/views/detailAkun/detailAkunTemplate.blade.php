@@ -10,7 +10,7 @@
             <div class="sideMenu">
                 <div class="profile">
                     @if($user->image)
-                        <img src="{{Storage::disk('s3')->url($user->image)}}">
+                        <img src="{{Storage::disk('s3')->url('uploads/'.$user->image)}}">
                     @else
                         <img src="{{secure_asset('images/dummyUser2.png')}}">
                     @endif

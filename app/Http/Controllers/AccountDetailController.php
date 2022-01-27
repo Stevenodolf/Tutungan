@@ -92,19 +92,17 @@ class AccountDetailController extends Controller
                 -> where('id', Auth::user()->id)
                 -> value('image');
             if($request->inputProfil != null && $checkImage != null){
-                $path = 'uploads/profile/' . $checkImage;
-                Storage::deleteDirectory($path);
+                $path = 'uploads/' . $checkImage;
+                Storage::disk('s3')->delete($path);
             }
             //picture
             $file = $request->file('inputProfil');
             if($file){
-                $folder = uniqid() . '-' . now()->timestamp;
-                $path = Storage::disk('s3')->put('uploads/profile/' .$folder , $file);
-                $path = Storage::disk('s3')->url($path);
+                $path = Storage::disk('s3')->put('uploads/' , $file);
 
                 DB::table('user')
                     -> where('id', Auth::user()->id)
-                    -> update(array('username'=> $request->nama,'gender'=>$request->gender,'phone_number' => $request->phoneNumber, 'image'=> $path));
+                    -> update(array('username'=> $request->nama,'gender'=>$request->gender,'phone_number' => $request->phoneNumber, 'image'=> basename($path)));
             }else{
                 DB::table('user')
                     -> where('id', Auth::user()->id)
