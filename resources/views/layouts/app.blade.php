@@ -172,7 +172,7 @@
                             @foreach ($cart_items as $cart_item)
                                 <a class="content" href="{{ secure_url('/wish/'.$cart_item->wish_id)}}">
                                     <div class="sectionPicture">
-                                        <img src="{{secure_asset('uploads/'.json_decode($cart_item->getWishRelation->image)[0])}}"/>
+                                        <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($cart_item->getWishRelation->image)[0])}}"/>
                                         <div class="sectionText">
                                             <p class="contentSemiNormal">{{$cart_item->getWishRelation->name}}</p>
                                             <p class="contentSmall">{{$cart_item->qty}} pcs</p>
@@ -203,7 +203,7 @@
                             @foreach ($notifs as $notif)
                                 @if ($notif->is_read == 0)
                                     <div class="content">
-                                        <img src="{{secure_asset('uploads/'.json_decode($notif->getWishRelation->image)[0])}}">
+                                        <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($notif->getWishRelation->image)[0])}}">
                                         <div class="sectionText">
                                             <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">{{$notif->getNotificationRelation->title}}</p>
                                             <p class="contentSemiNormal">{{$notif->getNotificationRelation->subtitle}}</p>
@@ -212,7 +212,7 @@
                                     </div>
                                 @else {{-- kalau notifikasi belum di baca --}}
                                     <div class="content">
-                                        <img src="{{secure_asset('uploads/'.json_decode($notif->getWishRelation->image)[0])}}">
+                                        <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($notif->getWishRelation->image)[0])}}">
                                         <div class="sectionText">
                                             <p class="contentSemiNormal" style="font-weight: bolder;margin-bottom: 5px;">{{$notif->getNotificationRelation->title}}</p>
                                             <p class="contentSemiNormal">{{$notif->getNotificationRelation->subtitle}}</p>
