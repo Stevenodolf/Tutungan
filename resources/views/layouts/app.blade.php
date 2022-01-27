@@ -315,7 +315,7 @@
                 <img src="{{secure_asset('images/close.png')}}"/>
             </button>
         </div>
-        <form class="loginSection" method="POST" action="{{route('postLogin')}}">
+        <form class="loginSection" method="POST" action="{{secure_url('/login')}}">
             {{ csrf_field() }}
             <div class="field">
                 <p class="contentSemiBig">Email</p>
