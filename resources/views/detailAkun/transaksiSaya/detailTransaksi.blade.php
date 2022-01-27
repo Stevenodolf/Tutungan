@@ -159,7 +159,7 @@
                                 </script>
                             </div>
                             <div class="detail">
-                                <img src="{{secure_asset('uploads/'.json_decode($wish->image)[0])}}" />
+                                <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($wish->image)[0])}}" />
                                 <div class="detailContent">
                                     <div class="wishInfo">
                                         <p class="contentSemiNormal">{{ $wish->name }}</p>

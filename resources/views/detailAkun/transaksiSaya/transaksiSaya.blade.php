@@ -94,7 +94,7 @@
                         </div>
                         <div class="detail">
                             <div class="leftSection">
-                                <img src="{{secure_asset('uploads/'.json_decode($transaction->getWishRelation->image)[0])}}">
+                                <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($transaction->getWishRelation->image)[0])}}">
                                 <div class="wishInfo">
                                     <p class="contentSemiNormal wishName">{{ $transaction->getWishRelation->name }}</p>
                                     <p class="contentSmall contribution">{{ $transaction->qty }} item x Rp{{number_format($transaction->getWishRelation->price, 0, ',', '.')}}</p>
