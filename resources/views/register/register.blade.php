@@ -14,7 +14,7 @@
     <main style="min-height: 100vh;">
         <div class="firstRegister">
             <div class="registerContainer">
-                <form method="POST" action="{{route('postRegister')}}" enctype="multipart/form-data">
+                <form method="POST" action="{{secure_url('/register')}}" enctype="multipart/form-data">
                     @csrf
                     {{ csrf_field() }}
                     <h1 class="contentSemiExtraBig">Daftar</h1>
