@@ -398,6 +398,16 @@ class AccountDetailController extends Controller
         $auth = Auth::check();
         if ($auth){
             $user = User::where('id', Auth::user()->id)->first();
+
+            //cart dropdown
+            $cart = Cart::where('user_id', $user->id)->first();
+            $cart_items = Cart_Item::where('cart_id', $cart->id)->get();
+
+            $addressNavbar = Address::where('is_temp','1')->where('user_id',$user->id)->first();
+
+            //notif dropdown
+            $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
+
             $userPass = DB::table('user')
                 -> where('id', Auth::user()->id)
                 -> value('password');
@@ -412,7 +422,7 @@ class AccountDetailController extends Controller
             }else{
                 return redirect()->back();
             }
-            return view('detailAkun.akunSaya.ubahPassword',['user'=>$user]);
+            return view('detailAkun.akunSaya.ubahPassword',['user'=>$user, 'cart_items' => $cart_items, 'notifs' => $notifs]);
         }
         return redirect('login');
     }
