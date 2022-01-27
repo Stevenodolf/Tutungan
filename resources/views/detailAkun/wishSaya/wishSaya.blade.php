@@ -83,7 +83,7 @@
                         @endif
                     </div>
                     <div class="detail">
-                        <a href="wish/{{ $wish->id }}"><img src="{{asset('uploads/'.json_decode($wish->image)[0])}}" /></a>
+                        <a href="wish/{{ $wish->id }}"><img src="{{Storage::disk('s3')->url('uploads/'.json_decode($wish->image)[0])}}" /></a>
                         <div class="detailContent">
                             <div class="wishInfo">
                                 <a href="wish/{{ $wish->id }}"><p class="contentSemiNormal wishName">{{ $wish->name }}</p></a>
