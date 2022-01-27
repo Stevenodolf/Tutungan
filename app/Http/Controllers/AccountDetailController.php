@@ -127,9 +127,11 @@ class AccountDetailController extends Controller
             $provinsi = DB::table('address_provinsi')->get();
             $alamat = DB::table('address')
                 ->where('user_id', Auth::user()->id)
+                ->where('is_deleted','0')
+
                 // ->groupBy('id')
                 // ->groupBy('user_id')
-                // ->orderBy('is_main', 'desc')
+                ->orderBy('is_main', 'desc')
                 // ->orderBy('is_temp', 'desc')
                 ->get();
 
@@ -278,7 +280,7 @@ class AccountDetailController extends Controller
                 ->where('user_id', Auth::user()->id)
                 // ->groupBy('id')
                 // ->groupBy('user_id')
-                // ->orderBy('is_utama', 'desc')
+                ->orderBy('is_utama', 'desc')
                 ->get();
 
             //cart dropdown

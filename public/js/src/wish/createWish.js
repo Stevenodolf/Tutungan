@@ -8,7 +8,7 @@ $(document).ready(function () {
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
         [{ 'align': [] }],
         ['blockquote'],
-        ['image'],
+        // ['image'],
         // ['blockquote', 'code-block'],
         // [{ 'header': 1 }, { 'header': 2 }],
         // [{ 'script': 'sub'}, { 'script': 'super' }],
