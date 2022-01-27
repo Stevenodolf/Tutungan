@@ -92,6 +92,14 @@ class AuthController extends Controller
         $user->updated_at = Carbon::now();
         $user->save();
 
+        $cart = new Cart();
+        $cart->user_id = $user->id;
+        $cart->total_qty = 0;
+        $cart->total_price = 0;
+        $cart->created_at = Carbon::now();
+        $cart->updated_at = Carbon::now();
+        $cart->save();
+
         $token = Str::random(64);
         $userVerify = new UserVerify();
         $userVerify->user_id = $id;
