@@ -135,11 +135,11 @@
                             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                         </div>
                         <p class="contentSmall stock">Stok: {{ $wish_stock }}</p>
-                        <button class="button buttonYellow" type="submit" formaction="{{ url('/wish/'.$wish->id) }}">
+                        <button class="button buttonYellow" type="submit" formaction="{{ secure_url('/wish/'.$wish->id) }}">
                             <img src="{{ secure_asset('images/shopping-cart-add.png' )}}">
                             Tambah ke Keranjang
                         </button>
-                        <button class="button buttonBlack" type="submit" formaction="{{ url('/buy/'.$wish->id) }}">Beli Langsung</button>
+                        <button class="button buttonBlack" type="submit" formaction="{{ secure_url('/buy/'.$wish->id) }}">Beli Langsung</button>
                     </form>
                 </div>
             </div>
@@ -173,7 +173,7 @@
                         <div class="row">
                     @endif
                                 <div class="column">
-                                    <div class="wish" onclick="window.location='{{ url("/wish/".$for_you_item->id)}}'">
+                                    <div class="wish" onclick="window.location='{{ secure_url("/wish/".$for_you_item->id)}}'">
                                         <img src="{{secure_asset('uploads/'.json_decode($for_you_item->image)[0])}}"/>
                                         <div class="contentNormal timeLeft">
                                             <p>Tersisa {{$time_left}} Hari Lagi</p>

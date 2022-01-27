@@ -109,9 +109,9 @@
                         </div>
                         <div class="edit">
                             @if($transaction->status_transaksi_id == 1)
-                                <p class="buttonOnEdit" onclick="window.location='{{ url("/buy/".$transaction->getWishRelation->id)}}'">Bayar</p>
+                                <p class="buttonOnEdit" onclick="window.location='{{ secure_url("/buy/".$transaction->getWishRelation->id)}}'">Bayar</p>
                             @else
-                                <p class="contentSemiNormal buttonOnEdit" onclick="window.location='{{ url("/transaksisaya/detailtransaksi/".$transaction->id)}}'">Lihat Detail Transaksi</p>
+                                <p class="contentSemiNormal buttonOnEdit" onclick="window.location='{{ secure_url("/transaksisaya/detailtransaksi/".$transaction->id)}}'">Lihat Detail Transaksi</p>
                             @endif
                         </div>
                     </div>

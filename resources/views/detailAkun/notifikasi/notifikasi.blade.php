@@ -48,7 +48,7 @@
             @endphp
             @foreach($notification_wishes as $notification_wish)
                 @if($notification_wish->notification_id == 1)
-                    <div id="cell{{ $idx }}" class="notificationCell" onclick="window.location='{{ url("/wishsaya/")}}'">
+                    <div id="cell{{ $idx }}" class="notificationCell" onclick="window.location='{{ secure_url("/wishsaya/")}}'">
                         <img src="{{secure_asset('uploads/'.json_decode($notification_wish->getWishRelation->image)[0])}}">
                         <div class="detail">
                             <p id="created{{ $idx }}" class="contentSmall date"></p>
@@ -62,7 +62,7 @@
                         </script>
                     </div>
                 @else
-                    <div id="cell{{ $idx }}" class="notificationCell" onclick="window.location='{{ url('/transaksisaya/detailtransaksi/'.$notification_wish->transaction_id)}}'">
+                    <div id="cell{{ $idx }}" class="notificationCell" onclick="window.location='{{ secure_url('/transaksisaya/detailtransaksi/'.$notification_wish->transaction_id)}}'">
                         <img src="{{secure_asset('uploads/'.json_decode($notification_wish->getWishRelation->image)[0])}}">
                         <div class="detail">
                             <p id="created{{ $idx }}" class="contentSmall date"></p>

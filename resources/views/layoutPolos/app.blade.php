@@ -31,7 +31,7 @@
 <div id="app">
     <div style="margin: 0 120px;">
         <div class="navbar">
-            <div class="logo" onclick="window.location='{{ url('/') }}'">
+            <div class="logo" onclick="window.location='{{ secure_url('/') }}'">
                 <img src="{{secure_asset('images/tutunganLogo.png')}}">
             </div>
         </div>

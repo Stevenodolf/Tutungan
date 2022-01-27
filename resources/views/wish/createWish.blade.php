@@ -117,7 +117,7 @@
                 </div>
 
                 <div class="buttonKanan">
-                    <a href="{{url('/')}}" class="batal">
+                    <a href="{{secure_url('/')}}" class="batal">
                         <img src="{{secure_asset('images/closeSmall.png')}}">
                         <p class="contentSemiBig">Batalkan</p>
                     </a>

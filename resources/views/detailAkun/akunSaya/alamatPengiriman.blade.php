@@ -55,7 +55,7 @@
                                 <img src="{{asset('images/checkmarkYellow.png')}}"/>
                             </div>
                         @else
-                            <form class="section" method="POST" action="{{url('/akunSaya/postTempAlamatPengiriman')}}">
+                            <form class="section" method="POST" action="{{secure_url('/akunSaya/postTempAlamatPengiriman')}}">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="id" value="{{$alamats->id}}">
                                 <button class="button buttonYellow" type="submit">Pilih</button>
@@ -67,9 +67,9 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="id" value="{{$alamats->id}}">
                         <button type="button" onclick="popupUbahAlamat({{$alamats->id}});">Ubah</button>
-                        <button type="submit" formaction="{{url('/akunSaya/hapusAlamatPengiriman')}}">Hapus</button>
+                        <button type="submit" formaction="{{secure_url('/akunSaya/hapusAlamatPengiriman')}}">Hapus</button>
                         @if($alamats->is_main != '1')
-                            <button type="submit" formaction="{{url('/akunSaya/postUtamaAlamatPengiriman') }}">Atur Sebagai Alamat Utama</button>
+                            <button type="submit" formaction="{{secure_url('/akunSaya/postUtamaAlamatPengiriman') }}">Atur Sebagai Alamat Utama</button>
                         @endif
 
                     </form>

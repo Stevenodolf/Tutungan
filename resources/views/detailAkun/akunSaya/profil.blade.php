@@ -15,7 +15,7 @@
             <h2 class="contentBig">Profil</h2>
             <p class="contentSemiBig">Kelola data diri Anda yang akan digunakan dalam situs ini.</p>
         </div>
-        <form class="profil" method="post" action="{{url('/akunSaya/editProfil')}}" enctype="multipart/form-data">
+        <form class="profil" method="post" action="{{secure_url('/akunSaya/editProfil')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="profilContent" style="display: flex">
                 <div class="profilPict">

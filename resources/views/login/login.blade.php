@@ -7,7 +7,7 @@
 @section('content')
     <body style="background-image: url({{secure_asset('images/masuk.png')}});background-size: cover;background-repeat: no-repeat; ">
     <nav class="navbar" style="justify-content: center;position: absolute">
-        <a href="{{url("/")}}" style="cursor: pointer;" class="logo">
+        <a href="{{secure_url("/")}}" style="cursor: pointer;" class="logo">
             <img src="{{secure_asset('images/tutunganLogo.png')}}">
         </a>
     </nav>
@@ -27,7 +27,7 @@
                         <p class="contentSemiBig">Password</p>
                         <input name="password" type="password" id="password" required>
                         <div class="lupaPass">
-                            <a href="{{url('/forgotPassword')}}" class="contentSemiNormal">Lupa password?</a>
+                            <a href="{{secure_url('/forgotPassword')}}" class="contentSemiNormal">Lupa password?</a>
                         </div>
                     </div>
                     @if($errors->any())
@@ -41,7 +41,7 @@
                 </form>
                 <div class="daftarSection">
                     <p class="contentSemiBig">Baru di Tutungan?</p>
-                    <a href="{{url('/register')}}">
+                    <a href="{{secure_url('/register')}}">
                         <p class="contentSemiBig">Daftar</p>
                     </a>
                 </div>

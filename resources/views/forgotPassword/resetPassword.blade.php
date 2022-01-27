@@ -7,7 +7,7 @@
 @section('content')
     <body style="background-image: url({{secure_asset('images/forgotPassReset.png')}});background-size: cover;background-repeat: no-repeat; ">
     <nav class="navbar" style="justify-content: center;position: absolute">
-        <a href="{{url("/")}}" style="cursor: pointer;" class="logo">
+        <a href="{{secure_url("/")}}" style="cursor: pointer;" class="logo">
             <img src="{{secure_asset('images/tutunganLogo.png')}}">
         </a>
     </nav>
@@ -18,7 +18,7 @@
                     <h1 class="contentSemiExtraBig">Lupa Password</h1>
                     <p class="contentSemiBig secondaryText">Masukan email yang terdaftar untuk lupa password.</p>
                 </div>
-                <form class="section" method="POST" action="{{url('/resetPassword')}}">
+                <form class="section" method="POST" action="{{secure_url('/resetPassword')}}">
                     {{ csrf_field() }}
                     <input type="hidden" name="token" value="{{ $token }}">
 

@@ -11,7 +11,7 @@
         <div class="transactionDetailSection">
             <div class="header">
                 <div class="headerContent">
-                    <div class="buttonKembali" onclick="window.location='{{ url("/transaksisaya")}}'">
+                    <div class="buttonKembali" onclick="window.location='{{ secure_url("/transaksisaya")}}'">
                         <img src="{{secure_asset('images/arrowLeftBlack.png')}}">
                         <p class="contentSemiBig text">Kembali</p>
                     </div>
@@ -238,7 +238,7 @@
                         <div class="rightSection">
                             <button class="button buttonBlack">Lihat Invoice</button>
                             @if($transaction->status_transaksi_id != 6 and $wish->status_wish_id == 2)
-                                <button class="button buttonRed" onclick="window.location='{{ url("/transaksisaya/batalkantransaksi/".$transaction->id)}}'">Batalkan Transaksi</button>
+                                <button class="button buttonRed" onclick="window.location='{{ secure_url("/transaksisaya/batalkantransaksi/".$transaction->id)}}'">Batalkan Transaksi</button>
                             @endif
                         </div>
                     </div>

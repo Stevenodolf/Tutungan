@@ -22,28 +22,28 @@
                         <h3 class="contentSemiBig">Akun Saya</h3>
                     </div>
                     <div class="subList">
-                        <a class="list" href="{{url('/akunSaya/profil')}}" >
+                        <a class="list" href="{{secure_url('/akunSaya/profil')}}" >
                             <p id="profil" class="contentSemiBig">Profil</p>
                         </a>
-                        <a class="list" href="{{url('/akunSaya/alamatpengiriman')}}" >
+                        <a class="list" href="{{secure_url('/akunSaya/alamatpengiriman')}}" >
                             <p id="alamat" class="contentSemiBig">Alamat Pengiriman</p>
                         </a>
-                        <a class="list" href="{{url('/akunSaya/kartukreditdebit')}}" >
+                        <a class="list" href="{{secure_url('/akunSaya/kartukreditdebit')}}" >
                             <p id="kartu" class="contentSemiBig">Kartu Kredit/Debit</p>
                         </a>
-                        <a class="list" href="{{url('/akunSaya/ubahpassword')}}" >
+                        <a class="list" href="{{secure_url('/akunSaya/ubahpassword')}}" >
                             <p id="ubahPass" class="contentSemiBig">Ubah Password</p>
                         </a>
                     </div>
-                    <div id="wishSaya" class="list" onclick="window.location='{{ url("/wishsaya")}}'">
+                    <div id="wishSaya" class="list" onclick="window.location='{{ secure_url("/wishsaya")}}'">
                         <img src="{{secure_asset("images/wish.png")}}">
                         <h3 class="contentSemiBig">Wish Saya</h3>
                     </div>
-                    <div id="transaksiSaya" class="list" onclick="window.location='{{ url("/transaksisaya")}}'">
+                    <div id="transaksiSaya" class="list" onclick="window.location='{{ secure_url("/transaksisaya")}}'">
                         <img src="{{secure_asset("images/transaksi.png")}}">
                         <h3 class="contentSemiBig">Transaksi Saya</h3>
                     </div>
-                    <div id="notifikasi" class="list" onclick="window.location='{{ url("/notifikasi")}}'">
+                    <div id="notifikasi" class="list" onclick="window.location='{{ secure_url("/notifikasi")}}'">
                         <img src="{{secure_asset("images/notification_outline.png")}}">
                         <h3 class="contentSemiBig">Notifikasi</h3>
                     </div>

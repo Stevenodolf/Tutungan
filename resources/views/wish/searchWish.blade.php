@@ -135,7 +135,7 @@
                                 <div class="row">
                             @endif
                             <div class="column">
-                                <div class="wish" onclick="window.location='{{ url("/wish/".$wish->id)}}'">
+                                <div class="wish" onclick="window.location='{{ secure_url("/wish/".$wish->id)}}'">
                                     <img src="{{secure_asset('uploads/'.json_decode($wish->image)[0])}}"/>
                                     <div class="timeLeft">
                                         <p>Tersisa {{$time_left}} Hari Lagi</p>
