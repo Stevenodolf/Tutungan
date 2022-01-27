@@ -55,7 +55,7 @@
 <div id="app">
     <div style="margin: 0 8%">
         <div class="navbar">
-            <div class="logo" onclick="window.location='{{ url("/")}}'">
+            <div class="logo" onclick="window.location='{{ secure_url("/")}}'">
                 <img src="{{secure_asset('images/tutunganLogo.png')}}">
             </div>
             @guest
@@ -74,7 +74,7 @@
                     $firstName = $name[0];
                     $lastName = (isset($name[count($name)-1])) ? $name[count($name)-1] : '';
                 @endphp
-                <a href="{{url('/akunSaya/alamatpengiriman')}}" class="locationSection">
+                <a href="{{secure_url('/akunSaya/alamatpengiriman')}}" class="locationSection">
                     <img src="{{secure_asset('images/location.png')}}">
                     <div class="contentSemiNormal locationText">
                         <p style="color: grey">Dikirim ke</p>
@@ -87,7 +87,7 @@
                 <button type="submit"><img src="{{secure_asset('images/search.png')}}"></button>
             </form>
 {{--            <div class="dropdownKeranjang">--}}
-{{--                <button class="buttonWithImage" onclick="window.location='{{ url("/cart")}}'"><img src="{{secure_asset('images/shopping-cart.png')}}"></button>--}}
+{{--                <button class="buttonWithImage" onclick="window.location='{{ secure_url("/cart")}}'"><img src="{{secure_asset('images/shopping-cart.png')}}"></button>--}}
 {{--                <div class="dropdownList">--}}
 {{--                    <div class="title">--}}
 {{--                        <p class="contentSemiNormal">Keranjang Anda</p>--}}
@@ -140,7 +140,7 @@
                 <button class="buttonWithImage" onclick="openLoginPopup();"><img src="{{secure_asset('images/bell.png')}}"></button>
                 <div class="buttonLoginRegister">
                     <button class="buttonLogin" onclick="openLoginPopup();">Masuk</button>
-                    <form method="GET" action="{{url('/register')}}">
+                    <form method="GET" action="{{secure_url('/register')}}">
                         <button type="submit" class="buttonRegister">Daftar</button>
                     </form>
                 </div>
@@ -150,7 +150,7 @@
                     <div class="dropdownList" id="dropdownKeranjang">
                         <div class="title">
                             <p class="contentSemiNormal">Keranjang Anda</p>
-                            <button onclick="window.location='{{ url("/cart")}}'">
+                            <button onclick="window.location='{{ secure_url("/cart")}}'">
                                 <p class="contentSemiNormal">Lihat Semua</p>
                             </button>
                         </div>
@@ -160,7 +160,7 @@
                             </div>
                         @else
                             @foreach ($cart_items as $cart_item)
-                                <a class="content" href="{{ url('/wish/'.$cart_item->wish_id)}}">
+                                <a class="content" href="{{ secure_url('/wish/'.$cart_item->wish_id)}}">
                                     <div class="sectionPicture">
                                         <img src="{{secure_asset('uploads/'.json_decode($cart_item->getWishRelation->image)[0])}}"/>
                                         <div class="sectionText">
@@ -181,7 +181,7 @@
                     <div class="dropdownList" id="dropdownNotif">
                         <div class="title">
                             <p class="contentSemiNormal">Notifikasi</p>
-                            <button onclick="window.location='{{ url("/notifikasi")}}'">
+                            <button onclick="window.location='{{ secure_url("/notifikasi")}}'">
                                 <p class="contentSemiNormal">Lihat Semua</p>
                             </button>
                         </div>
@@ -214,7 +214,7 @@
                         @endif
                     </div>
                 </div>
-                <form action="{{url('/createWish')}}">
+                <form action="{{secure_url('/createWish')}}">
                     <button type="submit" class="contentSemiNormal buttonAddWish button buttonYellow">
                         <img src="{{secure_asset('images/plusBlack.png')}}">
                         Wish
@@ -231,16 +231,16 @@
                         <img id="arrowUser" src="{{secure_asset('images/arrowDownBlack.png')}}">
                     </button>
                     <div class="dropdownList" id="dropdownList">
-                        <a href="{{ url('/akunSaya/profil' )}}">
+                        <a href="{{ secure_url('/akunSaya/profil' )}}">
                             <p class="contentSemiNormal">Akun Saya</p>
                         </a>
-                        <a href="{{ url('/wishsaya') }}">
+                        <a href="{{ secure_url('/wishsaya') }}">
                             <p class="contentSemiNormal">Wish Saya</p>
                         </a>
-                        <a href="{{ url('/transaksisaya') }}">
+                        <a href="{{ secure_url('/transaksisaya') }}">
                             <p class="contentSemiNormal">Transaksi Saya</p>
                         </a>
-                        <a href="{{ url('/logout') }}">
+                        <a href="{{ secure_url('/logout') }}">
                             <p class="contentSemiNormal">Logout</p>
                         </a>
                     </div>
@@ -251,7 +251,7 @@
     </div>
     {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ secure_url('/') }}">
                 {{ config('app.name', 'Tutungan') }}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -325,7 +325,7 @@
                 <p class="contentSemiBig">Password</p>
                 <input name="password" type="password" id="password" required>
                 <div class="lupaPass">
-                    <a href="{{url('/forgotPassword')}}"><p class="contentSemiNormal">Lupa password?</p></a>
+                    <a href="{{secure_url('/forgotPassword')}}"><p class="contentSemiNormal">Lupa password?</p></a>
                 </div>
             </div>
             <button class="buttonMasuk" type="submit">
@@ -334,7 +334,7 @@
         </form>
         <div class="daftarSection">
             <p class="contentSemiBig">Baru di Tutungan?</p>
-            <a href="{{url('/register')}}">
+            <a href="{{secure_url('/register')}}">
                 <p class="contentSemiBig">Daftar</p>
             </a>
         </div>
