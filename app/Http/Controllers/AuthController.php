@@ -126,10 +126,10 @@ class AuthController extends Controller
     public function verifyAccount($token)
     {
         $verifyUser = DB::table('user_verify')->where('token', $token);
-
+        $checkToken = DB::table('user_verify')->where('token', $token)->first();
         $messages = 'Sorry your email cannot be identified.';
 
-        if(!is_null($verifyUser) ){
+        if(!$checkToken){
             $user = DB::table('user') -> where('id', $verifyUser->value('user_id'))->value('is_email_verified');
             if($user != 1) {
                 DB::table('user')
