@@ -126,27 +126,28 @@ class AuthController extends Controller
     public function verifyAccount($token)
     {
         $verifyUser = DB::table('user_verify')->where('token', $token);
-        $checkToken = DB::table('user_verify')->where('token', $token)->first();
+
         $messages = 'Sorry your email cannot be identified.';
 
-        if(!$checkToken){
+        if(!is_null($verifyUser) ){
             $user = DB::table('user') -> where('id', $verifyUser->value('user_id'))->value('is_email_verified');
             if($user != 1) {
                 DB::table('user')
                     -> where('id', $verifyUser->value('user_id'))
                     -> update(array('is_email_verified' => 1));
+
+                $cart = new Cart();
+                $cart->user_id = $verifyUser->value('user_id');
+                $cart->total_qty = 0;
+                $cart->total_price = 0;
+                $cart->created_at = Carbon::now();
+                $cart->updated_at = Carbon::now();
+                $cart->save();
+
                 $messages = "Your e-mail is verified. You can now login.";
             } else {
                 $messages = "Your e-mail is already verified. You can now login.";
             }
-
-            $cart = new Cart();
-            $cart->user_id = $verifyUser->value('user_id');
-            $cart->total_qty = 0;
-            $cart->total_price = 0;
-            $cart->created_at = Carbon::now();
-            $cart->updated_at = Carbon::now();
-            $cart->save();
         }
         return redirect()->route('getLogin')->with('message', $messages);
     }
