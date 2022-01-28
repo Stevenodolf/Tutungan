@@ -157,7 +157,7 @@
                 {{ csrf_field() }}
                 <input type="hidden" name="id" id="ubahId" value="">
                 <div class="section">
-                    <h4>Kontak Penerima</h4>
+                    <h4 class="contentSemiNormal sectionTitle">Kontak Penerima</h4>
                     <div class="sectionInputSelect">
                         <p class="contentSemiNormal" style="color: #747474;width: 150px;">Nama Lengkap</p>
                         <input type="text" name="ubahFullname" id="ubahFullname">
@@ -168,7 +168,7 @@
                     </div>
                 </div>
                 <div class="section">
-                    <h4>Detail Alamat</h4>
+                    <h4 class="contentSemiNormal sectionTitle">Detail Alamat</h4>
                     <div class="sectionInputSelect">
                         <p class="contentSemiNormal" style="color: #747474;width: 150px;">Label Alamat</p>
                         <input type="text" name="ubahLabelAlamat" id="ubahLabelAlamat">
