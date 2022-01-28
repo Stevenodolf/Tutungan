@@ -95,7 +95,7 @@
                     <div class="sectionInput">
                         <p class="contentSemiNormal" style="color: #747474;width: 150px;">Nomor Kartu</p>
                         <div style="width: 100%">
-                            <input type="text" name="cardNumber">
+                            <input type="text" name="cardNumber" placeholder="16 digit" required>
                             <div class="creditCardSelection">
                                 <label>
                                     <input type="radio" name="creditCardType" value="mastercard" checked>
@@ -110,9 +110,9 @@
                     </div>
                     <div class="sectionInput">
                         <p class="contentSemiNormal" style="color: #747474;width: 150px;">Masa Berlaku</p>
-                        <input style="width: 20%;" type="text" name="month">
+                        <input style="width: 20%;" type="text" name="month" placeholder="XX" required>
                         <p class="contentSemiNormal" style="color: #747474;margin: 0 5px">/</p>
-                        <input style="width: 20%;" type="text" name="year">
+                        <input style="width: 20%;" type="text" name="year" placeholder="XX" required>
                     </div>
 {{--                    <div class="sectionInput">--}}
 {{--                        <p class="contentSemiNormal" style="color: #747474;width: 150px;">CVV</p>--}}
