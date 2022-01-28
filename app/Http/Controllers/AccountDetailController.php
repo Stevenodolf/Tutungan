@@ -125,19 +125,19 @@ class AccountDetailController extends Controller
         if ($auth){
             $user = User::where('id', Auth::user()->id)->first();
             $provinsi = DB::table('address_provinsi')->get();
-            $alamat = DB::table('address')
-                ->where('user_id', Auth::user()->id)
-                ->where('is_deleted','0')
-
-                // ->groupBy('id')
-                // ->groupBy('user_id')
-                ->orderBy('is_main', 'desc')
-                // ->orderBy('is_temp', 'desc')
-                ->get();
-//            $alamat = Address::where('user_id', Auth::user()->id)
+//            $alamat = DB::table('address')
+//                ->where('user_id', Auth::user()->id)
 //                ->where('is_deleted','0')
+//
+//                // ->groupBy('id')
+//                // ->groupBy('user_id')
 //                ->orderBy('is_main', 'desc')
+//                // ->orderBy('is_temp', 'desc')
 //                ->get();
+            $alamat = Address::where('user_id', Auth::user()->id)
+                ->where('is_deleted','0')
+                ->orderBy('is_main', 'desc')
+                ->get();
 
             //cart dropdown
             $cart = Cart::where('user_id', $user->id)->first();
