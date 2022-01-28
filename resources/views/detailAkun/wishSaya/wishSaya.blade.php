@@ -83,10 +83,19 @@
                         @endif
                     </div>
                     <div class="detail">
-                        <a href="wish/{{ $wish->id }}"><img src="{{Storage::disk('s3')->url('uploads/'.json_decode($wish->image)[0])}}" /></a>
+                        @if($wish->status_wish_id >= 3)
+                            <a href="wish/{{ $wish->id }}"><img src="{{Storage::disk('s3')->url('uploads/'.json_decode($wish->image)[0])}}" /></a>
+                        @else
+                            <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($wish->image)[0])}}" />
+                        @endif
                         <div class="detailContent">
                             <div class="wishInfo">
-                                <a href="wish/{{ $wish->id }}"><p class="contentSemiNormal wishName">{{ $wish->name }}</p></a>
+                                @if($wish->status_wish_id >= 3)
+                                    <a href="wish/{{ $wish->id }}"><p class="contentSemiNormal wishName">{{ $wish->name }}</p></a>
+                                @else
+                                    <p class="contentSemiNormal wishName">{{ $wish->name }}</p>
+                                @endif
+
                                 @if($wish->status_wish_id <= 2)
                                     <p class="contentSmall">Pesanan anda: {{ $wish->curr_qty }} item</p> {{-- Harusnya menampilkan jumlah pesanan sesuai transaksi--}}
                                 @else
