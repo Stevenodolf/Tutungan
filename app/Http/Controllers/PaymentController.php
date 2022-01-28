@@ -169,30 +169,30 @@ class PaymentController extends Controller
                     $shipment_status->sub_status_transaksi_id = 1;
                     $shipment_status->save();
 
-                    $shipment_status = new Shipment_Status;
-                    $shipment_status->transaction_id = $transaction->id;
-                    $shipment_status->sub_status_transaksi_id = 2;
-                    $shipment_status->save();
-
-                    $shipment_status = new Shipment_Status;
-                    $shipment_status->transaction_id = $transaction->id;
-                    $shipment_status->sub_status_transaksi_id = 3;
-                    $shipment_status->save();
-
-                    $shipment_status = new Shipment_Status;
-                    $shipment_status->transaction_id = $transaction->id;
-                    $shipment_status->sub_status_transaksi_id = 4;
-                    $shipment_status->save();
-
-                    $shipment_status = new Shipment_Status;
-                    $shipment_status->transaction_id = $transaction->id;
-                    $shipment_status->sub_status_transaksi_id = 5;
-                    $shipment_status->save();
-
-                    $shipment_status = new Shipment_Status;
-                    $shipment_status->transaction_id = $transaction->id;
-                    $shipment_status->sub_status_transaksi_id = 6;
-                    $shipment_status->save();
+//                    $shipment_status = new Shipment_Status;
+//                    $shipment_status->transaction_id = $transaction->id;
+//                    $shipment_status->sub_status_transaksi_id = 2;
+//                    $shipment_status->save();
+//
+//                    $shipment_status = new Shipment_Status;
+//                    $shipment_status->transaction_id = $transaction->id;
+//                    $shipment_status->sub_status_transaksi_id = 3;
+//                    $shipment_status->save();
+//
+//                    $shipment_status = new Shipment_Status;
+//                    $shipment_status->transaction_id = $transaction->id;
+//                    $shipment_status->sub_status_transaksi_id = 4;
+//                    $shipment_status->save();
+//
+//                    $shipment_status = new Shipment_Status;
+//                    $shipment_status->transaction_id = $transaction->id;
+//                    $shipment_status->sub_status_transaksi_id = 5;
+//                    $shipment_status->save();
+//
+//                    $shipment_status = new Shipment_Status;
+//                    $shipment_status->transaction_id = $transaction->id;
+//                    $shipment_status->sub_status_transaksi_id = 6;
+//                    $shipment_status->save();
 
                     //Buat Notifikasi_Wish 2 (Pembayaran berhasil diverifikasi!)
                     $notification_wish = new Notification_Wish;
@@ -202,19 +202,19 @@ class PaymentController extends Controller
                     $notification_wish->notification_id = 2;
                     $notification_wish->save();
 
-                    $notification_wish = new Notification_Wish;
-                    $notification_wish->user_id = $user->id;
-                    $notification_wish->wish_id = $payment_item->wish_id;
-                    $notification_wish->transaction_id = $transaction->id;
-                    $notification_wish->notification_id = 3;
-                    $notification_wish->save();
-
-                    $notification_wish = new Notification_Wish;
-                    $notification_wish->user_id = $user->id;
-                    $notification_wish->wish_id = $payment_item->wish_id;
-                    $notification_wish->transaction_id = $transaction->id;
-                    $notification_wish->notification_id = 4;
-                    $notification_wish->save();
+//                    $notification_wish = new Notification_Wish;
+//                    $notification_wish->user_id = $user->id;
+//                    $notification_wish->wish_id = $payment_item->wish_id;
+//                    $notification_wish->transaction_id = $transaction->id;
+//                    $notification_wish->notification_id = 3;
+//                    $notification_wish->save();
+//
+//                    $notification_wish = new Notification_Wish;
+//                    $notification_wish->user_id = $user->id;
+//                    $notification_wish->wish_id = $payment_item->wish_id;
+//                    $notification_wish->transaction_id = $transaction->id;
+//                    $notification_wish->notification_id = 4;
+//                    $notification_wish->save();
 
                 }
                 $payment->total_payment = $request->grand_total;
