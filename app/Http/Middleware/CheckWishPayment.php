@@ -18,10 +18,12 @@ class CheckWishPayment
      */
     public function handle($id, Closure $next)
     {
-        $wish = Wish::where('id', $id)->first();
+//        $wish = Wish::where('id', $id)->first();
+        $wish_status_wish_id = Wish::where('id', $id)->value('status_wish_id');
+        $wish_user_id = Wish::where('id', $id)->value('user_id');
 
-        if($wish->status_wish_id <= 2) {
-            if($wish->user_id == Auth::user()->id){
+        if($wish_status_wish_id <= 2) {
+            if($wish_user_id == Auth::user()->id){
                 return redirect()->route('getWishSaya');
             }
             return redirect('/');
