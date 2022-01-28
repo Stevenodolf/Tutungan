@@ -114,7 +114,7 @@ class AuthController extends Controller
         });
 
         $messages = "We've Send you an email confirmation!";
-        return redirect()->route('getLogin');
+        return view('register.verifikasi');
     }
 
     public function logout(){

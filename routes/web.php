@@ -49,6 +49,8 @@ Route::get('/account/verify/{token}', 'AuthController@verifyAccount') ->name('us
 //Wish
 Route::get('/wish/{id}', 'WishController@wishDetail')->name('getWishDetail')->middleware('wishPayment');
 
+Route::get('/verifikasi', '')
+
 Route::middleware('auth')->group(function (){
     Route::get('/logout','AuthController@logout')->name('logout');
 
