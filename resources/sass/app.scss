@@ -3571,11 +3571,15 @@ button{
         .content{
             .section{
                 margin-bottom: 15px;
-                h4{
+                .filterTitle {
                     margin-bottom: 10px;
+                    font-family: "latobold";
                 }
                 .subSection{
                     padding-left: 5px;
+                    .subText {
+                        color: #636363;
+                    }
                     .checkboxText{
                         display: flex;
                         align-items: center;

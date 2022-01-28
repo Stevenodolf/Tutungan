@@ -169,7 +169,7 @@ class WishController extends Controller
             $notification_wish->notification_id = 1;
             $notification_wish->save();
 
-            return redirect()->route('home');
+            return redirect()->route('getWishSaya');
         }
         return redirect('')->route('getLogin');
     }

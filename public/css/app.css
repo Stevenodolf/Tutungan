@@ -3623,9 +3623,10 @@ button {
 
 .popUpTambahAlamat {
   width: 441px;
-  height: 733px;
+  height: 550px;
   background: white;
   padding: 24px;
+  overflow: auto;
 }
 
 .popUpTambahAlamat .title {
@@ -3887,12 +3888,17 @@ button {
   margin-bottom: 15px;
 }
 
-.cariWish .filter .content .section h4 {
+.cariWish .filter .content .section .filterTitle {
   margin-bottom: 10px;
+  font-family: "latobold";
 }
 
 .cariWish .filter .content .section .subSection {
   padding-left: 5px;
+}
+
+.cariWish .filter .content .section .subSection .subText {
+  color: #636363;
 }
 
 .cariWish .filter .content .section .subSection .checkboxText {
