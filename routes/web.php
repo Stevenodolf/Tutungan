@@ -40,9 +40,9 @@ Route::get('/resetPassword/{token}', 'ForgotPasswordController@showResetPassword
 Route::post('/resetPassword', 'ForgotPasswordController@submitResetPassword')->name('submitReset');
 
 //Auth
-Route::get('/login', 'AuthController@showLoginPage')->name('getLogin');
-Route::post('/login', 'AuthController@postLogin')->name('postLogin');
-Route::get('/register', 'AuthController@showRegisterPage')->name('getRegister');
+Route::get('/login', 'AuthController@showLoginPage')->name('getLogin')->middleware('isGuest');
+Route::post('/login', 'AuthController@postLogin')->name('postLogin')->middleware('isEmailVerified');
+Route::get('/register', 'AuthController@showRegisterPage')->name('getRegister')->middleware('isGuest');
 Route::post('/register', 'AuthController@postRegister') ->name('postRegister');
 Route::get('/account/verify/{token}', 'AuthController@verifyAccount') ->name('userVerify');
 

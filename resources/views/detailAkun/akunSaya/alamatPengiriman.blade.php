@@ -146,7 +146,7 @@
     </div>
 
     <div class="blackContainer" id="ubahAlamat">
-        <div class="popUpTambahAlamat">
+        <div class="popUpTambahAlamat" style="overflow-y: scroll;">
             <div class="title">
                 <h1>Ubah Alamat</h1>
                 <button id="closeUbahAlamat">
