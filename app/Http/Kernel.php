@@ -67,5 +67,6 @@ class   Kernel extends HttpKernel
         'payment'=> \App\Http\Middleware\CheckPayment::class,
         'isEmailVerified'=>\App\Http\Middleware\EnsureEmailIsVerified::class,
         'isGuest'=>\App\Http\Middleware\EnsureIsGuest::class,
+        'wishPayment'=>\App\Http\Middleware\CheckWishPayment::class,
     ];
 }

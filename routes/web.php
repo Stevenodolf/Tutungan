@@ -47,7 +47,7 @@ Route::post('/register', 'AuthController@postRegister') ->name('postRegister');
 Route::get('/account/verify/{token}', 'AuthController@verifyAccount') ->name('userVerify');
 
 //Wish
-Route::get('/wish/{id}', 'WishController@wishDetail')->name('getWishDetail');
+Route::get('/wish/{id}', 'WishController@wishDetail')->name('getWishDetail')->middleware('wishPayment');
 
 Route::middleware('auth')->group(function (){
     Route::get('/logout','AuthController@logout')->name('logout');
