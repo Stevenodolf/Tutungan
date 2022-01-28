@@ -101,22 +101,22 @@
                     <h4 class="contentSemiNormal sectionTitle">Kontak Penerima</h4>
                     <div class="sectionInputSelect">
                         <p class="contentSemiNormal" style="color: #747474;width: 150px;">Nama Lengkap</p>
-                        <input type="text" name="fullname">
+                        <input type="text" name="fullname" required>
                     </div>
                     <div class="sectionInputSelect">
                         <p class="contentSemiNormal" style="color: #747474;width: 150px;">Telepon</p>
-                        <input type="text" name="phoneNumber">
+                        <input type="text" name="phoneNumber" required>
                     </div>
                 </div>
                 <div class="section">
                     <h4 class="contentSemiNormal sectionTitle">Detail Alamat</h4>
                     <div class="sectionInputSelect">
                         <p class="contentSemiNormal" style="color: #747474;width: 150px;">Label Alamat</p>
-                        <input type="text" name="labelAlamat">
+                        <input type="text" name="labelAlamat" placeholder="Rumah/Kantor/dsb." required>
                     </div>
                     <div class="sectionInputSelect">
                         <p class="contentSemiNormal" style="color: #747474;width: 150px;">Provinsi</p>
-                        <select id="provinsi" name="provinsi">
+                        <select id="provinsi" name="provinsi" required>
                             <option value="">Pilih Provinsi</option>
                             @foreach($provinsi as $provinsis)
                                 <option value="{{$provinsis->id}}">{{$provinsis->nama}}</option>
@@ -125,27 +125,27 @@
                     </div>
                     <div class="sectionInputSelect">
                         <p class="contentSemiNormal" style="color: #747474;width: 150px;">Kota/Kabupaten</p>
-                        <select id="kota" name="kota">
+                        <select id="kota" name="kota" required>
                             <option value="">Pilih Kota/Kabupaten</option>
                         </select>
                     </div>
                     <div class="sectionInputSelect">
                         <p class="contentSemiNormal" style="color: #747474;width: 150px;">Kecamatan</p>
-                        <select id="kecamatan" name="kecamatan">
+                        <select id="kecamatan" name="kecamatan" required>
                             <option value="">Pilih Kecamatan</option>
                         </select>
                     </div>
                     <div class="sectionInputSelect">
                         <p class="contentSemiNormal" style="color: #747474;width: 150px;">Kode Pos</p>
-                        <input type="text" name="kodePos">
+                        <input type="text" name="kodePos" required>
                     </div>
                     <div class="sectionInputSelect" style="align-items: flex-start;">
                         <p class="contentSemiNormal" style="color: #747474;width: 150px;">Alamat Lengkap</p>
-                        <textarea name="detilAlamat"></textarea>
+                        <textarea name="detilAlamat" placeholder="Nama Jalan, Nomor Rumah, Gedung, Lantai, Kamar, dsb." required></textarea>
                     </div>
                     <div class="sectionInputSelect">
                         <p class="contentSemiNormal" style="color: #747474;width: 150px;">Catatan Kurir</p>
-                        <input type="text" name="note">
+                        <input type="text" name="note" placeholder="(opsional)">
                     </div>
                 </div>
                 <div class="buttonSimpan">
