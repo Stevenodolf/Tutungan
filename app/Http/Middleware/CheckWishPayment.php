@@ -22,8 +22,10 @@ class CheckWishPayment
         $wish_created_by = Wish::where('id', $request->id)->value('created_by');
 
         if($wish_status_wish_id <= 2) {
-            if($wish_created_by == Auth::user()->id){
-                return redirect()->route('getWishSaya');
+            if(!Auth::guest()) {
+                if($wish_created_by == Auth::user()->id){
+                    return redirect()->route('getWishSaya');
+                }
             }
             return redirect('/');
         }
