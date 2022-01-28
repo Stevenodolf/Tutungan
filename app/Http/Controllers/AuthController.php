@@ -92,13 +92,13 @@ class AuthController extends Controller
         $user->updated_at = Carbon::now();
         $user->save();
 
-        $cart = new Cart();
-        $cart->user_id = $id;
-        $cart->total_qty = 0;
-        $cart->total_price = 0;
-        $cart->created_at = Carbon::now();
-        $cart->updated_at = Carbon::now();
-        $cart->save();
+//        $cart = new Cart();
+//        $cart->user_id = $id;
+//        $cart->total_qty = 0;
+//        $cart->total_price = 0;
+//        $cart->created_at = Carbon::now();
+//        $cart->updated_at = Carbon::now();
+//        $cart->save();
 
         $token = Str::random(64);
         $userVerify = new UserVerify();
@@ -142,6 +142,8 @@ class AuthController extends Controller
 
             $cart = new Cart();
             $cart->user_id = $verifyUser->value('user_id');
+            $cart->total_qty = 0;
+            $cart->total_price = 0;
             $cart->created_at = Carbon::now();
             $cart->updated_at = Carbon::now();
             $cart->save();
