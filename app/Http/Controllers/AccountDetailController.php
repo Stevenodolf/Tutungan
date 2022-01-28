@@ -46,7 +46,7 @@ class AccountDetailController extends Controller
         }
     }
 
-    public  function getKecamatan(Request $request){
+    public function getKecamatan(Request $request){
         $auth = Auth::check();
         if($auth){
             return response()->json(DB::table('address_kecamatan')

@@ -2743,6 +2743,12 @@ button {
   margin-bottom: 10px;
 }
 
+.detailAkun .content .alamatPengiriman .keterangan .section .sectionText .alamatGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .detailAkun .content .alamatPengiriman .keterangan .section button {
   padding: 9px 15px;
 }

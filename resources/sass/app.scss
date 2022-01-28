@@ -2525,6 +2525,11 @@ button{
                         display: flex;
                         align-items: flex-start;
                         margin-bottom: 10px;
+                        .alamatGroup {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-start;
+                        }
                     }
                     button{
                         padding: 9px 15px;

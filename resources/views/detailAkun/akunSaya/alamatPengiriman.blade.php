@@ -47,7 +47,17 @@
                             </div>
                             <div class="sectionText">
                                 <p class="contentNormal" style="color: #636363;width: 150px">Alamat</p>
-                                <p class="contentNormal" style="width: 250px">{{$alamats->address_detail}}</p>
+                                <div class="alamatGroup">
+                                    <p class="contentNormal" style="width: 250px">{{$alamats->address_detail}}</p>
+                                    @php
+                                        $kecamatan = $alamats->getKecamatanRelation;
+                                        $kabupaten = $kecamatan->getKabupatenRelation;
+                                        $provinsi = $kabupaten->etProvinsiRelation;
+                                    @endphp
+                                    <p class="contentNormal">{{$kabupaten->nama}} - {{$kecamatan->nama}}</p>
+                                    <p class="contentNormal">{{$provinsi->nama}}</p>
+                                    <p class="contentNormal">{{$alamats->kode_pos}}</p>
+                                </div>
                             </div>
                         </div>
                         @if($alamats->is_temp == '1')
