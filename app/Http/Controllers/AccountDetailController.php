@@ -296,7 +296,7 @@ class AccountDetailController extends Controller
     public function postKreditDebit(Request $request){
         $rules = [
             'cardNumber'        => "required|digits:16",
-            'month'             => "required|digits:2|min:1|max:12",
+            'month'             => "required|min:1|max:12|digits:2",
             'year'              => "required|digits:2|min:0|max:99"
         ];
         $errors = [
