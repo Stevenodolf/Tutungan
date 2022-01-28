@@ -11,7 +11,7 @@
         <div class="login">
             <div class="loginContainer">
                 <div class="title">
-                    <h1 class="contentSemiExtraBig">Mohon klik link verifikasi yang telah dikirimkan ke email Anda, lalu login kemballi di Tutungan.</h1>
+                    <h1 class="contentSemiExtraBig">Mohon klik link verifikasi yang telah dikirimkan ke email Anda, lalu login kembali di Tutungan.</h1>
                 </div>
             </div>
         </div>
