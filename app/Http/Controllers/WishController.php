@@ -50,7 +50,7 @@ class WishController extends Controller
         $wish_stock = $wish_target_qty - $wish_curr_qty;
         $wish_min_order = $wish->min_order;
         $wish_updated_at = $wish->updated_at;
-        $for_you = Wish::where('deadline', '>', Carbon::now())->inRandomOrder()->get();
+        $for_you = Wish::where('deadline', '>', Carbon::now())->where('status_wish_id', 3)->inRandomOrder()->get();
 
         //cart dropdown
         $cart = NULL;
