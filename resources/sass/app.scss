@@ -3333,9 +3333,10 @@ button{
 
 .popUpTambahAlamat{
     width: 441px;
-    height: 733px;
+    height: 550px;
     background: white;
     padding: 24px;
+    overflow: auto;
     .title{
         display: flex;
         align-items: center;
