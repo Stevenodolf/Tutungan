@@ -9,6 +9,9 @@ $(document).ready(function(){
     $('#closeTambahCreditDebit').click(function () {
         $('#tambahCreditDebit').css('display','none');
     });
+    $('#closeErrorBox').click(function () {
+        $('#errorBox').css('display','none');
+    });
 
     $('#provinsi').on('change',function () {
         let _token = $('meta[name="_token"]').attr('content');
