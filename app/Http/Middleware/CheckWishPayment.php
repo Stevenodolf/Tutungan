@@ -16,11 +16,11 @@ class CheckWishPayment
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($id, Closure $next)
+    public function handle($request, Closure $next)
     {
 //        $wish = Wish::where('id', $id)->first();
-        $wish_status_wish_id = Wish::where('id', $id)->value('status_wish_id');
-        $wish_user_id = Wish::where('id', $id)->value('user_id');
+        $wish_status_wish_id = Wish::where('id', $request->id)->value('status_wish_id');
+        $wish_user_id = Wish::where('id', $request->id)->value('user_id');
 
         if($wish_status_wish_id <= 2) {
             if($wish_user_id == Auth::user()->id){
@@ -29,6 +29,6 @@ class CheckWishPayment
             return redirect('/');
         }
 
-        return $next($id);
+        return $next($request);
     }
 }
