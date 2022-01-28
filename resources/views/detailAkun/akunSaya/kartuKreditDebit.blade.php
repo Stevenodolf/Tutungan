@@ -140,9 +140,7 @@
             </div>
         </div>
         <script>
-            function popupError() {
-                $('#errorBox').css('display','flex');
-            }
+            $('#errorBox').css('display','flex');
         </script>
     @endif
 @endsection
