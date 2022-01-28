@@ -139,7 +139,7 @@
                     </div>
                 </div>
                 <div class="buttonSimpan">
-                    <button type="submit">Simpan</button>
+                    <button type="submit" class="button buttonYellow">Simpan</button>
                 </div>
             </form>
         </div>
@@ -205,7 +205,7 @@
                     </div>
                 </div>
                 <div class="buttonSimpan">
-                    <button type="submit">Simpan</button>
+                    <button type="submit" class="button buttonYellow">Simpan</button>
                 </div>
             </form>
         </div>
