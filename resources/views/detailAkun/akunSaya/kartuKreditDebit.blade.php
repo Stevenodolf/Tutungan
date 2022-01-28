@@ -125,4 +125,19 @@
             </form>
         </div>
     </div>
+
+    @if($errors->any())
+        <div class="alert" style="color:red" role="alert">
+            <div class="blackContainer" id="tambahCreditDebit">
+                <div class="popUpTambahCreditDebit">
+                    <div class="title">
+                        <h2><strong class="contentNormal"> {{$errors->first()}}</strong></h2>
+                        <button id="closeTambahCreditDebit">
+                            <img src="{{asset('images/close.png')}}"/>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection
