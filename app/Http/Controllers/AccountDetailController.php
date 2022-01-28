@@ -296,20 +296,18 @@ class AccountDetailController extends Controller
     public function postKreditDebit(Request $request){
         $rules = [
             'cardNumber'        => "required|digits:16",
-            'month'             => "required|min:1|max:12|digits:2",
-            'year'              => "required|digits:2|min:0|max:99"
+            'month'             => "required|digits:2|between:1,12",
+            'year'              => "required|digits:2|between:0,99"
         ];
         $errors = [
             'cardNumber.required'   =>  "Nomor kartu harus 16 digit",
             'cardNumber.digits'   =>  "Nomor kartu harus 16 digit",
             'month.required'   =>  "Bulan masa berlaku kartu harus 2 digit",
             'month.digits'   =>  "Bulan masa berlaku kartu harus 2 digit",
-            'month.min'   =>  "Bulan masa berlaku kartu harus di antara 01-12",
-            'month.max'   =>  "Bulan masa berlaku kartu harus di antara 01-12",
+            'month.between'   =>  "Bulan masa berlaku kartu harus di antara 01-12",
             'year.required'   =>  "Tahun masa berlaku kartu harus 2 digit",
             'year.digits'   =>  "Tahun masa berlaku kartu harus 2 digit",
-            'year.min'   =>  "Tahun masa berlaku kartu harus di antara 00-99",
-            'year.max'   =>  "Tahun masa berlaku kartu harus di antara 00-99",
+            'year.between'   =>  "Tahun masa berlaku kartu harus di antara 00-99"
         ];
         $validator = Validator::make($request->all(), $rules, $errors);
 
