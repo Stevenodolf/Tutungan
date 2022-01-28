@@ -3353,8 +3353,9 @@ button{
         }
     }
     .section{
-        h4{
+        .sectionTitle {
             margin-bottom: 25px;
+            font-family: "latobold";
         }
         .sectionInputSelect{
             display: flex;

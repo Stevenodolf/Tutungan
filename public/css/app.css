@@ -3646,8 +3646,9 @@ button {
   height: 25px;
 }
 
-.popUpTambahAlamat .section h4 {
+.popUpTambahAlamat .section .sectionTitle {
   margin-bottom: 25px;
+  font-family: "latobold";
 }
 
 .popUpTambahAlamat .section .sectionInputSelect {
