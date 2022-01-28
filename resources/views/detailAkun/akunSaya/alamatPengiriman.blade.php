@@ -52,7 +52,7 @@
                                     @php
                                         $kecamatan = $alamats->getKecamatanRelation;
                                         $kabupaten = $kecamatan->getKabupatenRelation;
-                                        $provinsi = $kabupaten->etProvinsiRelation;
+                                        $provinsi = $kabupaten->getProvinsiRelation;
                                     @endphp
                                     <p class="contentNormal">{{$kabupaten->nama}} - {{$kecamatan->nama}}</p>
                                     <p class="contentNormal">{{$provinsi->nama}}</p>

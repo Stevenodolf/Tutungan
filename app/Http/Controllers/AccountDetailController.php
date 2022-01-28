@@ -125,14 +125,9 @@ class AccountDetailController extends Controller
         if ($auth){
             $user = User::where('id', Auth::user()->id)->first();
             $provinsi = DB::table('address_provinsi')->get();
-            $alamat = DB::table('address')
-                ->where('user_id', Auth::user()->id)
+            $alamat = Address::where('user_id', Auth::user()->id)
                 ->where('is_deleted','0')
-
-                // ->groupBy('id')
-                // ->groupBy('user_id')
                 ->orderBy('is_main', 'desc')
-                // ->orderBy('is_temp', 'desc')
                 ->get();
 
             //cart dropdown
@@ -144,7 +139,7 @@ class AccountDetailController extends Controller
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
-            return view('detailAkun.akunSaya.alamatPengiriman',['user'=>$user,'provinsi'=>$provinsi,'alamat'=>$alamat, 'cart_items' => $cart_items,
+            return view('detailAkun.akunSaya.alamatPengiriman',['user' => $user,'provinsi' => $provinsi,'alamat'=>$alamat, 'cart_items' => $cart_items,
                                                                 'notifs' => $notifs, 'addressNavbar'=>$addressNavbar]);
         }
         return redirect('login');
