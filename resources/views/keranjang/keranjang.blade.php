@@ -22,7 +22,7 @@
                             @endphp
                             @foreach($cart_items as $cart_item)
                                 <div id="{{ $cart_item->id }}" class="itemCell">
-                                    <img class="itemImg" src="{{ secure_asset('uploads/'.json_decode($cart_item->getWishRelation->image)[0]) }}" onclick="window.location='{{ secure_url('/wish/'.$cart_item->getWishRelation->id) }}'">
+                                    <img class="itemImg" src="{{Storage::disk('s3')->url('uploads/'.$cart_item->getWishRelation->image)}}" onclick="window.location='{{ secure_url('/wish/'.$cart_item->getWishRelation->id) }}'">
                                     <div class="itemInfo">
                                         <p class="contentSemiBig wishName">{{ $cart_item->getWishRelation->name }}</p>
                                         <p class="contentSemiBig itemTotalPrice">Rp{{number_format($cart_item->total_price, 0, ',', '.')}}</p>

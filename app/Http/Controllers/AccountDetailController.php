@@ -441,7 +441,8 @@ class AccountDetailController extends Controller
             }else{
                 return redirect()->back();
             }
-            return view('detailAkun.akunSaya.ubahPassword',['user'=>$user, 'cart_items' => $cart_items, 'notifs' => $notifs]);
+            return view('detailAkun.akunSaya.ubahPassword',['user'=>$user, 'cart_items' => $cart_items, 'notifs' => $notifs,
+                                                            'addressNavbar' => $addressNavbar]);
         }
         return redirect('login');
     }
