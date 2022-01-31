@@ -15,8 +15,8 @@
         <div class="login">
             <div class="loginContainer">
                 <div class="title" style="flex-direction: column;align-items: normal;">
-                    <h1 class="contentSemiExtraBig">Lupa Password</h1>
-                    <p class="contentSemiBig secondaryText">Masukan email yang terdaftar untuk lupa password.</p>
+                    <h1 class="contentSemiExtraBig">Reset Password</h1>
+                    <p class="contentSemiBig secondaryText">Masukan email yang terdaftar beserta password baru.</p>
                 </div>
                 <form class="section" method="POST" action="{{secure_url('/resetPassword')}}">
                     {{ csrf_field() }}
