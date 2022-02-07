@@ -39,7 +39,7 @@
                                     @endphp
                                     <div class="swiper-slide">
                                         <div class="wish">
-                                            <img src="{{secure_asset('uploads/'.json_decode($lm->image)[0])}}">
+                                            <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($lm->image)[0])}}">
                                             <div class="timeLeft">
                                                 <p>Tersisa {{$time_left}} Hari Lagi</p>
                                             </div>
