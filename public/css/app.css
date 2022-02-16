@@ -3932,6 +3932,10 @@ button {
   margin-bottom: 0;
 }
 
+.cariWish .filter .content .section .subSection input[type=number] {
+  margin-left: 15px;
+}
+
 .cariWish .filter .content .section .subSection .textInput {
   display: flex;
   align-items: center;
