@@ -117,7 +117,7 @@
                     @if($wishes == NULL OR $wishes->isEmpty())
                         <div class="row">
                             <div class="column contentNormal">
-                                No Wish.
+                                Tidak menemukan apapun dalam pencarian, mohon masukkan kata kunci yang lain.
                             </div>
                         </div>
                     @else
