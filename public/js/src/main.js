@@ -60,6 +60,8 @@ $(document).ready(function () {
         }
     });
 
+    getProfilePicture();
+
 });
 
 function openLoginPopup () {
@@ -102,3 +104,29 @@ function openKeranjangDropdown() {
     }
 }
 
+function getProfilePicture() {
+    // let _token = $('meta[name="_token"]').attr('content');
+
+    var image_name = user_image;
+
+    $.ajax({
+        url: '/getprofilepicture',
+        method: 'get',
+        data: {
+            image_name: image_name,
+            // _token: _token
+        },
+        // headers: {
+        //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        // },
+        success: function (response) {
+            console.log(response);
+
+            if(image_name) {
+                $('#user_image').attr('src', URL.createObjectURL(image_name));
+            }
+            // location.reload();
+
+        }
+    });
+}

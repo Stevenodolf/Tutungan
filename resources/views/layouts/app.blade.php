@@ -233,7 +233,10 @@
                 <div class="dropdownProfil" id="parentDropdownProfil">
                     <button class="buttonUser" id="buttonDropdownUser" onclick="openUserDropdown();">
                         @if($user->image)
-                            <img src="{{Storage::disk('s3')->url('uploads/' .$user->image)}}">
+                            <script>
+                                var user_image = {{$user->image}};
+                            </script>
+                            <img id="user_image" src="{{Storage::disk('s3')->url('uploads/' .$user->image)}}">
                         @else
                             <img src="{{secure_asset('images/dummyUser2.png')}}">
                         @endif

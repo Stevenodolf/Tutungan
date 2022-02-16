@@ -1,6 +1,5 @@
 $(document).ready(function () {
     $(document).on('click', 'button[data-role=delete]', function () {
-        // alert($(this).data('id'));
 
         let _token = $('meta[name="_token"]').attr('content');
         var cart_item_id = $(this).data('id');

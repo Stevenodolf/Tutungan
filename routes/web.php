@@ -50,6 +50,7 @@ Route::get('/account/verify/{token}', 'AuthController@verifyAccount') ->name('us
 Route::get('/wish/{id}', 'WishController@wishDetail')->name('getWishDetail')->middleware('wishPayment');
 
 Route::middleware('auth')->group(function (){
+    Route::get('/getprofilepicture', 'AccountDetailController@getProfilePicture')->name('getProfilePicture');
     Route::get('/logout','AuthController@logout')->name('logout');
 
     Route::get('/createWish', 'WishController@getCreateWish');

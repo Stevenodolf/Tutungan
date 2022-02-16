@@ -57,6 +57,13 @@ class AccountDetailController extends Controller
 
     }
 
+    public function getProfilePicture(Request $request) {
+        $auth = Auth::check();
+        if($auth){
+
+        }
+    }
+
     //END OF API AMBIL DATA
 
     public function getProfil(){
