@@ -3831,6 +3831,10 @@ button {
 .buatWish .section .sectionInputSelect input[type=number] {
   -moz-appearance: textfield;
   /* Firefox */
+  height: 30px;
+  width: 100%;
+  padding: 0 10px;
+  margin-left: 30px;
 }
 
 .buatWish .notice {
