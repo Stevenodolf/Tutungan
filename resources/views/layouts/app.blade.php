@@ -56,40 +56,40 @@
             <div class="logo" onclick="window.location='{{ secure_url("/")}}'">
                 <img src="{{secure_asset('images/tutunganLogo.png')}}">
             </div>
-            @guest
-                <div class="locationSection" onclick="openLoginPopup();">
-                    <img src="{{secure_asset('images/location.png')}}">
-                    <div class="contentSemiNormal locationText">
-                        <p>Dikirim ke</p>
-                        <p>Indonesia</p>
-                    </div>
-                </div>
-            @else
-                @if(!empty($addressNavbar))
-                    @php
-                        $name = $addressNavbar->fullname;
-                        $name = explode(' ', $name);
+{{--            @guest--}}
+{{--                <div class="locationSection" onclick="openLoginPopup();">--}}
+{{--                    <img src="{{secure_asset('images/location.png')}}">--}}
+{{--                    <div class="contentSemiNormal locationText">--}}
+{{--                        <p>Dikirim ke</p>--}}
+{{--                        <p>Indonesia</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            @else--}}
+{{--                @if(!empty($addressNavbar))--}}
+{{--                    @php--}}
+{{--                        $name = $addressNavbar->fullname;--}}
+{{--                        $name = explode(' ', $name);--}}
 
-                        $firstName = $name[0];
-                        $lastName = (isset($name[count($name)-1])) ? $name[count($name)-1] : '';
-                    @endphp
-                    <a href="{{secure_url('/akunSaya/alamatpengiriman')}}" class="locationSection">
-                        <img src="{{secure_asset('images/location.png')}}">
-                        <div class="contentSemiNormal locationText">
-                            <p style="color: grey">Dikirim ke</p>
-                            <p>{{$firstName}} {{$lastName}}</p>
-                        </div>
-                    </a>
-                @else
-                    <a href="{{secure_url('/akunSaya/alamatpengiriman')}}" class="locationSection">
-                        <img src="{{secure_asset('images/location.png')}}">
-                        <div class="contentSemiNormal locationText">
-                            <p style="color: grey">Dikirim ke</p>
-                            <p>Indonesia</p>
-                        </div>
-                    </a>
-                @endif
-            @endguest
+{{--                        $firstName = $name[0];--}}
+{{--                        $lastName = (isset($name[count($name)-1])) ? $name[count($name)-1] : '';--}}
+{{--                    @endphp--}}
+{{--                    <a href="{{secure_url('/akunSaya/alamatpengiriman')}}" class="locationSection">--}}
+{{--                        <img src="{{secure_asset('images/location.png')}}">--}}
+{{--                        <div class="contentSemiNormal locationText">--}}
+{{--                            <p style="color: grey">Dikirim ke</p>--}}
+{{--                            <p>{{$firstName}} {{$lastName}}</p>--}}
+{{--                        </div>--}}
+{{--                    </a>--}}
+{{--                @else--}}
+{{--                    <a href="{{secure_url('/akunSaya/alamatpengiriman')}}" class="locationSection">--}}
+{{--                        <img src="{{secure_asset('images/location.png')}}">--}}
+{{--                        <div class="contentSemiNormal locationText">--}}
+{{--                            <p style="color: grey">Dikirim ke</p>--}}
+{{--                            <p>Indonesia</p>--}}
+{{--                        </div>--}}
+{{--                    </a>--}}
+{{--                @endif--}}
+{{--            @endguest--}}
             <form method="GET" class="searchbar" action="/search">
                 <input type="text" name="search" value="{{old('search')}}" placeholder="Search here...">
                 <button type="submit"><img src="{{secure_asset('images/search.png')}}"></button>

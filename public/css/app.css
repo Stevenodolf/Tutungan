@@ -3820,6 +3820,23 @@ button {
   margin-left: 30px;
 }
 
+.buatWish .section .sectionInputSelect input::-webkit-outer-spin-button,
+.buatWish .section .sectionInputSelect input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0;
+  /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.buatWish .section .sectionInputSelect input[type=number] {
+  -moz-appearance: textfield;
+  /* Firefox */
+  height: 30px;
+  width: 100%;
+  padding: 0 10px;
+  margin-left: 30px;
+}
+
 .buatWish .notice {
   background: rgba(255, 217, 1, 0.25);
   box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);

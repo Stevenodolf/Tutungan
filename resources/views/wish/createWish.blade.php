@@ -87,21 +87,21 @@
                             <p class="contentSemiNormal" style="color: #747474;">Harga satuan yaitu harga per item apabila
                                 minimal pembelian tercapai.</p>
                         </div>
-                        <input placeholder="" type="text" name="price" required>
+                        <input placeholder="" type="number" min="100" name="price" required>
                     </div>
                     <div class="sectionInputSelect">
                         <div class="doubleText">
                             <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Target *</p>
                             <p class="contentSemiNormal" style="color: #747474;">Target yaitu jumlah barang yang ingin dicapai di wish yang akan anda buat.</p>
                         </div>
-                        <input placeholder="" type="text" name="targetQty" required>
+                        <input placeholder="" type="number" min="1" name="targetQty" required>
                     </div>
                     <div class="sectionInputSelect">
                         <div class="doubleText">
                             <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Jumlah Pembelian *</p>
                             <p class="contentSemiNormal" style="color: #747474;">Jumlah pembelian yaitu jumlah minimal pembelian di wish yang akan anda buat.</p>
                         </div>
-                        <input placeholder="" type="text" name="purchaseQty" required>
+                        <input placeholder="" type="number" min="1" name="purchaseQty" required>
                     </div>
                 </div>
 

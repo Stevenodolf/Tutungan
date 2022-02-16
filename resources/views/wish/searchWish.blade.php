@@ -41,11 +41,11 @@
                             <h4 class="contentSemiNormal filterTitle">Harga</h4>
                             <div class="subSection">
                                 <div class="textInput">
-                                    <p class="contentSemiNormal subText">Min</p>
+                                    <p class="contentSemiNormal subText" style="width: 45px;">Min</p>
                                     <input type="number" name="min" placeholder="Rp Harga Minimum" value="{{$curr_min}}">
                                 </div>
                                 <div class="textInput">
-                                    <p class="contentSemiNormal subText">Maks</p>
+                                    <p class="contentSemiNormal subText" style="width: 45px;">Maks</p>
                                     <input type="number" name="maks" placeholder="Rp Harga Maksimum" value="{{$curr_maks}}">
                                 </div>
                             </div>
