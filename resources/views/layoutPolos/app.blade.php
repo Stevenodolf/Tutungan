@@ -16,6 +16,11 @@
 {{--    <script src="{{ secure_asset('js/script/proBar/proBar.js') }}"></script>--}}
     <script src="{{ secure_asset('js/src/main.js') }}"></script>
 
+    // No User Image
+    <script>
+        var user_image = "0";
+    </script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
