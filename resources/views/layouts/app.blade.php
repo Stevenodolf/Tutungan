@@ -53,9 +53,7 @@
         <script>
             var user_image = "{{$user->image}}";
         </script>
-    <script>
-
-    </script>
+    @endguest
     <!-- Content -->
     @yield('head')
 
