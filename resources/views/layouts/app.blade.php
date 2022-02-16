@@ -146,6 +146,9 @@
 {{--            </div>--}}
 
             @guest
+                <script>
+                    var user_image = "0";
+                </script>
                 <button class="buttonWithImage" onclick="openLoginPopup();"><img src="{{secure_asset('images/shopping-cart.png')}}"></button>
                 <button class="buttonWithImage" onclick="openLoginPopup();"><img src="{{secure_asset('images/bell.png')}}"></button>
                 <div class="buttonLoginRegister">
@@ -236,11 +239,12 @@
                             <script>
                                 var user_image = "{{Storage::disk('s3')->url('uploads/' .$user->image)}}";
                             </script>
-{{--                            <img id="user_image" src="{{Storage::disk('s3')->url('uploads/' .$user->image)}}">--}}
-                            <img id="user_image">
                         @else
-                            <img src="{{secure_asset('images/dummyUser2.png')}}">
+                            <script>
+                                var user_image = "{{secure_asset('images/dummyUser2.png')}}";
+                            </script>
                         @endif
+                            <img id="user_image">
                         <p class="contentNormal">{{$user->username}}</p>
                         <img id="arrowUser" src="{{secure_asset('images/arrowDownBlack.png')}}">
                     </button>
