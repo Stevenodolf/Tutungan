@@ -234,7 +234,7 @@
                     <button class="buttonUser" id="buttonDropdownUser" onclick="openUserDropdown();">
                         @if($user->image)
                             <script>
-                                var user_image = {{$user->image}};
+                                var user_image = "{{$user->image}}";
                             </script>
 {{--                            <img id="user_image" src="{{Storage::disk('s3')->url('uploads/' .$user->image)}}">--}}
                             <img id="user_image">
