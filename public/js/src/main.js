@@ -60,7 +60,7 @@ $(document).ready(function () {
         }
     });
 
-    getProfilePicture();
+    getProfilePicture(user_image);
 
 });
 
@@ -104,29 +104,31 @@ function openKeranjangDropdown() {
     }
 }
 
-function getProfilePicture() {
+function getProfilePicture(image_name) {
     // let _token = $('meta[name="_token"]').attr('content');
 
-    var image_name = user_image;
+    // var image_name = user_image;
+    $('#user_image').attr('src', image_name);
 
-    $.ajax({
-        url: '/getprofilepicture',
-        method: 'get',
-        data: {
-            image_name: image_name,
-            // _token: _token
-        },
-        // headers: {
-        //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        // },
-        success: function (response) {
-            console.log(response);
 
-            if(image_name) {
-                $('#user_image').attr('src', URL.createObjectURL(image_name));
-            }
-            // location.reload();
-
-        }
-    });
+    // $.ajax({
+    //     url: '/getprofilepicture',
+    //     method: 'get',
+    //     data: {
+    //         image_name: image_name,
+    //         // _token: _token
+    //     },
+    //     // headers: {
+    //     //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     // },
+    //     success: function (response) {
+    //         console.log(response);
+    //
+    //         if(image_name) {
+    //             $('#user_image').attr('src', URL.createObjectURL(image_name));
+    //         }
+    //         // location.reload();
+    //
+    //     }
+    // });
 }
