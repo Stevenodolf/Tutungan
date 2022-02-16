@@ -236,7 +236,8 @@
                             <script>
                                 var user_image = {{$user->image}};
                             </script>
-                            <img id="user_image" src="{{Storage::disk('s3')->url('uploads/' .$user->image)}}">
+{{--                            <img id="user_image" src="{{Storage::disk('s3')->url('uploads/' .$user->image)}}">--}}
+                            <img id="user_image">
                         @else
                             <img src="{{secure_asset('images/dummyUser2.png')}}">
                         @endif
