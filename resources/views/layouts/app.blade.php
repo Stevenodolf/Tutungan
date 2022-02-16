@@ -47,6 +47,15 @@
     <script src="{{secure_asset('js/script/flip/flip.min.js')}}"></script>
     <!-- Moment	-->
     <script src="{{secure_asset('js/script/moment/moment-with-locales.min.js')}}"></script>
+    @guest
+
+    @else
+        <script>
+            var user_image = "{{$user->image}}";
+        </script>
+    <script>
+
+    </script>
     <!-- Content -->
     @yield('head')
 
@@ -233,9 +242,6 @@
                 <div class="dropdownProfil" id="parentDropdownProfil">
                     <button class="buttonUser" id="buttonDropdownUser" onclick="openUserDropdown();">
                         @if($user->image)
-                            <script>
-                                var user_image = "{{$user->image}}";
-                            </script>
 {{--                            <img id="user_image" src="{{Storage::disk('s3')->url('uploads/' .$user->image)}}">--}}
                             <img id="user_image">
                         @else
