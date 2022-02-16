@@ -2,6 +2,8 @@
 
 @section('head')
     <script src="{{ secure_asset('js/src/detailAkun/detailAkun.js') }}"></script>
+    <!-- Moment	-->
+    <script src="{{secure_asset('js/script/moment/moment-with-locales.min.js')}}"></script>
 @endsection
 
 @section('content')

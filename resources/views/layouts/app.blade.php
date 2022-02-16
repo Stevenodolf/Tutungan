@@ -45,8 +45,6 @@
     <script src="{{secure_asset('js/script/filepond/filepond-plugin-file-validate-type.min.js')}}"></script>
     <!-- Flip	-->
     <script src="{{secure_asset('js/script/flip/flip.min.js')}}"></script>
-    <!-- Moment	-->
-    <script src="{{secure_asset('js/script/moment/moment-with-locales.min.js')}}"></script>
     <!-- Content -->
     @yield('head')
 
