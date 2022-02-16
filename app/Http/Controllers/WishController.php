@@ -213,8 +213,8 @@ class WishController extends Controller
         $curr_min = NULL; $curr_maks = NULL; $active_cat = NULL; $is_min = 2;
 
         // $wishes = Wish::where('name', 'like', "%".$search."%")->get();
-        $query = Wish::where('name', 'like', "%".$search."%");
-        $query->where('name', 'like', "%".$search."%");
+        $query = Wish::where('status_wish_id', 3)->where('name', 'like', "%".$search."%");
+        $query->where('status_wish_id', 3)->where('name', 'like', "%".$search."%");
 
         if($request->filled('category')){
             $query->whereIn('category_id',$request->category)->get();
@@ -264,7 +264,7 @@ class WishController extends Controller
 //        }
         $wishes = $query->get();
 
-        $wishes_category_id = Wish::where('name', 'like', "%".$search."%")->pluck('category_id');
+        $wishes_category_id = Wish::where('status_wish_id', 3)->where('name', 'like', "%".$search."%")->pluck('category_id');
 
         //categories
         $categories = Category::all();
