@@ -27,9 +27,9 @@ class EnsureEmailIsVerified
             'password.required' => "Masukkan password.",
         ];
         $validator = Validator::make($request->all(), $rules, $errors);
-
+        dd($validator);
         if($validator->fails()){
-            return redirect('login')
+            return redirect('/login')
                 ->withInput()
                 ->withErrors($validator->errors());
         }
