@@ -31,9 +31,9 @@
                         </div>
                     </div>
                     @if($errors->any())
-                        <div class="alertText contentSemiNormal" style="color:red" role="alert">
-                            <strong> {{$errors->first()}}</strong>
-                        </div>
+{{--                        <div class="alertText contentSemiNormal" style="color:red" role="alert">--}}
+{{--                            <strong> {{$errors->first()}}</strong>--}}
+{{--                        </div>--}}
                         @foreach($errors->all() as $error)
                             <div class="alertText contentSemiNormal" style="color:red" role="alert">
                                 <strong> {{$error}}</strong>
