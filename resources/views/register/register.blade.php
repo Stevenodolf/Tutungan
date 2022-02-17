@@ -46,8 +46,8 @@
                         <p class="contentSemiBig question">Jenis Kelamin</p>
                         <select id="gender" name="gender" required>
                             <option value="" disabled selected>Choose Gender</option>
-                            <option value="1">Pria</option>
-                            <option value="2">Wanita</option>
+                            <option value="1" {{ old('gender') == '1' ? 'selected' : '' }}>Pria</option>
+                            <option value="2" {{ old('gender') == '2' ? 'selected' : '' }}>Wanita</option>
                         </select>
                     </div>
                     <div class="section">
