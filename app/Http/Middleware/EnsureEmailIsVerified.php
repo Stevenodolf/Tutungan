@@ -17,6 +17,23 @@ class EnsureEmailIsVerified
      */
     public function handle($request, Closure $next)
     {
+        $rules = [
+            'email'             => "required|email|exists:user,email",
+            'password'          => "required",
+        ];
+        $errors = [
+            'email'             => "Masukkan alamat e-mail.",
+            'email.exists'      => "Email atau password salah",
+            'password.required' => "Masukkan password.",
+        ];
+        $validator = Validator::make($request->all(), $rules, $errors);
+
+        if($validator->fails()){
+            return redirect('login')
+                ->withInput()
+                ->withErrors($validator->errors());
+        }
+
         $checkVerified = DB::table('user')
             ->where('email', $request->email)
             ->value('is_email_verified');
