@@ -43,6 +43,8 @@ class HomeController extends Controller
                           ->where('deadline', '>', $today)
                           ->get();
 
+        dd($today);
+
         //category
         $categories = Category::all();
 
