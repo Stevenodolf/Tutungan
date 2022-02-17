@@ -157,7 +157,7 @@
                 </div>
             @else
                 <div class="dropdownKeranjang" id="parentDropdownKeranjang">
-                    <button class="buttonWithImage" id="buttonDropdownKeranjang" onclick="openKeranjangDropdown()"><img src="{{secure_asset('images/shopping-cart.png')}}"></button>
+                    <button class="buttonWithImage" id="buttonDropdownKeranjang"><img src="{{secure_asset('images/shopping-cart.png')}}"></button>
                     <div class="dropdownList" id="dropdownKeranjang">
                         <div class="title">
                             <p class="contentSemiNormal">Keranjang Anda</p>
@@ -175,7 +175,7 @@
                                     <div class="sectionPicture">
                                         <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($cart_item->getWishRelation->image)[0])}}"/>
                                         <div class="sectionText">
-                                            <p class="contentSemiNormal">{{$cart_item->getWishRelation->name}}</p>
+                                            <p class="contentSemiNormal" style="width: 220px;">{{ \Illuminate\Support\Str::limit($cart_item->getWishRelation->name, 100, $end='...') }}</p>
                                             <p class="contentSmall">{{$cart_item->qty}} pcs</p>
                                         </div>
                                     </div>
@@ -188,7 +188,7 @@
                     </div>
                 </div>
                 <div class="dropdownNotifikasi" id="parentDropdownNotifikasi">
-                    <button class="buttonWithImage" id="buttonDropdownNotif" onclick="openNotifDropdown()"><img src="{{secure_asset('images/bell.png')}}"></button>
+                    <button class="buttonWithImage" id="buttonDropdownNotif"><img src="{{secure_asset('images/bell.png')}}"></button>
                     <div class="dropdownList" id="dropdownNotif">
                         <div class="title">
                             <p class="contentSemiNormal">Notifikasi</p>
@@ -232,7 +232,7 @@
                     </button>
                 </form>
                 <div class="dropdownProfil" id="parentDropdownProfil">
-                    <button class="buttonUser" id="buttonDropdownUser" onclick="openUserDropdown();">
+                    <button class="buttonUser" id="buttonDropdownUser">
                         @if($user->image)
                             <script>
                                 var user_image = "{{Storage::disk('s3')->url('uploads/' .$user->image)}}";

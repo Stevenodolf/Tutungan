@@ -37,26 +37,26 @@ $(document).ready(function () {
     }
     $("#parentDropdownKeranjang").on({
         mouseenter: function () {
-            $('#buttonDropdownKeranjang').click();
+            $('#dropdownKeranjang').css('display','block');
         },
         mouseleave: function () {
-            $('#buttonDropdownKeranjang').click();
+            $('#dropdownKeranjang').css('display','none');
         }
     });
     $("#parentDropdownNotifikasi").on({
         mouseenter: function () {
-            $('#buttonDropdownNotif').click();
+            $('#dropdownNotif').css('display','block');
         },
         mouseleave: function () {
-            $('#buttonDropdownNotif').click();
+            $('#dropdownNotif').css('display','none');
         }
     });
     $("#parentDropdownProfil").on({
         mouseenter: function () {
-            $('#buttonDropdownUser').click();
+            $('#dropdownList').css('display','block');
         },
         mouseleave: function () {
-            $('#buttonDropdownUser').click();
+            $('#dropdownList').css('display','none');
         }
     });
 
