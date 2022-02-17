@@ -41,7 +41,7 @@ Route::post('/resetPassword', 'ForgotPasswordController@submitResetPassword')->n
 
 //Auth
 Route::get('/login', 'AuthController@showLoginPage')->name('getLogin')->middleware('isGuest');
-Route::post('/login', 'AuthController@postLogin')->name('postLogin')->middleware('isEmailVerified');
+Route::post('/login', 'AuthController@postLogin')->name('postLogin')->middleware('ensuredLoginCredentials', 'isEmailVerified');
 Route::get('/register', 'AuthController@showRegisterPage')->name('getRegister')->middleware('isGuest');
 Route::post('/register', 'AuthController@postRegister') ->name('postRegister');
 Route::get('/account/verify/{token}', 'AuthController@verifyAccount') ->name('userVerify');

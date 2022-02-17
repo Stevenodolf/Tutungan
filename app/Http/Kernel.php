@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\EnsureLoginCredentials;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class   Kernel extends HttpKernel
@@ -68,5 +69,6 @@ class   Kernel extends HttpKernel
         'isEmailVerified'=>\App\Http\Middleware\EnsureEmailIsVerified::class,
         'isGuest'=>\App\Http\Middleware\EnsureIsGuest::class,
         'wishPayment'=>\App\Http\Middleware\CheckWishPayment::class,
+        'ensuredLoginCredentials'=>\App\Http\Middleware\EnsureLoginCredentials::class
     ];
 }
