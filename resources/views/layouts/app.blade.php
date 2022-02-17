@@ -175,7 +175,7 @@
                                     <div class="sectionPicture">
                                         <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($cart_item->getWishRelation->image)[0])}}"/>
                                         <div class="sectionText">
-                                            <p class="contentSemiNormal">{{$cart_item->getWishRelation->name}}</p>
+                                            <p class="contentSemiNormal" style="width: 220px;">{{ \Illuminate\Support\Str::limit($cart_item->getWishRelation->name, 100, $end='...') }}</p>
                                             <p class="contentSmall">{{$cart_item->qty}} pcs</p>
                                         </div>
                                     </div>

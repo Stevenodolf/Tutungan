@@ -674,6 +674,9 @@ button{
             box-sizing: border-box;
             box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
             border-radius: 5px;
+            left: 50%;
+            right: auto;
+            transform: translate(-50%, 0);
             a{
                 //width: 100%;
                 display: flex;
@@ -699,6 +702,9 @@ button{
             box-sizing: border-box;
             box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
             border-radius: 5px;
+            left: 50%;
+            right: auto;
+            transform: translate(-50%, 0);
             .title{
                 color: #636363;
                 display: flex;
@@ -748,6 +754,9 @@ button{
             box-sizing: border-box;
             box-shadow: 1px 6px 6px rgba(49, 53, 59, 0.15);
             border-radius: 5px;
+            left: 50%;
+            right: auto;
+            transform: translate(-50%, 0);
             .title{
                 color: #636363;
                 display: flex;
