@@ -108,3 +108,7 @@ function change_month(select) {
     }
     $(day).val(val);
 }
+
+function getOldDay(select) {
+    
+}
