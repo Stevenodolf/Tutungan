@@ -33,14 +33,17 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), $rules, $errors);
 
         if($validator->fails()){
-            return redirect()->back()->withErrors($validator->errors());
+            return redirect()
+                ->back()
+                ->withInput($request->except('password'))
+                ->withErrors($validator->errors());
         }
         $email = $request->input('email');
         $password = $request->input('password');
         if(Auth::attempt(['email' => $email, 'password' => $password, 'disable' => 0])){
             return redirect()->route('home');
         }
-//        return redirect('login');
+        return redirect('login');
     }
 
     public function showRegisterPage(){
