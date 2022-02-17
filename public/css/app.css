@@ -635,6 +635,10 @@ button {
   margin-top: 25px;
 }
 
+.login .loginContainer .daftarSection .textContent {
+  margin-right: 4px;
+}
+
 .login .loginContainer .daftarSection a {
   background-color: transparent;
   color: #D5B81B;
@@ -718,6 +722,10 @@ button {
   justify-content: center;
   align-items: baseline;
   margin-top: 25px;
+}
+
+.loginPopUp .daftarSection .textContent {
+  margin-right: 4px;
 }
 
 .loginPopUp .daftarSection a {
