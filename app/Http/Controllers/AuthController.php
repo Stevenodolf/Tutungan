@@ -49,20 +49,20 @@ class AuthController extends Controller
             'password2'         => "required|same:password"
         ];
         $errors = [
-            'username.required' => "Masukkan username",
-            'username.unique'   => "Username sudah digunakan",
-            'username.min'      => "Username harus terdiri dari 4-16 karakter",
-            'username.max'      => "Username harus terdiri dari 4-16 karakter",
-            'email.required'    => "Masukkan alamat e-mail",
-            'email.email'       => "Format email salah",
-            'email.unique'      => "Email sudah terdaftar",
-            'pnumber.required'  => "Masukkan nomor telepon",
-            'pnumber.numeric'   => "Nomor telepon hanya boleh mengandung angka",
-            'gender.required'   => "Pilih jenis kelamin anda",
-            'password.required' => "Masukkan password",
-            'password.min'      => "Password harus terdiri dari 8-20 karakter",
-            'password.max'      => "Password harus terdiri dari 8-20 karakter",
-            'password2.required'=> "Ulangi password yang telah anda masukkan",
+            'username.required' => "Masukkan username.",
+            'username.unique'   => "Username sudah digunakan.",
+            'username.min'      => "Username harus terdiri dari 4-16 karakter.",
+            'username.max'      => "Username harus terdiri dari 4-16 karakter.",
+            'email.required'    => "Masukkan alamat e-mail.",
+            'email.email'       => "Format email salah.",
+            'email.unique'      => "Email sudah terdaftar.",
+            'pnumber.required'  => "Masukkan nomor telepon.",
+            'pnumber.numeric'   => "Nomor telepon hanya boleh mengandung angka.",
+            'gender.required'   => "Pilih jenis kelamin anda.",
+            'password.required' => "Masukkan password.",
+            'password.min'      => "Password harus terdiri dari 8-20 karakter.",
+            'password.max'      => "Password harus terdiri dari 8-20 karakter.",
+            'password2.required'=> "Ulangi password yang telah anda masukkan.",
             'password2.same'    => "Konfirmasi password yang dimasukkan harus sama dengan password yang anda masukkan."
         ];
         $validator = Validator::make($request->all(), $rules, $errors);

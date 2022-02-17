@@ -34,6 +34,11 @@
                         <div class="alertText contentSemiNormal" style="color:red" role="alert">
                             <strong> {{$errors->first()}}</strong>
                         </div>
+                        @foreach($errors->all() as $error)
+                            <div class="alertText contentSemiNormal" style="color:red" role="alert">
+                                <strong> {{$error}}</strong>
+                            </div>
+                        @endforeach
                     @endif
                     <button class="buttonMasuk" type="submit">
                         <p class="contentSemiBig">Masuk</p>

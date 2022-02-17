@@ -23,10 +23,10 @@ class EnsureEmailIsVerified
             'password'          => "required",
         ];
         $errors = [
-            'email.required'    => "Masukkan alamat e-mail",
-            'email.email'       => "Format email salah",
-            'email.exists'      => "Email atau password salah",
-            'password.required' => "Masukkan password",
+            'email.required'    => "Masukkan alamat e-mail.",
+            'email.email'       => "Format email salah.",
+            'email.exists'      => "Email atau password salah.",
+            'password.required' => "Masukkan password.",
         ];
 
         $validator = Validator::make($request->all(), $rules, $errors);
