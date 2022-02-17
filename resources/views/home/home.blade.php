@@ -116,6 +116,7 @@
                                 <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($for_you_item->image)[0])}}"/>
                                 <div class="contentNormal timeLeft">
                                     <p>Tersisa {{$time_left}} Hari Lagi</p>
+                                    <p>Deadline {{$deadline}}</p>
                                 </div>
                                 <div class="content">
                                     <p class="contentSemiNormal">{{Str::of($for_you_item->name)->limit(40)}}</p>

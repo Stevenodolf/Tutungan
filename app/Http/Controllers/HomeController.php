@@ -46,7 +46,7 @@ class HomeController extends Controller
         $categories = Category::all();
 
         //for you
-        $for_you = Wish::where('deadline', '>', Carbon::now())->where('status_wish_id', 3)->inRandomOrder()->get();
+        $for_you = Wish::where('deadline', '>', $deadline)->where('status_wish_id', 3)->inRandomOrder()->get();
 
         //cart dropdown
         $cart = NULL;
@@ -70,10 +70,10 @@ class HomeController extends Controller
 
             return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'user' => $user, 'cart' => $cart,
                              'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items,
-                             'notifs' => $notifs, 'addressNavbar'=>$addressNavbar, 'lastminute' => $lastminute]);
+                             'notifs' => $notifs, 'addressNavbar'=>$addressNavbar, 'lastminute' => $lastminute, 'deadline' => $deadline]);
         }
         return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'cart' => $cart, 'notifs' => $notifs,
                              'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items,
-                             'lastminute' => $lastminute]);
+                             'lastminute' => $lastminute, 'deadline' => $deadline]);
     }
 }
