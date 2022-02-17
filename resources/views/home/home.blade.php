@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        {{-- @if(!$lastminute->isEmpty()) --}}
+        @if(!$lastminute->isEmpty())
             <div class="lastMinuteSection">
                 <div class="lastMinute" style="background-image: url({{secure_asset('images/lastMinute.png')}})">
                     <div class="listWish">
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-        {{-- @endif --}}
+        @endif
 
         <div class="category">
 
