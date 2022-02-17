@@ -22,7 +22,7 @@ class AuthController extends Controller
     }
 
     public function postLogin(Request $request){
-        dd($request->all())
+        dd(request()->all());
         $rules = [
             'email'             => "required|email|exists:user,email",
             'password'          => "required",
