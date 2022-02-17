@@ -38,15 +38,17 @@ class HomeController extends Controller
         //last minute
         $today = Carbon::now('Asia/Jakarta');
         $deadline = $today->addDays(1);
-        $lastminute = Wish::where('deadline', '<', $deadline)
-                        ->where('deadline', '>', $today)
-                        ->get();
+
+        // $lastminute = Wish::where('deadline', '<', $deadline)
+        //                 ->where('deadline', '>', $today)
+        //                 ->get();
+        $lastminute = Wish::where('id', '645027982')->get();
 
         //category
         $categories = Category::all();
 
         //for you
-        $for_you = Wish::where('deadline', '>', $deadline)->where('status_wish_id', 3)->inRandomOrder()->get();
+        $for_you = Wish::where('deadline', '>=', $deadline)->where('status_wish_id', 3)->inRandomOrder()->get();
 
         //cart dropdown
         $cart = NULL;
@@ -70,10 +72,10 @@ class HomeController extends Controller
 
             return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'user' => $user, 'cart' => $cart,
                              'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items,
-                             'notifs' => $notifs, 'addressNavbar'=>$addressNavbar, 'lastminute' => $lastminute, 'deadline' => $deadline]);
+                             'notifs' => $notifs, 'addressNavbar'=>$addressNavbar, 'lastminute' => $lastminute]);
         }
         return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'cart' => $cart, 'notifs' => $notifs,
                              'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items,
-                             'lastminute' => $lastminute, 'deadline' => $deadline]);
+                             'lastminute' => $lastminute]);
     }
 }
