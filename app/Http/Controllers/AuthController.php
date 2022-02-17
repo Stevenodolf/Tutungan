@@ -43,7 +43,9 @@ class AuthController extends Controller
         if(Auth::attempt(['email' => $email, 'password' => $password, 'disable' => 0])){
             return redirect()->route('home');
         }
-        return redirect('login');
+        return redirect('login')
+            ->withInput($request->except('password'))
+            ->withErrors($validator->errors());
     }
 
     public function showRegisterPage(){
