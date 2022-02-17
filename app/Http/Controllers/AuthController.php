@@ -67,7 +67,10 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), $rules, $errors);
 
         if($validator->fails()){
-            return redirect()->back()->withErrors($validator->errors());
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator->errors());
         }
 
         $user = new User();
@@ -104,6 +107,7 @@ class AuthController extends Controller
             $message->to($request->email);
             $message->subject('Email Verification');
         });
+        dd($request->all());
 
         $messages = "We've Send you an email confirmation!";
         return view('register.verifikasi');

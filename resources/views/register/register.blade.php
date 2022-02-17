@@ -21,20 +21,20 @@
                     <p class="contentSemiBig textBelowTitle">Sudah punya akun? <a class="masuk" href="{{route('getLogin')}}" style="color: #D5B81B;cursor: pointer">Masuk</a></p>
                     <div class="section">
                         <p class="contentSemiBig question">Username</p>
-                        <input type="text" id="username" name="username" required/>
+                        <input type="text" id="username" name="username" value="{{ old('username') }}" required/>
                     </div>
                     <div class="section">
                         <p class="contentSemiBig question">Email</p>
-                        <input type="text" id="email" name="email" required/>
+                        <input type="text" id="email" name="email" value="{{ old('email') }}" required/>
                     </div>
                     <div class="section">
                         <p class="contentSemiBig question">Phone Number</p>
-                        <input type="text" id="pnumber" name="pnumber" required/>
+                        <input type="text" id="pnumber" name="pnumber" value="{{ old('pnumber') }}" required/>
                     </div>
                     <div class="section">
                         <p class="contentSemiBig question">Date of Birth</p>
                         <div style="display: flex;justify-content: space-between;">
-                            <select id ="day" name = "day" >
+                            <select id ="day" name = "day">
                             </select>
                             <select  id ="month" name = "month" onchange="change_month(this)">
                             </select>
@@ -61,7 +61,7 @@
                     <div class="section">
                         @if($errors->any())
                             <div class="alert" style="color:red" role="alert">
-                                <strong class="contentNormal"> {{$errors->first()}}</strong>
+                                <strong class="contentSemiNormal"> {{$errors->first()}}</strong>
                             </div>
                         @endif
                         <button id="buttonSubmit" type="submit">
