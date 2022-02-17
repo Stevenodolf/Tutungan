@@ -28,11 +28,11 @@
                         <input type="text" id="email" name="email" value="{{ old('email') }}" required/>
                     </div>
                     <div class="section">
-                        <p class="contentSemiBig question">Phone Number</p>
+                        <p class="contentSemiBig question">Nomor Telepon</p>
                         <input type="text" id="pnumber" name="pnumber" value="{{ old('pnumber') }}" required/>
                     </div>
                     <div class="section">
-                        <p class="contentSemiBig question">Date of Birth</p>
+                        <p class="contentSemiBig question">Tanggal Lahir</p>
                         <div style="display: flex;justify-content: space-between;">
                             <select id ="day" name = "day">
                             </select>
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="section">
-                        <p class="contentSemiBig question">Gender</p>
+                        <p class="contentSemiBig question">Jenis Kelamin</p>
                         <select id="gender" name="gender" required>
                             <option value="" disabled selected>Choose Gender</option>
                             <option value="1">Pria</option>
@@ -55,7 +55,7 @@
                         <input type="password" id="password" name="password" required/>
                     </div>
                     <div class="section">
-                        <p class="contentSemiBig question">Re-enter Password</p>
+                        <p class="contentSemiBig question">Konfirmasi Password</p>
                         <input type="password" id="password2" name="password2" required/>
                     </div>
                     <div class="section">
