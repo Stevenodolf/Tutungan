@@ -40,12 +40,12 @@
                                     <div class="swiper-slide">
                                         <div class="wish">
                                             <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($lm->image)[0])}}">
-                                            <div class="timeLeft">
+                                            <div class="contentNormal timeLeft">
                                                 <p>Tersisa {{$time_left}} Hari Lagi</p>
                                             </div>
                                             <div class="content">
-                                                <p>{{$lm->name}}</p>
-                                                <h3>Rp {{number_format($lm->price, 0, ',', '.')}}/pcs</h3>
+                                                <p class="contentSemiNormal">{{$lm->name}}</p>
+                                                <h3 class="contentNormal">Rp {{number_format($lm->price, 0, ',', '.')}}/pcs</h3>
                                                 <div class="progressIndicator">
                                                     <div class="textProgress">
                                                         <p class="contentSmall quantityTarget">{{$lm->curr_qty}}/{{$lm->target_qty}}</p>
