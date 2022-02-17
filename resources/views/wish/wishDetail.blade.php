@@ -37,7 +37,7 @@
                         <div class="upperInfo">
                             <p class="contentBig title">{{$wish_name}}</p>
                             <div class="requested">
-                                <p class="contentSmall label">Requested by</p>
+                                <p class="contentSmall label">Direquest oleh</p>
                                 <p class="contentSmall name">{{$wish_created_by}}</p>
                             </div>
                             <div class="progressIndicator">
@@ -62,11 +62,11 @@
                         </div>
                         <div class="lowerInfo">
                             <div class="infoRow">
-                                <p class="contentSemiNormal infoType">Ship From:</p>
+                                <p class="contentSemiNormal infoType">Pengiriman Dari:</p>
                                 <p class="contentSemiNormal infoDetail">{{$wish_origin}}</p>
                             </div>
                             <div class="infoRow">
-                                <p class="contentSemiNormal infoType">Shipping to user:</p>
+                                <p class="contentSemiNormal infoType">Pilihan Kurir (IDN):</p>
                                 <div class="infoDetail shipping">
                                     <img class="imgShipping" src="{{secure_asset('images/jne.png')}}">
                                     <img class="imgShipping" src="{{secure_asset('images/posIndo.png')}}">
@@ -74,28 +74,28 @@
                                 </div>
                             </div>
                             <div class="infoRow">
-                                <p class="contentSemiNormal infoType">Protection</p>
+                                <p class="contentSemiNormal infoType">Proteksi</p>
                                 <div class="contentSemiNormal infoDetail protection">
                                     <div class="protectionItem">
-                                        <p class="protectionName">Trade Assurance</p>
+                                        <p class="protectionName">Asuransi</p>
                                         <img class="imgProtection" src="{{secure_asset('images/informationYellow.png')}}">
                                     </div>
                                     <div class="protectionItem">
-                                        <p class="protectionName">Refund Policy</p>
+                                        <p class="protectionName">Aturan Pengembalian Barang</p>
                                         <img class="imgProtection" src="{{secure_asset('images/informationYellow.png')}}">
                                     </div>
                                 </div>
                             </div>
                             <div class="infoRow">
-                                <p class="contentSemiNormal infoType">Website Origin:</p>
-                                <a href="{{ $wish->web_link }}" target="_blank" rel="noopener noreferrer" class="contentSemiNormal infoDetail">Open Link</a>
+                                <p class="contentSemiNormal infoType">Website Asal:</p>
+                                <a href="{{ $wish->web_link }}" target="_blank" rel="noopener noreferrer" class="contentSemiNormal infoDetail">Buka Link</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="lowerSection">
                     <div class="contentBig title">
-                        Product Detail
+                        Detail Produk
                     </div>
                     <div id="wishDescription" class="contentSemiNormal sectionContent">
                         {{$wish_detail}}

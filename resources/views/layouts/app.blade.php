@@ -91,7 +91,7 @@
 {{--                @endif--}}
 {{--            @endguest--}}
             <form method="GET" class="searchbar" action="/search">
-                <input type="text" name="search" value="{{old('search')}}" placeholder="Search here...">
+                <input type="text" name="search" value="{{old('search')}}" placeholder="Cari Disini...">
                 <button type="submit"><img src="{{secure_asset('images/search.png')}}"></button>
             </form>
 {{--            <div class="dropdownKeranjang">--}}
