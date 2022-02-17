@@ -17,47 +17,51 @@
                             @endif
                         </div>
                         <div class="cartItems">
-                            @php
-                                $idx = 1;
-                            @endphp
-                            @foreach($cart_items as $cart_item)
-                                <div id="{{ $cart_item->id }}" class="itemCell">
-                                    <img class="itemImg" src="{{Storage::disk('s3')->url('uploads/'.json_decode($cart_item->getWishRelation->image)[0])}}" onclick="window.location='{{ secure_url('/wish/'.$cart_item->getWishRelation->id) }}'">
-                                    <div class="itemInfo">
-                                        <p class="contentSemiBig wishName">{{ $cart_item->getWishRelation->name }}</p>
-                                        <p class="contentSemiBig itemTotalPrice">Rp{{number_format($cart_item->total_price, 0, ',', '.')}}</p>
-                                    </div>
-                                    <div class="editItem">
-                                        <form class="editSection" method="post">
-                                            {{ @csrf_field() }}
-                                            <input type="hidden" name="cart_item_id" value="{{$cart_item->id}}">
-                                            <div class="deleteSection">
-{{--                                                <button type="submit" class="buttonDelete" formaction="{{ secure_url('/cart/delete') }}">--}}
-{{--                                                    <img class="buttonImg" src="{{ secure_asset('images/binRed.png') }}">--}}
-{{--                                                </button>--}}
-                                                <button data-role="delete" data-id="{{ $cart_item->id }}" type="button" class="buttonDelete">
-                                                    <img class="buttonImg" src="{{ secure_asset('images/binRed.png') }}">
-                                                </button>
-                                            </div>
-                                            <div class="itemQuantitySection">
-                                                <div class="number-input">
-                                                    <button type="submit" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" formaction="{{ secure_url('/cart/update') }}"></button>
-                                                    @php
-                                                        $curr_qty = $cart_item->getWishRelation->curr_qty;
-                                                        $target_qty = $cart_item->getWishRelation->target_qty;
-                                                        $stock = $target_qty - $curr_qty;
-                                                    @endphp
-                                                    <input class="quantity" min="1" max="{{ $stock }}" name="qty" value="{{ $cart_item->qty }}" type="number">
-                                                    <button type="submit" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus" formaction="{{ secure_url('/cart/update') }}"></button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                            @if($cart_items != null)
                                 @php
-                                    $idx += 1;
+                                    $idx = 1;
                                 @endphp
-                            @endforeach
+                                @foreach($cart_items as $cart_item)
+                                    <div id="{{ $cart_item->id }}" class="itemCell">
+                                        <img class="itemImg" src="{{Storage::disk('s3')->url('uploads/'.json_decode($cart_item->getWishRelation->image)[0])}}" onclick="window.location='{{ secure_url('/wish/'.$cart_item->getWishRelation->id) }}'">
+                                        <div class="itemInfo">
+                                            <p class="contentSemiBig wishName">{{ $cart_item->getWishRelation->name }}</p>
+                                            <p class="contentSemiBig itemTotalPrice">Rp{{number_format($cart_item->total_price, 0, ',', '.')}}</p>
+                                        </div>
+                                        <div class="editItem">
+                                            <form class="editSection" method="post">
+                                                {{ @csrf_field() }}
+                                                <input type="hidden" name="cart_item_id" value="{{$cart_item->id}}">
+                                                <div class="deleteSection">
+                                                    {{--                                                <button type="submit" class="buttonDelete" formaction="{{ secure_url('/cart/delete') }}">--}}
+                                                    {{--                                                    <img class="buttonImg" src="{{ secure_asset('images/binRed.png') }}">--}}
+                                                    {{--                                                </button>--}}
+                                                    <button data-role="delete" data-id="{{ $cart_item->id }}" type="button" class="buttonDelete">
+                                                        <img class="buttonImg" src="{{ secure_asset('images/binRed.png') }}">
+                                                    </button>
+                                                </div>
+                                                <div class="itemQuantitySection">
+                                                    <div class="number-input">
+                                                        <button type="submit" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" formaction="{{ secure_url('/cart/update') }}"></button>
+                                                        @php
+                                                            $curr_qty = $cart_item->getWishRelation->curr_qty;
+                                                            $target_qty = $cart_item->getWishRelation->target_qty;
+                                                            $stock = $target_qty - $curr_qty;
+                                                        @endphp
+                                                        <input class="quantity" min="1" max="{{ $stock }}" name="qty" value="{{ $cart_item->qty }}" type="number">
+                                                        <button type="submit" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus" formaction="{{ secure_url('/cart/update') }}"></button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @php
+                                        $idx += 1;
+                                    @endphp
+                                @endforeach
+                            @else
+                                <img src="{{secure_asset('images/emptyCart.png')}}"
+                            @endif
                         </div>
                     </div>
                 </div>
