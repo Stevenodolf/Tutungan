@@ -60,9 +60,11 @@
                     </div>
                     <div class="section">
                         @if($errors->any())
-                            <div class="alert" style="color:red" role="alert">
-                                <strong class="contentSemiNormal"> {{$errors->first()}}</strong>
-                            </div>
+                            @foreach($errors->all() as $error)
+                                <div class="alert" style="color:red" role="alert">
+                                    <strong class="contentSemiNormal"> {{$error}}</strong>
+                                </div>
+                            @endforeach
                         @endif
                         <button id="buttonSubmit" type="submit">
                             <p class="contentNormal">Daftar</p>
