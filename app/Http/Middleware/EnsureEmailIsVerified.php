@@ -23,10 +23,12 @@ class EnsureEmailIsVerified
             'password'          => "required",
         ];
         $errors = [
-            'email'             => "Masukkan alamat e-mail.",
+            'email.required'    => "Masukkan alamat e-mail",
+            'email.email'       => "Format email salah",
             'email.exists'      => "Email atau password salah",
-            'password.required' => "Masukkan password.",
+            'password.required' => "Masukkan password",
         ];
+
         $validator = Validator::make($request->all(), $rules, $errors);
         if($validator->fails()){
             return redirect('/login')
@@ -39,7 +41,7 @@ class EnsureEmailIsVerified
             ->value('is_email_verified');
         if($checkVerified == 0){
             return redirect('/login')
-                ->withErrors("Email belum terverifikasi, silahkan check email untuk verifikasi!");
+                ->withErrors("Email belum terverifikasi, silahkan check email untuk verifikasi");
         }
         return $next($request);
     }

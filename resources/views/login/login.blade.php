@@ -22,7 +22,6 @@
                     <div class="field">
                         <p class="contentSemiBig">Email</p>
                         <input name="email" type="text" id="email" value="{{ old('email') }}" placeholder="ex:youremail@tutungan.com" required>
-{{--                        <input name="email" type="text" id="email" value="{{ old('email') }}" required>--}}
                     </div>
                     <div class="field">
                         <p class="contentSemiBig">Password</p>
@@ -32,7 +31,7 @@
                         </div>
                     </div>
                     @if($errors->any())
-                        <div style="color:red" role="alert">
+                        <div class="alertText contentSemiNormal" style="color:red" role="alert">
                             <strong> {{$errors->first()}}</strong>
                         </div>
                     @endif

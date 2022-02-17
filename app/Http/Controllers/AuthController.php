@@ -22,31 +22,17 @@ class AuthController extends Controller
     }
 
     public function postLogin(Request $request){
-//        dd(request()->all());
-//        $rules = [
-//            'email'             => "required|email|exists:user,email",
-//            'password'          => "required",
-//        ];
-//        $errors = [
-//            'email'             => "Masukkan alamat e-mail.",
-//            'email.exists'      => "Email atau password salah",
-//            'password.required' => "Masukkan password.",
-//        ];
-//        $validator = Validator::make($request->all(), $rules, $errors);
-//
-//        if($validator->fails()){
-//            return redirect()
-//                ->back()
-//                ->withInput()
-//                ->withErrors($validator->errors());
-//        }
+
         $email = $request->input('email');
         $password = $request->input('password');
+
         if(Auth::attempt(['email' => $email, 'password' => $password, 'disable' => 0])){
             return redirect()->route('home');
         }
+
         return redirect('login')
-            ->withInput();
+            ->withInput()
+            ->withErrors("Password yang anda masukkan salah, silahkan dicek kembali");
     }
 
     public function showRegisterPage(){
