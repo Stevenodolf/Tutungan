@@ -15,6 +15,7 @@ class EnsureLoginCredentials
      */
     public function handle($request, Closure $next)
     {
+        dd($request->all());
         $rules = [
             'email'             => "required|email|exists:user,email",
             'password'          => "required",
