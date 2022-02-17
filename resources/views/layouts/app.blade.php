@@ -335,7 +335,7 @@
             {{ csrf_field() }}
             <div class="field">
                 <p class="contentSemiBig">Email</p>
-                <input name="email" type="text" id="email" placeholder="ex:youremail@tutungan.com" required>
+                <input name="email" type="text" id="email" placeholder="ex:youremail@tutungan.com" value="{{ old('email') }}" required>
             </div>
             <div class="field">
                 <p class="contentSemiBig">Password</p>
