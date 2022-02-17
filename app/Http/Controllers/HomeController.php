@@ -40,7 +40,7 @@ class HomeController extends Controller
         $deadline = $today->addDays(1);
 
         $lastminute = Wish::where('deadline', '<', $deadline)
-                        //   ->where('deadline', '>', $today)
+                          ->where('deadline', '>', $today)
                           ->get();
 
         //category
