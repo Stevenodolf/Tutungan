@@ -59,7 +59,7 @@
                                     @endphp
                                 @endforeach
                             @else
-                                <div>
+                                <div style="display: flex;flex-direction: column;height: 500px;align-items: center;justify-content: center;">
                                     <img style="width: 250px;" src="{{ secure_asset('images/emptyCart.png')}}">
                                     <strong class="contentSemiBig">Keranjang Kosong.</strong>
                                 </div>
