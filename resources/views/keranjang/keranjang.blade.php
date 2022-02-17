@@ -54,7 +54,6 @@
                                                 </div>
                                             </form>
                                         </div>
-                                    </div>
                                     @php
                                         $idx += 1;
                                     @endphp
@@ -62,6 +61,7 @@
                             @else
                                 <img style="width: 50px;" src="{{ secure_asset('images/emptyCart.png')}}"
                             @endif
+                            </div>
                         </div>
                     </div>
                 </div>
