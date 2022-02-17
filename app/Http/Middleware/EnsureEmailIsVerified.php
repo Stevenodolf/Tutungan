@@ -38,7 +38,8 @@ class EnsureEmailIsVerified
             ->where('email', $request->email)
             ->value('is_email_verified');
         if($checkVerified == 0){
-            return redirect('/login');
+            return redirect('/login')
+                ->withErrors("Email is not verified yet!");
         }
         return $next($request);
     }
