@@ -35,7 +35,7 @@ class AuthController extends Controller
         if($validator->fails()){
             return redirect()
                 ->back()
-                ->withInput($request->except('password'))
+                ->withInput()
                 ->withErrors($validator->errors());
         }
         $email = $request->input('email');
@@ -44,7 +44,7 @@ class AuthController extends Controller
             return redirect()->route('home');
         }
         return redirect('login')
-            ->withInput($request->except('password'))
+            ->withInput()
             ->withErrors($validator->errors());
     }
 
