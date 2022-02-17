@@ -17,7 +17,7 @@
                             @endif
                         </div>
                         <div class="cartItems">
-                            @if($cart_items != null)
+                            @if(count($cart_items) > 0)
                                 @php
                                     $idx = 1;
                                 @endphp
@@ -60,7 +60,7 @@
                                     @endphp
                                 @endforeach
                             @else
-                                <img src="{{secure_asset('images/emptyCart.png')}}"
+                                <img src="{{ secure_asset('images/emptyCart.png')}}"
                             @endif
                         </div>
                     </div>
