@@ -17,6 +17,7 @@ class EnsureEmailIsVerified
      */
     public function handle($request, Closure $next)
     {
+        dd("test");
         $rules = [
             'email'             => "required|email|exists:user,email",
             'password'          => "required",
@@ -27,7 +28,6 @@ class EnsureEmailIsVerified
             'password.required' => "Masukkan password.",
         ];
         $validator = Validator::make($request->all(), $rules, $errors);
-        dd($validator);
         if($validator->fails()){
             return redirect('/login')
                 ->withInput()
