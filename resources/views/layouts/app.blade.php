@@ -349,7 +349,7 @@
             </button>
         </form>
         <div class="daftarSection">
-            <p class="contentSemiBig">Baru di Tutungan?</p>
+            <p class="textContent contentSemiBig">Baru di Tutungan?</p>
             <a href="{{secure_url('/register')}}">
                 <p class="contentSemiBig">Daftar</p>
             </a>

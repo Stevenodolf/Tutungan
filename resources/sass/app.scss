@@ -553,8 +553,10 @@ button{
             justify-content: center;
             align-items: baseline;
             margin-top: 25px;
+            .textContent{
+                margin-right: 4px;
+            }
             a{
-                margin-left: 10px;
                 background-color: transparent;
                 color: #D5B81B;
                 border: none;
@@ -631,6 +633,9 @@ button{
         justify-content: center;
         align-items: baseline;
         margin-top: 25px;
+        .textContent {
+            margin-right: 4px;
+        }
         a{
             background-color: transparent;
             color: #D5B81B;
