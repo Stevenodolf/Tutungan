@@ -41,6 +41,7 @@ class EnsureEmailIsVerified
             ->value('is_email_verified');
         if($checkVerified == 0){
             return redirect('/login')
+                ->withInput()
                 ->withErrors("Email belum terverifikasi, silahkan check email untuk verifikasi");
         }
         return $next($request);
