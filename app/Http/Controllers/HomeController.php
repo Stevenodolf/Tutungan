@@ -39,10 +39,9 @@ class HomeController extends Controller
         $today = Carbon::now('Asia/Jakarta');
         $deadline = $today->addDays(1);
 
-        // $lastminute = Wish::where('deadline', '<', $deadline)
-        //                 ->where('deadline', '>', $today)
-        //                 ->get();
-        $lastminute = Wish::where('id', '645027982')->get();
+        $lastminute = Wish::where('deadline', '<', $deadline)
+                        //   ->where('deadline', '>', $today)
+                          ->get();
 
         //category
         $categories = Category::all();
