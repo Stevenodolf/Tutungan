@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class EnsureEmailIsVerified
 {
@@ -17,7 +18,6 @@ class EnsureEmailIsVerified
      */
     public function handle($request, Closure $next)
     {
-        dd("test");
         $rules = [
             'email'             => "required|email|exists:user,email",
             'password'          => "required",
