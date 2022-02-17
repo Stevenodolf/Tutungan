@@ -13,6 +13,7 @@ use App\Cart;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Validator;
+use function React\Promise\all;
 
 class AuthController extends Controller
 {
@@ -21,6 +22,7 @@ class AuthController extends Controller
     }
 
     public function postLogin(Request $request){
+        dd($request->all())
         $rules = [
             'email'             => "required|email|exists:user,email",
             'password'          => "required",
