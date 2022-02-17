@@ -61,10 +61,9 @@
                             @else
                                 <div>
                                     <img style="width: 250px;" src="{{ secure_asset('images/emptyCart.png')}}">
-                                    <p class="contentNormal">Keranjang Kosong.</p>
+                                    <strong class="contentSemiBig">Keranjang Kosong.</strong>
                                 </div>
                             @endif
-                            </div>
                         </div>
                     </div>
                 </div>
