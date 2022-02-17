@@ -42,7 +42,7 @@
                             </div>
                             <div class="information">
                                 <p class="contentSmall infoType">Alamat</p>
-                                <div class="infoDetailAlamat">
+                                <div class="infoDetailAlamat" style="width: 250px;">
                                     <p class="contentSmall infoDetail">{{ $address->fullname }}</p>
                                     <p class="contentSmall infoDetail">{{ $address->phone_number }}</p>
                                     <p class="contentSmall infoDetail">{{ $address->address_detail }}</p>

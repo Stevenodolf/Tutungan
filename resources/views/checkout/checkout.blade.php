@@ -102,11 +102,11 @@
                                     <p class="contentSemiNormal">Rp {{number_format($grand_payment, 0, ',', '.')}}</p>
                                 </div>
                                 <div class="section">
-                                    <p class="contentSemiNormal">Origin to Indonesia</p>
+                                    <p class="contentSemiNormal">Asal Negara ke Indonesia</p>
                                     <p class="contentSemiNormal">Rp {{number_format($grand_oti, 0, ',', '.')}}</p>
                                 </div>
                                 <div class="section">
-                                    <p class="contentSemiNormal">Indonesia to User</p>
+                                    <p class="contentSemiNormal">Indonesia ke User</p>
                                     <p class="contentSemiNormal">Rp {{number_format($grand_itu, 0, ',', '.')}}</p>
                                 </div>
                                 <div class="section">
