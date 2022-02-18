@@ -66,6 +66,7 @@
                             @endif
                         </div>
                     </div>
+                    </div>
                 </div>
                 <form class="rightSection" method="post" action="{{ secure_url('/cart') }}">
                     {{ csrf_field() }}
