@@ -196,8 +196,6 @@ class AccountDetailController extends Controller
                 $isNotUtamaFirst = DB::table('address')
                     ->where('user_id', Auth::user()->id)
                     ->where('is_main', '0')
-                    ->groupBy('id')
-                    ->groupBy('user_id')
                     ->first();
                 if($checkTemp == 1){
                     DB::table('address')
