@@ -40,7 +40,6 @@ class AuthController extends Controller
     }
 
     public function postRegister(Request $request){
-        dd($request->all());
         $rules = [
             'username'          => "required|min:4|max:16|unique:user",
             'email'             => "required|email|unique:user",
