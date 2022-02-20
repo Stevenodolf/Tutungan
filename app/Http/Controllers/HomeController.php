@@ -33,8 +33,6 @@ class HomeController extends Controller
     public function home(){
         $auth = Auth::check();
 
-        $wishes = Wish::all();
-
         //last minute
         $today = Carbon::now('Asia/Jakarta');
         $deadline = Carbon::now('Asia/Jakarta')->addDays(1);
