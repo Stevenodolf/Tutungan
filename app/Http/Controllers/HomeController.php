@@ -67,11 +67,11 @@ class HomeController extends Controller
             //notif dropdown
             $notifs = Notification_Wish::where('user_id', $user->id)->where('is_read', 0)->get();
 
-            return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'user' => $user, 'cart' => $cart,
+            return view('home.home', ['auth' => $auth, 'user' => $user, 'cart' => $cart,
                              'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items,
                              'notifs' => $notifs, 'addressNavbar'=>$addressNavbar, 'lastminute' => $lastminute]);
         }
-        return view('home.home', ['auth' => $auth, 'wishes' => $wishes, 'cart' => $cart, 'notifs' => $notifs,
+        return view('home.home', ['auth' => $auth, 'cart' => $cart, 'notifs' => $notifs,
                              'categories' => $categories, 'for_you' => $for_you, 'cart_items' => $cart_items,
                              'lastminute' => $lastminute]);
     }
