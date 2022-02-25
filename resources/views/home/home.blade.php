@@ -38,7 +38,7 @@
                                         $time_left = Round($diff / 86400);
                                     @endphp
                                     <div class="swiper-slide">
-                                        <div class="wish">
+                                        <div class="wish" onclick="window.location='{{ secure_url("/wish/".$lm->id)}}'">
                                             <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($lm->image)[0])}}">
                                             <div class="contentNormal timeLeft">
                                                 <p>Tersisa {{$time_left}} Hari Lagi</p>
