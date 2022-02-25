@@ -46,8 +46,8 @@ class PaymentController extends Controller
                 foreach($payment_items as $pi){
                     // $total_oti = $request->total_oti;
                     // $total_itu = $request->total_itu;
-                    $total_oti = 40000; // biaya ongkir origin to indonesia
-                    $total_itu = 25000; // biaya ongkir indonesia to user
+                    $total_oti = 0; // biaya ongkir origin to indonesia
+                    $total_itu = 0; // biaya ongkir indonesia to user
                     // $payment_item->total_oti = $total_oti;
                     // $payment_item->total_itu = $total_itu;
                     $total_payment = $pi->total_price + $total_oti + $total_itu + $pi->total_fee;
