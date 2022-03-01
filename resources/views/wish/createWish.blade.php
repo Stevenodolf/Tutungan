@@ -47,7 +47,8 @@
                     <div class="sectionInputSelect">
                         <div class="doubleText">
                             <p class="contentSemiNormal" style="color: #747474;font-weight: bold">Foto Produk *</p>
-                            <p class="contentSemiNormal" style="color: #747474;">Ukuran gambar: maks. 10 MB</p>
+                            <p class="contentSemiNormal" style="color: #747474;">Total ukuran gambar maks. 10 MB</p>
+                            <p class="contentSemiNormal" style="color: #747474;">Maksimal upload 4 foto</p>
                         </div>
                         <div style="margin-left: 30px;width: 100%">
                             <input type="file" name="wishPicture[]" id="wishPicture" required/>
