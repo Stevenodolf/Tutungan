@@ -26,7 +26,7 @@
                     @endif
                     <input accept="image/*" type="file" id="inputProfil" name="inputProfil" onchange="inputChange()"/>
                     <input type="button" value="Pilih Gambar" onclick="document.getElementById('inputProfil').click();">
-                    <p class="contentSemiNormal">Ukuran gambar: maks. 10 MB</p>
+                    <p class="contentSemiNormal">Ukuran gambar: maks. 1 MB</p>
                     <p class="contentSemiNormal">Format gambar: .JPG, .JPEG, .PNG</p>
                 </div>
                 <div class="biodata">
