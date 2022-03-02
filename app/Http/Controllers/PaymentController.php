@@ -150,7 +150,8 @@ class PaymentController extends Controller
                         'contributor' => $contributor,
                         'status_wish_id' => 3
                     ]);
-                    if($transaction->getWishRelation->target_qty == $wish->curr_qty){
+
+                    if($transaction->getWishRelation->target_qty == $curr_qty){
                         Transaction::where('wish_id', $wish->id)->update([
                             'status_transaksi_id' => 3
                         ]);
