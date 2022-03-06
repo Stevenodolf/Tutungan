@@ -56,10 +56,11 @@ class CartController extends Controller
             $user = User::where('id', Auth::user()->id)->first();
 
             $wish = Wish::where('id', $request->wish_id)->first();
-            $stok = $wish->target_qty - $wish->curr_qty;
+            // $stok = $wish->target_qty - $wish->curr_qty;
             $min_order = $wish->min_order;
             $rules = [
-                'qty'           => "required|numeric|min:$min_order|max:$stok"
+                // 'qty'           => "required|numeric|min:$min_order|max:$stok"
+                'qty'           => "required|numeric|min:$min_order"
             ];
             $errors = [
                 'qty.required'  => 'Masukkan jumlah barang yang ingin dibeli.',

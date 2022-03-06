@@ -131,7 +131,8 @@
                         <input type="hidden" name="wish_id" value="{{$wish->id}}">
                         <div class="number-input">
                             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
-                            <input class="quantity" min="1" name="qty" value="1" type="number">
+                            {{-- <input class="quantity" min="1" name="qty" value="1" type="number"> --}}
+                            <input class="quantity" min="1" max="{{$wish_stock}}" name="qty" value="1" type="number">
                             <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                         </div>
                         {{-- <p class="contentSmall stock">Stok: {{ $wish_stock }}</p> --}}
@@ -190,9 +191,15 @@
                                                     $targetPro = $for_you_item->target_qty;
                                                     $progress = ($currentPro/$targetPro)*100;
                                                 @endphp
-                                                <div class="barProgress totalBarYellow">
-                                                    <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
-                                                </div>
+                                                @if($for_you_item->curr_qty>=$for_you_item->target_qty)
+                                                    <div class="barProgress totalBarGreen">
+                                                        <div class="currentBar currentBarGreen" style="width: {{ $progress }}%"></div>
+                                                    </div>
+                                                @else
+                                                    <div class="barProgress totalBarYellow">
+                                                        <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
