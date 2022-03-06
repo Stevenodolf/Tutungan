@@ -55,9 +55,15 @@
                                                         $targetPro = $lm->target_qty;
                                                         $progress = ($currentPro/$targetPro)*100;
                                                     @endphp
-                                                    <div class="barProgress totalBarYellow">
-                                                        <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
-                                                    </div>
+                                                    @if($lm->curr_qty<=$lm->target_qty)
+                                                        <div class="barProgress totalBarGreen">
+                                                            <div class="currentBar currentBarGreen" style="width: {{ $progress }}%"></div>
+                                                        </div>
+                                                    @else
+                                                        <div class="barProgress totalBarYellow">
+                                                            <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -129,9 +135,15 @@
                                             $targetPro = $for_you_item->target_qty;
                                             $progress = ($currentPro/$targetPro)*100;
                                         @endphp
-                                        <div class="barProgress totalBarYellow">
-                                            <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
-                                        </div>
+                                        @if($for_you_item->curr_qty>=$for_you_item->target_qty)
+                                            <div class="barProgress totalBarGreen">
+                                                <div class="currentBar currentBarGreen" style="width: {{ $progress }}%"></div>
+                                            </div>
+                                        @else
+                                            <div class="barProgress totalBarYellow">
+                                                <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
