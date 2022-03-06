@@ -193,7 +193,7 @@
                                                 @endphp
                                                 @if($for_you_item->curr_qty>=$for_you_item->target_qty)
                                                     <div class="barProgress totalBarGreen">
-                                                        <div class="currentBar currentBarGreen" style="width: {{ $progress }}%"></div>
+                                                        <div class="currentBar currentBarGreen" style="width: 100%"></div>
                                                     </div>
                                                 @else
                                                     <div class="barProgress totalBarYellow">
