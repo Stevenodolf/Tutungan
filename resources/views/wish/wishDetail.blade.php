@@ -43,7 +43,11 @@
                             <div class="progressIndicator">
                                 <p class="contentSmall">Kontribusi Wish</p>
                                 <div class="progressNumber">
-                                    <p id="currentPro" class="contentBig textCurrentProgressYellow">{{$wish_curr_qty}}</p>
+                                    @if($wish_curr_qty>=$wish_target_qty)
+                                        <p id="currentPro" class="contentBig textCurrentProgressGreen">{{$wish_curr_qty}}</p>
+                                    @else
+                                        <p id="currentPro" class="contentBig textCurrentProgressYellow">{{$wish_curr_qty}}</p>
+                                    @endif
                                     <p class="contentBig">/</p>
                                     <p id="targetPro" class="contentBig">{{$wish_target_qty}}</p>
                                 </div>
