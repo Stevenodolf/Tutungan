@@ -59,7 +59,7 @@
                                                         $targetPro = $lm->target_qty;
                                                         $progress = ($currentPro/$targetPro)*100;
                                                     @endphp
-                                                    @if($lm->curr_qty<=$lm->target_qty)
+                                                    @if($lm->curr_qty>=$lm->target_qty)
                                                         <div class="barProgress totalBarGreen">
                                                             <div class="currentBar currentBarGreen" style="width: 100%"></div>
                                                         </div>
