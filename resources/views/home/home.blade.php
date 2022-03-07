@@ -41,7 +41,11 @@
                                         <div class="wish" onclick="window.location='{{ secure_url("/wish/".$lm->id)}}'">
                                             <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($lm->image)[0])}}">
                                             <div class="contentNormal timeLeft">
-                                                <p>Tersisa {{$time_left}} Hari Lagi</p>
+                                                @if($time_left<1)
+                                                    <p>Tersisa &#60;1 Hari Lagi</p>
+                                                @else
+                                                    <p>Tersisa {{$time_left}} Hari Lagi</p>
+                                                @endif
                                             </div>
                                             <div class="content">
                                                 <p class="contentSemiNormal">{{$lm->name}}</p>
@@ -121,7 +125,11 @@
                             <div class="wish" onclick="window.location='{{ secure_url("/wish/".$for_you_item->id)}}'">
                                 <img src="{{Storage::disk('s3')->url('uploads/'.json_decode($for_you_item->image)[0])}}"/>
                                 <div class="contentNormal timeLeft">
-                                    <p>Tersisa {{$time_left}} Hari Lagi</p>
+                                    @if($time_left<1)
+                                        <p>Tersisa &#60;1 Hari Lagi</p>
+                                    @else
+                                        <p>Tersisa {{$time_left}} Hari Lagi</p>
+                                    @endif
                                 </div>
                                 <div class="content">
                                     <p class="contentSemiNormal">{{Str::of($for_you_item->name)->limit(40)}}</p>
