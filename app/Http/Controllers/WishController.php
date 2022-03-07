@@ -291,14 +291,5 @@ class WishController extends Controller
                                         'cart_items' => $cart_items, 'notifs' => $notifs, 'search' => $search, 'curr_min' => $curr_min, 'curr_maks' => $curr_maks,
                                         'active_cat' => $active_cat, 'is_min' => $is_min]);
     }
-
-    public function deadlineChecker(Schedule $schedule){
-        $schedule->call(function(){
-            $wish = Wish::where('deadline', '>=', Carbon::now('Asia/Jakarta'))->first();
-            Wish::where('deadline', '>=', Carbon::now('Asia/Jakarta'))
-                ->update(['status_wish_id' => '4']);
-            Transaction::where('wish_id', $wish->id)->update(['status_transaksi_id' => 3]);
-        })->hourly();
-    }
 }
 

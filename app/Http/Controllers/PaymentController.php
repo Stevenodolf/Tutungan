@@ -151,14 +151,14 @@ class PaymentController extends Controller
                         'status_wish_id' => 3
                     ]);
 
-                    if($transaction->getWishRelation->target_qty == $curr_qty){
-                        Transaction::where('wish_id', $wish->id)->update([
-                            'status_transaksi_id' => 3
-                        ]);
-                        Wish::where('id', $transaction->wish_id)->update([
-                            'status_wish_id' => 4
-                        ]);
-                    }
+                    // if($transaction->getWishRelation->target_qty == $curr_qty){
+                    //     Transaction::where('wish_id', $wish->id)->update([
+                    //         'status_transaksi_id' => 3
+                    //     ]);
+                    //     Wish::where('id', $transaction->wish_id)->update([
+                    //         'status_wish_id' => 4
+                    //     ]);
+                    // }
 
                     if($payment_item->cart_item_id != NULL){
                         Cart_Item::where('id', $payment_item->cart_item_id)->delete();

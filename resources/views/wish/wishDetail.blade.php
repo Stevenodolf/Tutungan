@@ -52,9 +52,15 @@
                                     $targetPro = $wish->target_qty;
                                     $progress = ($currentPro/$targetPro)*100;
                                 @endphp
-                                <div class="barProgress totalBarYellow">
-                                    <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
-                                </div>
+                                @if($wish_curr_qty>=$wish_target_qty)
+                                    <div class="barProgress totalBarGreen">
+                                        <div class="currentBar currentBarGreen" style="width: 100%"></div>
+                                    </div>
+                                @else
+                                    <div class="barProgress totalBarYellow">
+                                        <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                         <div class="middleInfo">

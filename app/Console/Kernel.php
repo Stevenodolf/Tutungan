@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\DB;
+use App\Wish;
+use App\Transaction;
 
 class Kernel extends ConsoleKernel
 {
@@ -28,6 +30,12 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('removeTokenForgotPass:run')->everyMinute();
+        $schedule->call(function(){
+            $wish = Wish::where('deadline', '>=', Carbon::now('Asia/Jakarta'))->first();
+            Wish::where('deadline', '>=', Carbon::now('Asia/Jakarta'))
+                ->update(['status_wish_id' => '4']);
+            Transaction::where('wish_id', $wish->id)->update(['status_transaksi_id' => 3]);
+        })->hourly();
     }
 
     /**
