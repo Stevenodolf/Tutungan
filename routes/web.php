@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 //API
 
 
-Route::get('/', 'HomeController@home')->name('home');
+Route::get('/', 'HomeController@home')->name('home')->middleware('checkDeadline');
 
 Route::get('/home', function(){
     return redirect('/');
@@ -98,10 +98,10 @@ Route::middleware('auth')->group(function (){
     Route::get('/akunSaya/ubahpassword', 'AccountDetailController@getUbahPassword');
     Route::post('/akunSaya/ubahpass', 'AccountDetailController@postUbahPassword');
 
-    Route::get('/notifikasi', 'AccountDetailController@getNotification')->name('getNotification');
+    Route::get('/notifikasi', 'AccountDetailController@getNotification')->name('getNotification')->middleware('checkDeadline');
     Route::post('/updateNotifikasi', 'AccountDetailController@updateNotification')->name('updateNotification');
-    Route::get('/wishsaya', 'AccountDetailController@getWishSaya')->name('getWishSaya');
-    Route::get('/transaksisaya', 'AccountDetailController@getTransaksiSaya')->name('getTransaksiSaya');
+    Route::get('/wishsaya', 'AccountDetailController@getWishSaya')->name('getWishSaya')->middleware('checkDeadline');
+    Route::get('/transaksisaya', 'AccountDetailController@getTransaksiSaya')->name('getTransaksiSaya')->middleware('checkDeadline');
     Route::get('/transaksisaya/detailtransaksi/{id}', 'AccountDetailController@getDetailTransaksi')->name('getDetailTransaksi');
     Route::get('/transaksisaya/batalkantransaksi/{id}', 'AccountDetailController@batalkanTransaksi')->name('batalkanTransaksi');
 });

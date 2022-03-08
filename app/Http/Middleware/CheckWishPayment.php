@@ -30,6 +30,10 @@ class CheckWishPayment
             return redirect('/');
         }
 
+        if($wish_status_wish_id >= 4) {
+            return redirect('/');
+        }
+
         return $next($request);
     }
 }
