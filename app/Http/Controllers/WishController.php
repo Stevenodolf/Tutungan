@@ -291,5 +291,9 @@ class WishController extends Controller
                                         'cart_items' => $cart_items, 'notifs' => $notifs, 'search' => $search, 'curr_min' => $curr_min, 'curr_maks' => $curr_maks,
                                         'active_cat' => $active_cat, 'is_min' => $is_min]);
     }
+
+    public function agreement(){
+        return view('wish.agreement');
+    }
 }
 

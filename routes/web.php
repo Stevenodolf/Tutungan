@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function (){
 
     Route::get('/createWish', 'WishController@getCreateWish');
     Route::post('/createWish', 'WishController@postCreateWish');
+    Route::get('/agreement', 'WishController@agreement');
     Route::post('/wish/{id}', 'CartController@addToCart')->name('addToCart');
     Route::post('/buy/{id}', 'CartController@buyWish')->name('buyWish');
 

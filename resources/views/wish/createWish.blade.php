@@ -106,7 +106,7 @@
                     </div>
                 </div>
 
-                <div class="notice">
+                {{-- <div class="notice">
                     <img src="{{secure_asset('images/notice.png')}}">
                     <h5 class="contentSemiNormal">Proses verifikasi wish akan dilakukan maksimal 1x24 jam setelah Anda mengajukan pembuatan Wish.</h5>
                 </div>
@@ -115,6 +115,16 @@
                     <img src="{{secure_asset('images/notice.png')}}">
                     <h5 class="contentSemiNormal">Wish anda akan ditampilkan di website ini selama 7 hari (168 jam). Apabila setelah 7 hari target kontribusi Wish anda tercapai, maka Wish anda akan diproses sesuai prosedur.
                         Apabila tidak tercapai, maka Wish akan dibatalkan.</h5>
+                </div>
+
+                <div class="notice">
+                    <img src="{{secure_asset('images/notice.png')}}">
+                    <h5 class="contentSemiNormal">Wish anda akan ditampilkan di website ini selama 7 hari (168 jam). Apabila setelah 7 hari target kontribusi Wish anda tercapai, maka Wish anda akan diproses sesuai prosedur.
+                        Apabila tidak tercapai, maka Wish akan dibatalkan.</h5>
+                </div> --}}
+
+                <div class="agreement">
+                    <input type="checkbox">Saya sudah membaca, paham, dan setuju untuk membuah Wish sesuai dengan <a href="/agreement">syarat & ketentuan.</a>
                 </div>
 
                 <div class="buttonKanan">
