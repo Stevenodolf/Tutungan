@@ -124,7 +124,8 @@
                 </div> --}}
 
                 <div class="agreement">
-                    <input type="checkbox">Saya sudah membaca, paham, dan setuju untuk membuah Wish sesuai dengan <a href="/agreement">syarat & ketentuan.</a>
+                    <br>
+                    <input type="checkbox">Saya sudah membaca, paham, dan setuju untuk membuah Wish sesuai dengan <a href="/agreement" style="color: #FFD901">syarat & ketentuan.</a>
                 </div>
 
                 <div class="buttonKanan">
