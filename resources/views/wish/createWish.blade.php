@@ -123,7 +123,7 @@
                         Apabila tidak tercapai, maka Wish akan dibatalkan.</h5>
                 </div> --}}
 
-                <div class="agreement">
+                <div class="agreement contentSemiNormal">
                     <br>
                     <input type="checkbox" required>Saya sudah membaca, paham, dan setuju untuk membuah Wish sesuai dengan <a href="/agreement" style="color: #FFD901" target="_blank">syarat & ketentuan.</a>
                 </div>
