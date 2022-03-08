@@ -492,6 +492,14 @@ button{
         padding: 40px;
         box-shadow: 1px 6px 4px rgba(49, 53, 75, 0.25);
         border-radius: 5px;
+        .agreement{
+            h1{
+                margin-bottom: 10px;
+            }
+            p{
+                margin-bottom: 5px;
+            }
+        }
         .title{
             display: flex;
             align-items: center;
