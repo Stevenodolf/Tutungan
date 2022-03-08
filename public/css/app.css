@@ -563,6 +563,14 @@ button {
   border-radius: 5px;
 }
 
+.login .loginContainer .agreement h1 {
+  margin-bottom: 10px;
+}
+
+.login .loginContainer .agreement p {
+  margin-bottom: 5px;
+}
+
 .login .loginContainer .title {
   display: flex;
   align-items: center;
