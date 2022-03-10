@@ -6,6 +6,7 @@ use App\Wish;
 use Closure;
 use http\Client\Curl\User;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class CheckWishPayment
 {
@@ -18,6 +19,7 @@ class CheckWishPayment
      */
     public function handle($request, Closure $next)
     {
+        $wish = Wish::where('id', $request->id)->first();
         $wish_status_wish_id = Wish::where('id', $request->id)->value('status_wish_id');
         $wish_created_by = Wish::where('id', $request->id)->value('created_by');
 
@@ -29,6 +31,13 @@ class CheckWishPayment
             }
             return redirect('/');
         }
+
+        $now = Carbon::now('Asia/Jakarta');
+        if($wish->deadline <= $now){
+            $wish->status_wish_id = 4;
+            $wish->save();
+        }
+
 
         if($wish_status_wish_id >= 4) {
             return redirect('/');
