@@ -173,10 +173,11 @@
                                                 <p class="contentBig textCurrentProgressGreen">{{ $wish->curr_qty }}</p>
                                             @elseif($wish->status_wish_id == 6)
                                                 <p class="contentBig textCurrentProgressRed">{{ $wish->curr_qty }}</p>
+                                            @elseif($wish->curr_qty>=$wish->target_qty)
+                                                <p class="contentBig textCurrentProgressGreen">{{ $wish->curr_qty }}</p>
                                             @else
                                                 <p class="contentBig textCurrentProgressYellow">{{ $wish->curr_qty }}</p>
                                             @endif
-{{--                                            <p class="contentBig textCurrentProgress">{{ $wish->curr_qty }}</p>--}}
                                             <p class="contentBig">/</p>
                                             <p class="contentBig">{{ $wish->target_qty }}</p>
                                         </div>
