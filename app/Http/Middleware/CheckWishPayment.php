@@ -19,7 +19,7 @@ class CheckWishPayment
      */
     public function handle($request, Closure $next)
     {
-        $wish = Wish::where('id', $request->id)->first();
+        $wish_deadline = Wish::where('id', $request->id)->value('deadline');
         $wish_status_wish_id = Wish::where('id', $request->id)->value('status_wish_id');
         $wish_created_by = Wish::where('id', $request->id)->value('created_by');
 
@@ -33,9 +33,8 @@ class CheckWishPayment
         }
 
         $now = Carbon::now('Asia/Jakarta');
-        if($wish->deadline <= $now){
-            $wish->status_wish_id = 4;
-            $wish->save();
+        if($wish_deadline <= $now){
+            return redirect('/');
         }
 
 
