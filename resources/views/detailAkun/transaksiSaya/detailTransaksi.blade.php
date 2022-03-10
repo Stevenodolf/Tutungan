@@ -193,6 +193,10 @@
                                             <div class="barProgress totalBarRed">
                                                 <div class="currentBar currentBarRed" style="width: {{ $progress }}%"></div>
                                             </div>
+                                        @elseif($wish->curr_qty>=$wish->target_qty)
+                                            <div class="barProgress totalBarGreen">
+                                                <div class="currentBar currentBarGreen" style="width: 100%"></div>
+                                            </div>
                                         @else
                                             <div class="barProgress totalBarYellow">
                                                 <div class="currentBar currentBarYellow" style="width: {{ $progress }}%"></div>
